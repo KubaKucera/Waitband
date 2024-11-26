@@ -29,7 +29,7 @@ export default function ContactPage(){
     }, []);
 
     const validateForm = () => {
-        let errors = { name: '', email: '', message: '', recaptcha: '' };
+        const errors = { name: '', email: '', message: '', recaptcha: '' };
         let isValid = true;
 
         if (!nameInput) {

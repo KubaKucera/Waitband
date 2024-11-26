@@ -24,7 +24,7 @@ export default function TermsAndConditionsPage(){
 
                 <p>Vaše soukromí je pro nás důležité. Informace o tom, jak shromažďujeme, používáme a chráníme vaše osobní údaje, najdete v naší <a href="#">Politice ochrany osobních údajů</a>.</p>
 
-                <p>Naše stránky jsou poskytovány "tak jak jsou" a neudělujeme žádné záruky ohledně jejich funkčnosti nebo dostupnosti. Nezodpovídáme za žádné škody, které mohou vzniknout používáním našich stránek nebo služeb. Rovněž neneseme odpovědnost za obsah třetích stran, který může být zpřístupněn prostřednictvím našich stránek.</p>
+                <p>Naše stránky jsou poskytovány &quot;tak jak jsou&quot; a neudělujeme žádné záruky ohledně jejich funkčnosti nebo dostupnosti. Nezodpovídáme za žádné škody, které mohou vzniknout používáním našich stránek nebo služeb. Rovněž neneseme odpovědnost za obsah třetích stran, který může být zpřístupněn prostřednictvím našich stránek.</p>
 
                 <p>Vyhrazujeme si právo kdykoli změnit nebo aktualizovat tyto podmínky. Jakékoli změny budou zveřejněny na této stránce a budou účinné okamžitě po jejich zveřejnění. Doporučujeme vám pravidelně kontrolovat tuto stránku, abyste byli informováni o aktuálních podmínkách.</p>
 
