@@ -3,7 +3,7 @@ import Image from "next/image";
 import Navbar from "@/components/navbar/Navbar";
 import back from "../../../public/assets/images/albums/back.png";
 import album1 from "../../../public/assets/images/albums/album1.jpg";
-import album2 from "../../../public/assets/images/albums/album2.jpg";
+import album2 from "../../../public/assets/images/albums/album4.jpg";
 import album3 from "../../../public/assets/images/albums/album3.jpg";
 import Footer from "@/components/footer/Footer";
 import CustomCookieConsent from "@/components/cookie/CookieConsent";
@@ -71,7 +71,7 @@ export default function AlbumsPage() {
                     alt="Album1"
                     layout="fill"
                     objectFit="cover"
-                    className="rounded-tr-md rounded-tl-md"
+                    className="rounded-tr-md rounded-tl-md border-[1px] border-gray-300"
                   />
                 </div>
 
@@ -105,7 +105,7 @@ export default function AlbumsPage() {
                     alt="Album2"
                     layout="fill"
                     objectFit="cover"
-                    className="rounded-tr-md rounded-tl-md"
+                    className="rounded-tr-md rounded-tl-md border-[1px] border-gray-300"
                   />
                 </div>
 
@@ -139,7 +139,7 @@ export default function AlbumsPage() {
                     alt="Album3"
                     layout="fill"
                     objectFit="cover"
-                    className="rounded-tr-md rounded-tl-md"
+                    className="rounded-tr-md rounded-tl-md border-[1px] border-gray-300"
                   />
                 </div>
 

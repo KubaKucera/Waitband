@@ -39,6 +39,8 @@ const config: Config = {
         twitterBlue: "#1DA1F2",
         facebookBlue: "#4267B2",
         soundcloudOrange: "#ff5500",
+        spotifyGreen: "#1DB954",
+        appleMusicSalmon: "#fc3c44",
         instagramPink: "#C13584",
         photosBlue: "#00CCFF",      
         musicPink: "#9900FF", 

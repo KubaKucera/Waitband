@@ -5,12 +5,13 @@ import Cookies from "js-cookie";
 import { useState, useEffect } from "react";
 
 export default function CustomCookieConsent() {
-  const [showConsent, setShowConsent] = useState(true);
-
+  const [showConsent, setShowConsent] = useState(false);
+  
+  /*
   useEffect(() => {
     Cookies.remove("myWebsiteCookieConsent");  // Smaže cookie při načtení stránky
     setShowConsent(true);
-  }, []);
+  }, []);*/
 
   useEffect(() => {
     const consent = Cookies.get("myWebsiteCookieConsent");
@@ -27,7 +28,7 @@ export default function CustomCookieConsent() {
   };
 
   const handleAccept = () => {
-    Cookies.set("myWebsiteCookieConsent", "true", { expires: 0 });
+    Cookies.set("myWebsiteCookieConsent", "true", { expires: 365 });
     setShowConsent(false);
   };
 
@@ -45,10 +46,10 @@ export default function CustomCookieConsent() {
             textAlign: "center",
           }}    
           buttonStyle={{
-            display: "none",  // Skrytí tlačítek přímo
+            display: "none",
           }}
           declineButtonStyle={{
-            display: "none",  // Skrytí tlačítek přímo
+            display: "none",
           }}      
           //expires={0}  // Expirace na 0 znamená, že cookie nebude trvalá (365)
           enableDeclineButton                   

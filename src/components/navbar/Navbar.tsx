@@ -3,7 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import {FaFacebookF, FaTwitter, FaInstagram, FaSoundcloud, FaYoutube, FaTimes, FaBars} from 'react-icons/fa';
-import logo from "../../../public/assets/images/navbar/logo.jpg"
+import logo from "../../../public/assets/images/navbar/logo.jpg";
+import title from "../../../public/assets/images/navbar/waitTitle.png";
 import { useEffect, useState } from "react";
 import { FaFilePdf } from "react-icons/fa";
 
@@ -49,29 +50,31 @@ export default function Navbar({ initialActiveLink }: NavbarProps) {
         const handleScroll = () => {
         const scrollY = window.scrollY;
         if (scrollY > 50) {
-            setNavbarHeight(67);
+            setNavbarHeight(63);
         } else {
-            setNavbarHeight(77);
+            setNavbarHeight(70);
         }
         };
 
         window.addEventListener("scroll", handleScroll);
 
+        //handleScroll();
+
         return () => {
-        window.removeEventListener("scroll", handleScroll);
+            window.removeEventListener("scroll", handleScroll);
         };
     }, []);
 
     return (
         <nav 
-            className={`bg-black text-white flex items-center justify-between font-sans px-5 border-b-2 border-white fixed top-0 left-0 right-0 z-50 text-[15px] transition-height duration-300 ease-in-out`}
+            className={`bg-black text-white flex items-center justify-between px-10 xl:px-60 monitor:px-96 font-sans border-b-2 border-white fixed top-0 left-0 right-0 z-50 text-[15px] transition-height duration-300 ease-in-out`}
             style={{ height: `${navbarHeight}px` }}
         >
-            <div className='flex items-center mr-5'>
+            <div className='flex items-center justify-center'>
                 <Link href="/" onClick={handleLogoClick}>
                     <Image
-                        src={logo}
-                        className="h-11 w-[236px] my-50 object-contain -ml-[64px]"
+                        src={title}
+                        className="h-11 w-[100%] flex items-center justify-start"
                         alt="Logo"
                         width={185}
                         height={185}
@@ -81,7 +84,7 @@ export default function Navbar({ initialActiveLink }: NavbarProps) {
             </div>
 
             {/* Desktop Links */}
-            <div className="hidden lg:flex flex-grow justify-center space-x-7 h-full items-center">
+            <div className="hidden lg:flex items-center space-x-7">
                 {renderLinks(handleLinkClick, activeLink)}
             </div>
 
@@ -95,16 +98,10 @@ export default function Navbar({ initialActiveLink }: NavbarProps) {
                 </button>
             </div>
 
-            {/* Social Links */}
-            <div className='hidden lg:flex space-x-[13px]'>
-                {renderSocialLinks()}
-            </div>
-
             {/* Mobile Menu */}
             {menuOpen && (
-                <div className="absolute top-full left-0 w-full bg-black bg-opacity-90 text-white flex flex-col items-center space-y-4 py-7 lg:hidden">
-                    {renderLinks(handleLinkClick, activeLink)}
-                    <div className="flex space-x-4">{renderSocialLinks()}</div>
+                <div className="absolute top-full left-0 w-full bg-black bg-opacity-90 text-white flex flex-col items-center space-y-4 py-14 lg:hidden">
+                    {renderLinks(handleLinkClick, activeLink)}                    
                 </div>
             )}
         </nav>
@@ -162,26 +159,4 @@ const renderLinks = (handleClick: (link: string) => void, activeLink: string) =>
             </Link>
         </>
     );        
-};
-
-const renderSocialLinks = () => {
-    return (
-        <>    
-            <Link href='https://x.com/i/flow/login?redirect_after_login=%2Fwaitband' target='_blank' rel="noopener noreferrer">
-                <FaTwitter className='text-[28px] scale-95 opacity-95 hover:scale-110 hover-opacity-100 transition-transform duration-300 bg-twitterBlue rounded-md pl-1.5 pb-1.5 pr-1.5 pt-1.5' />
-            </Link>
-            <Link href="https://www.instagram.com/wait_band_official/" target='_blank' rel="noopener noreferrer">
-                <FaInstagram className='text-[28px] scale-95 opacity-95 hover:scale-110 hover-opacity-100 transition-transform duration-300 bg-instagramPink rounded-md pl-1.5 pb-1.5 pr-1.5 pt-1.5' />
-            </Link>
-            <Link href="https://www.facebook.com/waitbandcz/?locale=cs_CZ" target='_blank' rel="noopener noreferrer">
-                <FaFacebookF className='text-[28px] scale-95 opacity-95 hover:scale-110 hover-opacity-100 transition-transform duration-300 bg-facebookBlue rounded-md pl-1.5 pb-1.5 pr-1.5 pt-1.5' />
-            </Link>
-            <Link href="https://www.youtube.com/@waitbandofficial6520" target='_blank' rel="noopener noreferrer">
-                <FaYoutube className='text-[28px] scale-95 opacity-95 hover:scale-110 hover-opacity-100 transition-transform duration-300 bg-youtubeRed rounded-md pl-1.5 pb-1.5 pr-1.5 pt-1.5' />
-            </Link>
-            <Link href="https://soundcloud.com/wait-band-official" target='_blank' rel="noopener noreferrer">
-                <FaSoundcloud className='text-[28px] scale-95 opacity-95 hover:scale-110 hover-opacity-100 transition-transform duration-300 bg-soundcloudOrange rounded-md pl-1.5 pb-1.5 pr-1.5 pt-1.5' />
-            </Link>
-        </> 
-    );  
 };

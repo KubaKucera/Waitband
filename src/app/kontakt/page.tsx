@@ -185,7 +185,7 @@ export default function ContactPage(){
 
                         <div className="mb-4">
                             <ReCAPTCHA
-                                sitekey="6Lc-pF8qAAAAAHjl3bSAeNAbQvsdtcPSRNehcG78"
+                                sitekey="6LenF4wqAAAAAPPCUeBknjgKqRFoFa5S6oFcLTEJ"
                                 ref={recaptchaRef}
                                 onChange={(value) => setRecaptchaValue(value)}
                             />
