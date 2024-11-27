@@ -13,7 +13,7 @@ import { FaArrowUp } from "react-icons/fa";
 const videos = [
   {
     id: "WljMWwTDTGs",
-    title: "WAIT - Horoskop (www.waitband.cz)",
+    title: "WAIT - Horoskop",
   },
   {
     id: "OkWHNAsE0Zg",

@@ -100,7 +100,7 @@ export default function Navbar({ initialActiveLink }: NavbarProps) {
 
             {/* Mobile Menu */}
             {menuOpen && (
-                <div className="absolute top-full left-0 w-full bg-black bg-opacity-90 text-white flex flex-col items-center space-y-4 py-14 lg:hidden">
+                <div className="absolute top-full left-0 w-full bg-black bg-opacity-90 text-white flex flex-col items-center space-y-4 py-10 lg:hidden">
                     {renderLinks(handleLinkClick, activeLink)}                    
                 </div>
             )}
