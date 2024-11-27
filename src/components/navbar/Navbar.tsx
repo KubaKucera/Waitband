@@ -68,7 +68,7 @@ export default function Navbar({ initialActiveLink }: NavbarProps) {
             style={{ height: `${navbarHeight}px` }}
         >
             <div className='flex items-center mr-5'>
-                <Link href="/uvod" onClick={handleLogoClick}>
+                <Link href="/" onClick={handleLogoClick}>
                     <Image
                         src={logo}
                         className="h-11 w-[236px] my-50 object-contain -ml-[64px]"
@@ -114,7 +114,7 @@ export default function Navbar({ initialActiveLink }: NavbarProps) {
 const renderLinks = (handleClick: (link: string) => void, activeLink: string) => {    
     return (
         <>
-            <Link href="/uvod" onClick={() => handleClick('uvod')}>
+            <Link href="/" onClick={() => handleClick('uvod')}>
                 <span className={`uppercase font-bold ${activeLink === 'uvod' ? 'text-amberYellow' : 'text-lightGray'} hover:text-amberYellow`}>
                     Úvod
                 </span>
