@@ -7,7 +7,7 @@ import { FaFacebookF, FaInstagram, FaSoundcloud, FaYoutube, FaApple, FaSpotify, 
 
 export default function Footer(){
     return(
-        <div className="bg-white w-full min-h-[220px] pt-9 pb-9 flex flex-col justify-center items-center relative border-gray-600 border-[1px]">
+        <div className="bg-white w-full min-h-[220px] pt-9 pb-9 flex flex-col justify-center items-center relative border-gray-600 border-t-[1px]">
                  
             {/* Text na střed - Copyright */}
             <div className="text-center">
@@ -27,10 +27,13 @@ export default function Footer(){
                     </Link>
                 </div>
                 <div className="mb-0">
-                    <p className="text-gray-600 opacity-90"><span className="font-bold">Technické dotazy:</span> Ivan Kučera, tel. 724 644 082, e-mail: iv.kucera@email.cz</p>
+                    <p className="text-gray-600 opacity-90"><span className="font-bold">Technické dotazy:</span> Ivan Kučera, tel. 724 644 082, e-mail: <Link href="mailto:iv.kucera@email.cz" className="text-blue-500 hover:underline">iv.kucera@email.cz</Link></p>
                 </div>
                 <div className="mb-0">
-                    <p className="text-gray-600 opacity-90"><span className="font-bold">Booking/Management:</span> Pavel Herynk, tel. 737 272 833, e-mail: p.herynk@me.com</p>
+                    <p className="text-gray-600 opacity-90"><span className="font-bold">Rezervace:</span> Pavel Herynk, tel. 737 272 833, e-mail: <Link href="mailto:p.herynk@me.com" className="text-blue-500 hover:underline">p.herynk@me.com</Link></p>
+                </div>
+                <div className="mb-0">
+                    <p className="text-gray-600 opacity-90"><span className="font-bold">Zvuk:</span> František Novák, e-mail: <span className="block sm:inline"><Link href="mailto:novak.frantisek@atlas.cz" className="text-blue-500 hover:underline">novak.frantisek@atlas.cz</Link></span></p>
                 </div>
             </div>
 

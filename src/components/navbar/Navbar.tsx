@@ -15,6 +15,7 @@ interface NavbarProps{
 export default function Navbar({ initialActiveLink }: NavbarProps) {    
     const [activeLink, setActiveLink] = useState(initialActiveLink);
     const [navbarHeight, setNavbarHeight] = useState(77);
+    const [titleScale, setTitleScale] = useState(1);
     const [menuOpen, setMenuOpen] = useState(false);
     const [menuVisible, setMenuVisible] = useState(false);
 
@@ -48,11 +49,13 @@ export default function Navbar({ initialActiveLink }: NavbarProps) {
 
     useEffect(() => {
         const handleScroll = () => {
-        const scrollY = window.scrollY;
+        const scrollY = window.scrollY;        
         if (scrollY > 50) {
             setNavbarHeight(63);
+            setTitleScale(0.85);        
         } else {
             setNavbarHeight(70);
+            setTitleScale(1);
         }
         };
 
@@ -67,15 +70,16 @@ export default function Navbar({ initialActiveLink }: NavbarProps) {
 
     return (
         <nav 
-            className={`bg-black text-white flex items-center justify-between px-10 xl:px-60 monitor:px-96 font-sans border-b-2 border-white fixed top-0 left-0 right-0 z-50 text-[15px] transition-height duration-300 ease-in-out`}
+            className={`bg-black text-white flex items-center justify-between px-10 xl:px-60 monitor:px-60 monitor:justify-evenly font-sans border-b-[1px] border-white fixed top-0 left-0 right-0 z-50 text-[15px] transition-height duration-300 ease-in-out`}
             style={{ height: `${navbarHeight}px` }}
         >
             <div className='flex items-center justify-center'>
                 <Link href="/" onClick={handleLogoClick}>
                     <Image
                         src={title}
-                        className="h-11 w-[100%] flex items-center justify-start"
-                        alt="Logo"
+                        className="h-11 w-[100%] flex scale-100 items-center justify-start transition-scale duration-300 ease-in-out"
+                        style={{ scale: `${titleScale}` }}
+                        alt="Title"
                         width={185}
                         height={185}
                         priority={false}
@@ -100,7 +104,7 @@ export default function Navbar({ initialActiveLink }: NavbarProps) {
 
             {/* Mobile Menu */}
             {menuOpen && (
-                <div className="absolute top-full left-0 w-full bg-black bg-opacity-90 text-white flex flex-col items-center space-y-4 py-10 lg:hidden">
+                <div className="absolute top-full left-0 w-full bg-black bg-opacity-90 text-white flex flex-col items-center space-y-4 py-8 lg:hidden">
                     {renderLinks(handleLinkClick, activeLink)}                    
                 </div>
             )}

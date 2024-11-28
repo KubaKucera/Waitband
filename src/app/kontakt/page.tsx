@@ -108,26 +108,11 @@ export default function ContactPage(){
             <Navbar initialActiveLink="kontakt"/>            
             
             <div className="bg-gray-300 min-h-screen flex justify-center items-center p-16 lg:p-24 pt-24">
-                <div className="w-[1500px] pt-8 pb-6 px-8 lg:px-16 text-center lg:ml-28 lg:mr-28 monitor:ml-52 monitor:mr-52 mb-2 border-2 rounded-xl bg-white border-gray-900 shadow-lg shadow-gray-400/50">
-                    <h1 className="text-3xl font-semibold font-montserrat mb-7 text-gray-900 uppercase">Kontakt</h1>
-                    
-                    <p className="text-lg leading-relaxed max-w-6xl mx-auto text-gray-600 text-center mb-5 px-5">
-                        Milí přátelé... chceme vám moc poděkovat za vaši podporu a přízeň. Velmi si toho vážíme! Zároveň bychom vás chtěli požádat o pochopení – není v našich možnostech vyhovět všem vašim přáním, a tak bychom vás chtěli informovat o pár věcech, které bohužel nejsme schopni zajistit:
-                    </p>
-                    
-                    <ul className="list-disc list-inside text-lg max-w-6xl mx-auto text-left mb-5 px-5 font-normal text-gray-600">
-                        <li><span className="font-bold text-gray-700">Video vzkazy a přání</span> pro vaše blízké k narozeninám nebo jiným příležitostem.</li>
-                        <li><span className="font-bold text-gray-700">Podepsané fotografie a plakáty</span> – autogramiády však pořádáme na každém turné ve všech městech, kde máte možnost si podpis odnést.</li>
-                        <li><span className="font-bold text-gray-700">Hraní na soukromých akcích</span>, jako jsou svatby, narozeninové oslavy, plesy nebo podobné události.</li>
-                        <li><span className="font-bold text-gray-700">Prostor na našich koncertech</span> pro osobní momenty, jako je žádost o ruku apod.</li>
-                    </ul>
-
-                    <p className="text-lg leading-relaxed max-w-4xl mx-auto text-gray-600 text-center mb-5 px-5">
-                        Věříme, že to chápete. Abychom mohli dál připravovat koncerty a nové projekty, musíme se soustředit na to, co děláme nejlépe – naší hudbu.
-                    </p>
-
-                    <p className="text-lg leading-relaxed max-w-4xl mx-auto text-center px-5 font-bold text-gray-700">
-                        Děkujeme vám za pochopení a podporu a už teď se těšíme na další společná setkání! 
+                <div className="w-[1500px] pt-8 pb-5 px-8 lg:px-16 text-center lg:ml-28 lg:mr-28 monitor:ml-52 monitor:mr-52 mb-2 border-2 rounded-xl bg-white border-gray-900 shadow-lg shadow-gray-400/50">
+                    <h1 className="text-3xl font-semibold font-montserrat mb-5 text-gray-900 uppercase">Kontakt</h1>
+                           
+                    <p className="text-xl leading-relaxed max-w-4xl mx-auto text-center px-5 mb-2 font-semibold text-gray-600">
+                        V případě zájmu nás kontaktujte pomocí vyplnění a odeslání formuláře. 
                     </p>
 
                     <Link href="/osobni-udaje" target="_blank">

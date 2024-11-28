@@ -90,7 +90,7 @@ export default function MusicPage() {
 
             {/* Title */}
             <div className="absolute top-[120px] left-0 right-0 w-full z-10">
-              <h2 className="text-gray-800 italic font-montserrat text-xl monitor:text-2xl text-center font-bold uppercase">
+              <h2 className="text-gray-800 italic font-montserrat text-xl monitor:text-[22px] text-center font-bold uppercase">
                 Top songy ze <span className="text-soundcloudOrange font-bold">Soundcloud</span>
               </h2>
             </div>
