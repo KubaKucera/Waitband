@@ -71,7 +71,7 @@ export default function AlbumsPage() {
                     alt="Album1"
                     layout="fill"
                     objectFit="cover"
-                    className="rounded-tr-md rounded-tl-md border-[1px] border-gray-300"
+                    className="rounded-tr-md rounded-tl-md border-[2px] border-gray-300"
                   />
                 </div>
 
@@ -105,7 +105,7 @@ export default function AlbumsPage() {
                     alt="Album2"
                     layout="fill"
                     objectFit="cover"
-                    className="rounded-tr-md rounded-tl-md border-[1px] border-gray-300"
+                    className="rounded-tr-md rounded-tl-md border-[2px] border-gray-300"
                   />
                 </div>
 
@@ -139,7 +139,7 @@ export default function AlbumsPage() {
                     alt="Album3"
                     layout="fill"
                     objectFit="cover"
-                    className="rounded-tr-md rounded-tl-md border-[1px] border-gray-300"
+                    className="rounded-tr-md rounded-tl-md border-[2px] border-gray-300"
                   />
                 </div>
 
