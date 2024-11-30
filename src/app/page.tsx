@@ -182,12 +182,12 @@ export default function Home() {
                           alt={item.title}
                           layout="fill"
                           objectFit="cover"
-                          className="rounded-md border-[3px] border-white transition-all duration-300 group-hover:border-blue-500"
+                          className="rounded-md border-[3px] border-white transition-all duration-300"
                         />
                       </Link>
                       
                       {index === 2 && (
-                        <div className="absolute w-[47px] h-[47px] flex items-center justify-center border-[3px] bg-blue-600 border-none mt-[2px] mr-[2px] group-hover:brightness-100 rounded-bl-lg text-lg top-0 right-0">
+                        <div className="absolute w-[47px] h-[47px] flex items-center justify-center border-[3px] bg-blue-600 border-none mt-[3px] mr-[3px] group-hover:brightness-100 rounded-bl-lg text-lg top-0 right-0">
                           <FaPlayCircle className="bg-transparent text-gray-200 mr-[-2px] transition-all duration-300 ease-in-out transform group-hover:scale-125 group-hover:mr-[-1px] z-20" />
                         </div>
                       )}
