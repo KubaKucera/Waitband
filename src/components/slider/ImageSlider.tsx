@@ -10,7 +10,7 @@ import image2 from "../../../public/assets/images/slider/slides/image3.jpg";
 import image3 from "../../../public/assets/images/slider/slides/image7.jpeg";
 import image4 from "../../../public/assets/images/slider/slides/image1.jpeg";
 import image5 from "../../../public/assets/images/slider/slides/image4.jpg";
-import image6 from "../../../public/assets/images/slider/slides/image6.jpg";
+//import image6 from "../../../public/assets/images/slider/slides/image6.jpg";
 import prevArrow from "../../../public/assets/images/slider/icons/leftArrow.svg";
 import nextArrow from "../../../public/assets/images/slider/icons/rightArrow.svg"
 
@@ -52,12 +52,11 @@ function NextArow({ onClick }: {onClick?: () => void}){
 
 export default function ImageSlider() {
     const images = [
-        {src: image1, alt: "Slide1", width: 2120, height: 1280},
-        {src: image2, alt: "Slide2", width: 2120, height: 1280},
-        {src: image3, alt: "Slide3", width: 2120, height: 1280},
-        {src: image4, alt: "Slide4", width: 2120, height: 1280},
-        {src: image5, alt: "Slide5", width: 2120, height: 1280},
-        {src: image6, alt: "Slide6", width: 2120, height: 1280},
+      {src: image1, alt: "Slide1", width: 2120, height: 1280},
+      {src: image2, alt: "Slide2", width: 2120, height: 1280},
+      {src: image3, alt: "Slide3", width: 2120, height: 1280},
+      {src: image4, alt: "Slide4", width: 2120, height: 1280},
+      {src: image5, alt: "Slide5", width: 2120, height: 1280},        
     ];
 
     const [currentSlide, setCurrentSlide] = useState(0);
