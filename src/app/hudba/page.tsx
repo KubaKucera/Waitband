@@ -11,6 +11,7 @@ import image6 from "../../../public/assets/images/music/image6.jpg";
 import image7 from "../../../public/assets/images/music/image7.jpg";
 import image8 from "../../../public/assets/images/music/image8.jpg";
 import image9 from "../../../public/assets/images/music/image9.jpg";
+import texture from "../../../public/assets/textures/texture.jpg";
 import whiteFadeTexture from "../../../public/assets/textures/whiteEffect.png";
 import { FaPlayCircle, FaSoundcloud } from "react-icons/fa";
 import { useEffect, useState } from "react";
@@ -84,14 +85,14 @@ export default function MusicPage() {
 
           <section className="w-full relative min-h-[1275px] bg-musicPink py-10 px-4 sm:px-6 bg-opacity-10">            
             <div
-              className="absolute inset-0 opacity-50 bg-fixed bg-cover bg-no-repeat"
-              style={{ backgroundImage: `url(${whiteFadeTexture.src})`, width: "100%", height: "100%" }}
-            ></div>
+              className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
+              style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%"}}
+            ></div>            
 
             {/* Title */}
             <div className="absolute top-[120px] left-0 right-0 w-full z-10">
-              <h2 className="text-gray-800 italic font-montserrat text-xl monitor:text-[22px] text-center font-bold uppercase">
-                Top songy ze <span className="text-soundcloudOrange font-bold">Soundcloud</span>
+              <h2 className="text-gray-100 italic font-montserrat text-xl monitor:text-[22px] text-center font-bold uppercase">
+                Výběr top songů
               </h2>
             </div>
 
@@ -114,10 +115,10 @@ export default function MusicPage() {
                         objectFit="cover"
                         className="group-hover:cursor-pointer transition-all duration-300 ease-in-out transform"
                       />
-                      <p className="absolute bg-black bg-opacity-75 bottom-0 text-lg md:text-lg p-2 md:p-3 w-full text-white transition-all duration-200 ease-in-out transform group-hover:bg-soundcloudOrange group-hover:bg-opacity-75 font-semibold text-center">
+                      <p className="absolute bg-black bg-opacity-75 bottom-0 text-lg md:text-lg p-2 md:p-3 w-full text-white transition-all duration-200 ease-in-out transform group-hover:bg-blue-600 group-hover:bg-opacity-75 font-semibold text-center">
                         {songs[index].title}
                       </p>
-                      <div className="absolute w-[47px] h-[47px] flex items-center justify-center bg-soundcloudOrange bg-opacity-75 rounded-bl-lg text-lg top-0 right-0">
+                      <div className="absolute w-[47px] h-[47px] flex items-center justify-center bg-blue-600 rounded-bl-lg text-lg top-0 right-0">
                         <FaPlayCircle className="bg-transparent text-white transition-transform duration-300 ease-out group-hover:scale-125" />
                       </div>
                     </div>
@@ -127,14 +128,14 @@ export default function MusicPage() {
             </div>
 
             {/* Side Title */}
-            <div className="absolute left-[-63px] top-[245px] z-30 hidden xl:flex flex-col items-center">
-              <h2 className="text-black text-[25px] font-montserrat font-semibold italic transform -rotate-90 uppercase">
+            <div className="absolute left-[-64px] top-[245px] z-30 hidden xl:flex flex-col items-center">
+              <h2 className="text-neonPink text-[25px] font-montserrat font-semibold italic transform -rotate-90 uppercase">
                 Hudba - Best Of
               </h2>
             </div>
 
             {/* Vertical line */}
-            <div className="absolute left-[50px] top-[400px] z-30 w-[4px] h-[595px] bg-gray-900 animate-grow2 hidden xl:block"></div>
+            <div className="absolute left-[50px] top-[400px] z-30 w-[3px] h-[595px] bg-gray-300 animate-grow2 hidden xl:block"></div>
           </section>
 
           <Footer />

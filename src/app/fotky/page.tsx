@@ -19,6 +19,7 @@ import image12 from "../../../public/assets/images/photos/image13.jpg";
 import image13 from "../../../public/assets/images/photos/image12.jpg";
 import image14 from "../../../public/assets/images/photos/image14.jpg";
 import image15 from "../../../public/assets/images/photos/image10.jpg";
+import texture from "../../../public/assets/textures/texture.jpg";
 import whiteFadeTexture from "../../../public/assets/textures/whiteEffect.png";
 import CustomCookieConsent from "@/components/cookie/CookieConsent";
 import { useState, useEffect } from "react";
@@ -80,12 +81,12 @@ export default function PhotosPage(){
           <CustomCookieConsent />
           <Navbar initialActiveLink="fotky"/>    
 
-          <section className="relative h-auto bg-buttonBlue bg-opacity-15 py-10">
+          <section className="relative h-auto py-10">
 
             <div
-              className="absolute inset-0 opacity-50 bg-fixed bg-cover bg-no-repeat"
-              style={{ backgroundImage: `url(${whiteFadeTexture.src})`, width: "100%", height: "100%"}}
-            ></div> 
+              className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
+              style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%"}}
+            ></div>             
 
             <div className="container mx-auto px-4 flex justify-center">
               {/* Grid obrázků */}
@@ -116,18 +117,18 @@ export default function PhotosPage(){
 
             <div className="flex justify-center mt-[20px] mb-[30px] h-[50px]">
               <Link href="https://www.instagram.com/wait_band_official/" rel="noopener noreferrer" target='_blank' passHref>
-                <button className="px-14 py-[9px] bg-transparent text-black border-[3px] rounded-lg font-bold border-buttonBlue uppercase transition-all duration-500 ease-in-out transform hover:text-buttonBlue hover:opacity-100">
+                <button className="px-14 py-[9px] bg-transparent text-gray-200 border-[3px] rounded-lg font-bold border-blue-500 hover:border-blue-500 uppercase transition-all duration-500 ease-in-out transform hover:text-blue-500 hover:opacity-100">
                   Přejít na instagram
                 </button>
               </Link>
             </div>
             <div className="absolute left-[10px] top-[180px] z-30 hidden xl:flex flex-col items-center">
-              <h2 className="text-black text-[25px] font-montserrat font-semibold italic transform -rotate-90 uppercase">
+              <h2 className="text-neonPink text-[25px] font-montserrat font-semibold italic transform -rotate-90 uppercase">
                 Fotky
               </h2>
             </div>
 
-            <div className="absolute left-[50px] top-[260px] z-30 w-[4px] h-[810px] bg-gray-900 animate-grow hidden xl:block"></div>
+            <div className="absolute left-[50px] top-[260px] z-30 w-[3px] h-[810px] bg-gray-300 animate-grow hidden xl:block"></div>
 
             <FaArrowUp
               onClick={scrollToTop}

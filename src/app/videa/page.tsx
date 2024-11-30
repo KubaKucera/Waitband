@@ -5,6 +5,7 @@ import Image from "next/image";
 import Navbar from "@/components/navbar/Navbar";
 import back from "../../../public/assets/images/videos/back.png";
 import CustomCookieConsent from "@/components/cookie/CookieConsent";
+import texture from "../../../public/assets/textures/texture.jpg";
 import { useState, useRef, useEffect } from "react";
 import { FaPlayCircle } from "react-icons/fa";
 import Footer from "@/components/footer/Footer";
@@ -117,9 +118,8 @@ export default function VideosPage(){
       <section className="relative min-h-screen flex flex-col items-center justify-center py-24">
         <div
           className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${back.src})`, width: "100%", height: "100%"}}
-        ></div>
-        <div className="absolute h-full w-full bg-[#16003C] bg-opacity-90 z-10"></div>       
+          style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%"}}
+        ></div>        
 
         {/* Hlavní video - zvětšení výšky */}
         <div className="w-full max-w-[820px] h-auto mb-8 z-30 flex flex-col items-center px-4">
@@ -171,12 +171,12 @@ export default function VideosPage(){
         </div>
 
         <div className="absolute left-[-63px] top-[235px] z-30 hidden xl:flex flex-col items-center">
-          <h2 className="text-white text-[25px] font-montserrat font-semibold italic transform -rotate-90 uppercase">
+          <h2 className="text-neonPink text-[25px] font-montserrat font-semibold italic transform -rotate-90 uppercase">
             Videa - Youtube
           </h2>
         </div>
               
-        <div className="absolute left-[50px] top-[390px] z-30 w-[4px] h-[725px] bg-white animate-grow hidden xl:block"></div>
+        <div className="absolute left-[50px] top-[390px] z-30 w-[3px] h-[725px] bg-gray-300 animate-grow hidden xl:block"></div>
 
         <FaArrowUp
           onClick={scrollToTop}

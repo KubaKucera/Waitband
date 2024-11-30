@@ -6,6 +6,7 @@ import pavelImage from "../../../public/assets/images/band/pavel.jpg";
 import martinaImage from  "../../../public/assets/images/band/martina.jpg";
 import marekImage from  "../../../public/assets/images/band/marek.jpg";
 import back from "../../../public/assets/images/band/back.png";
+import texture from "../../../public/assets/textures/texture.jpg";
 import fadeWhiteEffect from "../../../public/assets/images/band/effect.png";
 import Footer from "@/components/footer/Footer";
 import { FaArrowUp } from "react-icons/fa"; 
@@ -26,13 +27,9 @@ export default function BandPage(){
           <section className="relative min-h-screen flex items-center justify-center pt-28 pb-24 px-4 sm:px-8 lg:px-16">
             {/* Background */}
             <div
-              className="absolute inset-0 opacity-50 bg-fixed bg-cover bg-no-repeat"
-              style={{
-                backgroundImage: `url(${fadeWhiteEffect.src})`,
-                width: "100%",
-                height: "100%",
-              }}
-            ></div>
+              className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
+              style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%"}}
+            ></div>            
 
             {/* Content */}
             <div className="relative z-30 grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-12">
@@ -110,12 +107,12 @@ export default function BandPage(){
             </div>
 
             <div className="absolute left-[0px] top-[173px] z-30 hidden xl:flex flex-col items-center">
-              <h2 className="text-black text-[25px] font-montserrat font-semibold italic transform -rotate-90 uppercase">
+              <h2 className="text-neonPink text-[25px] font-montserrat font-semibold italic transform -rotate-90 uppercase">
                 Kapela
               </h2>
             </div>
               
-            <div className="absolute left-[50px] top-[265px] z-30 w-[4px] h-[725px] bg-gray-900 animate-grow hidden xl:block"></div>
+            <div className="absolute left-[50px] top-[265px] z-30 w-[3px] h-[725px] bg-gray-300 animate-grow hidden xl:block"></div>
 
           </section>
 

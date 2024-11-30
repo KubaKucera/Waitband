@@ -1,10 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import Navbar from "@/components/navbar/Navbar";
-import back from "../../../public/assets/images/albums/back.png";
+import texture from "../../../public/assets/textures/texture.jpg";
 import album1 from "../../../public/assets/images/albums/album1.jpg";
 import album2 from "../../../public/assets/images/albums/album4.jpg";
 import album3 from "../../../public/assets/images/albums/album3.jpg";
+import back from "../../../public/assets/images/videos/back.png";
 import Footer from "@/components/footer/Footer";
 import CustomCookieConsent from "@/components/cookie/CookieConsent";
 import { FaAngleDoubleDown, FaPlayCircle, FaSoundcloud } from 'react-icons/fa';
@@ -58,10 +59,10 @@ export default function AlbumsPage() {
           <section className="relative min-h-screen flex items-center justify-center p-24 px-4 sm:px-8 lg:px-16">
             <div
               className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
-              style={{ backgroundImage: `url(${back.src})`, width: "100%", height: "100%"}}
-            ></div>
+              style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%"}}
+            ></div>            
 
-            <div className="absolute h-full w-full bg-black bg-opacity-75 z-10"></div>      
+            {/*<div className="absolute h-full w-full bg-[#16003C] bg-opacity-90 z-10"></div>*/}
 
             <div className="relative z-20 flex flex-wrap justify-center items-start gap-8 mt-8 sm:mt-0">            
               <div className="flex flex-col items-center mt-[5px] sm:mt-[25px] md:mt-[40px] lg:mt-[75px]">
@@ -71,31 +72,30 @@ export default function AlbumsPage() {
                     alt="Album1"
                     layout="fill"
                     objectFit="cover"
-                    className="rounded-tr-md rounded-tl-md border-[2px] border-gray-300"
+                    className="rounded-tr-md rounded-tl-md"
                   />
                 </div>
 
                 <div className="w-full h-[40px] flex items-center justify-between border-[2px] border-gray-400 bg-black text-white px-[15px] relative">
                   <FaAngleDoubleDown className="text-left text-xl font-semibold text-lightGray"/>
                   <p className="text-center text-lg text-gray-200 font-semibold absolute left-1/2 transform -translate-x-1/2 flex items-center">
-                    Přehled <FaSoundcloud className="ml-3 border-[1px] text-xl rounded-[4px] border-soundcloudOrange pl-1 pb-1 pr-1 pt-1 scale-125"/>
+                    Přehled
                   </p>
                   <FaAngleDoubleDown className="text-left text-xl font-semibold text-lightGray"/>
                 </div>
                 
-                <div className="w-[350px] h-[470px] sm:w-[350px] md:w-[285px] relative bg-white bg-opacity-20 mt-0">
+                <div className="w-[350px] h-[470px] sm:w-[350px] md:w-[285px] relative bg-white bg-opacity-10 rounded-br-md rounded-bl-md mt-0">
                   {album1Tracks.map((track, index) => (
                     <Link key={index} href={track.url} target="_blank">
-                      <div className="text-center flex items-center justify-between w-full h-[45px] text-lg top-[20px] mb-[10px] text-white font-normal border-[1px] px-[15px] border-white hover:border-soundcloudOrange hover:border-[3px] hover:cursor-pointer group relative">
+                      <div className="text-center flex items-center justify-between w-full h-[45px] text-lg top-[20px] mb-[10px] text-white font-normal border-[1px] px-[15px] border-white hover:border-bg-blue-600 hover:border-[2px] hover:cursor-pointer group relative">
                         <span className="mx-2 text-white font-semibold">{track.title}</span>
-                        <div className="absolute h-[45px] w-[40px] transform -skew-x-12 origin-top-left bg-transparent group-hover:bg-soundcloudOrange right-0 z-10"></div>
-                        <div className="absolute h-[45px] w-[40px] transform bg-transparent group-hover:bg-soundcloudOrange right-0 z-10"></div>
+                        <div className="absolute h-[41px] w-[40px] transform -skew-x-12 origin-top-left bg-transparent group-hover:bg-blue-600 right-0 z-10"></div>
+                        <div className="absolute h-[41px] w-[40px] transform bg-transparent group-hover:bg-blue-600 right-0 z-10"></div>
                         <FaPlayCircle className="bg-transparent group-hover:text-white mr-[-2px] group-hover:scale-125 group-hover:mr-[-3px] z-20"/>
                       </div>
                     </Link>
                   ))}
-                </div>
-                <div className="mt-0 w-full h-[20px] flex items-center justify-between bg-black border-[2px] rounded-bl-md rounded-br-md border-gray-400 text-white px-[15px] relative"></div>
+                </div>                
               </div>
 
               <div className="flex flex-col items-center mt-[25px] xl:mt-[40px] lg:mt-[40px] md:mt-[40px]">
@@ -105,31 +105,30 @@ export default function AlbumsPage() {
                     alt="Album2"
                     layout="fill"
                     objectFit="cover"
-                    className="rounded-tr-md rounded-tl-md border-[2px] border-gray-300"
+                    className="rounded-tr-md rounded-tl-md"
                   />
                 </div>
 
                 <div className="mt-0 w-full h-[40px] flex items-center justify-between border-[2px] border-gray-400 bg-black px-[15px] relative">
                   <FaAngleDoubleDown className="text-left text-xl font-semibold text-lightGray"/>
                   <p className="text-center text-lg text-gray-200 font-semibold absolute left-1/2 transform -translate-x-1/2 flex items-center">
-                    Přehled <FaSoundcloud className="ml-3 border-[1px] text-xl rounded-[4px] border-soundcloudOrange pl-1 pb-1 pr-1 pt-1 scale-125"/>
+                    Přehled
                   </p>
                   <FaAngleDoubleDown className="text-left text-xl font-semibold text-lightGray"/>
                 </div>
 
-                <div className="w-[350px] h-[580px] xl:w-[350px] md:w-[285px] sm:w-[350px] bg-white bg-opacity-20 mt-0">
+                <div className="w-[350px] h-[580px] xl:w-[350px] md:w-[285px] sm:w-[350px] bg-white bg-opacity-10 rounded-br-md rounded-bl-md mt-0">
                   {album2Tracks.map((track, index) => (
                     <Link key={index} href={track.url} target="_blank">
-                      <div className="text-center flex items-center justify-between w-full h-[45px] text-lg top-[20px] mb-[10px] text-white font-normal border-[1px] px-[15px] border-white hover:border-soundcloudOrange hover:border-[3px] hover:cursor-pointer group relative">
+                      <div className="text-center flex items-center justify-between w-full h-[45px] text-lg top-[20px] mb-[10px] text-white font-normal border-[1px] px-[15px] border-white hover:border-bg-blue-600 hover:border-[2px] hover:cursor-pointer group relative">
                         <span className="mx-2 text-white font-semibold">{track.title}</span>
-                        <div className="absolute h-[45px] w-[40px] transform -skew-x-12 origin-top-left bg-transparent group-hover:bg-soundcloudOrange right-0 z-10"></div>
-                        <div className="absolute h-[45px] w-[40px] transform bg-transparent group-hover:bg-soundcloudOrange right-0 z-10"></div>
+                        <div className="absolute h-[41px] w-[40px] transform -skew-x-12 origin-top-left bg-transparent group-hover:bg-blue-600 right-0 z-10"></div>
+                        <div className="absolute h-[41px] w-[40px] transform bg-transparent group-hover:bg-blue-600 right-0 z-10"></div>
                         <FaPlayCircle className="bg-transparent group-hover:text-white mr-[-2px] group-hover:scale-125 group-hover:mr-[-3px] z-20"/>
                       </div>
                     </Link>
                   ))}
-                </div>
-                <div className="mt-0 w-full h-[20px] flex items-center justify-between bg-black border-[2px] rounded-bl-md rounded-br-md border-gray-400 text-white px-[15px] relative"></div>
+                </div>                
               </div>
 
               <div className="flex flex-col items-center mt-[25px] sm:mt-[25px] md:mt-[25px] lg:mt-[75px] xl:mt-[75px]">
@@ -139,42 +138,40 @@ export default function AlbumsPage() {
                     alt="Album3"
                     layout="fill"
                     objectFit="cover"
-                    className="rounded-tr-md rounded-tl-md border-[2px] border-gray-300"
+                    className="rounded-tr-md rounded-tl-md"
                   />
                 </div>
 
                 <div className="mt-0 w-full h-[40px] flex items-center justify-between bg-black border-[2px] border-gray-400 text-white px-[15px] relative">
                   <FaAngleDoubleDown className="text-left text-xl font-semibold text-lightGray"/>
                   <p className="text-center text-lg text-gray-200 font-semibold absolute left-1/2 transform -translate-x-1/2 flex items-center">
-                    Přehled <FaSoundcloud className="ml-3 border-[1px] text-xl rounded-[4px] border-soundcloudOrange pl-1 pb-1 pr-1 pt-1 scale-125"/>
+                    Přehled
                   </p>
                   <FaAngleDoubleDown className="text-left text-xl font-semibold text-lightGray"/>
                 </div>
 
-                <div className="w-[350px] md:w-[350px] sm:w-[350px] lg:w-[285px] xl:w-[285px] h-[360px] bg-white bg-opacity-20 mt-0">
+                <div className="w-[350px] md:w-[350px] sm:w-[350px] lg:w-[285px] xl:w-[285px] h-[360px] bg-white bg-opacity-10 mt-0">
                   {album3Tracks.map((track, index) => (
                     <Link key={index} href={track.url} target="_blank">
-                      <div className="text-center flex items-center justify-between w-full h-[45px] text-lg top-[20px] mb-[10px] text-white font-normal border-[1px] px-[15px] border-white hover:border-soundcloudOrange hover:border-[3px] hover:cursor-pointer group relative">
+                      <div className="text-center flex items-center justify-between w-full h-[45px] text-lg top-[20px] mb-[10px] text-white font-normal border-[1px] px-[15px] border-white hover:border-bg-blue-600 hover:border-[2px] hover:cursor-pointer group relative">
                         <span className="mx-2 text-white font-semibold">{track.title}</span>
-                        <div className="absolute h-[45px] w-[40px] transform -skew-x-12 origin-top-left bg-transparent group-hover:bg-soundcloudOrange right-0 z-10"></div>
-                        <div className="absolute h-[45px] w-[40px] transform bg-transparent group-hover:bg-soundcloudOrange right-0 z-10"></div>
-                        <FaPlayCircle className="bg-transparent group-hover:text-white mr-[-2px] group-hover:scale-125 group-hover:mr-[-3px] z-20"/> 
+                        <div className="absolute h-[41px] w-[40px] transform -skew-x-12 origin-top-left bg-transparent group-hover:bg-blue-600 right-0 z-10"></div>
+                        <div className="absolute h-[41px] w-[40px] transform bg-transparent group-hover:bg-blue-600 right-0 z-10"></div>
+                        <FaPlayCircle className="bg-transparent group-hover:text-white mr-[-2px] group-hover:scale-125 group-hover:mr-[-3px] z-20"/>
                       </div>
                     </Link>
                   ))}
-                </div>
-
-                <div className="mt-0 w-full h-[20px] flex items-center justify-between bg-black border-[2px] rounded-bl-md rounded-br-md border-gray-400 text-white px-[15px] relative"></div>
+                </div>                
               </div>
             </div>
 
-            <div className="absolute left-[17px] top-[185px] z-30 hidden xl:flex flex-col items-center">
-              <h2 className="text-white text-[25px] font-montserrat font-semibold italic transform -rotate-90 uppercase">
+            <div className="absolute left-[16px] top-[165px] z-30 hidden xl:flex flex-col items-center">
+              <h2 className="text-neonPink text-[25px] font-montserrat font-semibold italic transform -rotate-90 uppercase">
                 Alba
               </h2>
             </div>
               
-            <div className="absolute left-[50px] top-[262px] z-30 w-[4px] h-[790px] bg-lightGray animate-grow hidden xl:block"></div>
+            <div className="absolute left-[50px] top-[243px] z-30 w-[3px] h-[790px] bg-gray-300 animate-grow hidden xl:block"></div>
           </section>  
 
           <Footer />                       

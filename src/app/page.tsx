@@ -8,6 +8,8 @@ import Navbar from "@/components/navbar/Navbar";
 import ImageSlider from "@/components/slider/ImageSlider";
 import waitBackImage from "../../public/assets/images/background/backNoTitle.jpg";
 import fadeEffectTexture from "../../public/assets/textures/fadeEffect.png";
+import texture from "../../public/assets/textures/texture.jpg";
+
 import { useState, useEffect, useRef } from "react";
 import { FaArrowUp, FaArrowsAlt, FaSoundcloud, FaPlayCircle } from "react-icons/fa";
 import { FaCompress } from "react-icons/fa";
@@ -130,8 +132,8 @@ export default function Home() {
               </h2>              
             </div>
 
-            <div className="relative bg-[rgba(0,19,72,0.85)] min-h-[600px] top-0 z-10">
-              <div className="absolute top-0 left-0 w-full h-full monitor:h-[1050px] bg-gradient-to-b from-[rgba(0,19,72,0)] via-[rgba(0,0,0,0.6)] to-[rgba(0,4,14,0.99)] z-10"></div>
+            <div className="relative inset-0 bg-[rgba(0,19,72,0.85)] min-h-[600px] top-0 z-10">
+              <div className="absolute inset-0 top-0 left-0 w-full h-full monitor:h-[1050px] bg-gradient-to-b from-[rgba(0,19,72,0)] via-[rgba(0,0,0,0.6)] to-[rgba(0,4,14,0.99)] z-10"></div>
               <div className="relative grid gap-10 items-center justify-center w-[85%] lg:w-[67%] monitor:w-[55%] mx-auto pt-11 pb-11 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 z-20">
                 {[
                   {
@@ -165,7 +167,7 @@ export default function Home() {
                     <h3 className="text-lightGray text-lg font-montserrat mb-2">
                       {item.title}
                       <br />
-                      <span className="text-cyan font-bold text-xl">
+                      <span className="text-white font-bold text-xl">
                         {item.subtitle}
                       </span>
                     </h3>
@@ -180,13 +182,13 @@ export default function Home() {
                           alt={item.title}
                           layout="fill"
                           objectFit="cover"
-                          className="rounded-md border-[4px] border-white transition-all duration-300 group-hover:border-cyan"
+                          className="rounded-md border-[3px] border-white transition-all duration-300 group-hover:border-blue-500"
                         />
                       </Link>
                       
                       {index === 2 && (
-                        <div className="absolute w-[47px] h-[47px] flex items-center justify-center border-[3px] bg-soundcloudOrange bg-opacity-75 border-none mt-[4px] mr-[4px] group-hover:brightness-100 rounded-bl-lg text-lg top-0 right-0">
-                          <FaPlayCircle className="bg-transparent text-white mr-[-2px] transition-all duration-300 ease-in-out transform group-hover:scale-125 group-hover:mr-[-1px] z-20" />
+                        <div className="absolute w-[47px] h-[47px] flex items-center justify-center border-[3px] bg-blue-600 border-none mt-[2px] mr-[2px] group-hover:brightness-100 rounded-bl-lg text-lg top-0 right-0">
+                          <FaPlayCircle className="bg-transparent text-gray-200 mr-[-2px] transition-all duration-300 ease-in-out transform group-hover:scale-125 group-hover:mr-[-1px] z-20" />
                         </div>
                       )}
                     </div>
@@ -195,7 +197,7 @@ export default function Home() {
                       rel="noopener noreferrer"
                       target={item.openInNewTab ? "_blank" : undefined}
                     >
-                      <button className="mt-3 px-10 py-[9px] bg-transparent text-white border-2 rounded-lg font-bold border-white uppercase transition-all duration-300 opacity-85 group-hover:opacity-100 group-hover:border-cyan group-hover:text-cyan">
+                      <button className="mt-3 px-10 py-[9px] bg-transparent text-white border-[3px] rounded-lg font-bold border-blue-500 uppercase transition-all duration-300 opacity-85 group-hover:opacity-100 group-hover:border-blue-500 group-hover:text-blue-500">
                         {index === 2 ? "Poslechnout" : "Prohlédnout"}
                       </button>
                     </Link>
@@ -203,14 +205,14 @@ export default function Home() {
                 ))}
               </div>
 
-              <div className="absolute left-[14px] top-[100px] z-30 hidden xl:flex flex-col items-center">
-                <h2 className="text-white text-[25px] font-montserrat font-semibold italic transform -rotate-90 uppercase">
+              <div className="absolute left-[13px] top-[100px] z-30 hidden xl:flex flex-col items-center">
+                <h2 className="text-neonPink text-[25px] font-montserrat font-semibold italic transform -rotate-90 uppercase">
                   Úvod
                 </h2>
               </div>
 
               <div                
-                className="absolute left-[50px] top-[180px] z-50 w-[4px] h-[325px] hidden xl:block bg-lightGray animate-grow2"
+                className="absolute left-[50px] top-[180px] z-50 w-[3px] h-[325px] hidden xl:block bg-gray-300 animate-grow2"
               ></div>
             </div>
 
@@ -226,9 +228,12 @@ export default function Home() {
           <section className="relative py-14">            
             <div className="container mx-auto flex flex-wrap justify-center gap-8 px-4">
               <div
-                className="absolute inset-0 bg-fixed bg-cover bg-center opacity-50"
-                style={{ backgroundImage: `url(${whiteEffectTexture.src})` }}
+                className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
+                style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%"}}
               ></div>
+
+              <div className='absolute inset-0 h-full w-full bg-white opacity-90'></div>
+
               {[
                 "https://www.facebook.com/plugins/video.php?height=258&href=https%3A%2F%2Fwww.facebook.com%2Fwaitbandcz%2Fvideos%2F3391306204501202%2F&show_text=false&width=560&t=0",
                 "https://www.facebook.com/plugins/video.php?height=258&href=https%3A%2F%2Fwww.facebook.com%2Fwaitbandcz%2Fvideos%2F500761749081282%2F&show_text=false&width=560&t=0",                

@@ -116,48 +116,48 @@ const renderLinks = (handleClick: (link: string) => void, activeLink: string) =>
     return (
         <>
             <Link href="/" onClick={() => handleClick('uvod')}>
-                <span className={`uppercase font-bold ${activeLink === 'uvod' ? 'text-amberYellow' : 'text-lightGray'} hover:text-amberYellow`}>
+                <span className={`uppercase font-bold ${activeLink === 'uvod' ? 'text-neonPink' : 'text-lightGray'} hover:text-neonPink`}>
                     Úvod
                 </span>
             </Link>
             <Link href="/koncerty" onClick={() => handleClick('koncerty')}>
-                <span className={`uppercase font-bold ${activeLink === 'koncerty' ? 'text-amberYellow' : 'text-lightGray'} hover:text-amberYellow`}>
+                <span className={`uppercase font-bold ${activeLink === 'koncerty' ? 'text-neonPink' : 'text-lightGray'} hover:text-neonPink`}>
                     Koncerty
                 </span>
             </Link>
             <Link href="/hudba" onClick={() => handleClick('hudba')}>
-                <span className={`uppercase font-bold ${activeLink === 'hudba' ? 'text-amberYellow' : 'text-lightGray'} hover:text-amberYellow`}>
+                <span className={`uppercase font-bold ${activeLink === 'hudba' ? 'text-neonPink' : 'text-lightGray'} hover:text-neonPink`}>
                     Hudba
                 </span>
             </Link>
             <Link href="/alba" onClick={() => handleClick('alba')}>
-                <span className={`uppercase font-bold ${activeLink === 'alba' ? 'text-amberYellow' : 'text-lightGray'} hover:text-amberYellow`}>
+                <span className={`uppercase font-bold ${activeLink === 'alba' ? 'text-neonPink' : 'text-lightGray'} hover:text-neonPink`}>
                     Alba
                 </span>
             </Link>
             <Link href="/fotky" onClick={() => handleClick('fotky')}>
-                <span className={`uppercase font-bold ${activeLink === 'fotky' ? 'text-amberYellow' : 'text-lightGray'} hover:text-amberYellow`}>
+                <span className={`uppercase font-bold ${activeLink === 'fotky' ? 'text-neonPink' : 'text-lightGray'} hover:text-neonPink`}>
                     Fotky
                 </span>
             </Link>
             <Link href="/videa" onClick={() => handleClick('videa')}>
-                <span className={`uppercase font-bold ${activeLink === 'videa' ? 'text-amberYellow' : 'text-lightGray'} hover:text-amberYellow`}>
+                <span className={`uppercase font-bold ${activeLink === 'videa' ? 'text-neonPink' : 'text-lightGray'} hover:text-neonPink`}>
                     Videa
                 </span>
             </Link>
             <Link href="/kapela" onClick={() => handleClick('kapela')}>
-                <span className={`uppercase font-bold ${activeLink === 'kapela' ? 'text-amberYellow' : 'text-lightGray'} hover:text-amberYellow`}>
+                <span className={`uppercase font-bold ${activeLink === 'kapela' ? 'text-neonPink' : 'text-lightGray'} hover:text-neonPink`}>
                     Kapela
                 </span>
             </Link>
             <Link href="/assets/files/waitRider.pdf" target="_blank">
-                <span className={`flex items-center uppercase font-bold ${activeLink === 'rider' ? 'text-amberYellow' : 'text-lightGray'} hover:text-amberYellow`}>
+                <span className={`flex items-center uppercase font-bold ${activeLink === 'rider' ? 'text-neonPink' : 'text-lightGray'} hover:text-neonPink`}>
                     Rider
                     <FaFilePdf className="ml-1 mt-[-1px]" />
                 </span>
             </Link>
             <Link href="/kontakt" onClick={() => handleClick('kontakt')}>
-                <span className={`uppercase font-bold ${activeLink === 'kontakt' ? 'text-amberYellow' : 'text-lightGray'} hover:text-amberYellow`}>
+                <span className={`uppercase font-bold ${activeLink === 'kontakt' ? 'text-neonPink' : 'text-lightGray'} hover:text-neonPink`}>
                     Kontakt
                 </span>
             </Link>

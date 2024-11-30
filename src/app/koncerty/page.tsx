@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export default function ConsertsPage(){
     
   const concertData = [
-    "24.11.2024, 20:00 – Pardubice, Ateliér Klose",    
+    "24.11.2024, 20:00 – Pardubice, Ateliér Klose",   
   ];
 
   const lineHeight = 150 + (concertData.length - 1) * 35;
@@ -68,14 +68,14 @@ export default function ConsertsPage(){
             </div>
 
             <div className="absolute left-[-20px] top-[195px] z-30 hidden xl:flex flex-col items-center">
-              <h2 className="text-white text-[25px] font-montserrat font-semibold italic transform -rotate-90 uppercase">
+              <h2 className="text-neonPink text-[25px] font-montserrat font-semibold italic transform -rotate-90 uppercase">
                 Koncerty
               </h2>
             </div>
               
             <div 
-              className="absolute left-[50px] top-[307px] z-30 bg-lightGray animate-grow2 hidden xl:block"
-              style={{width: "4px", height: `${lineHeight}px`}}
+              className="absolute left-[50px] top-[307px] z-30 bg-gray-300 animate-grow2 hidden xl:block"
+              style={{width: "3px", height: `${lineHeight}px`}}
             >              
             </div>
           </section>   
