@@ -8,6 +8,7 @@ import Navbar from "@/components/navbar/Navbar";
 import ReCAPTCHA from "react-google-recaptcha";
 import Footer from "@/components/footer/Footer";
 import CustomCookieConsent from "@/components/cookie/CookieConsent";
+import texture from "../../../public/assets/textures/texture.jpg";
 
 export default function ContactPage(){
     const [nameInput, setNameInput] = useState('');
@@ -107,8 +108,9 @@ export default function ContactPage(){
             <CustomCookieConsent />
             <Navbar initialActiveLink="kontakt"/>            
             
-            <div className="bg-gray-300 min-h-screen flex justify-center items-center p-16 lg:p-24 pt-24">
-                <div className="w-[1500px] pt-8 pb-5 px-8 lg:px-16 text-center lg:ml-28 lg:mr-28 monitor:ml-52 monitor:mr-52 mb-2 border-2 rounded-xl bg-white border-gray-900 shadow-lg shadow-gray-400/50">
+            <div className="min-h-screen flex justify-center items-center p-16 lg:p-24 pt-24 bg-fixed bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%"}}>
+                       
+                <div className="w-[1500px] pt-8 pb-5 px-8 lg:px-16 text-center lg:ml-28 lg:mr-28 monitor:ml-52 monitor:mr-52 mb-2 border-2 rounded-xl bg-gray-50 border-gray-900">
                     <h1 className="text-3xl font-semibold font-montserrat mb-5 text-gray-900 uppercase">Kontakt</h1>
                            
                     <p className="text-xl leading-relaxed max-w-4xl mx-auto text-center px-5 mb-2 font-semibold text-gray-600">

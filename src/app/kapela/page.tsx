@@ -44,7 +44,7 @@ export default function BandPage(){
                     className="object-cover"
                   />
 
-                  <div className="absolute bottom-0 w-full h-[105px] bg-black bg-opacity-70 flex flex-col justify-center items-center rounded-bl-md rounded-br-md">
+                  <div className="absolute bottom-0 w-full h-[105px] bg-buttonBlue2 bg-opacity-70 flex flex-col justify-center items-center rounded-bl-md rounded-br-md">
                     <span className="text-white font-bold uppercase">Martina Panchártková</span>
                     <span className="text-lightGray text-sm text-center">Lead vocal</span>
                   </div>
@@ -62,7 +62,7 @@ export default function BandPage(){
                     className="object-cover"
                   />
 
-                  <div className="absolute bottom-0 w-full h-[105px] bg-black bg-opacity-80 flex flex-col justify-center items-center rounded-bl-md rounded-br-md">
+                  <div className="absolute bottom-0 w-full h-[105px] bg-buttonBlue2 bg-opacity-80 flex flex-col justify-center items-center rounded-bl-md rounded-br-md">
                     <span className="text-white font-bold uppercase">Ivan Kučera</span>
                     <span className="text-lightGray text-sm text-center">Bassguitar, back vocals, arr., music & lyrics, <br/>acoustic guitar</span>
                   </div>
@@ -80,7 +80,7 @@ export default function BandPage(){
                     className="object-cover"
                   />
 
-                  <div className="absolute bottom-0 w-full h-[105px] bg-black bg-opacity-80 flex flex-col justify-center items-center rounded-bl-md rounded-br-md">
+                  <div className="absolute bottom-0 w-full h-[105px] bg-buttonBlue2 bg-opacity-80 flex flex-col justify-center items-center rounded-bl-md rounded-br-md">
                     <span className="text-white font-bold uppercase">Marek Kopecký</span>
                     <span className="text-lightGray text-sm text-center">Drums</span>
                   </div>
@@ -98,7 +98,7 @@ export default function BandPage(){
                     className="object-cover"
                   />
 
-                  <div className="absolute bottom-0 w-full h-[105px] bg-black bg-opacity-75 flex flex-col justify-center items-center rounded-bl-md rounded-br-md">
+                  <div className="absolute bottom-0 w-full h-[105px] bg-buttonBlue2 bg-opacity-75 flex flex-col justify-center items-center rounded-bl-md rounded-br-md">
                     <span className="text-white font-bold uppercase">Pavel Herynk</span>
                     <span className="text-lightGray text-sm text-center">Guitar, lyrics</span>
                   </div>

@@ -57,10 +57,7 @@ export default function Footer(){
 
 const renderSocialLinks = () => {
     return (
-        <>    
-            <Link href='https://x.com/i/flow/login?redirect_after_login=%2Fwaitband' target='_blank' rel="noopener noreferrer">
-                <FaTwitter className='text-[35px] scale-95 opacity-95 hover:scale-110 hover-opacity-100 transition-transform duration-300 bg-twitterBlue rounded-md pl-2 pb-2 pr-2 pt-2' />
-            </Link>
+        <>                
             <Link href="https://www.instagram.com/wait_band_official/" target='_blank' rel="noopener noreferrer">
                 <FaInstagram className='text-[35px] scale-95 opacity-95 hover:scale-110 hover-opacity-100 transition-transform duration-300 bg-instagramPink rounded-md pl-2 pb-2 pr-2 pt-2' />
             </Link>

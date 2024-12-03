@@ -16,6 +16,7 @@ import { FaCompress } from "react-icons/fa";
 import actualityImage1 from "../../public/assets/images/home/actuality1.jpg";
 import actualityImage2 from "../../public/assets/images/albums/album1.jpg";
 import actualityImage3 from "../../public/assets/images/home/actuality3.jpg";
+import waitLogoBlack from "../../public/assets/images/home/waitLogoBlack.png";
 import whiteEffectTexture from "../../public/assets/textures/whiteEffect.png";
 import Newsletter from "@/components/newsletter/Newsletter";
 import Footer from "@/components/footer/Footer";
@@ -107,16 +108,17 @@ export default function Home() {
           <Navbar initialActiveLink="uvod" />
           <ImageSlider />
 
-          <section className="relative min-h-screen">
+          <section className="relative min-h-screen bg-white">
+            
             <div
               className="absolute inset-0 bg-fixed opacity-20 bg-cover bg-center"
               style={{ backgroundImage: `url(${waitBackImage.src})` }}
             ></div>
 
-            <div className="absolute top-0 left-0 w-full h-[110px] bg-[#001348] bg-opacity-[0.85] opacity-[0.97] z-10"></div>
-            <div className="absolute top-0 left-0 w-full h-[110px] bg-gradient-to-t from-[rgba(0,19,72,0)] to-[rgba(0,4,14,76)] opacity-[0.75] z-20 flex items-center justify-center">
-              <h2 className="text-white font-montserrat text-[28px] sm:text-[28px] md:text-[33px] uppercase z-25 font-normal italic">
-                Vítejte na naší stránce!
+            <div className="absolute top-0 left-0 w-full h-[35px] bg-[#001348] bg-opacity-[0.85] opacity-[0.97] z-10"></div>
+            <div className="absolute top-0 left-0 w-full h-[35px] bg-gradient-to-t from-[rgba(0,19,72,0)] to-[rgba(0,4,14,76)] opacity-[0.75] z-20 flex items-center justify-center">
+              <h2 className="text-gray-100 font-montserrat text-[28px] sm:text-[28px] md:text-4xl font-thin uppercase z-25">
+                
               </h2>
             </div>
 
@@ -126,10 +128,17 @@ export default function Home() {
                style={{ backgroundImage: `url(${fadeEffectTexture.src})`, width: "100%", height: "100%"}}
             ></div>  */}
 
-            <div className="relative flex flex-col items-center justify-center h-[320px]">                            
-              <h2 className="absolute font-montserrat text-[120px] md:text-[146px] text-blue-950 mt-28 font-semibold uppercase z-30">
-                Wait
-              </h2>              
+            <div className="relative flex flex-col items-center justify-center h-[270px]">                            
+              <h2 className="absolute font-montserrat text-3xl md:text-8xl text-blue-950 mt-28 font-semibold italic uppercase z-30">
+                
+              </h2> 
+              {/*}
+              <Image 
+                src={waitLogoBlack}
+                alt='WaitLogoBlack'
+                width={345}
+                className='mt-[107px] ml-[-53px] opacity-90 scale-150'
+              />       */}     
             </div>
 
             <div className="relative inset-0 bg-[rgba(0,19,72,0.85)] min-h-[600px] top-0 z-10">
@@ -187,7 +196,7 @@ export default function Home() {
                       </Link>
                       
                       {index === 2 && (
-                        <div className="absolute w-[47px] h-[47px] flex items-center justify-center border-[3px] bg-blue-600 border-none mt-[3px] mr-[3px] group-hover:brightness-100 rounded-bl-lg text-lg top-0 right-0">
+                        <div className="absolute w-[47px] h-[47px] flex items-center justify-center border-[3px] bg-blue-600 border-none mt-[2.5px] mr-[3px] group-hover:brightness-100 group-hover:cursor-pointer rounded-bl-lg text-lg top-0 right-0">
                           <FaPlayCircle className="bg-transparent text-gray-200 mr-[-2px] transition-all duration-300 ease-in-out transform group-hover:scale-125 group-hover:mr-[-1px] z-20" />
                         </div>
                       )}

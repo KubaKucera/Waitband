@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export default function ConsertsPage(){
     
   const concertData = [
-    "24.11.2024, 20:00 – Pardubice, Ateliér Klose",   
+    "24.11.2024, 20:00 – Pardubice, Ateliér Klose",
   ];
 
   const lineHeight = 150 + (concertData.length - 1) * 35;
