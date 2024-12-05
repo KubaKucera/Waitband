@@ -17,6 +17,7 @@ import { FaPlayCircle, FaSoundcloud } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { Metadata } from "next";
 import CustomCookieConsent from "@/components/cookie/CookieConsent";
+import HeadingWithLine from "@/components/headingWithLine/HeadingWithLine";
 
 export const metadata: Metadata = {
   title: "Hudba - Wait",
@@ -82,12 +83,13 @@ export default function MusicPage() {
         <>          
           <CustomCookieConsent />
           <Navbar initialActiveLink="hudba"/>  
+          <HeadingWithLine lineHeight="750px" />
 
           <section className="w-full relative min-h-[1275px] bg-musicPink py-10 px-4 sm:px-6 bg-opacity-10">            
             <div
               className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
               style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%"}}
-            ></div>            
+            ></div>                       
 
             {/* Title */}
             <div className="absolute top-[120px] left-0 right-0 w-full z-10">
@@ -115,7 +117,7 @@ export default function MusicPage() {
                         objectFit="cover"
                         className="group-hover:cursor-pointer transition-all duration-300 ease-in-out transform"
                       />
-                      <p className="absolute bg-black bg-opacity-75 bottom-0 text-lg md:text-lg p-2 md:p-3 w-full text-white transition-all duration-200 ease-in-out transform group-hover:bg-blue-600 group-hover:bg-opacity-75 font-semibold text-center">
+                      <p className="absolute bg-black bg-opacity-75 bottom-0 text-lg md:text-lg p-3 md:p-3 w-full text-white transition-all duration-200 ease-in-out transform group-hover:bg-blue-600 group-hover:bg-opacity-75 font-semibold text-center">
                         {songs[index].title}
                       </p>
                       <div className="absolute w-[47px] h-[47px] flex items-center justify-center bg-blue-600 rounded-bl-lg text-lg top-0 right-0">
@@ -125,17 +127,7 @@ export default function MusicPage() {
                   </Link>
                 ))}
               </div>
-            </div>
-
-            {/* Side Title */}
-            <div className="absolute left-[-64px] top-[245px] z-30 hidden xl:flex flex-col items-center">
-              <h2 className="text-neonPink text-[25px] font-montserrat font-semibold italic transform -rotate-90 uppercase">
-                Hudba - Best Of
-              </h2>
-            </div>
-
-            {/* Vertical line */}
-            <div className="absolute left-[50px] top-[400px] z-30 w-[3px] h-[595px] bg-gray-300 animate-grow2 hidden xl:block"></div>
+            </div>            
           </section>
 
           <Footer />

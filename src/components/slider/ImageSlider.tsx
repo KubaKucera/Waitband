@@ -79,25 +79,35 @@ export default function ImageSlider() {
       <div className="w-screen max-w-full mx-auto relative">
         <Slider {...settings}>
           {images.map((img, index) => (
-            <div key={index} className="flex justify-center items-center w-screen h-[300px] sm:h-[400px] md:h-[500px] lg:h-[580px] xl:h-[680px] monitor:h-[900px]">
+            <div key={index} className="flex justify-center items-center w-screen h-[300px] sm:h-[400px] md:h-[500px] lg:h-[580px] xl:h-[680px] monitor:h-[825px]">
               <Image
                 src={img.src}
                 alt={img.alt}                            
                 width={img.width}
                 height={img.height}
-                className="rounded-lg shadow-lg z-20 w-full h-full object-cover"            
+                className="shadow-lg z-20 w-full h-full object-cover"            
                 style={{ objectFit: 'cover' }}
                 priority={index === 0}
               />
-              {(index === 0 || index === 2) && (
-                <div className="absolute bottom-0 left-0 right-0 h-2/5 bg-gradient-to-b from-[rgba(126,32,89,0)] via-[rgba(126,32,89,0.2)] to-[rgba(50,7,26,0.55)]"></div>
-              )}
+              
             </div>
           ))}
-        </Slider>
+        </Slider> 
+
+        <div className="slick-dots-container">
+          <div className="slick-dots-wrapper">
+            <div className="slick-dots">              
+            </div>
+          </div>
+        </div>        
+
         <style jsx global>{`
           .slick-dots {
-            bottom: 30px !important;
+            bottom: 20px !important;
+            z-index: 20;
+            display: flex !important; /* zajistí, že tečky budou v řadě */
+            justify-content: flex-end !important; /* tečky na pravé straně */
+            margin-Left: -20px;            
           }
 
           @media (max-width: 768px) {
@@ -105,7 +115,73 @@ export default function ImageSlider() {
               bottom: 20px !important;
             }
           }
-        `}</style>  
+
+          /* Nový panel pro tečky */
+          .slick-dots-container {
+            position: absolute;
+            bottom: 7px;
+            right: 0; /* přesunuto na pravou stranu */
+            height: 50px;
+            width: 200px; /* nastavena šířka na 200px */
+            background: rgba(0, 0, 0, 0.8); /* černé pozadí s 60% průhledností */
+            display: flex;
+            justify-content: flex-end; /* zarovnání teček na pravou stranu */
+            align-items: center; /* vertikální vycentrování teček */
+            border-top: 2px solid white;   
+            border-left: 2px solid white;  
+            border-top-left-radius: 7px;              
+            z-index: 10;
+          }
+
+          .slick-dots-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+          }
+
+          .slick-dots li button:before {
+            display: none;
+          }
+
+          .slick-dots li {
+            width: 21px;
+            height: 21px;
+            margin: 0 5px;
+          }
+
+          @media (max-width: 768px) {
+            .slick-dots li {
+              width: 18px;
+              height: 18px;
+              margin: 0 4px;
+            }
+          }
+
+          .slick-dots li button {
+            width: 100%; 
+            height: 100%; 
+            border-radius: 100%; 
+            background: white; 
+            border: none;
+            outline: none; 
+            box-shadow: none; 
+            cursor: pointer;   
+            opacity: 0.5;
+          }
+
+          .slick-dots li.slick-active button {
+            background: #00308F;
+            border: 2px solid white; 
+            opacity: 1;
+          }
+
+          .slick-dots li button:hover {  
+            background: #00308F; 
+            border: 2px solid white;
+            opacity: 1;
+          }
+        `}</style>
       </div>
     );
 }

@@ -44,7 +44,8 @@ const config: Config = {
         instagramPink: "#C13584",
         photosBlue: "#00CCFF",      
         musicPink: "#9900FF", 
-        magenta: "#ff00ff" 
+        magenta: "#ff00ff",
+        brewersBlue: "#00040efc",
       },
     },
   },

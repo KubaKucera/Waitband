@@ -7,24 +7,27 @@ import Footer from "@/components/footer/Footer";
 import consertsImage from "../../../public/assets/images/conserts/consertsImage.jpg";
 import { FaAngleDoubleDown } from "react-icons/fa";
 import { Metadata } from "next";
+import HeadingWithLine from "@/components/headingWithLine/HeadingWithLine";
 
 export const metadata: Metadata = {
   title: "Koncerty - Wait",
   description: "Koncerts page by create next app",  
 }
 
+const concertData = [
+  "24.11.2024, 20:00 – Pardubice, Ateliér Klose",   
+];
+
 export default function ConsertsPage(){
     
-  const concertData = [
-    "24.11.2024, 20:00 – Pardubice, Ateliér Klose",
-  ];
-
-  const lineHeight = 150 + (concertData.length - 1) * 35;
+  const lineHeight = 150 + (concertData.length - 1) * 50;
+  const lineHeightString = `${lineHeight}px`;
   
   return (
         <>
           <CustomCookieConsent />
           <Navbar initialActiveLink="koncerty"/>  
+          <HeadingWithLine lineHeight={lineHeightString} />
 
           <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden py-12">
             <div
@@ -65,19 +68,7 @@ export default function ConsertsPage(){
                   );
                 })}
               </div>
-            </div>
-
-            <div className="absolute left-[-20px] top-[195px] z-30 hidden xl:flex flex-col items-center">
-              <h2 className="text-neonPink text-[25px] font-montserrat font-semibold italic transform -rotate-90 uppercase">
-                Koncerty
-              </h2>
-            </div>
-              
-            <div 
-              className="absolute left-[50px] top-[307px] z-30 bg-gray-300 animate-grow2 hidden xl:block"
-              style={{width: "3px", height: `${lineHeight}px`}}
-            >              
-            </div>
+            </div>            
           </section>   
                  
           <Footer />             

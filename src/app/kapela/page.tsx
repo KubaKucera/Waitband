@@ -12,6 +12,7 @@ import Footer from "@/components/footer/Footer";
 import { FaArrowUp } from "react-icons/fa"; 
 import CustomCookieConsent from "@/components/cookie/CookieConsent";
 import { Metadata } from "next";
+import HeadingWithLine from "@/components/headingWithLine/HeadingWithLine";
 
 export const metadata: Metadata = {
   title: "Kapela - Wait",
@@ -23,16 +24,17 @@ export default function BandPage(){
         <>
           <CustomCookieConsent />
           <Navbar initialActiveLink="kapela"/>  
+          <HeadingWithLine lineHeight="725px" /> 
 
           <section className="relative min-h-screen flex items-center justify-center pt-28 pb-24 px-4 sm:px-8 lg:px-16">
             {/* Background */}
             <div
               className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
               style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%"}}
-            ></div>            
+            ></div>                       
 
             {/* Content */}
-            <div className="relative z-30 grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-12">
+            <div className="relative z-30 grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-10">
               {/* Martina */}
               <div className="relative flex flex-col items-center">
                 <div className="relative w-[350px] h-[480px] overflow-hidden rounded-md shadow-lg">
@@ -44,7 +46,7 @@ export default function BandPage(){
                     className="object-cover"
                   />
 
-                  <div className="absolute bottom-0 w-full h-[105px] bg-buttonBlue2 bg-opacity-70 flex flex-col justify-center items-center rounded-bl-md rounded-br-md">
+                  <div className="absolute bottom-0 w-full h-[105px] bg-blue-950 bg-opacity-70 flex flex-col justify-center items-center rounded-bl-md rounded-br-md">
                     <span className="text-white font-bold uppercase">Martina Panchártková</span>
                     <span className="text-lightGray text-sm text-center">Lead vocal</span>
                   </div>
@@ -62,7 +64,7 @@ export default function BandPage(){
                     className="object-cover"
                   />
 
-                  <div className="absolute bottom-0 w-full h-[105px] bg-buttonBlue2 bg-opacity-80 flex flex-col justify-center items-center rounded-bl-md rounded-br-md">
+                  <div className="absolute bottom-0 w-full h-[105px] bg-blue-950 bg-opacity-80 flex flex-col justify-center items-center rounded-bl-md rounded-br-md">
                     <span className="text-white font-bold uppercase">Ivan Kučera</span>
                     <span className="text-lightGray text-sm text-center">Bassguitar, back vocals, arr., music & lyrics, <br/>acoustic guitar</span>
                   </div>
@@ -80,7 +82,7 @@ export default function BandPage(){
                     className="object-cover"
                   />
 
-                  <div className="absolute bottom-0 w-full h-[105px] bg-buttonBlue2 bg-opacity-80 flex flex-col justify-center items-center rounded-bl-md rounded-br-md">
+                  <div className="absolute bottom-0 w-full h-[105px] bg-blue-950 bg-opacity-80 flex flex-col justify-center items-center rounded-bl-md rounded-br-md">
                     <span className="text-white font-bold uppercase">Marek Kopecký</span>
                     <span className="text-lightGray text-sm text-center">Drums</span>
                   </div>
@@ -98,24 +100,16 @@ export default function BandPage(){
                     className="object-cover"
                   />
 
-                  <div className="absolute bottom-0 w-full h-[105px] bg-buttonBlue2 bg-opacity-75 flex flex-col justify-center items-center rounded-bl-md rounded-br-md">
+                  <div className="absolute bottom-0 w-full h-[105px] bg-blue-950 bg-opacity-75 flex flex-col justify-center items-center rounded-bl-md rounded-br-md">
                     <span className="text-white font-bold uppercase">Pavel Herynk</span>
                     <span className="text-lightGray text-sm text-center">Guitar, lyrics</span>
                   </div>
                 </div>                
               </div>
-            </div>
-
-            <div className="absolute left-[0px] top-[173px] z-30 hidden xl:flex flex-col items-center">
-              <h2 className="text-neonPink text-[25px] font-montserrat font-semibold italic transform -rotate-90 uppercase">
-                Kapela
-              </h2>
-            </div>
-              
-            <div className="absolute left-[50px] top-[265px] z-30 w-[3px] h-[725px] bg-gray-300 animate-grow hidden xl:block"></div>
+            </div>           
 
           </section>
-
+                    
           <Footer />                  
         </>
     );

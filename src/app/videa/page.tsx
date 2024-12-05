@@ -10,6 +10,7 @@ import { useState, useRef, useEffect } from "react";
 import { FaPlayCircle } from "react-icons/fa";
 import Footer from "@/components/footer/Footer";
 import { FaArrowUp } from "react-icons/fa";
+import HeadingWithLine from "@/components/headingWithLine/HeadingWithLine";
 
 const videos = [
   {
@@ -115,6 +116,8 @@ export default function VideosPage(){
     <>
       <Navbar initialActiveLink="videa" />
       <CustomCookieConsent />
+      <HeadingWithLine top="325px" lineHeight="825px" />
+
       <section className="relative min-h-screen flex flex-col items-center justify-center py-24">
         <div
           className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
@@ -168,15 +171,7 @@ export default function VideosPage(){
               <p className="text-white sm:text-sm text-sm md:text-lg mt-2 w-full text-left left-0 break-words">{video.title}</p>
             </div>
           ))}
-        </div>
-
-        <div className="absolute left-[-63px] top-[235px] z-30 hidden xl:flex flex-col items-center">
-          <h2 className="text-neonPink text-[25px] font-montserrat font-semibold italic transform -rotate-90 uppercase">
-            Videa - Youtube
-          </h2>
-        </div>
-              
-        <div className="absolute left-[50px] top-[390px] z-30 w-[3px] h-[725px] bg-gray-300 animate-grow hidden xl:block"></div>
+        </div>        
 
         <FaArrowUp
           onClick={scrollToTop}

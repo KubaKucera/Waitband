@@ -19,16 +19,20 @@ import image12 from "../../../public/assets/images/photos/image13.jpg";
 import image13 from "../../../public/assets/images/photos/image12.jpg";
 import image14 from "../../../public/assets/images/photos/image14.jpg";
 import image15 from "../../../public/assets/images/photos/image10.jpg";
+import image16 from "../../../public/assets/images/photos/image16.jpg";
+import image17 from "../../../public/assets/images/photos/image18.jpg";
+import image18 from "../../../public/assets/images/photos/image17.jpg";
 import texture from "../../../public/assets/textures/texture.jpg";
 import whiteFadeTexture from "../../../public/assets/textures/whiteEffect.png";
 import CustomCookieConsent from "@/components/cookie/CookieConsent";
 import { useState, useEffect } from "react";
 import { FaArrowUp } from "react-icons/fa";
+import HeadingWithLine from "@/components/headingWithLine/HeadingWithLine";
 
 const images = [
   image1, image2, image3, image4, image5, image6, image7, 
   image8, image9, image10, image11, image12, image13, 
-  image14, image15
+  image14, image15, image16, image17, image18
 ];
 
 export default function PhotosPage(){
@@ -80,6 +84,7 @@ export default function PhotosPage(){
         <>
           <CustomCookieConsent />
           <Navbar initialActiveLink="fotky"/>    
+          <HeadingWithLine lineHeight="750px" />
 
           <section className="relative h-auto py-10">
 
@@ -122,14 +127,7 @@ export default function PhotosPage(){
                 </button>
               </Link>
             </div>
-            <div className="absolute left-[10px] top-[180px] z-30 hidden xl:flex flex-col items-center">
-              <h2 className="text-neonPink text-[25px] font-montserrat font-semibold italic transform -rotate-90 uppercase">
-                Fotky
-              </h2>
-            </div>
-
-            <div className="absolute left-[50px] top-[260px] z-30 w-[3px] h-[810px] bg-gray-300 animate-grow hidden xl:block"></div>
-
+           
             <FaArrowUp
               onClick={scrollToTop}
               className={`fixed right-0 z-50 p-2 bg-black text-white text-[36px] cursor-pointer transition-all duration-[700ms] ease-in-out transform border rounded-tl-md rounded-bl-md opacity-75 border-white border-md hover:opacity-100 ${

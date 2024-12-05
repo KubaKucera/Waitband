@@ -10,6 +10,7 @@ import Footer from "@/components/footer/Footer";
 import CustomCookieConsent from "@/components/cookie/CookieConsent";
 import { FaAngleDoubleDown, FaPlayCircle, FaSoundcloud } from 'react-icons/fa';
 import { Metadata } from "next";
+import HeadingWithLine from "@/components/headingWithLine/HeadingWithLine";
 
 export const metadata: Metadata = {
   title: "Alba - Wait",
@@ -54,15 +55,14 @@ export default function AlbumsPage() {
   return (
         <>
           <CustomCookieConsent />
-          <Navbar initialActiveLink="alba"/>     
+          <Navbar initialActiveLink="alba"/>  
+          <HeadingWithLine lineHeight="670px" />   
 
-          <section className="relative min-h-screen flex items-center justify-center p-24 px-4 sm:px-8 lg:px-16">
+          <section className="relative min-h-screen flex items-center justify-center p-20 px-4 sm:px-8 lg:px-16">
             <div
               className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
               style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%"}}
-            ></div>            
-
-            {/*<div className="absolute h-full w-full bg-[#16003C] bg-opacity-90 z-10"></div>*/}
+            ></div>              
 
             <div className="relative z-20 flex flex-wrap justify-center items-start gap-8 mt-8 sm:mt-0">            
               <div className="flex flex-col items-center mt-[5px] sm:mt-[25px] md:mt-[40px] lg:mt-[75px]">
@@ -74,15 +74,7 @@ export default function AlbumsPage() {
                     objectFit="cover"
                     className="rounded-tr-md rounded-tl-md"
                   />
-                </div>
-
-                <div className="w-full h-[40px] flex items-center justify-between border-[2px] border-gray-400 bg-black text-white px-[15px] relative">
-                  <FaAngleDoubleDown className="text-left text-xl font-semibold text-lightGray"/>
-                  <p className="text-center text-lg text-gray-200 font-semibold absolute left-1/2 transform -translate-x-1/2 flex items-center">
-                    Přehled
-                  </p>
-                  <FaAngleDoubleDown className="text-left text-xl font-semibold text-lightGray"/>
-                </div>
+                </div>                
                 
                 <div className="w-[350px] h-[470px] sm:w-[350px] md:w-[285px] relative bg-white bg-opacity-10 rounded-br-md rounded-bl-md mt-0">
                   {album1Tracks.map((track, index) => (
@@ -107,15 +99,7 @@ export default function AlbumsPage() {
                     objectFit="cover"
                     className="rounded-tr-md rounded-tl-md"
                   />
-                </div>
-
-                <div className="mt-0 w-full h-[40px] flex items-center justify-between border-[2px] border-gray-400 bg-black px-[15px] relative">
-                  <FaAngleDoubleDown className="text-left text-xl font-semibold text-lightGray"/>
-                  <p className="text-center text-lg text-gray-200 font-semibold absolute left-1/2 transform -translate-x-1/2 flex items-center">
-                    Přehled
-                  </p>
-                  <FaAngleDoubleDown className="text-left text-xl font-semibold text-lightGray"/>
-                </div>
+                </div>                
 
                 <div className="w-[350px] h-[580px] xl:w-[350px] md:w-[285px] sm:w-[350px] bg-white bg-opacity-10 rounded-br-md rounded-bl-md mt-0">
                   {album2Tracks.map((track, index) => (
@@ -140,15 +124,7 @@ export default function AlbumsPage() {
                     objectFit="cover"
                     className="rounded-tr-md rounded-tl-md"
                   />
-                </div>
-
-                <div className="mt-0 w-full h-[40px] flex items-center justify-between bg-black border-[2px] border-gray-400 text-white px-[15px] relative">
-                  <FaAngleDoubleDown className="text-left text-xl font-semibold text-lightGray"/>
-                  <p className="text-center text-lg text-gray-200 font-semibold absolute left-1/2 transform -translate-x-1/2 flex items-center">
-                    Přehled
-                  </p>
-                  <FaAngleDoubleDown className="text-left text-xl font-semibold text-lightGray"/>
-                </div>
+                </div>                
 
                 <div className="w-[350px] md:w-[350px] sm:w-[350px] lg:w-[285px] xl:w-[285px] h-[360px] bg-white bg-opacity-10 mt-0">
                   {album3Tracks.map((track, index) => (
@@ -163,15 +139,7 @@ export default function AlbumsPage() {
                   ))}
                 </div>                
               </div>
-            </div>
-
-            <div className="absolute left-[16px] top-[165px] z-30 hidden xl:flex flex-col items-center">
-              <h2 className="text-neonPink text-[25px] font-montserrat font-semibold italic transform -rotate-90 uppercase">
-                Alba
-              </h2>
-            </div>
-              
-            <div className="absolute left-[50px] top-[243px] z-30 w-[3px] h-[790px] bg-gray-300 animate-grow hidden xl:block"></div>
+            </div>            
           </section>  
 
           <Footer />                       

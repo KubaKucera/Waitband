@@ -2,22 +2,20 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import {FaFacebookF, FaTwitter, FaInstagram, FaSoundcloud, FaYoutube, FaTimes, FaBars} from 'react-icons/fa';
-import logo from "../../../public/assets/images/navbar/logo.jpg";
+import { FaFacebookF, FaTwitter, FaInstagram, FaSoundcloud, FaYoutube, FaTimes, FaBars } from 'react-icons/fa';
 import title from "../../../public/assets/images/navbar/waitTitle.png";
 import { useEffect, useState } from "react";
 import { FaFilePdf } from "react-icons/fa";
 
-interface NavbarProps{
+interface NavbarProps {
     initialActiveLink: string;
 }
 
-export default function Navbar({ initialActiveLink }: NavbarProps) {    
+export default function Navbar({ initialActiveLink }: NavbarProps) {
     const [activeLink, setActiveLink] = useState(initialActiveLink);
     const [navbarHeight, setNavbarHeight] = useState(77);
     const [titleScale, setTitleScale] = useState(1);
     const [menuOpen, setMenuOpen] = useState(false);
-    const [menuVisible, setMenuVisible] = useState(false);
 
     const handleLinkClick = (link: string) => {
         setActiveLink(link);
@@ -30,38 +28,26 @@ export default function Navbar({ initialActiveLink }: NavbarProps) {
     };
 
     const openMenu = () => {
-        setMenuVisible(true);
-        setTimeout(() => setMenuOpen(true), 10); // Krátká prodleva pro aktivaci animace
+        setMenuOpen(true);
     };
 
     const closeMenu = () => {
         setMenuOpen(false);
-        setTimeout(() => setMenuVisible(false), 500); // Čeká na dokončení animace
-    };
-
-    const toggleMenu = () => {
-        if (menuOpen) {
-            closeMenu();
-        } else {
-            openMenu();
-        }
     };
 
     useEffect(() => {
         const handleScroll = () => {
-        const scrollY = window.scrollY;        
-        if (scrollY > 50) {
-            setNavbarHeight(63);
-            setTitleScale(0.85);        
-        } else {
-            setNavbarHeight(70);
-            setTitleScale(1);
-        }
+            const scrollY = window.scrollY;
+            if (scrollY > 50) {
+                setNavbarHeight(63);
+                setTitleScale(0.85);
+            } else {
+                setNavbarHeight(70);
+                setTitleScale(1);
+            }
         };
 
         window.addEventListener("scroll", handleScroll);
-
-        //handleScroll();
 
         return () => {
             window.removeEventListener("scroll", handleScroll);
@@ -69,7 +55,7 @@ export default function Navbar({ initialActiveLink }: NavbarProps) {
     }, []);
 
     return (
-        <nav 
+        <nav
             className={`bg-black text-white flex items-center justify-between px-10 xl:px-60 monitor:px-60 monitor:justify-evenly font-sans border-b-[1px] border-white fixed top-0 left-0 right-0 z-50 text-[15px] transition-height duration-300 ease-in-out`}
             style={{ height: `${navbarHeight}px` }}
         >
@@ -94,25 +80,31 @@ export default function Navbar({ initialActiveLink }: NavbarProps) {
 
             {/* Mobile Burger Menu */}
             <div className="lg:hidden flex items-center">
-                <button 
-                    onClick={() => setMenuOpen(!menuOpen)} 
-                    className="text-white focus:outline-none"
+                <button
+                    onClick={toggleMenu}
+                    className="text-white focus:outline-none z-50"
                 >
                     {menuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
                 </button>
             </div>
 
             {/* Mobile Menu */}
-            {menuOpen && (
-                <div className="absolute top-full left-0 w-full bg-black bg-opacity-90 text-white flex flex-col items-center space-y-4 py-8 lg:hidden">
-                    {renderLinks(handleLinkClick, activeLink)}                    
-                </div>
-            )}
+            <div
+                className={`absolute top-full left-0 w-full bg-black bg-opacity-90 text-white flex flex-col items-center space-y-4 py-8 lg:hidden transition-all duration-500 ease-in-out ${
+                    menuOpen ? 'transform translate-y-0 opacity-100' : 'transform -translate-y-full opacity-0'
+                }`}
+            >
+                {renderLinks(handleLinkClick, activeLink)}
+            </div>
         </nav>
     );
+
+    function toggleMenu() {
+        setMenuOpen(prevState => !prevState);
+    }
 }
 
-const renderLinks = (handleClick: (link: string) => void, activeLink: string) => {    
+const renderLinks = (handleClick: (link: string) => void, activeLink: string) => {
     return (
         <>
             <Link href="/" onClick={() => handleClick('uvod')}>
@@ -162,5 +154,5 @@ const renderLinks = (handleClick: (link: string) => void, activeLink: string) =>
                 </span>
             </Link>
         </>
-    );        
+    );
 };

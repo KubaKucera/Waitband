@@ -11,12 +11,13 @@ import fadeEffectTexture from "../../public/assets/textures/fadeEffect.png";
 import texture from "../../public/assets/textures/texture.jpg";
 
 import { useState, useEffect, useRef } from "react";
-import { FaArrowUp, FaArrowsAlt, FaSoundcloud, FaPlayCircle } from "react-icons/fa";
+import { FaArrowUp, FaArrowsAlt, FaSoundcloud, FaPlayCircle, FaAngleDoubleDown } from "react-icons/fa";
 import { FaCompress } from "react-icons/fa";
 import actualityImage1 from "../../public/assets/images/home/actuality1.jpg";
 import actualityImage2 from "../../public/assets/images/albums/album1.jpg";
 import actualityImage3 from "../../public/assets/images/home/actuality3.jpg";
 import waitLogoBlack from "../../public/assets/images/home/waitLogoBlack.png";
+import frequency from "../../public/assets/images/home/frequency.png";
 import whiteEffectTexture from "../../public/assets/textures/whiteEffect.png";
 import Newsletter from "@/components/newsletter/Newsletter";
 import Footer from "@/components/footer/Footer";
@@ -24,6 +25,7 @@ import CustomCookieConsent from "@/components/cookie/CookieConsent";
 import logoWhiteTitle from "../../public/assets/images/home/waitLogoWhiteTitle.png";
 import VideoModal from "@/components/videoModal/VideoModal";
 import { Metadata } from "next";
+import HeadingWithLine from '@/components/headingWithLine/HeadingWithLine';
 
 export default function Home() {
   
@@ -108,42 +110,53 @@ export default function Home() {
           <Navbar initialActiveLink="uvod" />
           <ImageSlider />
 
-          <section className="relative min-h-screen bg-white">
-            
-            <div
-              className="absolute inset-0 bg-fixed opacity-20 bg-cover bg-center"
-              style={{ backgroundImage: `url(${waitBackImage.src})` }}
-            ></div>
+          <section className="relative w-full h-full">
 
-            <div className="absolute top-0 left-0 w-full h-[35px] bg-[#001348] bg-opacity-[0.85] opacity-[0.97] z-10"></div>
-            <div className="absolute top-0 left-0 w-full h-[35px] bg-gradient-to-t from-[rgba(0,19,72,0)] to-[rgba(0,4,14,76)] opacity-[0.75] z-20 flex items-center justify-center">
-              <h2 className="text-gray-100 font-montserrat text-[28px] sm:text-[28px] md:text-4xl font-thin uppercase z-25">
-                
-              </h2>
-            </div>
+            <div className='absolute w-full h-5 bg-gray-100 z-20'></div>
 
-            {/*}
-            <div
-              className="absolute inset-0 opacity-20 bg-cover bg-center"
-               style={{ backgroundImage: `url(${fadeEffectTexture.src})`, width: "100%", height: "100%"}}
-            ></div>  */}
+            <div className="relative min-h-[600px] top-0 z-10">              
+              
+              <div
+                className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
+                style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%"}}
+              ></div> 
 
-            <div className="relative flex flex-col items-center justify-center h-[270px]">                            
-              <h2 className="absolute font-montserrat text-3xl md:text-8xl text-blue-950 mt-28 font-semibold italic uppercase z-30">
-                
-              </h2> 
-              {/*}
-              <Image 
-                src={waitLogoBlack}
-                alt='WaitLogoBlack'
-                width={345}
-                className='mt-[107px] ml-[-53px] opacity-90 scale-150'
-              />       */}     
-            </div>
+              <div
+                className="absolute z-30 hidden xl:flex"
+                style={{
+                  top: "75px",
+                  left: "13px",
+                }}
+              >
+                <div
+                  className="relative"
+                  style={{          
+                  transformOrigin: "top left",
+                  }}
+                >
+                  {/* Nadpis */}
+                  <h2
+                    className="text-neonPink font-bold italic uppercase"          
+                  >
+                    <FaAngleDoubleDown className="text-left text-[32px] font-semibold text-neonPink"/>
+                  </h2>
+                  {/* Čára pod nadpisem */}
+                  <div
+                    className="bg-gray-300 animate-grow"
+                    style={{
+                      position: "absolute",
+                      width: "3px",
+                      height: "400px",
+                      marginTop: "7px",
+                      top: "100%",
+                      left: "50%",
+                      transform: "translateX(-50%)",
+                    }}
+                  ></div>
+                </div>
+              </div>
 
-            <div className="relative inset-0 bg-[rgba(0,19,72,0.85)] min-h-[600px] top-0 z-10">
-              <div className="absolute inset-0 top-0 left-0 w-full h-full monitor:h-[1050px] bg-gradient-to-b from-[rgba(0,19,72,0)] via-[rgba(0,0,0,0.6)] to-[rgba(0,4,14,0.99)] z-10"></div>
-              <div className="relative grid gap-10 items-center justify-center w-[85%] lg:w-[67%] monitor:w-[55%] mx-auto pt-11 pb-11 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 z-20">
+              <div className="relative grid gap-10 items-center justify-center w-[85%] lg:w-[67%] monitor:w-[55%] mx-auto pt-14 pb-11 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 z-20">
                 {[
                   {
                     title: "V STAND-UP COMEDY",
@@ -212,17 +225,7 @@ export default function Home() {
                     </Link>
                   </div>
                 ))}
-              </div>
-
-              <div className="absolute left-[13px] top-[100px] z-30 hidden xl:flex flex-col items-center">
-                <h2 className="text-neonPink text-[25px] font-montserrat font-semibold italic transform -rotate-90 uppercase">
-                  Úvod
-                </h2>
-              </div>
-
-              <div                
-                className="absolute left-[50px] top-[180px] z-50 w-[3px] h-[325px] hidden xl:block bg-gray-300 animate-grow2"
-              ></div>
+              </div>  
             </div>
 
             <FaArrowUp
@@ -234,14 +237,14 @@ export default function Home() {
           </section>
 
           {/* Video Section */}
-          <section className="relative py-14">            
+          <section className="relative py-14 mt-0 z-10">            
             <div className="container mx-auto flex flex-wrap justify-center gap-8 px-4">
               <div
                 className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%"}}
               ></div>
 
-              <div className='absolute inset-0 h-full w-full bg-white opacity-90'></div>
+              <div className='absolute inset-0 h-full w-full bg-gray-100'></div>
 
               {[
                 "https://www.facebook.com/plugins/video.php?height=258&href=https%3A%2F%2Fwww.facebook.com%2Fwaitbandcz%2Fvideos%2F3391306204501202%2F&show_text=false&width=560&t=0",
