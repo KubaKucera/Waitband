@@ -2,10 +2,10 @@ import React from "react";
 import { FaAngleDoubleDown } from "react-icons/fa";
 
 interface HeadingWithLineProps {  
-  lineHeight: string;  
+  lineHeight?: string;  
 }
 
-const HeadingWithLine: React.FC<HeadingWithLineProps> = ({ lineHeight }) => {
+const HeadingWithLine = ({ lineHeight = "0" }: HeadingWithLineProps) => {
     return (
         <div
             className="absolute z-30 hidden xl:flex"
@@ -17,7 +17,7 @@ const HeadingWithLine: React.FC<HeadingWithLineProps> = ({ lineHeight }) => {
             <div
                 className="relative"
                 style={{          
-                transformOrigin: "top left",
+                    transformOrigin: "top left",
                 }}
             >
                 {/* Nadpis */}
