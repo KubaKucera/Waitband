@@ -116,7 +116,7 @@ export default function VideosPage(){
     <>
       <Navbar initialActiveLink="videa" />
       <CustomCookieConsent />
-      <HeadingWithLine top="325px" lineHeight="825px" />
+      <HeadingWithLine lineHeight="825px" />
 
       <section className="relative min-h-screen flex flex-col items-center justify-center py-24">
         <div
