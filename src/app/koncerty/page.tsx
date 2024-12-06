@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Navbar from "@/components/navbar/Navbar";
 import back from "../../../public/assets/images/conserts/back.png";
+import texture from "../../../public/assets/textures/texture.jpg";
 import CustomCookieConsent from "@/components/cookie/CookieConsent";
 import Footer from "@/components/footer/Footer";
 import consertsImage from "../../../public/assets/images/conserts/consertsImage.jpg";
@@ -30,16 +31,11 @@ export default function ConsertsPage(){
           <HeadingWithLine lineHeight={lineHeightString} />
 
           <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden py-12">
-            <div
-              className="absolute inset-0 bg-fixed bg-cover bg-center"
-              style={{ backgroundImage: `url(${back.src})`, width: "100%", height: "100%"}}
-            ></div>    
-
-            <div className="absolute w-full h-full bg-black bg-opacity-40"></div>
             
-            <div className="absolute inset-0 bg-black/70 opacity-55 z-10"></div>
-            <div className="absolute inset-0 bg-black/70 opacity-30 z-20"></div>
-            <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black/10 z-30"></div>
+            <div
+              className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
+              style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%"}}
+            ></div>           
 
             <div className="relative w-[700px] monitor:w-[780px] bg-white bg-opacity-20 z-40 mt-[75px] rounded-md p-6 transform translate-y-[-20px]">
               <h2 className="mt-[10px] text-[26px] text-white text-center font-bold font-montserrat opacity-100 uppercase">Plány koncertů</h2>
@@ -49,7 +45,7 @@ export default function ConsertsPage(){
                   alt="Conserts Image"                                                
                   className="object-cover h-full pointer-events-none brightness-50 opacity-85 rounded-tr-2xl rounded-tl-2xl"
                 />                  
-                <h2 className="absolute flex text-[28px] monitor:text-[40px] md:text-[32px] lg:text-4xl text-center font-montserrat text-lightGray mt-[80px] ml-[50px] mr-[50px] uppercase z-10">Budeme se na vás těšit!</h2>    
+                <h2 className="absolute flex text-[28px] monitor:text-[40px] md:text-[32px] lg:text-4xl text-center font-montserrat font-semibold text-gray-300 mt-[80px] ml-[50px] mr-[50px] uppercase z-10">Budeme se na vás těšit!</h2>    
                 <h3 className="absolute text-[30px] text-left text-gray-400 left-7 z-20 mt-[162px]"><FaAngleDoubleDown/></h3>       
                 <h3 className="absolute text-[30px] text-right text-gray-400 right-7 z-20 mt-[162px]"><FaAngleDoubleDown/></h3>
               
@@ -61,7 +57,7 @@ export default function ConsertsPage(){
                   return (
                     <p
                       key={index}
-                      className={`text-lg lg:text-xl text-white ${index === 0 ? "mt-7" : ""}`}
+                      className={`text-lg lg:text-[22px] text-white ${index === 0 ? "mt-7" : ""}`}
                     >
                       {`${city} – ${formattedLocation}`}
                     </p>

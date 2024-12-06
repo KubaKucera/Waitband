@@ -182,13 +182,13 @@ export default function ContactPage(){
                         <p className="text-left font-bold text-lg text-gray-700 mb-2">Povinné položky, nutno vyplnit. <span className="text-red-500">*</span></p>
 
                         <div className="mb-1 text-left">
-                            <label className="flex items-center">
+                            <label className="flex items-center text-gray-900">
                                 <input type="checkbox" className="mr-2"/>
                                 Moje zpráva se nevztahuje na výše uvedené
                             </label>
                         </div>
                         <div className="mb-1 text-left">
-                            <label className="flex items-center">
+                            <label className="flex items-center text-gray-900">
                                 <input type="checkbox" className="mr-2"/>
                                 Souhlasím se zpracováním osobních údajů
                             </label>

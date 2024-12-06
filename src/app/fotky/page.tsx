@@ -112,7 +112,7 @@ export default function PhotosPage(){
             
             <div className="flex justify-center mt-[-85px]">
               <button
-                className={`w-full max-w-[1075px] h-[50px] z-20 ml-14 mr-14 md:ml-20 md:mr-20 lg:ml-0 lg:mr-0 sm:ml-28 sm:mr-28 bg-buttonBlue text-white font-bold uppercase rounded-lg ${buttonDisabled ? "opacity-50 cursor-not-allowed" : ""}`}
+                className={`w-full max-w-[1075px] h-[50px] z-20 ml-14 mr-14 md:ml-20 md:mr-20 lg:ml-0 lg:mr-0 sm:ml-28 sm:mr-28 border-gray-400 border-[3px] text-gray-400 transition-all duration-500 ease-in-out transform hover:border-white hover:text-white font-bold uppercase rounded-lg ${buttonDisabled ? "opacity-50 cursor-not-allowed" : ""}`}
                 onClick={handleShowMore}
                 disabled={buttonDisabled}
               >

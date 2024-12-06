@@ -14,17 +14,17 @@ import HeadingWithLine from "@/components/headingWithLine/HeadingWithLine";
 
 const videos = [
   {
+    id: "b7OIxB2HDGs",
+    title: "WAIT - Modelka",    
+  },
+  {
     id: "WljMWwTDTGs",
     title: "WAIT - Horoskop",
   },
   {
     id: "OkWHNAsE0Zg",
     title: "WAIT - Nekonečnej Seriál (Live @ Erpet Prague)",
-  },
-  {
-    id: "b7OIxB2HDGs",
-    title: "WAIT - Modelka",    
-  },
+  },  
   {
     id: "hRsuXnckAsw",
     title: "WAIT - Hate you (Official Video)",

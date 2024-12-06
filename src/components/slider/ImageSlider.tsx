@@ -62,7 +62,7 @@ export default function ImageSlider() {
     const [currentSlide, setCurrentSlide] = useState(0);
 
     const settings = {
-        dots: true,
+        dots: false,
         infinite: true,
         speed: 1000,
         slidesToShow: 1,
@@ -94,12 +94,13 @@ export default function ImageSlider() {
           ))}
         </Slider> 
 
+        {/*
         <div className="slick-dots-container">
           <div className="slick-dots-wrapper">
             <div className="slick-dots">              
             </div>
           </div>
-        </div>        
+        </div>      */}  
 
         <style jsx global>{`
           .slick-dots {
@@ -107,13 +108,14 @@ export default function ImageSlider() {
             z-index: 20;
             display: flex !important; /* zajistí, že tečky budou v řadě */
             justify-content: flex-end !important; /* tečky na pravé straně */
-            margin-Left: -20px;            
+            margin-Left: -12px;
           }
 
           @media (max-width: 768px) {
             div.slick-slider .slick-dots {
-              bottom: 20px !important;
-            }
+              bottom: 17px !important;
+              margin-Left: -10px;  
+            }          
           }
 
           /* Nový panel pro tečky */
@@ -122,7 +124,7 @@ export default function ImageSlider() {
             bottom: 7px;
             right: 0; /* přesunuto na pravou stranu */
             height: 50px;
-            width: 200px; /* nastavena šířka na 200px */
+            width: 180px; /* nastavena šířka na 200px */
             background: rgba(0, 0, 0, 0.8); /* černé pozadí s 60% průhledností */
             display: flex;
             justify-content: flex-end; /* zarovnání teček na pravou stranu */
@@ -155,6 +157,11 @@ export default function ImageSlider() {
               width: 18px;
               height: 18px;
               margin: 0 4px;
+            }
+
+            .slick-dots-container {
+              width: 150px;
+              height: 40px;
             }
           }
 

@@ -85,21 +85,21 @@ export default function MusicPage() {
           <Navbar initialActiveLink="hudba"/>  
           <HeadingWithLine lineHeight="750px" />
 
-          <section className="w-full relative min-h-[1275px] bg-musicPink py-10 px-4 sm:px-6 bg-opacity-10">            
+          <section className="w-full relative min-h-screen py-10 pt-20 pb-14 px-4 sm:px-6">            
             <div
               className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
               style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%"}}
             ></div>                       
 
             {/* Title */}
-            <div className="absolute top-[120px] left-0 right-0 w-full z-10">
-              <h2 className="text-gray-100 italic font-montserrat text-xl monitor:text-[22px] text-center font-bold uppercase">
+            <div className="absolute pt-3 left-0 right-0 w-full z-10">
+              <h2 className="text-gray-100 font-montserrat text-[22px] monitor:text-[24px] text-center font-bold uppercase">
                 Výběr top songů
               </h2>
             </div>
 
             {/* Image Grid */}
-            <div className="container mx-auto pt-36 pb-24 flex items-center justify-center relative">
+            <div className="container mx-auto mt-20 mb-16 flex items-center justify-center relative">
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols gap-6">
                 {[image1, image2, image3, image4, image5, image6, image7, image8, image9].map((image, index) => (
                   <Link

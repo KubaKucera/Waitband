@@ -9,6 +9,7 @@ import ImageSlider from "@/components/slider/ImageSlider";
 import waitBackImage from "../../public/assets/images/background/backNoTitle.jpg";
 import fadeEffectTexture from "../../public/assets/textures/fadeEffect.png";
 import texture from "../../public/assets/textures/texture.jpg";
+import Head from 'next/head';
 
 import { useState, useEffect, useRef } from "react";
 import { FaArrowUp, FaArrowsAlt, FaSoundcloud, FaPlayCircle, FaAngleDoubleDown } from "react-icons/fa";
@@ -106,13 +107,20 @@ export default function Home() {
 
   return (    
         <>          
+          <Head>
+            <link rel="icon" href="/favicon.ico?v=4" />
+            <link rel="shortcut icon" href="/favicon.ico?v=4" />
+            <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=4" />
+            <meta name="theme-color" content="#ffffff" />
+          </Head>
+
           <CustomCookieConsent />
           <Navbar initialActiveLink="uvod" />
           <ImageSlider />
 
           <section className="relative w-full h-full">
 
-            <div className='absolute w-full h-5 bg-gray-100 z-20'></div>
+            <div className='absolute w-full h-3 sm:h-3 md:h-5 bg-gray-100 z-20'></div>
 
             <div className="relative min-h-[600px] top-0 z-10">              
               

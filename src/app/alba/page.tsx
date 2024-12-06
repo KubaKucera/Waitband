@@ -17,8 +17,24 @@ export const metadata: Metadata = {
   description: "Albums page by create next app",  
 }
 
+const SpotifyEmbed = ({ url }: { url: string }) => (
+  <div className="relative w-full max-w-md mx-auto">
+    <iframe
+      src={url}
+      width="100%"
+      height="380"
+      frameBorder="0"
+      allow="encrypted-media"
+      className="rounded-md shadow-lg"
+      title="Spotify Album"
+      allowFullScreen  
+    ></iframe>
+  </div>
+);
+
 export default function AlbumsPage() {
     
+  /*
   const album1Tracks = [
     { title: "Wait For Me", url: "https://soundcloud.com/wait-band-official/wait-for-me" },
     { title: "Perfect Liar", url: "https://soundcloud.com/wait-band-official/perfect-liar" },
@@ -51,13 +67,44 @@ export default function AlbumsPage() {
     { title: "Zkusíme Zastavit Svět", url: "https://soundcloud.com/wait-band-official/zkus-me-zastavit-sv-t" },
     { title: "Single", url: "https://soundcloud.com/wait-band-official/single" }
   ];
+  */  
+
+  const spotifyAlbums = [
+    "https://open.spotify.com/embed/album/36q0VGlGsqRDoe5TnwyP82?utm_source=generator",
+    "https://open.spotify.com/embed/album/4avLi5xKlmwpkai2PUJsB1?utm_source=generator",
+    "https://open.spotify.com/embed/album/6FYBYq1bd7HUIysnQ6BW1A?utm_source=generator",
+  ];
   
   return (
         <>
           <CustomCookieConsent />
           <Navbar initialActiveLink="alba"/>  
-          <HeadingWithLine lineHeight="670px" />   
+          <HeadingWithLine lineHeight="655px" /> 
 
+          <section className="relative min-h-screen flex flex-col items-center gap-8 pt-20 pb-20 py-10 bg-gray-900">
+            
+            <div className="absolute pt-3 left-0 right-0 w-full z-10">
+              <h2 className="text-gray-100 font-montserrat text-[22px] monitor:text-[24px] text-center font-bold uppercase">
+                Přehled alb
+              </h2>
+            </div>
+            <p className="text-lightGray text-center text-lg max-w-3xl pt-14 z-10 leading-6">
+              Ukázky skladeb v níže uvedených albech jsou časově omezeny. 
+              Pro plný poslech se prosím přihlaste do svého účtu na Spotify.
+            </p>
+            <div
+              className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
+              style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%"}}
+            ></div> 
+
+            <div className="flex flex-wrap justify-center gap-8">
+              {spotifyAlbums.map((url, index) => (
+                <SpotifyEmbed key={index} url={url} />
+              ))}
+            </div>
+          </section>           
+
+          {/*
           <section className="relative min-h-screen flex items-center justify-center p-20 px-4 sm:px-8 lg:px-16">
             <div
               className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
@@ -140,7 +187,7 @@ export default function AlbumsPage() {
                 </div>                
               </div>
             </div>            
-          </section>  
+          </section>  */}
 
           <Footer />                       
         </>

@@ -59,11 +59,11 @@ export default function Navbar({ initialActiveLink }: NavbarProps) {
             className={`bg-black text-white flex items-center justify-between px-10 xl:px-60 monitor:px-60 monitor:justify-evenly font-sans border-b-[1px] border-white fixed top-0 left-0 right-0 z-50 text-[15px] transition-height duration-300 ease-in-out`}
             style={{ height: `${navbarHeight}px` }}
         >
-            <div className='flex items-center justify-center'>
+            <div className='flex items-center justify-center z-50'>
                 <Link href="/" onClick={handleLogoClick}>
                     <Image
                         src={title}
-                        className="h-11 w-[100%] flex scale-100 items-center justify-start transition-scale duration-300 ease-in-out"
+                        className="h-11 w-[100%] flex scale-100 items-center justify-start transition-scale duration-300 ease-in-out z-50"
                         style={{ scale: `${titleScale}` }}
                         alt="Title"
                         width={185}
@@ -90,7 +90,7 @@ export default function Navbar({ initialActiveLink }: NavbarProps) {
 
             {/* Mobile Menu */}
             <div
-                className={`absolute top-full left-0 w-full bg-black bg-opacity-90 text-white flex flex-col items-center space-y-4 py-8 lg:hidden transition-all duration-500 ease-in-out ${
+                className={`absolute top-full left-0 w-full bg-black text-xl bg-opacity-90 text-white flex flex-col items-center space-y-4 py-8 lg:hidden transition-all duration-500 ease-in-out ${
                     menuOpen ? 'transform translate-y-0 opacity-100' : 'transform -translate-y-full opacity-0'
                 }`}
             >
