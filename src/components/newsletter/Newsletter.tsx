@@ -41,8 +41,8 @@ export default function Newsletter(){
     };
 
     return (
-        <div className="bg-gray-900 py-5 px-5 md:px-10 w-full h-auto mx-auto shadow-md flex flex-col justify-between text-white">
-          <div className="flex flex-col md:flex-row md:justify-between items-center md:items-start text-center md:text-left">
+        <div className="relative bg-gray-900 py-5 px-5 md:px-10 w-full h-auto mx-auto shadow-md flex flex-col justify-between text-white z-40">
+          <div className="flex flex-col md:flex-row md:justify-between items-center md:items-start text-center md:text-left z-40">
             {/* Nadpis Newsletter */}
             <div className="flex flex-col items-center h-auto md:items-start mt-[20px] md:mt-[20px]">
               <h2 className="font-montserrat text-[43px] md:text-[43px] font-normal md:ml-[80px]">Newsletter</h2>

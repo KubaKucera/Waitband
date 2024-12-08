@@ -8,6 +8,7 @@ import marekImage from  "../../../public/assets/images/band/marek.jpg";
 import back from "../../../public/assets/images/band/back.png";
 import texture from "../../../public/assets/textures/texture.jpg";
 import fadeWhiteEffect from "../../../public/assets/images/band/effect.png";
+import ghost from "../../../public/assets/images/graffiti/ghost.png";
 import Footer from "@/components/footer/Footer";
 import { FaArrowUp } from "react-icons/fa"; 
 import CustomCookieConsent from "@/components/cookie/CookieConsent";
@@ -31,7 +32,15 @@ export default function BandPage(){
             <div
               className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
               style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%"}}
-            ></div>                       
+            >
+              <div className="fixed right-[-80px] top-64 opacity-70 transform hidden lg:flex">
+                <Image 
+                  src={ghost}
+                  alt="Emoticon"                
+                  width={250}                
+                />
+              </div> 
+            </div>                       
 
             {/* Content */}
             <div className="relative z-30 grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-10">

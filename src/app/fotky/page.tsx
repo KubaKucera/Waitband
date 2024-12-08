@@ -22,8 +22,10 @@ import image15 from "../../../public/assets/images/photos/image10.jpg";
 import image16 from "../../../public/assets/images/photos/image16.jpg";
 import image17 from "../../../public/assets/images/photos/image18.jpg";
 import image18 from "../../../public/assets/images/photos/image17.jpg";
+import crossIcon from "../../../public/assets/images/interface/crossIcon.png";
 import texture from "../../../public/assets/textures/texture.jpg";
 import whiteFadeTexture from "../../../public/assets/textures/whiteEffect.png";
+import arrows from "../../../public/assets/images/graffiti/arrows.png";
 import CustomCookieConsent from "@/components/cookie/CookieConsent";
 import { useState, useEffect } from "react";
 import { FaArrowUp } from "react-icons/fa";
@@ -40,6 +42,15 @@ export default function PhotosPage(){
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const [showScroll, setShowScroll] = useState(false);  
   const [isMaximized, setIsMaximized] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const handleImageClick = (image: any) => {
+    setSelectedImage(image);
+  };
+
+  const closeModal = () => {
+    setSelectedImage(null);
+  };
 
   useEffect(() => {
     document.title = "Fotky - Wait"
@@ -91,20 +102,36 @@ export default function PhotosPage(){
             <div
               className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
               style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%"}}
-            ></div>             
+            >
+              <div className="fixed right-[-100px] transform opacity-70 -rotate-45 top-48 hidden lg:flex">
+                <Image 
+                  src={arrows}
+                  alt="Emoticon"                
+                  width={250}                
+                />
+              </div>
+            </div>             
 
             <div className="container mx-auto px-4 flex justify-center">
               {/* Grid obrázků */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-24 pb-24">
                 {images.slice(0, 9).map((image, index) => (
-                  <div key={index} className="relative w-[340px] h-[340px]">
-                    <Image src={image} alt={`Photo ${index + 1}`} layout="fill" objectFit="cover" className="rounded-md" />
+                  <div 
+                    key={index} 
+                    className="relative w-[340px] h-[340px] md:w-[300px] md:h-[300px] overflow-hidden cursor-pointer"
+                    onClick={() => handleImageClick(image)}
+                  >
+                    <Image src={image} alt={`Photo ${index + 1}`} layout="fill" objectFit="cover" className="transition-all duration-300 ease-in-out transform hover:scale-110" />
                   </div>
                 ))}
 
                 {showMore && images.slice(9).map((image, index) => (
-                  <div key={index + 9} className="relative w-[340px] h-[340px]">
-                    <Image src={image} alt={`Photo ${index + 10}`} layout="fill" objectFit="cover" />
+                  <div 
+                    key={index + 9} 
+                    className="relative w-[340px] h-[340px] md:w-[300px] md:h-[300px] overflow-hidden cursor-pointer"
+                    onClick={() => handleImageClick(image)}
+                  >
+                    <Image src={image} alt={`Photo ${index + 10}`} layout="fill" objectFit="cover" className="transition-all duration-300 ease-in-out transform hover:scale-110" />
                   </div>
                 ))}
               </div>                
@@ -112,13 +139,37 @@ export default function PhotosPage(){
             
             <div className="flex justify-center mt-[-85px]">
               <button
-                className={`w-full max-w-[1075px] h-[50px] z-20 ml-14 mr-14 md:ml-20 md:mr-20 lg:ml-0 lg:mr-0 sm:ml-28 sm:mr-28 border-gray-400 border-[3px] text-gray-400 transition-all duration-500 ease-in-out transform hover:border-white hover:text-white font-bold uppercase rounded-lg ${buttonDisabled ? "opacity-50 cursor-not-allowed" : ""}`}
+                className={`w-full max-w-[950px] h-[50px] z-20 ml-14 mr-14 md:ml-20 md:mr-20 lg:ml-0 lg:mr-0 sm:ml-28 sm:mr-28 border-gray-400 border-[3px] text-gray-400 transition-all duration-500 ease-in-out transform hover:border-white hover:text-white font-bold uppercase rounded-lg ${buttonDisabled ? "opacity-50 cursor-not-allowed" : ""}`}
                 onClick={handleShowMore}
                 disabled={buttonDisabled}
               >
                 Zobrazit více fotek
               </button>
             </div>
+
+            {selectedImage && (
+              <div
+                className="fixed inset-0 z-50 flex items-center justify-center bg-black rounded-lg bg-opacity-80"
+                onClick={closeModal}
+              >
+                <div
+                  className="relative w-[500px] h-[500px] sm:w-[500px] sm:h-[500px] md:w-[600px] md:h-[600px] z-30"
+                  onClick={(e) => e.stopPropagation()} // Zabrání zavření při kliknutí na obrázek
+                >
+                  <Image src={selectedImage} alt="Selected Image" layout="fill" objectFit="cover" className="border-[2px] border-white rounded-md" />
+                  <div className="absolute w-[35px] h-[35px] right-1 top-1 bg-black bg-opacity-50 rounded-lg z-30">
+                    <Image 
+                      src={crossIcon}
+                      alt="Cross Icon"
+                      objectFit="cover"
+                      layout="fill"
+                      onClick={closeModal}
+                      className="opacity-80 cursor-pointer hover:opacity-100"
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
 
             <div className="flex justify-center mt-[20px] mb-[30px] h-[50px]">
               <Link href="https://www.instagram.com/wait_band_official/" rel="noopener noreferrer" target='_blank' passHref>

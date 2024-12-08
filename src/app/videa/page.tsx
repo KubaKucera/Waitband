@@ -6,6 +6,7 @@ import Navbar from "@/components/navbar/Navbar";
 import back from "../../../public/assets/images/videos/back.png";
 import CustomCookieConsent from "@/components/cookie/CookieConsent";
 import texture from "../../../public/assets/textures/texture.jpg";
+import mouthSmile from "../../../public/assets/images/graffiti/mouthSmile.png";
 import { useState, useRef, useEffect } from "react";
 import { FaPlayCircle } from "react-icons/fa";
 import Footer from "@/components/footer/Footer";
@@ -122,7 +123,15 @@ export default function VideosPage(){
         <div
           className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%"}}
-        ></div>        
+        >
+          <div className="fixed right-[-100px] transform -rotate-45 top-72 opacity-70 hidden lg:flex">
+            <Image 
+              src={mouthSmile}
+              alt="Emoticon"                
+              width={300}                
+            />
+          </div>
+        </div>        
 
         {/* Hlavní video - zvětšení výšky */}
         <div className="w-full max-w-[820px] h-auto mb-8 z-30 flex flex-col items-center px-4">

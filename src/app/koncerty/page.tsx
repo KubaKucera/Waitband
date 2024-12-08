@@ -6,6 +6,7 @@ import texture from "../../../public/assets/textures/texture.jpg";
 import CustomCookieConsent from "@/components/cookie/CookieConsent";
 import Footer from "@/components/footer/Footer";
 import consertsImage from "../../../public/assets/images/conserts/consertsImage.jpg";
+import emoticon from "../../../public/assets/images/graffiti/emoticon.png";
 import { FaAngleDoubleDown } from "react-icons/fa";
 import { Metadata } from "next";
 import HeadingWithLine from "@/components/headingWithLine/HeadingWithLine";
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
 }
 
 const concertData = [
-  "24.11.2024, 20:00 – Pardubice, Ateliér Klose",   
+  "24.11.2024, 20:00 – Pardubice, Ateliér Klose",    
 ];
 
 export default function ConsertsPage(){
@@ -35,7 +36,15 @@ export default function ConsertsPage(){
             <div
               className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
               style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%"}}
-            ></div>           
+            ></div>      
+
+            <div className="fixed right-[-100px] top-64 opacity-70 hidden lg:flex">
+              <Image 
+                src={emoticon}
+                alt="Emoticon"                
+                width={300}                
+              />
+            </div>    
 
             <div className="relative w-[700px] monitor:w-[780px] bg-white bg-opacity-20 z-40 mt-[75px] rounded-md p-6 transform translate-y-[-20px]">
               <h2 className="mt-[10px] text-[26px] text-white text-center font-bold font-montserrat opacity-100 uppercase">Plány koncertů</h2>

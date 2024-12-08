@@ -2,17 +2,18 @@ import Link from "next/link";
 import Image from "next/image";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
-import image1 from "../../../public/assets/images/music/image1.jpg";
-import image2 from "../../../public/assets/images/music/image2.jpg";
-import image3 from "../../../public/assets/images/music/image3.jpg";
-import image4 from "../../../public/assets/images/music/image4.jpg";
-import image5 from "../../../public/assets/images/music/image5.jpg";
-import image6 from "../../../public/assets/images/music/image6.jpg";
-import image7 from "../../../public/assets/images/music/image7.jpg";
-import image8 from "../../../public/assets/images/music/image8.jpg";
-import image9 from "../../../public/assets/images/music/image9.jpg";
+import image1 from "../../../public/assets/images/music/february29th.jpg";
+import image2 from "../../../public/assets/images/music/achiever.jpg";
+import image3 from "../../../public/assets/images/music/losingSleep.jpg";
+import image4 from "../../../public/assets/images/music/daydream.jpg";
+import image5 from "../../../public/assets/images/music/carelessDreaming.jpg";
+import image6 from "../../../public/assets/images/music/horoscop.jpg";
+import image7 from "../../../public/assets/images/music/hateYou.jpg";
+import image8 from "../../../public/assets/images/music/subwayTrain.jpg";
+import image9 from "../../../public/assets/images/music/followMeToHell.jpg";
 import texture from "../../../public/assets/textures/texture.jpg";
 import whiteFadeTexture from "../../../public/assets/textures/whiteEffect.png";
+import dollar from "../../../public/assets/images/graffiti/dollar.png";
 import { FaPlayCircle, FaSoundcloud } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { Metadata } from "next";
@@ -89,7 +90,15 @@ export default function MusicPage() {
             <div
               className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
               style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%"}}
-            ></div>                       
+            >
+              <div className="fixed right-[-50px] top-56 opacity-70 hidden lg:flex">
+                <Image 
+                  src={dollar}
+                  alt="Emoticon"                
+                  width={200}                
+                />
+              </div>
+            </div>                       
 
             {/* Title */}
             <div className="absolute pt-3 left-0 right-0 w-full z-10">
@@ -115,14 +124,15 @@ export default function MusicPage() {
                         alt={`Photo ${index + 1}`}
                         layout="fill"
                         objectFit="cover"
-                        className="group-hover:cursor-pointer transition-all duration-300 ease-in-out transform"
+                        className="group-hover:cursor-pointer transition-all duration-300 ease-in-out transform hover:scale-110"
                       />
+                      {/*
                       <p className="absolute bg-black bg-opacity-75 bottom-0 text-lg md:text-lg p-3 md:p-3 w-full text-white transition-all duration-200 ease-in-out transform group-hover:bg-blue-600 group-hover:bg-opacity-75 font-semibold text-center">
                         {songs[index].title}
-                      </p>
-                      <div className="absolute w-[47px] h-[47px] flex items-center justify-center bg-blue-600 rounded-bl-lg text-lg top-0 right-0">
+                      </p> */}
+                      {/*<div className="absolute w-[47px] h-[47px] flex items-center justify-center bg-blue-600 rounded-bl-lg text-lg top-0 right-0">
                         <FaPlayCircle className="bg-transparent text-white transition-transform duration-300 ease-out group-hover:scale-125" />
-                      </div>
+                      </div> */}
                     </div>
                   </Link>
                 ))}

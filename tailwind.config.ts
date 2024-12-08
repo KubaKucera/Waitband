@@ -19,7 +19,11 @@ const config: Config = {
       },
       screens: {
         monitor: '1920px',
+        xs: '320px',
         'custom-md-lg': { min: '768px', max: '1023px' },
+      },
+      scale: {
+        '115': '1.15',
       },
       colors: {
         background: "var(--background)",

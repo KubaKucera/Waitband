@@ -15,11 +15,12 @@ import { useState, useEffect, useRef } from "react";
 import { FaArrowUp, FaArrowsAlt, FaSoundcloud, FaPlayCircle, FaAngleDoubleDown } from "react-icons/fa";
 import { FaCompress } from "react-icons/fa";
 import actualityImage1 from "../../public/assets/images/home/actuality1.jpg";
-import actualityImage2 from "../../public/assets/images/albums/album1.jpg";
-import actualityImage3 from "../../public/assets/images/home/actuality3.jpg";
+import actualityImage2 from "../../public/assets/images/albums/album4.jpg";
+import actualityImage3 from "../../public/assets/images/music/carelessDreaming.jpg";
 import waitLogoBlack from "../../public/assets/images/home/waitLogoBlack.png";
 import frequency from "../../public/assets/images/home/frequency.png";
 import whiteEffectTexture from "../../public/assets/textures/whiteEffect.png";
+import excMark from "../../public/assets/images/graffiti/excMark.png";
 import Newsletter from "@/components/newsletter/Newsletter";
 import Footer from "@/components/footer/Footer";
 import CustomCookieConsent from "@/components/cookie/CookieConsent";
@@ -127,7 +128,15 @@ export default function Home() {
               <div
                 className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%"}}
-              ></div> 
+              >                
+                <div className="fixed right-[-30px] top-60 opacity-70 hidden lg:flex">
+                  <Image 
+                    src={excMark}
+                    alt="ExcMark"                
+                    width={150}                    
+                  />
+                </div>
+              </div> 
 
               <div
                 className="absolute z-30 hidden xl:flex"
@@ -162,7 +171,7 @@ export default function Home() {
                     }}
                   ></div>
                 </div>
-              </div>
+              </div>              
 
               <div className="relative grid gap-10 items-center justify-center w-[85%] lg:w-[67%] monitor:w-[55%] mx-auto pt-14 pb-11 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 z-20">
                 {[
@@ -175,7 +184,7 @@ export default function Home() {
                   },
                   {
                     title: "ALBUM",
-                    subtitle: "JENOM VEDLE SEBE",
+                    subtitle: "WAIT FOR ME",
                     image: actualityImage2,
                     link: "/alba",
                     openInNewTab: false,
@@ -184,8 +193,8 @@ export default function Home() {
                     title: "SONG",
                     subtitle: "CARELESS DREAMING",
                     image: actualityImage3,
-                    link: "https://soundcloud.com/wait-band-official/careless-dreaming",
-                    openInNewTab: true,
+                    link: "/hudba",
+                    openInNewTab: false,
                   },
                 ].map((item, index) => (
                   <div
@@ -216,11 +225,12 @@ export default function Home() {
                         />
                       </Link>
                       
+                      {/*
                       {index === 2 && (
                         <div className="absolute w-[47px] h-[47px] flex items-center justify-center border-[3px] bg-blue-600 border-none mt-[2.5px] mr-[3px] group-hover:brightness-100 group-hover:cursor-pointer rounded-bl-lg text-lg top-0 right-0">
                           <FaPlayCircle className="bg-transparent text-gray-200 mr-[-2px] transition-all duration-300 ease-in-out transform group-hover:scale-125 group-hover:mr-[-1px] z-20" />
                         </div>
-                      )}
+                      )} */}
                     </div>
                     <Link
                       href={item.link}

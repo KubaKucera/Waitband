@@ -76,7 +76,7 @@ export default function ImageSlider() {
     };
 
     return(
-      <div className="w-screen max-w-full mx-auto relative">
+      <div className="w-screen max-w-full mx-auto relative z-40">
         <Slider {...settings}>
           {images.map((img, index) => (
             <div key={index} className="flex justify-center items-center w-screen h-[300px] sm:h-[400px] md:h-[500px] lg:h-[580px] xl:h-[680px] monitor:h-[825px]">

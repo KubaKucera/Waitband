@@ -7,7 +7,7 @@ import { FaFacebookF, FaInstagram, FaSoundcloud, FaYoutube, FaApple, FaSpotify, 
 
 export default function Footer(){
     return(
-        <div className="bg-white w-full min-h-[220px] pt-9 pb-9 flex flex-col justify-center items-center relative border-gray-600 border-t-[1px]">
+        <div className="bg-white w-full min-h-[220px] pt-9 pb-9 flex flex-col justify-center items-center relative border-gray-600 border-t-[1px] z-40">
                  
             {/* Text na střed - Copyright */}
             <div className="text-center">

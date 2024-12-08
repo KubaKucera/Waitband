@@ -6,6 +6,7 @@ import album1 from "../../../public/assets/images/albums/album1.jpg";
 import album2 from "../../../public/assets/images/albums/album4.jpg";
 import album3 from "../../../public/assets/images/albums/album3.jpg";
 import back from "../../../public/assets/images/videos/back.png";
+import x from "../../../public/assets/images/graffiti/x.png";
 import Footer from "@/components/footer/Footer";
 import CustomCookieConsent from "@/components/cookie/CookieConsent";
 import { FaAngleDoubleDown, FaPlayCircle, FaSoundcloud } from 'react-icons/fa';
@@ -95,7 +96,15 @@ export default function AlbumsPage() {
             <div
               className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
               style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%"}}
-            ></div> 
+            >
+              <div className="fixed right-[-170px] top-40 opacity-70 hidden lg:flex">
+                <Image 
+                  src={x}
+                  alt="Emoticon"                
+                  width={300}                
+                />
+              </div>
+            </div> 
 
             <div className="flex flex-wrap justify-center gap-8">
               {spotifyAlbums.map((url, index) => (
