@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Head from "next/head";
 
 /*
 const geistSans = localFont({
@@ -34,7 +35,15 @@ export default function RootLayout({
       <body
         //className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <Head>
+          <link rel="icon" href="/favicon.ico?v=4" />
+          <link rel="shortcut icon" href="/favicon.ico?v=4" />
+          <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=4" />
+          <meta name="theme-color" content="#ffffff" />
+        </Head>
+
+        {children}  
+             
       </body>
     </html>
   );

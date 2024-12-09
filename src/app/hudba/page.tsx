@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   description: "Music page by create next app",  
 }
 
-const songs = [
+const soundcloudSongs = [
   { title: "February 29th", url: "https://soundcloud.com/wait-band-official/february-29th" },
   { title: "Achiever", url: "https://soundcloud.com/wait-band-official/achiever" },
   { title: "Losing Sleep", url: "https://soundcloud.com/wait-band-official/losing-sleep" },
@@ -35,6 +35,30 @@ const songs = [
   { title: "Hate You", url: "https://soundcloud.com/wait-band-official/hate-you" },
   { title: "Subway Train", url: "https://soundcloud.com/wait-band-official/subway-train" },
   { title: "Follow Me To Hell", url: "https://soundcloud.com/wait-band-official/follow-me-to-hell" },  
+];
+
+const appleMusicSongs = [
+  { title: "February 29th", url: "https://music.apple.com/gh/album/february-29th/1479578756?i=1479579086" },
+  { title: "Achiever", url: "" }, //Todo
+  { title: "Losing Sleep", url: "https://music.apple.com/gh/album/losing-sleep/1479578756?i=1479578767" },
+  { title: "Daydream", url: "https://music.apple.com/gh/album/daydream/1479578756?i=1479578955" },
+  { title: "Careless Dreaming", url: "https://music.apple.com/gh/album/careless-dreaming/1479578756?i=1479578960" },
+  { title: "Horoskop", url: "" }, //Todo
+  { title: "Hate You", url: "" }, //Todo
+  { title: "Subway Train", url: "https://music.apple.com/gh/album/subway-train/1479578756?i=1479578770" },
+  { title: "Follow Me To Hell", url: "" },  //Todo
+];
+
+const spotifyMusic = [
+  { title: "February 29th", url: "https://open.spotify.com/track/4hy5ZgeVleEN4LxzX4DVUi" },
+  { title: "Achiever", url: "https://open.spotify.com/track/2P5boFog1gp3RZR5qZNpVT" },
+  { title: "Losing Sleep", url: "https://open.spotify.com/track/56Cp5nf8gnYEGjQAigUciX" },
+  { title: "Daydream", url: "https://open.spotify.com/track/3mQLGi3hzXECZ2CsocLDMt" },
+  { title: "Careless Dreaming", url: "https://open.spotify.com/track/6TuqwEvhvUhmbyfYX96cIL" },
+  { title: "Horoskop", url: "https://open.spotify.com/track/6TuqwEvhvUhmbyfYX96cIL" }, //Todo
+  { title: "Hate You", url: "https://open.spotify.com/track/2rrTaT2f8xdzNWYgFyuJzf" },
+  { title: "Subway Train", url: "https://open.spotify.com/track/2Grjcg1SoCU7vWsqoCX9Qr" },
+  { title: "Follow Me To Hell", url: "https://open.spotify.com/track/6hEF1OxQBlMdwhDo8Q18CF" },  
 ];
 
 export default function MusicPage() {
@@ -91,7 +115,7 @@ export default function MusicPage() {
               className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
               style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%"}}
             >
-              <div className="fixed right-[-50px] top-56 opacity-70 hidden lg:flex">
+              <div className="fixed right-[-10px] top-56 opacity-50 hidden lg:flex">
                 <Image 
                   src={dollar}
                   alt="Emoticon"                
@@ -113,7 +137,7 @@ export default function MusicPage() {
                 {[image1, image2, image3, image4, image5, image6, image7, image8, image9].map((image, index) => (
                   <Link
                     key={index}
-                    href={songs[index].url}
+                    href={soundcloudSongs[index].url}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="relative group"

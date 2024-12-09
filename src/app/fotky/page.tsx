@@ -103,7 +103,7 @@ export default function PhotosPage(){
               className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
               style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%"}}
             >
-              <div className="fixed right-[-100px] transform opacity-70 -rotate-45 top-48 hidden lg:flex">
+              <div className="fixed right-[-65px] transform opacity-50 -rotate-45 top-48 hidden lg:flex">
                 <Image 
                   src={arrows}
                   alt="Emoticon"                
@@ -114,7 +114,7 @@ export default function PhotosPage(){
 
             <div className="container mx-auto px-4 flex justify-center">
               {/* Grid obrázků */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-24 pb-24">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-24 pb-24 place-items-center">
                 {images.slice(0, 9).map((image, index) => (
                   <div 
                     key={index} 

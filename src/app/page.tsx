@@ -129,7 +129,7 @@ export default function Home() {
                 className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%"}}
               >                
-                <div className="fixed right-[-30px] top-60 opacity-70 hidden lg:flex">
+                <div className="fixed right-[-30px] top-60 opacity-60 hidden lg:flex">
                   <Image 
                     src={excMark}
                     alt="ExcMark"                
