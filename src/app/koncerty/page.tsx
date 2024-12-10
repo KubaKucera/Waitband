@@ -38,7 +38,7 @@ export default function ConsertsPage(){
               style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%"}}
             ></div>      
 
-            <div className="fixed right-[-20px] top-64 opacity-50 hidden lg:flex">
+            <div className="fixed right-[25px] top-64 opacity-50 hidden lg:flex">
               <Image 
                 src={emoticon}
                 alt="Emoticon"                
