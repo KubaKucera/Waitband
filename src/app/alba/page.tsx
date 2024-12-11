@@ -97,7 +97,7 @@ export default function AlbumsPage() {
               className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
               style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%"}}
             >
-              <div className="fixed right-[-65px] top-40 opacity-50 hidden lg:flex">
+              <div className="fixed right-[-65px] top-40 opacity-50 hidden xl:flex">
                 <Image 
                   src={x}
                   alt="Emoticon"                

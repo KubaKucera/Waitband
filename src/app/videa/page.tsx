@@ -124,7 +124,7 @@ export default function VideosPage(){
           className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%"}}
         >
-          <div className="fixed right-[-30px] transform -rotate-45 top-72 opacity-50 hidden lg:flex">
+          <div className="fixed right-[-30px] transform -rotate-45 top-72 opacity-50 hidden xl:flex">
             <Image 
               src={mouthSmile}
               alt="Emoticon"                
