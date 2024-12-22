@@ -12,6 +12,7 @@ import { FaPlayCircle } from "react-icons/fa";
 import Footer from "@/components/footer/Footer";
 import { FaArrowUp } from "react-icons/fa";
 import HeadingWithLine from "@/components/headingWithLine/HeadingWithLine";
+import ScrollToTopButton from "@/components/scrollToTopButton/ScrollToTopButton";
 
 const videos = [
   {
@@ -52,10 +53,7 @@ const videos = [
   },
 ]
 
-export default function VideosPage(){
-  
-  const [isMaximized, setIsMaximized] = useState(false);
-  const [showScroll, setShowScroll] = useState(false);
+export default function VideosPage(){  
   const [selectedVideo, setSelectedVideo] = useState(videos[0].id);
   const [selectedTitle, setSelectedTitle] = useState(videos[0].title);
   const [currentPlayingVideoId, setCurrentPlayingVideoId] = useState<string>(videos[0].id); // Pro sledování právě přehrávaného videa
@@ -63,27 +61,7 @@ export default function VideosPage(){
 
   useEffect(() => {
     document.title = "Videa - Wait";
-  }, []);
-
-  const checkScrollTop = () => {
-    if(!showScroll && window.scrollY > 400){
-      setShowScroll(true);
-    } else if(showScroll && window.scrollY <= 400){
-      setShowScroll(false);
-    }
-  };
-
-  const handleResize = () => {
-    if (window.innerWidth > 1200) {
-      setIsMaximized(true);
-    } else {
-      setIsMaximized(false);
-    }
-  };
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  }, []);  
 
   const handleVideoClick = (id: string, title: string) => {
     if (id === currentPlayingVideoId) return; // Pokud video již hraje, neumožníme přehrát ho znovu
@@ -101,34 +79,25 @@ export default function VideosPage(){
     }
 
     window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", checkScrollTop);
-    window.addEventListener("resize", handleResize); 
-    handleResize();
-    return () => {
-      window.removeEventListener("scroll", checkScrollTop);
-      window.removeEventListener("resize", handleResize);
-    };    
-  }, [showScroll]);  
+  };   
 
   return (
     <>
       <Navbar initialActiveLink="videa" />
       <CustomCookieConsent />
-      <HeadingWithLine lineHeight="825px" />
+      <HeadingWithLine lineHeight="1050px" />
+      <ScrollToTopButton />
 
       <section className="relative min-h-screen flex flex-col items-center justify-center py-24">
         <div
           className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%"}}
         >
-          <div className="fixed right-[-30px] transform -rotate-45 top-72 opacity-50 hidden xl:flex">
+          <div className="fixed right-[-40px] transform -rotate-45 top-72 opacity-50 hidden xl:flex">
             <Image 
               src={mouthSmile}
               alt="Emoticon"                
-              width={300}                
+              width={330}                
             />
           </div>
         </div>        
@@ -180,14 +149,7 @@ export default function VideosPage(){
               <p className="text-white sm:text-sm text-sm md:text-lg mt-2 w-full text-left left-0 break-words">{video.title}</p>
             </div>
           ))}
-        </div>        
-
-        <FaArrowUp
-          onClick={scrollToTop}
-          className={`fixed right-0 z-50 p-2 bg-black text-white text-[36px] cursor-pointer transition-all duration-[700ms] ease-in-out transform border rounded-tl-md rounded-bl-md opacity-75 border-white border-md hover:opacity-100 ${
-            showScroll ? "opacity-100 translate-x-0" : "opacity-0 translate-x-[100px]"
-          } bottom-14 lg:bottom-36`}
-        />
+        </div>  
       </section>
 
       <Footer />

@@ -22,26 +22,32 @@ import image15 from "../../../public/assets/images/photos/image10.jpg";
 import image16 from "../../../public/assets/images/photos/image16.jpg";
 import image17 from "../../../public/assets/images/photos/image18.jpg";
 import image18 from "../../../public/assets/images/photos/image17.jpg";
+import image19 from "../../../public/assets/images/photos/image19.jpeg";
+import image20 from "../../../public/assets/images/photos/image20.jpeg";
+import image21 from "../../../public/assets/images/photos/image21.jpeg";
+import image22 from "../../../public/assets/images/photos/image22.jpeg";
+import image23 from "../../../public/assets/images/photos/image23.jpeg";
+import image24 from "../../../public/assets/images/photos/image24.jpg";
 import crossIcon from "../../../public/assets/images/interface/crossIcon.png";
 import texture from "../../../public/assets/textures/texture.jpg";
 import whiteFadeTexture from "../../../public/assets/textures/whiteEffect.png";
 import arrows from "../../../public/assets/images/graffiti/arrows.png";
 import CustomCookieConsent from "@/components/cookie/CookieConsent";
 import { useState, useEffect } from "react";
-import { FaArrowUp } from "react-icons/fa";
 import HeadingWithLine from "@/components/headingWithLine/HeadingWithLine";
+import ScrollToTopButton from "@/components/scrollToTopButton/ScrollToTopButton";
 
 const images = [
   image1, image2, image3, image4, image5, image6, image7, 
   image8, image9, image10, image11, image12, image13, 
-  image14, image15, image16, image17, image18
+  image14, image15, image16, image17, image18, image19, 
+  image20, image21, image22, image23, image24
 ];
 
 export default function PhotosPage(){
   const [showMore, setShowMore] = useState(false);
   const [buttonDisabled, setButtonDisabled] = useState(false);
-  const [showScroll, setShowScroll] = useState(false);  
-  const [isMaximized, setIsMaximized] = useState(false);
+  const [showScroll, setShowScroll] = useState(false);    
   const [selectedImage, setSelectedImage] = useState(null);
 
   const handleImageClick = (image: any) => {
@@ -59,43 +65,14 @@ export default function PhotosPage(){
   const handleShowMore = () => {
     setShowMore(true);
     setButtonDisabled(true); // Tlačítko bude po kliknutí neaktivní
-  };
-
-  const checkScrollTop = () => {
-    if(!showScroll && window.scrollY > 400){
-      setShowScroll(true);
-    } else if(showScroll && window.scrollY <= 400){
-      setShowScroll(false);
-    }
-  };
-  
-  const handleResize = () => {
-    if (window.innerWidth > 1200) {  // Podmínka pro "maximalizovaný" stav
-      setIsMaximized(true);
-    } else {
-      setIsMaximized(false);
-    }
-  };
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", checkScrollTop);
-    window.addEventListener("resize", handleResize); 
-    handleResize();
-    return () => {
-      window.removeEventListener("scroll", checkScrollTop);
-      window.removeEventListener("resize", handleResize);
-    };    
-  }, [showScroll]);
+  };  
   
   return (
         <>
           <CustomCookieConsent />
           <Navbar initialActiveLink="fotky"/>    
-          <HeadingWithLine lineHeight="750px" />
+          <HeadingWithLine lineHeight="800px" />
+          <ScrollToTopButton />
 
           <section className="relative h-auto py-10">
 
@@ -149,12 +126,12 @@ export default function PhotosPage(){
 
             {selectedImage && (
               <div
-                className="fixed inset-0 z-50 flex items-center justify-center bg-black rounded-lg bg-opacity-80"
+                className="fixed inset-0 z-50 flex items-center justify-center bg-black rounded-lg bg-opacity-85"
                 onClick={closeModal}
               >
                 <div
                   className="relative w-[500px] h-[500px] sm:w-[500px] sm:h-[500px] md:w-[600px] md:h-[600px] z-30"
-                  onClick={(e) => e.stopPropagation()} // Zabrání zavření při kliknutí na obrázek
+                  onClick={(e) => e.stopPropagation()}
                 >
                   <Image src={selectedImage} alt="Selected Image" layout="fill" objectFit="cover" className="border-[2px] border-white rounded-md" />
                   <div className="absolute w-[35px] h-[35px] right-1 top-1 bg-black bg-opacity-50 rounded-lg z-30">
@@ -177,14 +154,7 @@ export default function PhotosPage(){
                   Přejít na instagram
                 </button>
               </Link>
-            </div>
-           
-            <FaArrowUp
-              onClick={scrollToTop}
-              className={`fixed right-0 z-50 p-2 bg-black text-white text-[36px] cursor-pointer transition-all duration-[700ms] ease-in-out transform border rounded-tl-md rounded-bl-md opacity-75 border-white border-md hover:opacity-100 ${
-                showScroll ? "opacity-100 translate-x-0" : "opacity-0 translate-x-[100px]"
-              } bottom-14 lg:bottom-36`}
-            />
+            </div>           
           </section>   
           
           <Footer/>

@@ -25,6 +25,13 @@ const config: Config = {
       scale: {
         '115': '1.15',
       },
+      rotate: {
+        '15': '15deg',
+        '-15': '-15deg',
+        '60': '60deg',
+        '-60': '-60deg',
+        '135': '135deg',
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",

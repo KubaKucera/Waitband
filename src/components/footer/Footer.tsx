@@ -37,7 +37,7 @@ export default function Footer(){
                 </div>
             </div>
 
-            <div className='flex items-center mt-5 text-white space-x-[9px]'>
+            <div className='flex items-center mt-6 text-white space-x-5'>
                 {renderSocialLinks()}
             </div>
 
@@ -59,22 +59,22 @@ const renderSocialLinks = () => {
     return (
         <>                
             <Link href="https://www.instagram.com/wait_band_official/" target='_blank' rel="noopener noreferrer">
-                <FaInstagram className='text-[35px] scale-95 opacity-95 hover:scale-110 hover-opacity-100 transition-transform duration-300 bg-instagramPink rounded-md pl-2 pb-2 pr-2 pt-2' />
+                <FaInstagram className='text-[40px] scale-110 opacity-95 hover:scale-125 hover-opacity-100 transition-transform duration-300 bg-instagramPink rounded-md pl-2 pb-2 pr-2 pt-2' />
             </Link>
             <Link href="https://www.facebook.com/waitbandcz/?locale=cs_CZ" target='_blank' rel="noopener noreferrer">
-                <FaFacebookF className='text-[35px] scale-95 opacity-95 hover:scale-110 hover-opacity-100 transition-transform duration-300 bg-facebookBlue rounded-md pl-2 pb-2 pr-2 pt-2' />
+                <FaFacebookF className='text-[40px] scale-110 opacity-95 hover:scale-125 hover-opacity-100 transition-transform duration-300 bg-facebookBlue rounded-md pl-2 pb-2 pr-2 pt-2' />
             </Link>
             <Link href="https://www.youtube.com/@waitbandofficial6520" target='_blank' rel="noopener noreferrer">
-                <FaYoutube className='text-[35px] scale-95 opacity-95 hover:scale-110 hover-opacity-100 transition-transform duration-300 bg-youtubeRed rounded-md pl-2 pb-2 pr-2 pt-2' />
+                <FaYoutube className='text-[40px] scale-110 opacity-95 hover:scale-125 hover-opacity-100 transition-transform duration-300 bg-youtubeRed rounded-md pl-2 pb-2 pr-2 pt-2' />
             </Link>
             <Link href="https://soundcloud.com/wait-band-official" target='_blank' rel="noopener noreferrer">
-                <FaSoundcloud className='text-[35px] scale-95 opacity-95 hover:scale-110 hover-opacity-100 transition-transform duration-300 bg-soundcloudOrange rounded-md pl-2 pb-2 pr-2 pt-2' />
+                <FaSoundcloud className='text-[40px] scale-110 opacity-95 hover:scale-125 hover-opacity-100 transition-transform duration-300 bg-soundcloudOrange rounded-md pl-2 pb-2 pr-2 pt-2' />
             </Link>
             <Link href="https://open.spotify.com/artist/37DvIv1TkBrTOz16Kk75YI" target='_blank' rel="noopener noreferrer">
-                <FaSpotify className='text-[35px] scale-95 opacity-95 hover:scale-110 hover-opacity-100 transition-transform duration-300 bg-spotifyGreen rounded-md pl-2 pb-2 pr-2 pt-2' />
+                <FaSpotify className='text-[40px] scale-110 opacity-95 hover:scale-125 hover-opacity-100 transition-transform duration-300 bg-spotifyGreen rounded-md pl-2 pb-2 pr-2 pt-2' />
             </Link>
             <Link href="https://music.apple.com/gh/artist/wait/1479576915" target='_blank' rel="noopener noreferrer">
-                <FaApple className='text-[35px] scale-95 opacity-95 hover:scale-110 hover-opacity-100 transition-transform duration-300 bg-appleMusicSalmon rounded-md pl-2 pb-2 pr-2 pt-2' />
+                <FaApple className='text-[40px] scale-110 opacity-95 hover:scale-125 hover-opacity-100 transition-transform duration-300 bg-appleMusicSalmon rounded-md pl-2 pb-2 pr-2 pt-2' />
             </Link>
         </> 
     );  

@@ -56,7 +56,7 @@ export default function Navbar({ initialActiveLink }: NavbarProps) {
 
     return (
         <nav
-            className={`bg-black text-white flex items-center justify-between px-10 space-x-0 md:justify-between md:space-x-0 lg:justify-center lg:space-x-20 monitor:space-x-32 font-sans border-b-[1px] border-white fixed top-0 left-0 right-0 z-50 text-[15px] transition-height duration-300 ease-in-out`}
+            className={`bg-black text-white flex items-center justify-between px-10 space-x-0 md:justify-between md:space-x-0 lg:justify-center lg:space-x-20 monitor:space-x-32 font-sans border-b-[1px] border-gray-300 fixed top-0 left-0 right-0 z-50 text-[15px] transition-height duration-300 ease-in-out`}
             style={{ height: `${navbarHeight}px` }}
         >
             <div className='flex items-center justify-center z-50'>
