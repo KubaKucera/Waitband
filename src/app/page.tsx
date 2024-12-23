@@ -15,7 +15,7 @@ import { FaArrowsAlt, FaSoundcloud, FaPlayCircle, FaAngleDoubleDown } from "reac
 import { FaCompress } from "react-icons/fa";
 import actualityImage1 from "../../public/assets/images/home/actuality1.jpg";
 import actualityImage2 from "../../public/assets/images/albums/album4.jpg";
-import actualityImage3 from "../../public/assets/images/music/carelessDreaming.jpg";
+import actualityImage3 from "../../public/assets/images/music/february29th.jpg";
 import waitLogoBlack from "../../public/assets/images/home/waitLogoBlack.png";
 import frequency from "../../public/assets/images/home/frequency.png";
 import whiteEffectTexture from "../../public/assets/textures/whiteEffect.png";
@@ -31,24 +31,26 @@ import ScrollToTopButton from '@/components/scrollToTopButton/ScrollToTopButton'
 import Video from "next-video";
 
 const kaplickaVideos = [
-  { src: "/assets/videos/kaplicka/kaplicka1.mp4"},
-  { src: "/assets/videos/kaplicka/kaplicka2.mp4"},
-  { src: "/assets/videos/kaplicka/kaplicka3.mp4"},
-  { src: "/assets/videos/kaplicka/kaplicka4.mp4"},
+  { src: ""},
+  { src: ""},
+  { src: ""},
+  { src: ""},
 ];
 
 const knorVideos = [
-  { src: "/assets/videos/knor/waitKnor.mp4"},
-  { src: "/assets/videos/knor/achiever.mov"},
-  { src: "/assets/videos/knor/everyday.mov"},  
-  { src: "/assets/videos/knor/losing.mov"},
-  { src: "/assets/videos/knor/myGuide.mov"},
-  { src: "/assets/videos/knor/privitani.mov"},
-  { src: "/assets/videos/knor/privitaniLedecky2.mov"},
-  { src: "/assets/videos/knor/uvod.mov"},   
+  { src: ""},
+  { src: ""},
+  { src: ""},  
+  { src: ""},
+  { src: ""},
+  { src: ""},
+  { src: ""},
+  { src: ""},   
 ];
 
-const andelVideo = { src: "/assets/videos/andel/andel.mp4"};
+const andelVideo = {
+  src: "https://www.youtube.com/embed/x_XWIT7Hd0Q"
+};
 
 export default function Home() {  
 
@@ -86,8 +88,8 @@ export default function Home() {
           <ImageSlider />
           <ScrollToTopButton />
 
-          <section className="relative w-full h-full z-30">
-            
+          <section className="relative w-full h-full z-30">            
+
             <div className='absolute w-full h-3 sm:h-3 md:h-5 bg-gray-100'></div>
 
             <div className="relative min-h-[550px] z-20 top-0">              
@@ -160,7 +162,7 @@ export default function Home() {
                   },
                   {
                     title: "SONG",
-                    subtitle: "CARELESS DREAMING",
+                    subtitle: "FEBRUARY 29TH",
                     image: actualityImage3,
                     link: "/hudba",
                     openInNewTab: false,
@@ -341,14 +343,18 @@ export default function Home() {
               </h2>
             </div>            
 
-            <div className='relative flex mx-auto w-[90%] sm:w-[85%] lg:w-[70%] z-20'>
-              <div className="relative">
-                  <Video
-                    src={andelVideo.src}
-                    controls                    
-                    className="w-full h-auto"
-                  />                  
-                </div>
+            <div className='relative flex justify-center mx-auto w-[100%] sm:w-[85%] lg:w-[70%] z-20'>
+              <div className="relative w-full">
+                <iframe 
+                  width="100%"
+                  height="550px" 
+                  src={andelVideo.src}
+                  title="YouTube video player" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"                  
+                  allowFullScreen
+                  className='mx-auto'
+                  ></iframe>                  
+              </div>
             </div>
 
             {/* Čára */}
