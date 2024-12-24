@@ -16,40 +16,40 @@ import ScrollToTopButton from "@/components/scrollToTopButton/ScrollToTopButton"
 
 const videos = [
   {
-    id: "b7OIxB2HDGs",
-    title: "WAIT - Modelka",    
+    id: "M_ugx3HzqME",
+    title: " WAIT - Horoskop (Official Music Video)",
   },
   {
-    id: "WljMWwTDTGs",
-    title: "WAIT - Horoskop",
-  },
+    id: "8Tupra8tJiY",
+    title: "WAIT - Modelka (Official Music Video)",    
+  },  
   {
     id: "OkWHNAsE0Zg",
     title: "WAIT - Nekonečnej Seriál (Live @ Erpet Prague)",
   },  
   {
-    id: "hRsuXnckAsw",
-    title: "WAIT - Hate you (Official Video)",
+    id: "OUStNRHRgjE",
+    title: "WAIT - Hate you (Official Music Video)",
   },
   {
-    id: "Ipo36dRE3Lg",
-    title: "WAIT, feat. Kristýna Štromajerová - Single",    
+    id: "Sk-D8LmeEgA",
+    title: "WAIT - Single (feat. Kristýna Štromajerová - Official Music Video)",    
   },
   {
-    id: "_FEe173jIXc",
-    title: "WAIT - Perfect Liar (Official Video)",
+    id: "2dtwW_3dxGM",
+    title: "WAIT - Perfect Liar (Official Music Video) ",
   },
   {
-    id: "q2hts3qrHR4",
-    title: "WAIT - My Guide - studio movie",
+    id: "iuyv0jPlWZg",
+    title: "WAIT - My Guide (Official Music Video)",
   },
   {
-    id: "078wBfSFHVU",
-    title: "WAIT - When you sleep (Lyrics video)",
+    id: "yCNaLnsRCR8",
+    title: "WAIT - When You Sleep (Official Lyric Video) ",
   },
   {
-    id: "Wg-iiHqOiB0",
-    title: "WAIT, Nekonečnej Seriál, unplugged session ",
+    id: "TXSluBOjNoU",
+    title: "WAIT - Live to Party (Showcase Video)",
   },
 ]
 

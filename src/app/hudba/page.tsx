@@ -49,12 +49,12 @@ const soundcloudSongs = [
 
 const appleMusicSongs = [
   { title: "February 29th", url: "https://music.apple.com/gh/album/february-29th/1479578756?i=1479579086" },
-  { title: "Achiever", url: "" }, //Todo
+  { title: "Achiever", url: "https://music.apple.com/gh/album/achiever/1122535403?i=1122535815" }, //Todo
   { title: "Losing Sleep", url: "https://music.apple.com/gh/album/losing-sleep/1479578756?i=1479578767" },
   { title: "Daydream", url: "https://music.apple.com/gh/album/daydream/1479578756?i=1479578955" },
-  { title: "Follow Me To Hell", url: "" },  //Todo
+  { title: "Follow Me To Hell", url: "https://music.apple.com/gh/album/follow-me-to-hell/1122535403?i=1122535560" },  //Todo
   { title: "Careless Dreaming", url: "https://music.apple.com/gh/album/careless-dreaming/1479578756?i=1479578960" },  
-  { title: "Hate You", url: "" }, //Todo
+  { title: "Hate You", url: "https://music.apple.com/gh/album/hate-you/1122535403?i=1122535559" }, //Todo
   { title: "Horoskop", url: "" }, //Todo
   { title: "Subway Train", url: "https://music.apple.com/gh/album/subway-train/1479578756?i=1479578770" },  
 ];
@@ -188,7 +188,7 @@ export default function MusicPage() {
                   alt="AppleMusic"
                   width={125}                  
                 />
-                <span className="text-black font-medium">Přehrát na Apple Music</span>
+                <span className="text-black font-medium">Přehrát</span>
               </Link>
               <Link
                 href={spotifyMusicSongs[modalData.index].url}
@@ -201,7 +201,7 @@ export default function MusicPage() {
                   alt="Spotify"
                   width={125}                  
                 />
-                <span className="text-black font-medium">Přehrát na Spotify</span>
+                <span className="text-black font-medium">Přehrát</span>
               </Link>
               <Link
                 href={soundcloudSongs[modalData.index].url}
@@ -214,7 +214,7 @@ export default function MusicPage() {
                   alt="Soundcloud"
                   width={150}                  
                 />
-                <span className="text-black font-medium">Přehrát na SoundCloud</span>
+                <span className="text-black font-medium">Přehrát</span>
               </Link>
             </div>
           </div>

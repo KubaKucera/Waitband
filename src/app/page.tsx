@@ -31,25 +31,25 @@ import ScrollToTopButton from '@/components/scrollToTopButton/ScrollToTopButton'
 import Video from "next-video";
 
 const kaplickaVideos = [
-  { src: ""},
-  { src: ""},
-  { src: ""},
-  { src: ""},
+  { src: "https://www.youtube.com/embed/94ErS0EZXl4"},
+  { src: "https://www.youtube.com/embed/i3amiE1rJIU?si=plU_CW32grcp6n8p"},
+  { src: "https://www.youtube.com/embed/Bi0pPz3jlk4?si=25w03c6L3VXjIDx2"},
+  { src: "https://www.youtube.com/embed/Bz7f1Q4Xp8c?si=PqoV63hz7jOo2XIQ"},
 ];
 
 const knorVideos = [
-  { src: ""},
-  { src: ""},
-  { src: ""},  
-  { src: ""},
-  { src: ""},
-  { src: ""},
-  { src: ""},
-  { src: ""},   
+  { src: "https://www.youtube.com/embed/w4Xn_DzsC6o?si=hT1F35iYWkwi7uqt"},
+  { src: "https://www.youtube.com/embed/jmPkHuh_qK8?si=nzlPS8zT90tmrKIf"},
+  { src: "https://www.youtube.com/embed/Opv4jn-G0FE?si=oaD2r-0gfSQ5sHtJ"},
+  { src: "https://www.youtube.com/embed/x1lfnG7B9tc?si=Xk0UwA21mawc4D7t"},  
+  { src: "https://www.youtube.com/embed/OXu5fyqOYZg?si=U9W1wlBrwdryj8jr"},
+  { src: "https://www.youtube.com/embed/Y6G2wKUorIQ?si=ldE_Wnh6iRigZGlj"},
+  { src: "https://www.youtube.com/embed/Q-8a308aqLc?si=6aelfnvl4PjmIb3_"},  
+  { src: "https://www.youtube.com/embed/K56O9wrh7nU?si=Cqwx9yKCB9OoT02E"},   
 ];
 
 const andelVideo = {
-  src: "https://www.youtube.com/embed/x_XWIT7Hd0Q"
+  src: "https://www.youtube.com/embed/x_XWIT7Hd0Q?si=AChedyZFClTKWaI6"
 };
 
 export default function Home() {  
@@ -222,21 +222,24 @@ export default function Home() {
 
           {/* Video Section */}
           <section className="relative h-auto bg-gray-100 p-11 mt-0 z-30">            
-            
             <div className="relative left-0 right-0 w-full mt-3 mb-7 z-10">
               <h2 className="text-black font-montserrat text-[22px] monitor:text-[24px] text-center font-bold uppercase">
                 Kaplička Fest 2024
               </h2>
             </div>            
 
-            <div className='relative grid gap-7 mx-auto w-[90%] sm:w-[85%] lg:w-[70%] grid-cols-1 sm:grid-cols-2 z-20'>
+            <div className='relative grid place-items-center gap-7 mx-auto w-[80%] grid-cols-1 sm:grid-cols-2 z-20'>
               {kaplickaVideos.map((video, index) => (
                 <div key={index} className="relative">
-                  <Video
+                  <iframe
                     src={video.src}
-                    controls                    
-                    className="w-full h-auto"
-                  />                  
+                    width={560}
+                    height={315}
+                    title={`Kaplička video ${index + 1}`}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen                    
+                  ></iframe>                 
                 </div>
               ))}
             </div>
@@ -279,21 +282,24 @@ export default function Home() {
           </section>
 
           <section id="showMiloseKnora" className="relative h-auto bg-gray-100 p-11 mt-[-40px] z-30">            
-            
             <div className="relative left-0 right-0 w-full mt-3 mb-7 z-10">
               <h2 className="text-black font-montserrat text-[22px] monitor:text-[24px] text-center font-bold uppercase">
                 Show Miloše Knora
               </h2>
             </div>            
 
-            <div className='relative grid gap-7 mx-auto w-[90%] sm:w-[85%] lg:w-[70%] grid-cols-1 sm:grid-cols-2 z-20'>
+            <div className='relative grid place-items-center gap-7 mx-auto w-[80%] grid-cols-1 sm:grid-cols-2 z-20'>
               {knorVideos.map((video, index) => (
                 <div key={index} className="relative">
-                  <Video
+                  <iframe
                     src={video.src}
-                    controls                    
-                    className="w-full h-auto"
-                  />                  
+                    width={560}
+                    height={315}
+                    title={`Knor video ${index + 1}`}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen                    
+                  ></iframe>                 
                 </div>
               ))}
             </div>
@@ -343,16 +349,14 @@ export default function Home() {
               </h2>
             </div>            
 
-            <div className='relative flex justify-center mx-auto w-[100%] sm:w-[85%] lg:w-[70%] z-20'>
-              <div className="relative w-full">
-                <iframe 
-                  width="100%"
-                  height="550px" 
+            <div className='relative flex mx-auto w-[100%] z-20'>
+              <div className="relative place-items-center w-full">
+                <iframe                   
                   src={andelVideo.src}
                   title="YouTube video player" 
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"                  
                   allowFullScreen
-                  className='mx-auto'
+                  className='w-[560px] h-[315px] sm:w-[560px] sm:h-[315px] md:w-[800px] md:h-[450px]'
                   ></iframe>                  
               </div>
             </div>
@@ -383,7 +387,7 @@ export default function Home() {
                     style={{
                       position: "absolute",
                       width: "3px",
-                      height: "450px",
+                      height: "375px",
                       marginTop: "7px",
                       top: "100%",
                       left: "50%",
