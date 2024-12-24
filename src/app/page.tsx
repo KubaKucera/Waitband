@@ -232,13 +232,12 @@ export default function Home() {
               {kaplickaVideos.map((video, index) => (
                 <div key={index} className="relative">
                   <iframe
-                    src={video.src}
-                    width={560}
-                    height={315}
+                    src={video.src}                    
                     title={`Kaplička video ${index + 1}`}
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen                    
+                    allowFullScreen
+                    className='w-[347px] h-[195px] sm:w-[347px] sm:h-[195px] md:w-[560px] md:h-[315px]'                    
                   ></iframe>                 
                 </div>
               ))}
@@ -292,13 +291,12 @@ export default function Home() {
               {knorVideos.map((video, index) => (
                 <div key={index} className="relative">
                   <iframe
-                    src={video.src}
-                    width={560}
-                    height={315}
+                    src={video.src}                    
                     title={`Knor video ${index + 1}`}
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen                    
+                    allowFullScreen  
+                    className='w-[347px] h-[195px] sm:w-[347px] sm:h-[195px] md:w-[560px] md:h-[315px]'                  
                   ></iframe>                 
                 </div>
               ))}
@@ -356,7 +354,7 @@ export default function Home() {
                   title="YouTube video player" 
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"                  
                   allowFullScreen
-                  className='w-[560px] h-[315px] sm:w-[560px] sm:h-[315px] md:w-[800px] md:h-[450px]'
+                  className='w-[347px] h-[195px] sm:w-[347px] sm:h-[195px] md:w-[560px] md:h-[315px] lg:w-[800px] lg:h-[450px]'
                   ></iframe>                  
               </div>
             </div>
