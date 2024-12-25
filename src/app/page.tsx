@@ -228,7 +228,7 @@ export default function Home() {
               </h2>
             </div>            
 
-            <div className='relative grid place-items-center gap-7 mx-auto w-[80%] grid-cols-1 sm:grid-cols-2 z-20'>
+            <div className='relative grid place-items-center gap-7 mx-auto lg:w-[80%] monitor:w-[64%] grid-cols-1 sm:grid-cols-2 z-20'>
               {kaplickaVideos.map((video, index) => (
                 <div key={index} className="relative">
                   <iframe
@@ -287,7 +287,7 @@ export default function Home() {
               </h2>
             </div>            
 
-            <div className='relative grid place-items-center gap-7 mx-auto w-[80%] grid-cols-1 sm:grid-cols-2 z-20'>
+            <div className='relative grid place-items-center gap-7 mx-auto lg:w-[80%] monitor:w-[64%] grid-cols-1 sm:grid-cols-2 z-20'>
               {knorVideos.map((video, index) => (
                 <div key={index} className="relative">
                   <iframe
@@ -347,8 +347,8 @@ export default function Home() {
               </h2>
             </div>            
 
-            <div className='relative flex mx-auto w-[100%] z-20'>
-              <div className="relative place-items-center w-full">
+            <div className='relative mx-auto w-full z-20'>
+              <div className="flex items-center justify-center w-full">
                 <iframe                   
                   src={andelVideo.src}
                   title="YouTube video player" 
