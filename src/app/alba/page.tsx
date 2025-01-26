@@ -101,7 +101,7 @@ export default function AlbumsPage() {
                 <Image 
                   src={x}
                   alt="Emoticon"                
-                  width={300}                
+                  className="2xl:w-[300px] monitor:w-[350px]"                 
                 />
               </div>
             </div> 

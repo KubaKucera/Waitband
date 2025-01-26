@@ -67,11 +67,13 @@ export default function ImageSlider() {
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 5000,
+        autoplaySpeed: 6000,
+        pauseOnHover: false,
+        pauseOnFocus: false,
+        waitForAnimate: false,
         arrows: true,        
         prevArrow: <PrevArrow />,
-        nextArrow: <NextArow />,
-        afterChange: (current: number) => setCurrentSlide(current),
+        nextArrow: <NextArow />,        
     };
 
     return(

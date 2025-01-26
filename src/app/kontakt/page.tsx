@@ -9,6 +9,8 @@ import ReCAPTCHA from "react-google-recaptcha";
 import Footer from "@/components/footer/Footer";
 import CustomCookieConsent from "@/components/cookie/CookieConsent";
 import texture from "../../../public/assets/textures/texture.jpg";
+import rightArrow from "../../../public/assets/images/graffiti/arrowRight.png";
+import leftArrow from "../../../public/assets/images/graffiti/arrowLeft.png";
 
 export default function ContactPage(){
     const [nameInput, setNameInput] = useState('');
@@ -109,7 +111,23 @@ export default function ContactPage(){
             <Navbar initialActiveLink="kontakt"/>            
             
             <div className="min-h-screen flex justify-center items-center p-16 lg:p-24 pt-24 bg-fixed bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%"}}>
-                       
+
+                <div className="fixed left-[-150px] top-[160px] rotate-15 opacity-50 hidden xl:flex">
+                    <Image 
+                        src={rightArrow}
+                        alt="Emoticon"                
+                        className="2xl:w-[265px] monitor:w-[330px]"            
+                    />
+                </div> 
+
+                <div className="fixed right-[-150px] top-[425px] opacity-50 hidden xl:flex">
+                    <Image 
+                        src={leftArrow}
+                        alt="Emoticon"                
+                        className="2xl:w-[265px] monitor:w-[330px]"            
+                    />
+                </div> 
+
                 <div className="w-[1500px] pt-8 pb-5 px-8 lg:px-16 text-center lg:ml-28 lg:mr-28 monitor:ml-52 monitor:mr-52 mb-2 border-2 rounded-xl bg-gray-50 border-gray-900">
                     <h1 className="text-3xl font-semibold font-montserrat mb-5 text-gray-900 uppercase">Kontakt</h1>
                            

@@ -19,12 +19,12 @@ export const metadata: Metadata = {
 const concertData = [
   "24.11.2024, 20:00 – Pardubice, Ateliér Klose",
   "17.1.2025, 20:30 – Praha, Rock Café",
-  "29.3.2025, 00:00 – Pardubice, divadlo",       
+  "29.3.2025, 00:00 – Pardubice, divadlo",   
 ];
 
 export default function ConsertsPage(){
     
-  const lineHeight = 150 + (concertData.length - 1) * 100;
+  const lineHeight = 150 + (concertData.length - 1) * 50;
   const lineHeightString = `${lineHeight}px`;
   
   return (
@@ -34,17 +34,21 @@ export default function ConsertsPage(){
           <HeadingWithLine lineHeight={lineHeightString} />
 
           <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden py-12">
-            
+                  
             <div
               className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
-              style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%"}}
-            ></div>      
+              style={{ backgroundImage: `url(${back.src})`, width: "100%", height: "100%"}}
+            ></div> 
 
-            <div className="fixed right-[25px] top-64 rotate-15 opacity-50 hidden xl:flex">
+            <div
+              className="absolute bg-black inset-0 z-10 opacity-70 bg-fixed bg-cover bg-center bg-no-repeat"              
+            ></div> 
+
+            <div className="fixed right-[25px] 2xl:top-64 monitor:top-80 rotate-15 opacity-50 z-20 hidden xl:flex">
               <Image 
                 src={emoticon}
                 alt="Emoticon"                
-                width={330}                
+                className="2xl:w-[330px] monitor:w-[400px]"            
               />
             </div>    
 

@@ -38,10 +38,10 @@ import HeadingWithLine from "@/components/headingWithLine/HeadingWithLine";
 import ScrollToTopButton from "@/components/scrollToTopButton/ScrollToTopButton";
 
 const images = [
-  image1, image2, image3, image4, image5, image6, image7, 
+  image24, image1, image2, image3, image4, image5, image6, image7, 
   image8, image9, image10, image11, image12, image13, 
   image14, image15, image16, image17, image18, image19, 
-  image20, image21, image22, image23, image24
+  image20, image21, image22, image23
 ];
 
 export default function PhotosPage(){
@@ -80,11 +80,11 @@ export default function PhotosPage(){
               className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
               style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%"}}
             >
-              <div className="fixed right-[-10px] transform opacity-50 -rotate-45 top-60 hidden xl:flex">
+              <div className="fixed 2xl:right-[-10px] monitor:right-[30px] transform opacity-50 -rotate-45 top-60 hidden xl:flex">
                 <Image 
                   src={arrows}
                   alt="Emoticon"                
-                  width={250}                
+                  className="2xl:w-[250px] monitor:w-[325px]"                
                 />
               </div>
             </div>             

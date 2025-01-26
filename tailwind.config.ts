@@ -28,6 +28,8 @@ const config: Config = {
       rotate: {
         '15': '15deg',
         '-15': '-15deg',
+        '25': '25deg',
+        '-25': '-25deg',
         '60': '60deg',
         '-60': '-60deg',
         '135': '135deg',

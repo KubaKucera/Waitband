@@ -97,7 +97,7 @@ export default function VideosPage(){
             <Image 
               src={mouthSmile}
               alt="Emoticon"                
-              width={330}                
+              className="2xl:w-[330px] monitor:w-[450px]"                 
             />
           </div>
         </div>        

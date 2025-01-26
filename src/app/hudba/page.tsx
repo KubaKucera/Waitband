@@ -18,10 +18,8 @@ import appleMusic from "../../../public/assets/icons/appleMusic.svg";
 import spotify from "../../../public/assets/icons/spotify.svg";
 import soundcloud from "../../../public/assets/icons/soundcloud.svg";
 import whiteFadeTexture from "../../../public/assets/textures/whiteEffect.png";
-import { SiApplemusic } from "react-icons/si";
 import dollar from "../../../public/assets/images/graffiti/dollar.png";
 import crossIcon from "../../../public/assets/images/interface/crossIcon.png";
-import { FaPlayCircle, FaSpotify, FaSoundcloud } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { Metadata } from "next";
 import CustomCookieConsent from "@/components/cookie/CookieConsent";
@@ -100,8 +98,12 @@ export default function MusicPage() {
           className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%" }}
         >
-          <div className="fixed right-[20px] top-56 opacity-50 hidden xl:flex">
-            <Image src={dollar} alt="Emoticon" width={200} />
+          <div className="fixed 2xl:right-[20px] 2xl:top-64 monitor:right-[85px] monitor:top-72 opacity-50 hidden xl:flex">
+            <Image 
+              src={dollar} 
+              alt="Emoticon" 
+              className="2xl:w-[210px] monitor:w-[270px]"           
+            />
           </div>
         </div>
 
