@@ -1,9 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import { ReactNode } from "react";
 import Slider from "react-slick";
 import image1 from "../../../public/assets/images/slider/slides/image2.jpeg";
 import image2 from "../../../public/assets/images/slider/slides/image3.jpg";
@@ -17,7 +15,7 @@ function PrevArrow({ onClick }: {onClick?: () => void }){
   return(
     <button
       type="button"
-      className="absolute left-4 top-1/2 transform -translate-y-1/2 z-30 border-[1px] border-solid border-white bg-white text-white rounded-full opacity-75 hover:opacity-100"
+      className="absolute left-4 top-1/2 transform -translate-y-1/2 z-30 border-[1px] border-solid border-white rounded-sm bg-white text-white opacity-75 hover:opacity-100"
       onClick={onClick}
     >
       <Image
@@ -35,7 +33,7 @@ function NextArow({ onClick }: {onClick?: () => void}){
   return(
     <button
       type="button"
-      className="absolute right-4 top-1/2 transform -translate-y-1/2 z-30 border-[1px] border-solid border-white bg-white text-white rounded-full opacity-75 hover:opacity-100"
+      className="absolute right-4 top-1/2 transform -translate-y-1/2 z-30 border-[1px] border-solid border-white rounded-sm bg-white text-white opacity-75 hover:opacity-100"
       onClick={onClick}
     >
       <Image

@@ -1,34 +1,23 @@
 "use client";
 
-import LoadingCircle from '@/components/loading/LoadingCircle';
 import Link from "next/link";
 import Image from "next/image";
 import Navbar from "@/components/navbar/Navbar";
 import ImageSlider from "@/components/slider/ImageSlider";
-import waitBackImage from "../../public/assets/images/background/backNoTitle.jpg";
-import fadeEffectTexture from "../../public/assets/textures/fadeEffect.png";
 import texture from "../../public/assets/textures/texture.jpg";
 import Head from 'next/head';
 
-import { useState, useEffect, useRef } from "react";
-import { FaArrowsAlt, FaSoundcloud, FaPlayCircle, FaAngleDoubleDown } from "react-icons/fa";
-import { FaCompress } from "react-icons/fa";
+import { useState} from "react";
+import { FaAngleDoubleDown } from "react-icons/fa";
 import actualityImage1 from "../../public/assets/images/home/actuality1.jpg";
 import actualityImage2 from "../../public/assets/images/albums/album4.jpg";
 import actualityImage3 from "../../public/assets/images/music/february29th.jpg";
-import waitLogoBlack from "../../public/assets/images/home/waitLogoBlack.png";
-import frequency from "../../public/assets/images/home/frequency.png";
-import whiteEffectTexture from "../../public/assets/textures/whiteEffect.png";
 import excMark from "../../public/assets/images/graffiti/excMark.png";
 import Newsletter from "@/components/newsletter/Newsletter";
 import Footer from "@/components/footer/Footer";
 import CustomCookieConsent from "@/components/cookie/CookieConsent";
-import logoWhiteTitle from "../../public/assets/images/home/waitLogoWhiteTitle.png";
 import VideoModal from "@/components/videoModal/VideoModal";
-import { Metadata } from "next";
-import HeadingWithLine from '@/components/headingWithLine/HeadingWithLine';
 import ScrollToTopButton from '@/components/scrollToTopButton/ScrollToTopButton';
-import Video from "next-video";
 
 const kaplickaVideos = [
   { src: "https://www.youtube.com/embed/94ErS0EZXl4"},
@@ -133,7 +122,7 @@ export default function Home() {
                     className="bg-gray-300 animate-grow"
                     style={{
                       position: "absolute",
-                      width: "3px",
+                      width: "1px",
                       height: "350px",
                       marginTop: "7px",
                       top: "100%",
@@ -192,7 +181,7 @@ export default function Home() {
                           alt={item.title}
                           layout="fill"
                           objectFit="cover"
-                          className="rounded-md border-[3px] border-white transition-all duration-300"
+                          className="rounded-md border-[2px] border-white transition-all duration-300"
                         />
                       </Link>
                       
@@ -268,7 +257,7 @@ export default function Home() {
                     className="bg-gray-800 animate-grow"
                     style={{
                       position: "absolute",
-                      width: "3px",
+                      width: "2px",
                       height: "490px",
                       marginTop: "7px",
                       top: "100%",
@@ -327,7 +316,7 @@ export default function Home() {
                     className="bg-gray-800 animate-grow"
                     style={{
                       position: "absolute",
-                      width: "3px",
+                      width: "2px",
                       height: "1000px",
                       marginTop: "7px",
                       top: "100%",
@@ -384,7 +373,7 @@ export default function Home() {
                     className="bg-gray-800 animate-grow"
                     style={{
                       position: "absolute",
-                      width: "3px",
+                      width: "2px",
                       height: "375px",
                       marginTop: "7px",
                       top: "100%",

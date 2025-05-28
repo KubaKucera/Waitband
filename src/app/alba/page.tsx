@@ -1,15 +1,9 @@
-import Link from "next/link";
 import Image from "next/image";
 import Navbar from "@/components/navbar/Navbar";
 import texture from "../../../public/assets/textures/texture.jpg";
-import album1 from "../../../public/assets/images/albums/album1.jpg";
-import album2 from "../../../public/assets/images/albums/album4.jpg";
-import album3 from "../../../public/assets/images/albums/album3.jpg";
-import back from "../../../public/assets/images/videos/back.png";
 import x from "../../../public/assets/images/graffiti/x.png";
 import Footer from "@/components/footer/Footer";
 import CustomCookieConsent from "@/components/cookie/CookieConsent";
-import { FaAngleDoubleDown, FaPlayCircle, FaSoundcloud } from 'react-icons/fa';
 import { Metadata } from "next";
 import HeadingWithLine from "@/components/headingWithLine/HeadingWithLine";
 
@@ -85,11 +79,11 @@ export default function AlbumsPage() {
           <section className="relative min-h-screen flex flex-col items-center gap-8 pt-20 pb-20 py-10 bg-gray-900">
             
             <div className="absolute pt-3 left-0 right-0 w-full z-10">
-              <h2 className="text-gray-100 font-montserrat text-[22px] monitor:text-[24px] text-center font-bold uppercase">
+              <h2 className="text-gray-100 font-montserrat text-[22px] monitor:text-[24px] text-center font-normal uppercase">
                 Přehled alb
               </h2>
             </div>
-            <p className="text-lightGray text-center text-lg max-w-3xl pt-14 z-10 leading-6">
+            <p className="text-gray-400 text-center text-lg max-w-3xl pt-14 z-10 leading-6">
               Ukázky skladeb v níže uvedených albech jsou časově omezeny. 
               Pro plný poslech se prosím přihlaste do svého účtu na Spotify.
             </p>

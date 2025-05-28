@@ -17,11 +17,9 @@ import texture from "../../../public/assets/textures/texture.jpg";
 import appleMusic from "../../../public/assets/icons/appleMusic.svg";
 import spotify from "../../../public/assets/icons/spotify.svg";
 import soundcloud from "../../../public/assets/icons/soundcloud.svg";
-import whiteFadeTexture from "../../../public/assets/textures/whiteEffect.png";
 import dollar from "../../../public/assets/images/graffiti/dollar.png";
 import crossIcon from "../../../public/assets/images/interface/crossIcon.png";
 import { useEffect, useState } from "react";
-import { Metadata } from "next";
 import CustomCookieConsent from "@/components/cookie/CookieConsent";
 import HeadingWithLine from "@/components/headingWithLine/HeadingWithLine";
 
@@ -82,9 +80,13 @@ export default function MusicPage() {
       title: soundcloudSongs[index].title,
       index,
     });
+    document.body.style.overflow = 'hidden'; // zakáže scroll
   };
 
-  const closeModal = () => setModalData(null);
+  const closeModal = () => {
+    setModalData(null);
+    document.body.style.overflow = ''; // povolí scroll zpět
+  };
 
   return (
     <>
@@ -109,13 +111,13 @@ export default function MusicPage() {
 
         {/* Title */}
         <div className="absolute pt-3 left-0 right-0 w-full z-10">
-          <h2 className="text-gray-100 font-montserrat text-[22px] monitor:text-[24px] text-center font-bold uppercase">
+          <h2 className="text-gray-100 font-montserrat text-[22px] monitor:text-[24px] text-center font-normal uppercase">
             Výběr top songů
           </h2>
         </div>
 
         {/* Image Grid */}
-        <div className="container mx-auto mt-20 mb-16 flex items-center justify-center relative">
+        <div className="container mx-auto mt-20 mb-10 flex items-center justify-center relative">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols gap-6">
             {images.map((image, index) => (
               <div
@@ -136,11 +138,23 @@ export default function MusicPage() {
             ))}
           </div>
         </div>
+
+        <div className="flex justify-center mb-[25px]">
+          <Link href="/alba" rel="noopener noreferrer" passHref>
+            <button className="w-[300px] h-[50px] tracking-wide bg-transparent text-gray-200 border-[3px] rounded-lg font-bold border-blue-500 hover:border-blue-500 uppercase transition-all duration-500 ease-in-out transform hover:text-blue-500 hover:opacity-100">
+              Přejít na alba
+            </button>
+          </Link>
+        </div>
       </section>
 
       {modalData && (
         <div 
-          onClick={closeModal}
+          onClick={(e) => {
+            e.preventDefault(); 
+            e.stopPropagation(); 
+            closeModal();
+          }}
           className="fixed inset-0 bg-white bg-opacity-80 backdrop-blur-xl z-50 flex flex-col items-center justify-center"        
         >
           {/* Close Button */}
@@ -167,7 +181,7 @@ export default function MusicPage() {
             />
           </div>
 
-          <div className="space-y-[-3px] mb-3">
+          <div className="space-y-[-3px] mb-[30px]">
             <h2 className="text-black text-xl font-bold text-center">{modalData.title}</h2>
             <p className="text-center text-gray-700">Vyber hudební službu</p>
           </div>          

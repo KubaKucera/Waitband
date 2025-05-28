@@ -1,16 +1,12 @@
-import Link from "next/link";
 import Image from "next/image";
 import Navbar from "@/components/navbar/Navbar";
 import ivanImage from "../../../public/assets/images/band/ivan.jpg";
 import pavelImage from "../../../public/assets/images/band/pavel.jpg";
 import martinaImage from  "../../../public/assets/images/band/martina.jpg";
 import marekImage from  "../../../public/assets/images/band/marek.jpg";
-import back from "../../../public/assets/images/band/back.png";
 import texture from "../../../public/assets/textures/texture.jpg";
-import fadeWhiteEffect from "../../../public/assets/images/band/effect.png";
 import emoticon from "../../../public/assets/images/graffiti/emoticon2.png";
 import Footer from "@/components/footer/Footer";
-import { FaArrowUp } from "react-icons/fa"; 
 import CustomCookieConsent from "@/components/cookie/CookieConsent";
 import { Metadata } from "next";
 import HeadingWithLine from "@/components/headingWithLine/HeadingWithLine";

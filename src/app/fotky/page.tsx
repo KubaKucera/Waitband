@@ -30,7 +30,6 @@ import image23 from "../../../public/assets/images/photos/image23.jpeg";
 import image24 from "../../../public/assets/images/photos/image24.jpg";
 import crossIcon from "../../../public/assets/images/interface/crossIcon.png";
 import texture from "../../../public/assets/textures/texture.jpg";
-import whiteFadeTexture from "../../../public/assets/textures/whiteEffect.png";
 import arrows from "../../../public/assets/images/graffiti/arrows.png";
 import CustomCookieConsent from "@/components/cookie/CookieConsent";
 import { useState, useEffect } from "react";
@@ -116,7 +115,7 @@ export default function PhotosPage(){
             
             <div className="flex justify-center mt-[-85px]">
               <button
-                className={`w-full max-w-[950px] h-[50px] z-20 ml-14 mr-14 md:ml-20 md:mr-20 lg:ml-0 lg:mr-0 sm:ml-28 sm:mr-28 border-gray-400 border-[3px] text-gray-400 transition-all duration-500 ease-in-out transform hover:border-white hover:text-white font-bold uppercase rounded-lg ${buttonDisabled ? "opacity-50 cursor-not-allowed" : ""}`}
+                className={`w-full max-w-[950px] h-[50px] tracking-wide z-20 ml-14 mr-14 md:ml-20 md:mr-20 lg:ml-0 lg:mr-0 sm:ml-28 sm:mr-28 border-gray-400 border-[3px] text-gray-400 transition-all duration-500 ease-in-out transform hover:border-white hover:text-white font-bold uppercase rounded-lg ${buttonDisabled ? "opacity-50 cursor-not-allowed" : ""}`}
                 onClick={handleShowMore}
                 disabled={buttonDisabled}
               >
@@ -150,7 +149,7 @@ export default function PhotosPage(){
 
             <div className="flex justify-center mt-[20px] mb-[30px] h-[50px]">
               <Link href="https://www.instagram.com/wait_band_official/" rel="noopener noreferrer" target='_blank' passHref>
-                <button className="px-14 py-[9px] bg-transparent text-gray-200 border-[3px] rounded-lg font-bold border-blue-500 hover:border-blue-500 uppercase transition-all duration-500 ease-in-out transform hover:text-blue-500 hover:opacity-100">
+                <button className="w-[300px] h-[50px] tracking-wide bg-transparent text-gray-200 border-[3px] rounded-lg font-bold border-blue-500 hover:border-blue-500 uppercase transition-all duration-500 ease-in-out transform hover:text-blue-500 hover:opacity-100">
                   Přejít na instagram
                 </button>
               </Link>

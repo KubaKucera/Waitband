@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import logo from "../../../public/assets/images/navbar/logo.jpg"
-import { FaFacebookF, FaInstagram, FaSoundcloud, FaYoutube, FaApple, FaSpotify, FaTwitter } from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaSoundcloud, FaYoutube, FaApple, FaSpotify } from "react-icons/fa";
 
 export default function Footer(){
     return(

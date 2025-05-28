@@ -31,7 +31,7 @@ const HeadingWithLine = ({ lineHeight = "0" }: HeadingWithLineProps) => {
                     className="bg-gray-300 animate-grow"
                     style={{
                         position: "absolute",
-                        width: "3px",
+                        width: "1px",
                         height: lineHeight,
                         marginTop: "7px",
                         top: "100%",

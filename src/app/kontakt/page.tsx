@@ -3,7 +3,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { ReactNode } from "react";
 import Navbar from "@/components/navbar/Navbar";
 import ReCAPTCHA from "react-google-recaptcha";
 import Footer from "@/components/footer/Footer";
@@ -110,7 +109,7 @@ export default function ContactPage(){
             <CustomCookieConsent />
             <Navbar initialActiveLink="kontakt"/>            
             
-            <div className="min-h-screen flex justify-center items-center p-16 lg:p-24 pt-24 bg-fixed bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%"}}>
+            <div className="min-h-screen flex justify-center items-center p-16 lg:p-24 pt-20 pb-10 sm:pb-10 md:pb-14 lg:pb-14 xl:pb-14 monitor:pb-14 bg-fixed bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%"}}>
 
                 <div className="fixed left-[-150px] top-[160px] rotate-15 opacity-50 hidden xl:flex">
                     <Image 
@@ -128,10 +127,10 @@ export default function ContactPage(){
                     />
                 </div> 
 
-                <div className="w-[1500px] pt-8 pb-5 px-8 lg:px-16 text-center lg:ml-28 lg:mr-28 monitor:ml-52 monitor:mr-52 mb-2 border-2 rounded-xl bg-gray-50 border-gray-900">
+                <div className="w-[1500px] pt-8 pb-5 px-16 lg:px-16 text-center lg:ml-28 lg:mr-28 monitor:ml-52 monitor:mr-52 mb-2 border-2 rounded-xl bg-gray-50 border-gray-900">
                     <h1 className="text-3xl font-semibold font-montserrat mb-5 text-gray-900 uppercase">Kontakt</h1>
                            
-                    <p className="text-xl leading-relaxed max-w-4xl mx-auto text-center px-5 mb-2 font-semibold text-gray-600">
+                    <p className="text-xl max-w-4xl leading-relaxed mx-auto text-center mb-2 font-semibold text-gray-600">
                         V případě zájmu nás kontaktujte pomocí vyplnění a odeslání formuláře. 
                     </p>
 

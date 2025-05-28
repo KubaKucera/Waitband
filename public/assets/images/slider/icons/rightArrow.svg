@@ -1,17 +1,24 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-<svg width="800px" height="800px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-    
-    <title>arrow-right-circle</title>
-    <desc>Created with Sketch Beta.</desc>
-    <defs>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Vrstva_1" data-name="Vrstva 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 801 801">
+  <defs>
+    <style>
+      .cls-1 {
+        stroke: #000;
+        stroke-miterlimit: 10;
+      }
 
-</defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-        <g id="Icon-Set-Filled" sketch:type="MSLayerGroup" transform="translate(-310.000000, -1089.000000)" fill="#000000">
-            <path d="M332.535,1105.88 L326.879,1111.54 C326.488,1111.93 325.855,1111.93 325.465,1111.54 C325.074,1111.15 325.074,1110.51 325.465,1110.12 L329.586,1106 L319,1106 C318.447,1106 318,1105.55 318,1105 C318,1104.45 318.447,1104 319,1104 L329.586,1104 L325.465,1099.88 C325.074,1099.49 325.074,1098.86 325.465,1098.46 C325.855,1098.07 326.488,1098.07 326.879,1098.46 L332.535,1104.12 C332.775,1104.36 332.85,1104.69 332.795,1105 C332.85,1105.31 332.775,1105.64 332.535,1105.88 L332.535,1105.88 Z M326,1089 C317.163,1089 310,1096.16 310,1105 C310,1113.84 317.163,1121 326,1121 C334.837,1121 342,1113.84 342,1105 C342,1096.16 334.837,1089 326,1089 L326,1089 Z" id="arrow-right-circle" sketch:type="MSShapeGroup">
-
-</path>
-        </g>
+      .cls-2 {
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <g id="Page-1">
+    <g id="Icon-Set-Filled">
+      <path id="arrow-right-circle" class="cls-2" d="M563.88,422.5l-141.4,141.5c-9.77,9.75-25.6,9.75-35.35,0-9.77-9.75-9.77-25.75,0-35.5l103.03-103H225.5c-13.83,0-25-11.25-25-25s11.17-25,25-25h264.65l-103.03-103c-9.77-9.75-9.77-25.5,0-35.5,9.75-9.75,25.58-9.75,35.35,0l141.4,141.5c6,6,7.88,14.25,6.5,22,1.37,7.75-.5,16-6.5,22h0ZM400.5.5C179.57.5.5,179.5.5,400.5s179.07,400,400,400,400-179,400-400S621.43.5,400.5.5h0Z"/>
     </g>
+  </g>
+  <rect class="cls-1" x=".5" y=".5" width="188" height="800"/>
+  <rect class="cls-1" x="612.5" y=".5" width="188" height="800"/>
+  <rect class="cls-1" x="149.5" y=".5" width="473" height="137"/>
+  <rect class="cls-1" x="163.5" y="663.5" width="473" height="137"/>
 </svg>

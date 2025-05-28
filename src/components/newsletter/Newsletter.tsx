@@ -1,10 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import heart from "../../../public/assets/images/graffiti/heart.png";
-import smile from "../../../public/assets/images/graffiti/smileEmoticon.png";
 
 export default function Newsletter(){
     const[email, setEmail] = useState("");
@@ -12,39 +11,45 @@ export default function Newsletter(){
     const[error, setError] = useState("");
     const[success, setSuccess] = useState("");
 
-    const handleSubmit = async (e:any) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        if(!answer){
+        if (!email.includes("@")) {
+          setError("Zadejte platný email.");
+        }
+
+        if (!answer) {
             setError("Vyberte, jak se máte.")
             return;
         }
 
-        try{
+        setError("");
+        setSuccess("");
+
+        try {
             const res = await fetch("/api/subscribe", {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ email }),
+                body: JSON.stringify({ email, answer }),
             });
 
-            if(res.ok){
+            if (res.ok){
                 setSuccess("Email úspěšně odeslán!");
                 setEmail("");
-                setAnswer("");
-                setError("");
-            } else{
-                setError("Něco se nepodařilo, zkuste to znovu.");
+                setAnswer("");                
+            }else {
+                const data = await res.json();
+                setError(data.error || "Něco se nepodařilo, zkuste to znovu.");
             }
-        }catch (error)
-        {
-            setError("Něco se nepodařilo, zkuste to znovu.");
+        } catch (error) {        
+            setError("Chyba připojení, zkuste to znovu.");
         }
     };
 
     return (
-      <div className="relative bg-gray-900 bg-center bg-fixed bg-cover bg-no-repeat pt-8 pb-11 md:px-10 w-full h-auto mx-auto shadow-md flex flex-col items-center text-white overflow-hidden z-20">
+      <div className="relative bg-gray-900 bg-center bg-fixed bg-cover bg-no-repeat pt-8 pb-11 px-10 md:px-10 w-full h-auto mx-auto shadow-md flex flex-col items-center text-white overflow-hidden z-20">
         
         <div className="relative w-full h-auto overflow-hidden z-20">
           <div className="fixed left-[5px] top-[450px] opacity-50 hidden xl:flex pointer-events-none z-20">

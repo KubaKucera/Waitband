@@ -1,17 +1,24 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-<svg width="800px" height="800px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-    
-    <title>arrow-left-circle</title>
-    <desc>Created with Sketch Beta.</desc>
-    <defs>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Vrstva_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 801 801">
+  <defs>
+    <style>
+      .cls-1 {
+        stroke: #000;
+        stroke-miterlimit: 10;
+      }
 
-</defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-        <g id="Icon-Set-Filled" sketch:type="MSLayerGroup" transform="translate(-258.000000, -1089.000000)" fill="#000000">
-            <path d="M281,1106 L270.414,1106 L274.536,1110.12 C274.926,1110.51 274.926,1111.15 274.536,1111.54 C274.145,1111.93 273.512,1111.93 273.121,1111.54 L267.464,1105.88 C267.225,1105.64 267.15,1105.31 267.205,1105 C267.15,1104.69 267.225,1104.36 267.464,1104.12 L273.121,1098.46 C273.512,1098.07 274.145,1098.07 274.536,1098.46 C274.926,1098.86 274.926,1099.49 274.536,1099.88 L270.414,1104 L281,1104 C281.552,1104 282,1104.45 282,1105 C282,1105.55 281.552,1106 281,1106 L281,1106 Z M274,1089 C265.164,1089 258,1096.16 258,1105 C258,1113.84 265.164,1121 274,1121 C282.836,1121 290,1113.84 290,1105 C290,1096.16 282.836,1089 274,1089 L274,1089 Z" id="arrow-left-circle" sketch:type="MSShapeGroup">
-
-</path>
-        </g>
+      .cls-2 {
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <g id="Page-1">
+    <g id="Icon-Set-Filled">
+      <path id="arrow-left-circle" class="cls-2" d="M575.5,425.5h-264.65l103.05,103c9.75,9.75,9.75,25.75,0,35.5-9.78,9.75-25.6,9.75-35.38,0l-141.43-141.5c-5.97-6-7.85-14.25-6.48-22-1.37-7.75.5-16,6.48-22l141.43-141.5c9.77-9.75,25.6-9.75,35.38,0,9.75,10,9.75,25.75,0,35.5l-103.05,103h264.65c13.8,0,25,11.25,25,25s-11.2,25-25,25h0ZM400.5.5C179.6.5.5,179.5.5,400.5s179.1,400,400,400,400-179,400-400S621.4.5,400.5.5h0Z"/>
     </g>
+  </g>
+  <rect class="cls-1" x=".5" y=".5" width="200" height="800"/>
+  <rect class="cls-1" x="612.5" y=".5" width="188" height="800"/>
+  <rect class="cls-1" x=".5" y=".5" width="798.63" height="91"/>
+  <rect class="cls-1" x="1.87" y="709.5" width="797.27" height="91"/>
 </svg>

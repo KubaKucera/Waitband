@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { FaFacebookF, FaTwitter, FaInstagram, FaSoundcloud, FaYoutube, FaTimes, FaBars } from 'react-icons/fa';
+import { FaTimes, FaBars } from 'react-icons/fa';
 import title from "../../../public/assets/images/navbar/waitTitle.png";
 import { useEffect, useState } from "react";
 import { FaFilePdf } from "react-icons/fa";

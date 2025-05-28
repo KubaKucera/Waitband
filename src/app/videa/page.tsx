@@ -1,18 +1,16 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import Navbar from "@/components/navbar/Navbar";
-import back from "../../../public/assets/images/videos/back.png";
 import CustomCookieConsent from "@/components/cookie/CookieConsent";
 import texture from "../../../public/assets/textures/texture.jpg";
 import mouthSmile from "../../../public/assets/images/graffiti/mouthSmile.png";
 import { useState, useRef, useEffect } from "react";
 import { FaPlayCircle } from "react-icons/fa";
 import Footer from "@/components/footer/Footer";
-import { FaArrowUp } from "react-icons/fa";
 import HeadingWithLine from "@/components/headingWithLine/HeadingWithLine";
 import ScrollToTopButton from "@/components/scrollToTopButton/ScrollToTopButton";
+import Link from "next/link";
 
 const videos = [
   {
@@ -56,7 +54,7 @@ const videos = [
 export default function VideosPage(){  
   const [selectedVideo, setSelectedVideo] = useState(videos[0].id);
   const [selectedTitle, setSelectedTitle] = useState(videos[0].title);
-  const [currentPlayingVideoId, setCurrentPlayingVideoId] = useState<string>(videos[0].id); // Pro sledování právě přehrávaného videa
+  const [currentPlayingVideoId, setCurrentPlayingVideoId] = useState<string>(videos[0].id);
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
 
   useEffect(() => {
@@ -64,13 +62,12 @@ export default function VideosPage(){
   }, []);  
 
   const handleVideoClick = (id: string, title: string) => {
-    if (id === currentPlayingVideoId) return; // Pokud video již hraje, neumožníme přehrát ho znovu
+    if (id === currentPlayingVideoId) return;
 
     setSelectedVideo(id);
     setSelectedTitle(title);
-    setCurrentPlayingVideoId(id); // Nastav aktuálně přehrávané video
-
-    // Přehrát video
+    setCurrentPlayingVideoId(id);
+    
     if (iframeRef.current) {
       iframeRef.current.src = "";
       setTimeout(() => {
@@ -150,6 +147,14 @@ export default function VideosPage(){
             </div>
           ))}
         </div>  
+
+        <div className="flex justify-center mt-[30px] mb-[-20px] h-[50px]">
+          <Link href="https://www.youtube.com/@waitbandofficial6520/videos" rel="noopener noreferrer" target='_blank' passHref>
+            <button className="w-[300px] h-[50px] tracking-wide bg-transparent text-gray-200 border-[3px] rounded-lg font-bold border-blue-500 hover:border-blue-500 uppercase transition-all duration-500 ease-in-out transform hover:text-blue-500 hover:opacity-100">
+              všechna videa
+            </button>
+          </Link>
+        </div> 
       </section>
 
       <Footer />
