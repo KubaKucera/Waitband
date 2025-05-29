@@ -21,15 +21,16 @@ const concertData = [
 ];
 
 export default function ConsertsPage(){
-    
+   
+  /*
   const lineHeight = 150 + (concertData.length - 1) * 50;
-  const lineHeightString = `${lineHeight}px`;
+  const lineHeightString = `${lineHeight}px`;*/
   
   return (
         <>
           <CustomCookieConsent />
           <Navbar initialActiveLink="koncerty"/>  
-          <HeadingWithLine lineHeight={lineHeightString} />
+          <HeadingWithLine lineHeight="400px" />
 
           <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden py-12">
                   

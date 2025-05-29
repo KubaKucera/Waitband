@@ -18,6 +18,7 @@ import Footer from "@/components/footer/Footer";
 import CustomCookieConsent from "@/components/cookie/CookieConsent";
 import VideoModal from "@/components/videoModal/VideoModal";
 import ScrollToTopButton from '@/components/scrollToTopButton/ScrollToTopButton';
+import { motion } from "framer-motion";
 
 const kaplickaVideos = [
   { src: "https://www.youtube.com/embed/94ErS0EZXl4"},
@@ -105,31 +106,26 @@ export default function Home() {
                   left: "13px",
                 }}
               >
-                <div
-                  className="relative"
-                  style={{          
-                  transformOrigin: "top left",
-                  }}
-                >
-                  {/* Nadpis */}
-                  <h2
-                    className="text-neonPink font-bold italic uppercase"          
+                <div className="relative flex flex-col items-center">
+                  {/* Nadpis s ikonou */}
+                  <motion.div
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
+                    className="text-neonPink"
                   >
-                    <FaAngleDoubleDown className="text-left text-[32px] font-semibold text-neonPink"/>
-                  </h2>
-                  {/* Čára pod nadpisem */}
-                  <div
-                    className="bg-gray-300 animate-grow"
-                    style={{
-                      position: "absolute",
-                      width: "1px",
-                      height: "350px",
-                      marginTop: "7px",
-                      top: "100%",
-                      left: "50%",
-                      transform: "translateX(-50%)",
-                    }}
-                  ></div>
+                    <FaAngleDoubleDown
+                      className="text-[32px] text-neonPink drop-shadow-[0_0_6px_#ff4dcf] transition-transform duration-300 hover:scale-110"
+                    />
+                  </motion.div>
+
+                  {/* Čára */}
+                  <motion.div
+                    initial={{ height: 0 }}
+                    animate={{ height: "350px" }}
+                    transition={{ duration: 1, ease: "easeInOut" }}
+                    className="w-[2px] mt-2 bg-gradient-to-b from-pink-400 via-pink-300 to-pink-500 animate-pulse"
+                  />
                 </div>
               </div>              
 
@@ -230,43 +226,7 @@ export default function Home() {
                   ></iframe>                 
                 </div>
               ))}
-            </div>
-
-            {/* Čára */}
-            <div
-                className="absolute z-30 hidden xl:flex"
-                style={{
-                  top: "75px",
-                  left: "13px",
-                }}
-              >
-                <div
-                  className="relative"
-                  style={{          
-                  transformOrigin: "top left",
-                  }}
-                >
-                  {/* Nadpis */}
-                  <h2
-                    className="text-neonPink font-bold italic uppercase"          
-                  >
-                    <FaAngleDoubleDown className="text-left text-[32px] font-semibold text-neonPink"/>
-                  </h2>
-                  {/* Čára pod nadpisem */}
-                  <div
-                    className="bg-gray-800 animate-grow"
-                    style={{
-                      position: "absolute",
-                      width: "2px",
-                      height: "490px",
-                      marginTop: "7px",
-                      top: "100%",
-                      left: "50%",
-                      transform: "translateX(-50%)",
-                    }}
-                  ></div>
-                </div>
-              </div>           
+            </div>      
           </section>
 
           <section id="showMiloseKnora" className="relative h-auto bg-gray-100 p-11 mt-[-40px] z-30">            
@@ -289,43 +249,7 @@ export default function Home() {
                   ></iframe>                 
                 </div>
               ))}
-            </div>
-
-            {/* Čára */}
-            <div
-                className="absolute z-30 hidden xl:flex"
-                style={{
-                  top: "75px",
-                  left: "13px",
-                }}
-              >
-                <div
-                  className="relative"
-                  style={{          
-                  transformOrigin: "top left",
-                  }}
-                >
-                  {/* Nadpis */}
-                  <h2
-                    className="text-neonPink font-bold italic uppercase"          
-                  >
-                    <FaAngleDoubleDown className="text-left text-[32px] font-semibold text-neonPink"/>
-                  </h2>
-                  {/* Čára pod nadpisem */}
-                  <div
-                    className="bg-gray-800 animate-grow"
-                    style={{
-                      position: "absolute",
-                      width: "2px",
-                      height: "1000px",
-                      marginTop: "7px",
-                      top: "100%",
-                      left: "50%",
-                      transform: "translateX(-50%)",
-                    }}
-                  ></div>
-                </div>
-              </div>           
+            </div>                       
           </section>
 
           <section className="relative h-auto bg-gray-100 p-11 pb-11 sm:pb-0 md:pb-16 mt-[-40px] z-30">            
@@ -346,43 +270,7 @@ export default function Home() {
                   className='w-[347px] h-[195px] sm:w-[347px] sm:h-[195px] md:w-[560px] md:h-[315px] lg:w-[800px] lg:h-[450px]'
                   ></iframe>                  
               </div>
-            </div>
-
-            {/* Čára */}
-            <div
-                className="absolute z-30 hidden xl:flex"
-                style={{
-                  top: "75px",
-                  left: "13px",
-                }}
-              >
-                <div
-                  className="relative"
-                  style={{          
-                  transformOrigin: "top left",
-                  }}
-                >
-                  {/* Nadpis */}
-                  <h2
-                    className="text-neonPink font-bold italic uppercase"          
-                  >
-                    <FaAngleDoubleDown className="text-left text-[32px] font-semibold text-neonPink"/>
-                  </h2>
-                  {/* Čára pod nadpisem */}
-                  <div
-                    className="bg-gray-800 animate-grow"
-                    style={{
-                      position: "absolute",
-                      width: "2px",
-                      height: "375px",
-                      marginTop: "7px",
-                      top: "100%",
-                      left: "50%",
-                      transform: "translateX(-50%)",
-                    }}
-                  ></div>
-                </div>
-              </div>           
+            </div>                       
           </section>
 
           <VideoModal showModal={showModal} videoUrl={videoUrl} onClose={handleClose} />
