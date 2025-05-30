@@ -43,120 +43,119 @@ const images = [
   image20, image21, image22, image23
 ];
 
-export default function PhotosPage(){
+export default function PhotosPage() {
   const [showMore, setShowMore] = useState(false);
   const [buttonDisabled, setButtonDisabled] = useState(false);
-  const [showScroll, setShowScroll] = useState(false);    
-  const [selectedImage, setSelectedImage] = useState(null);
-
-  const handleImageClick = (image: any) => {
-    setSelectedImage(image);
-  };
-
-  const closeModal = () => {
-    setSelectedImage(null);
-  };
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   useEffect(() => {
-    document.title = "Fotky - Wait"
+    document.title = "Fotky - Wait";
   }, []);
 
   const handleShowMore = () => {
     setShowMore(true);
-    setButtonDisabled(true); // Tlačítko bude po kliknutí neaktivní
-  };  
-  
+    setButtonDisabled(true);
+  };
+
+  const closeModal = () => setSelectedIndex(null);
+  const goToNext = () => setSelectedIndex((prev) => (prev !== null && prev < images.length - 1 ? prev + 1 : prev));
+  const goToPrev = () => setSelectedIndex((prev) => (prev !== null && prev > 0 ? prev - 1 : prev));
+
   return (
-        <>
-          <CustomCookieConsent />
-          <Navbar initialActiveLink="fotky"/>    
-          <HeadingWithLine lineHeight="800px" />
-          <ScrollToTopButton />
+    <>
+      <CustomCookieConsent />
+      <Navbar initialActiveLink="fotky" />
+      <HeadingWithLine lineHeight="800px" />
+      <ScrollToTopButton />
 
-          <section className="relative h-auto py-10">
+      <section className="relative h-auto py-10">
+        <div className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${texture.src})` }}>
+          <div className="fixed 2xl:right-[-10px] monitor:right-[30px] transform opacity-50 -rotate-45 top-60 hidden xl:flex">
+            <Image src={arrows} alt="Emoticon" className="2xl:w-[250px] monitor:w-[325px]" />
+          </div>
+        </div>
 
-            <div
-              className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
-              style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%"}}
-            >
-              <div className="fixed 2xl:right-[-10px] monitor:right-[30px] transform opacity-50 -rotate-45 top-60 hidden xl:flex">
-                <Image 
-                  src={arrows}
-                  alt="Emoticon"                
-                  className="2xl:w-[250px] monitor:w-[325px]"                
+        <div className="container mx-auto px-4 flex justify-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-24 pb-24 place-items-center">
+            {images.slice(0, showMore ? images.length : 9).map((image, index) => (
+              <div
+                key={index}
+                className="relative w-[340px] h-[340px] md:w-[300px] md:h-[300px] overflow-hidden cursor-pointer"
+                onClick={() => setSelectedIndex(index)}
+              >
+                <Image
+                  src={image}
+                  alt={`Photo ${index + 1}`}
+                  layout="fill"
+                  objectFit="cover"
+                  className="transition-all duration-300 ease-in-out transform hover:scale-110"
                 />
               </div>
-            </div>             
+            ))}
+          </div>
+        </div>
 
-            <div className="container mx-auto px-4 flex justify-center">
-              {/* Grid obrázků */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-24 pb-24 place-items-center">
-                {images.slice(0, 9).map((image, index) => (
-                  <div 
-                    key={index} 
-                    className="relative w-[340px] h-[340px] md:w-[300px] md:h-[300px] overflow-hidden cursor-pointer"
-                    onClick={() => handleImageClick(image)}
-                  >
-                    <Image src={image} alt={`Photo ${index + 1}`} layout="fill" objectFit="cover" className="transition-all duration-300 ease-in-out transform hover:scale-110" />
-                  </div>
-                ))}
+        <div className="flex justify-center mt-[-85px]">
+          <button
+            className={`w-full max-w-[950px] h-[50px] tracking-wide z-20 ml-14 mr-14 md:ml-20 md:mr-20 lg:ml-0 lg:mr-0 sm:ml-28 sm:mr-28 border-gray-400 border-[3px] text-gray-400 transition-all duration-500 ease-in-out transform hover:border-white hover:text-white font-bold uppercase rounded-lg ${buttonDisabled ? "opacity-50 cursor-not-allowed" : ""}`}
+            onClick={handleShowMore}
+            disabled={buttonDisabled}
+          >
+            {buttonDisabled ? "Všechny fotky zobrazeny" : "Zobrazit více fotek"}
+          </button>
+        </div>
 
-                {showMore && images.slice(9).map((image, index) => (
-                  <div 
-                    key={index + 9} 
-                    className="relative w-[340px] h-[340px] md:w-[300px] md:h-[300px] overflow-hidden cursor-pointer"
-                    onClick={() => handleImageClick(image)}
-                  >
-                    <Image src={image} alt={`Photo ${index + 10}`} layout="fill" objectFit="cover" className="transition-all duration-300 ease-in-out transform hover:scale-110" />
-                  </div>
-                ))}
-              </div>                
-            </div>
-            
-            <div className="flex justify-center mt-[-85px]">
-              <button
-                className={`w-full max-w-[950px] h-[50px] tracking-wide z-20 ml-14 mr-14 md:ml-20 md:mr-20 lg:ml-0 lg:mr-0 sm:ml-28 sm:mr-28 border-gray-400 border-[3px] text-gray-400 transition-all duration-500 ease-in-out transform hover:border-white hover:text-white font-bold uppercase rounded-lg ${buttonDisabled ? "opacity-50 cursor-not-allowed" : ""}`}
-                onClick={handleShowMore}
-                disabled={buttonDisabled}
-              >
-                Zobrazit více fotek
-              </button>
-            </div>
-
-            {selectedImage && (
-              <div
-                className="fixed inset-0 z-50 flex items-center justify-center bg-black rounded-lg bg-opacity-85"
-                onClick={closeModal}
-              >
-                <div
-                  className="relative w-[500px] h-[500px] sm:w-[500px] sm:h-[500px] md:w-[600px] md:h-[600px] z-30"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <Image src={selectedImage} alt="Selected Image" layout="fill" objectFit="cover" className="border-[2px] border-white rounded-md" />
-                  <div className="absolute w-[35px] h-[35px] right-1 top-1 bg-black bg-opacity-50 rounded-lg z-30">
-                    <Image 
-                      src={crossIcon}
-                      alt="Cross Icon"
-                      objectFit="cover"
-                      layout="fill"
-                      onClick={closeModal}
-                      className="opacity-80 cursor-pointer hover:opacity-100"
-                    />
-                  </div>
-                </div>
+        {selectedIndex !== null && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-85" onClick={closeModal}>
+            <div className="relative w-[90vw] max-w-[600px] h-[90vw] max-h-[600px] z-30" onClick={(e) => e.stopPropagation()}>
+              <Image
+                src={images[selectedIndex]}
+                alt="Selected Image"
+                layout="fill"
+                objectFit="cover"
+                className="border-[2px] border-white rounded-md"
+              />
+              <div className="absolute top-2 right-2 w-8 h-8 bg-gray-600 bg-opacity-35 rounded-lg z-30">
+                <Image
+                  src={crossIcon}
+                  alt="Close"
+                  layout="fill"
+                  objectFit="cover"
+                  onClick={closeModal}
+                  className="cursor-pointer opacity-70 hover:opacity-100"
+                />
               </div>
-            )}
-
-            <div className="flex justify-center mt-[20px] mb-[30px] h-[50px]">
-              <Link href="https://www.instagram.com/wait_band_official/" rel="noopener noreferrer" target='_blank' passHref>
-                <button className="w-[300px] h-[50px] tracking-wide bg-transparent text-gray-200 border-[3px] rounded-lg font-bold border-blue-500 hover:border-blue-500 uppercase transition-all duration-500 ease-in-out transform hover:text-blue-500 hover:opacity-100">
-                  Přejít na instagram
+              {selectedIndex > 0 && (
+                <button className="absolute left-0 top-1/2 -translate-y-1/2 z-30 h-10 sm:h-14 w-7 sm:w-7 md:h-14 md:w-9 flex items-center justify-center bg-white/80 hover:bg-white backdrop-blur-md rounded-r-full shadow-lg text-gray-700 hover:text-black" onClick={goToPrev} aria-label="Předchozí">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 ml-[-4px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                  </svg>
                 </button>
-              </Link>
-            </div>           
-          </section>   
-          
-          <Footer/>
-        </>
-    );
+              )}
+              {selectedIndex < images.length - 1 && (
+                <button className="absolute right-0 top-1/2 -translate-y-1/2 z-30 h-10 sm:h-14 w-7 sm:w-7 md:h-14 md:w-9 flex items-center justify-center bg-white/80 hover:bg-white backdrop-blur-md rounded-l-full shadow-lg text-gray-700 hover:text-black" onClick={goToNext} aria-label="Další">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 mr-[-4px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              )}
+              <div className="absolute bottom-3 right-4 text-white text-sm sm:text-base bg-black bg-opacity-50 px-3 py-1 rounded-lg z-30">
+                {selectedIndex + 1} / {images.length}
+              </div>
+            </div>
+          </div>
+        )}
+
+        <div className="flex justify-center mt-[20px] mb-[30px] h-[50px]">
+          <Link href="https://www.instagram.com/wait_band_official/" rel="noopener noreferrer" target="_blank" passHref>
+            <button className="w-[300px] h-[50px] tracking-wide bg-transparent text-gray-200 border-[3px] rounded-lg font-bold border-blue-500 hover:border-blue-500 uppercase transition-all duration-500 ease-in-out transform hover:text-blue-500 hover:opacity-100">
+              Přejít na instagram
+            </button>
+          </Link>
+        </div>
+      </section>
+
+      <Footer />
+    </>
+  );
 }

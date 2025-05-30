@@ -71,7 +71,7 @@ export default function BandPage(){
 
                   <div className="absolute bottom-0 w-full h-[105px] bg-blue-950 bg-opacity-80 flex flex-col justify-center items-center rounded-bl-md rounded-br-md">
                     <span className="text-white font-bold uppercase">Ivan Kučera</span>
-                    <span className="text-lightGray text-sm text-center">Bassguitar, back vocals, arr., music & lyrics, <br/>acoustic guitar</span>
+                    <span className="text-lightGray text-sm text-center">Bassguitar, back vocals, arr., music & lyrics, <br/>guitar, acoustic guitar</span>
                   </div>
                 </div>                
               </div>
