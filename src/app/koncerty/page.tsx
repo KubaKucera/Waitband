@@ -59,10 +59,7 @@ export default function ConsertsPage(){
                   alt="Conserts Image"                                                
                   className="object-cover h-full pointer-events-none brightness-50 opacity-85 rounded-tr-2xl rounded-tl-2xl"
                 />                  
-                <h2 className="absolute flex text-[28px] monitor:text-[40px] md:text-[32px] lg:text-4xl text-center font-montserrat font-semibold text-gray-300 mt-[80px] ml-[50px] mr-[50px] z-10">Budeme se na vás těšit!</h2>    
-                <h3 className="absolute text-[30px] text-left text-gray-400 left-7 z-20 mt-[162px]"><FaAngleDoubleDown/></h3>       
-                <h3 className="absolute text-[30px] text-right text-gray-400 right-7 z-20 mt-[162px]"><FaAngleDoubleDown/></h3>
-              
+                <h2 className="absolute flex text-[28px] monitor:text-[40px] md:text-[32px] lg:text-4xl text-center font-montserrat font-semibold text-gray-300 mt-[80px] ml-[50px] mr-[50px] z-10">Budeme se na vás těšit!</h2> 
               </div>              
               <div className="flex flex-col items-center text-center space-y-[10px] pb-4">
                 {concertData.map((text, index) => {

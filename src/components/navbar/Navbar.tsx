@@ -144,8 +144,7 @@ const renderLinks = (handleClick: (link: string) => void, activeLink: string) =>
             </Link>
             <Link href="/assets/files/waitRider.pdf" target="_blank">
                 <span className={`flex items-center uppercase font-bold ${activeLink === 'rider' ? 'text-neonPink' : 'text-lightGray'} hover:text-neonPink`}>
-                    Rider
-                    <FaFilePdf className="ml-1 mt-[-1px]" />
+                    Rider                    
                 </span>
             </Link>
             <Link href="/kontakt" onClick={() => handleClick('kontakt')}>

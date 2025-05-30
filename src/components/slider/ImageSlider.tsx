@@ -11,38 +11,62 @@ import image8 from "../../../public/assets/images/slider/slides/image9.jpeg";
 import prevArrow from "../../../public/assets/images/slider/icons/leftArrow.svg";
 import nextArrow from "../../../public/assets/images/slider/icons/rightArrow.svg"
 
-function PrevArrow({ onClick }: {onClick?: () => void }){
-  return(
+function PrevArrow({ onClick }: { onClick?: () => void }) {
+  return (
     <button
       type="button"
-      className="absolute left-4 top-1/2 transform -translate-y-1/2 z-30 border-[1px] border-solid border-white rounded-sm bg-white text-white opacity-75 hover:opacity-100"
+      className="absolute left-0 top-1/2 -translate-y-1/2 z-30
+                 h-12 sm:h-14 w-7 sm:w-7 md:h-20 md:w-10
+                 flex items-center justify-center
+                 bg-white/80 hover:bg-white
+                 backdrop-blur-md
+                 rounded-r-full
+                 shadow-lg
+                 transition duration-300 ease-in-out
+                 text-gray-700 hover:text-black"
       onClick={onClick}
+      aria-label="Předchozí"
     >
-      <Image
-        src={prevArrow}
-        alt="Previous"
-        width={32}
-        height={32}
-        priority
-      />
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 ml-[-4px]"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={2}
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
     </button>
   );
 }
 
-function NextArow({ onClick }: {onClick?: () => void}){
-  return(
+function NextArrow({ onClick }: { onClick?: () => void }) {
+  return (
     <button
       type="button"
-      className="absolute right-4 top-1/2 transform -translate-y-1/2 z-30 border-[1px] border-solid border-white rounded-sm bg-white text-white opacity-75 hover:opacity-100"
+      className="absolute right-0 top-1/2 -translate-y-1/2 z-30
+                 h-12 sm:h-14 w-7 sm:w-7 md:h-20 md:w-10
+                 flex items-center justify-center
+                 bg-white/80 hover:bg-white
+                 backdrop-blur-md
+                 rounded-l-full
+                 shadow-lg
+                 transition duration-300 ease-in-out
+                 text-gray-700 hover:text-black"
       onClick={onClick}
+      aria-label="Další"
     >
-      <Image
-        src={nextArrow}
-        alt="Next"
-        width={32}
-        height={32}
-        priority
-      />
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 mr-[-4px]"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={2}
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+      </svg>
     </button>
   );
 }
@@ -62,6 +86,8 @@ export default function ImageSlider() {
         dots: false,
         infinite: true,
         speed: 1000,
+        fade: true,
+        cssEase: "ease-in-out",
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
@@ -71,7 +97,7 @@ export default function ImageSlider() {
         waitForAnimate: false,
         arrows: true,        
         prevArrow: <PrevArrow />,
-        nextArrow: <NextArow />,        
+        nextArrow: <NextArrow />,        
     };
 
     return(

@@ -4,6 +4,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import Image from "next/image";
 import heart from "../../../public/assets/images/graffiti/heart.png";
+import texture from "../../../public/assets/textures/texture.jpg";
 
 export default function Newsletter(){
     const[email, setEmail] = useState("");
@@ -50,6 +51,10 @@ export default function Newsletter(){
 
     return (
       <div className="relative bg-gray-900 bg-center bg-fixed bg-cover bg-no-repeat pt-8 pb-11 px-10 md:px-10 w-full h-auto mx-auto shadow-md flex flex-col items-center text-white overflow-hidden z-20">
+        <div
+          className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%"}}
+        ></div> 
         
         <div className="relative w-full h-auto overflow-hidden z-20">
           <div className="fixed left-[5px] top-[450px] opacity-50 hidden xl:flex pointer-events-none z-20">
@@ -62,7 +67,7 @@ export default function Newsletter(){
         </div>
         
         {/* Nadpis Newsletter */}
-        <div className="flex flex-col items-center space-y-2 text-center mt-4">
+        <div className="flex flex-col items-center space-y-2 text-center mt-4 z-20">
           <h2 className="font-montserrat text-[40px] font-normal w-full">Pro naše fanoušky</h2>
           <p className="text-lightGray font-sans text-xl">Přihlášení k odběru novinek</p>
           <p className="text-[14px] md:text-[16px] font-sans text-gray-400 max-w-md">
@@ -76,7 +81,7 @@ export default function Newsletter(){
         {/* Formulář */}
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col items-center w-full mt-8 space-y-4 mb-4"
+          className="flex flex-col items-center w-full mt-8 space-y-4 mb-4 z-20"
         >
           <input
             type="email"
