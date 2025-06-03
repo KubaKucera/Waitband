@@ -17,68 +17,75 @@ export const metadata: Metadata = {
 const concertData = [
   "24.11.2024, 20:00 – Pardubice, Ateliér Klose",
   "17.1.2025, 20:30 – Praha, Rock Café",
-  "29.3.2025, 00:00 – Pardubice, divadlo",   
+  "29.3.2025, 00:00 – Pardubice, divadlo",
 ];
 
-export default function ConsertsPage(){
-   
-  /*
-  const lineHeight = 150 + (concertData.length - 1) * 50;
-  const lineHeightString = `${lineHeight}px`;*/
-  
+export default function ConsertsPage() {
   return (
-        <>
-          <CustomCookieConsent />
-          <Navbar initialActiveLink="koncerty"/>  
-          <HeadingWithLine lineHeight="400px" />
+    <>
+      <CustomCookieConsent />
+      <Navbar initialActiveLink="koncerty" />
+      <HeadingWithLine lineHeight="450px" />
 
-          <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden py-12">
-                  
-            <div
-              className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
-              style={{ backgroundImage: `url(${back.src})`, width: "100%", height: "100%"}}
-            ></div> 
+      <section className="relative flex flex-col items-center justify-center overflow-hidden py-12">
+        {/* Background image */}
+        <div
+          className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${back.src})`, width: "100%", height: "100%" }}
+        ></div>
 
-            <div
-              className="absolute bg-black inset-0 z-10 opacity-70 bg-fixed bg-cover bg-center bg-no-repeat"              
-            ></div> 
+        {/* Overlay */}
+        <div className="absolute bg-black inset-0 z-10 opacity-70 bg-fixed bg-cover bg-center bg-no-repeat"></div>
 
-            <div className="fixed right-[25px] 2xl:top-64 monitor:top-80 rotate-15 opacity-50 z-20 hidden xl:flex">
-              <Image 
-                src={emoticon}
-                alt="Emoticon"                
-                className="2xl:w-[330px] monitor:w-[400px]"            
-              />
-            </div>    
+        {/* Emoticon */}
+        <div className="fixed right-[25px] 2xl:top-64 monitor:top-80 rotate-15 opacity-50 z-20 hidden xl:flex">
+          <Image
+            src={emoticon}
+            alt="Emoticon"
+            className="2xl:w-[330px] monitor:w-[400px]"
+          />
+        </div>
 
-            <div className="relative w-[700px] monitor:w-[780px] bg-white bg-opacity-20 z-40 mt-[75px] rounded-md p-6 transform translate-y-[-20px]">
-              <h2 className="mt-[10px] text-[26px] text-white text-center font-normal font-montserrat opacity-100 uppercase">Plány koncertů</h2>
-              <div className="flex h-[200px] w-full flex-col items-center mt-[25px]">
-                <Image
-                  src={consertsImage}
-                  alt="Conserts Image"                                                
-                  className="object-cover h-full pointer-events-none brightness-50 opacity-85 rounded-tr-2xl rounded-tl-2xl"
-                />                  
-                <h2 className="absolute flex text-[28px] monitor:text-[40px] md:text-[32px] lg:text-4xl text-center font-montserrat font-semibold text-gray-300 mt-[80px] ml-[50px] mr-[50px] z-10">Budeme se na vás těšit!</h2> 
-              </div>              
-              <div className="flex flex-col items-center text-center space-y-[10px] pb-4">
-                {concertData.map((text, index) => {
-                  const [city, location] = text.split(" – ");
-                  const formattedLocation = location.split(", ").map(part => part.toUpperCase()).join(", ");
-                  return (
-                    <p
-                      key={index}
-                      className={`text-lg lg:text-[20px] text-white ${index === 0 ? "mt-7" : ""}`}
-                    >
-                      {`${city} – ${formattedLocation}`}
-                    </p>
-                  );
-                })}
-              </div>
-            </div>            
-          </section>   
-                 
-          <Footer />             
-        </>
-    );
+        {/* Main Concerts Container */}
+        <div className="relative w-[700px] monitor:w-[780px] bg-white bg-opacity-20 z-40 mt-[75px] rounded-md p-6 transform translate-y-[-20px]">
+          {/* Title */}
+          <h2 className="mt-[10px] text-[26px] text-white text-center font-normal font-montserrat opacity-100">
+            Plány koncertů
+          </h2>
+
+          {/* Image */}
+          <div className="flex h-[200px] w-full flex-col items-center mt-[25px]">
+            <Image
+              src={consertsImage}
+              alt="Conserts Image"
+              className="object-cover h-full pointer-events-none brightness-50 opacity-85 rounded-tr-2xl rounded-tl-2xl"
+            />
+            <h2 className="absolute flex text-[28px] monitor:text-[40px] md:text-[32px] lg:text-4xl text-center font-montserrat font-semibold text-gray-300 mt-[80px] ml-[50px] mr-[50px] z-10">
+              Budeme se na vás těšit!
+            </h2>
+          </div>
+
+          {/* Concert List */}
+          <div className="flex flex-col items-center text-center space-y-6 pb-4 mt-8">
+            {concertData.map((text, index) => {
+              const [city, location] = text.split(" – ");
+              const formattedLocation = location.split(", ").join(", ");
+
+              return (
+                <div
+                  key={index}
+                  className="w-full bg-[#ffffff1a] backdrop-blur-sm text-white px-6 py-5 rounded-lg shadow-lg transition-transform transform hover:scale-[1.02] hover:shadow-2xl duration-200 ease-in-out max-w-[650px] mx-auto"
+                >
+                  <p className="text-[18px] md:text-[20px] font-medium">{city}</p>
+                  <p className="text-[16px] md:text-[18px] text-gray-200 mt-1">{formattedLocation}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </>
+  );
 }

@@ -107,7 +107,7 @@ export default function PhotosPage() {
 
         {selectedIndex !== null && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-85" onClick={closeModal}>
-            <div className="relative w-[90vw] max-w-[600px] h-[90vw] max-h-[600px] z-30" onClick={(e) => e.stopPropagation()}>
+            <div className="relative w-[90vw] h-[90vw] lg:max-w-[600px] lg:max-h-[600px] xl:max-w-[600px] xl:max-h-[600px] monitor:max-w-[770px] monitor:max-h-[770px] z-30" onClick={(e) => e.stopPropagation()}>
               <Image
                 src={images[selectedIndex]}
                 alt="Selected Image"

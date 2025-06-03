@@ -3,6 +3,8 @@ import "./globals.css";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 
+import PageTransition from "@/components/transition/PageTransition";
+
 export const metadata: Metadata = {
   title: "Wait - Oficiální web české crossover kapely",
   description: "Wait Official page by create next app",
@@ -21,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>  
-        {children}
+        <PageTransition>{children}</PageTransition>
       </body>
     </html>
   );

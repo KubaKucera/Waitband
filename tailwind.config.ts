@@ -10,6 +10,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         sans: ['Poppins', 'sans-serif'],
+        nav: ['"Poppins"', 'sans-serif'],
         montserrat: ['Montserrat', 'sans-serif'], 
         inter: ['Inter', 'sans-serif'],
         nunito: ['Nunito', 'sans-serif'],              
