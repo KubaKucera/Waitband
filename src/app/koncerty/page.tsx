@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Navbar from "@/components/navbar/Navbar";
 import back from "../../../public/assets/images/conserts/back.png";
@@ -9,10 +11,8 @@ import { FaAngleDoubleDown } from "react-icons/fa";
 import { Metadata } from "next";
 import HeadingWithLine from "@/components/headingWithLine/HeadingWithLine";
 
-export const metadata: Metadata = {
-  title: "Koncerty - Wait",
-  description: "Koncerts page by create next app",  
-}
+import { motion } from "framer-motion";
+import { useEffect } from "react";
 
 const concertData = [
   "24.11.2024, 20:00 – Pardubice, Ateliér Klose",
@@ -21,6 +21,10 @@ const concertData = [
 ];
 
 export default function ConsertsPage() {
+  useEffect(() => {
+    document.title = "Koncerty - Wait";
+  }, []);
+  
   return (
     <>
       <CustomCookieConsent />
@@ -38,12 +42,26 @@ export default function ConsertsPage() {
         <div className="absolute bg-black inset-0 z-10 opacity-70 bg-fixed bg-cover bg-center bg-no-repeat"></div>
 
         {/* Emoticon */}
-        <div className="fixed right-[25px] 2xl:top-64 monitor:top-80 rotate-15 opacity-50 z-20 hidden xl:flex">
-          <Image
-            src={emoticon}
-            alt="Emoticon"
-            className="2xl:w-[330px] monitor:w-[400px]"
-          />
+        <div className="fixed right-[50px] top-72 rotate-15 hidden xl:flex pointer-events-none z-30 animate-pulse">
+          <motion.div
+            animate={{
+              y: [0, 15, 0],  // pohyb z původní pozice dolů o 15px a zpět nahoru
+            }}
+            transition={{
+              duration: 3,
+              ease: "easeInOut",
+              repeat: Infinity,
+              repeatType: "loop"
+            }}
+            className="drop-shadow-lg"
+          >
+            <Image
+              src={emoticon}
+              alt="ExcMark"
+              width={310}
+              className="filter saturate-150 brightness-75"
+            />
+          </motion.div>      
         </div>
 
         {/* Main Concerts Container */}

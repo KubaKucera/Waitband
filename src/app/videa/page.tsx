@@ -11,6 +11,7 @@ import Footer from "@/components/footer/Footer";
 import HeadingWithLine from "@/components/headingWithLine/HeadingWithLine";
 import ScrollToTopButton from "@/components/scrollToTopButton/ScrollToTopButton";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 const videos = [
   {
@@ -90,12 +91,26 @@ export default function VideosPage(){
           className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%"}}
         >
-          <div className="fixed right-10 transform rotate-45 top-72 opacity-50 hidden xl:flex">
-            <Image 
-              src={mouthSmile}
-              alt="Emoticon"                
-              className="2xl:w-[330px] monitor:w-[450px]"                 
-            />
+          <div className="fixed right-[-210px] top-44 hidden xl:flex pointer-events-none z-30 animate-pulse">
+            <motion.div
+              animate={{
+                y: [0, 15, 0],  // pohyb z původní pozice dolů o 15px a zpět nahoru
+              }}
+              transition={{
+                duration: 3,
+                ease: "easeInOut",
+                repeat: Infinity,
+                repeatType: "loop"
+              }}
+              className="drop-shadow-lg"
+            >
+              <Image
+                src={mouthSmile}
+                alt="ExcMark"
+                width={425}
+                className="filter saturate-150 brightness-75"
+              />
+            </motion.div>      
           </div>
         </div>        
 
@@ -150,8 +165,8 @@ export default function VideosPage(){
 
         <div className="flex justify-center mt-[30px] mb-[-20px] h-[50px]">
           <Link href="https://www.youtube.com/@waitbandofficial6520/videos" rel="noopener noreferrer" target='_blank' passHref>
-            <button className="w-[300px] h-[50px] tracking-wide bg-transparent text-gray-200 border-[3px] rounded-lg font-bold border-blue-500 hover:border-blue-500 uppercase transition-all duration-500 ease-in-out transform hover:text-blue-500 hover:opacity-100">
-              všechna videa
+            <button className="w-[300px] h-[50px] tracking-wide bg-transparent text-gray-200 border-[3px] rounded-lg font-semibold text-lg border-blue-600 transition-all duration-500 ease-in-out transform hover:text-blue-600 hover:opacity-100">
+              Všechna videa
             </button>
           </Link>
         </div> 

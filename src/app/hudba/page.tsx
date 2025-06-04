@@ -23,6 +23,8 @@ import { useEffect, useState } from "react";
 import CustomCookieConsent from "@/components/cookie/CookieConsent";
 import HeadingWithLine from "@/components/headingWithLine/HeadingWithLine";
 
+import { motion } from "framer-motion";
+
 /*
 export const metadata: Metadata = {
   title: "Hudba - Wait",
@@ -100,12 +102,26 @@ export default function MusicPage() {
           className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%" }}
         >
-          <div className="fixed 2xl:right-[20px] 2xl:top-64 monitor:right-[85px] monitor:top-72 opacity-50 hidden xl:flex">
-            <Image 
-              src={dollar} 
-              alt="Emoticon" 
-              className="2xl:w-[210px] monitor:w-[270px]"           
-            />
+          <div className="fixed right-[25px] top-64 hidden xl:flex pointer-events-none z-30 animate-pulse">
+            <motion.div
+              animate={{
+                y: [0, 15, 0],  // pohyb z původní pozice dolů o 15px a zpět nahoru
+              }}
+              transition={{
+                duration: 3,
+                ease: "easeInOut",
+                repeat: Infinity,
+                repeatType: "loop"
+              }}
+              className="drop-shadow-lg"
+            >
+              <Image
+                src={dollar}
+                alt="ExcMark"
+                width={210}
+                className="filter saturate-150 brightness-75"
+              />
+            </motion.div>      
           </div>
         </div>
 
@@ -141,7 +157,7 @@ export default function MusicPage() {
 
         <div className="flex justify-center mb-[25px]">
           <Link href="/alba" rel="noopener noreferrer" passHref>
-            <button className="w-[300px] h-[50px] tracking-wide bg-transparent text-gray-200 border-[3px] rounded-lg font-bold border-blue-500 hover:border-blue-500 uppercase transition-all duration-500 ease-in-out transform hover:text-blue-500 hover:opacity-100">
+            <button className="w-[300px] h-[50px] tracking-wide bg-transparent text-gray-200 border-[3px] rounded-lg font-semibold text-lg border-blue-600 transition-all duration-500 ease-in-out transform hover:text-blue-600 hover:opacity-100">
               Přejít na alba
             </button>
           </Link>

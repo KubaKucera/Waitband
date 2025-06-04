@@ -36,6 +36,8 @@ import { useState, useEffect } from "react";
 import HeadingWithLine from "@/components/headingWithLine/HeadingWithLine";
 import ScrollToTopButton from "@/components/scrollToTopButton/ScrollToTopButton";
 
+import { motion } from "framer-motion";
+
 const images = [
   image24, image1, image2, image3, image4, image5, image6, image7, 
   image8, image9, image10, image11, image12, image13, 
@@ -70,8 +72,26 @@ export default function PhotosPage() {
 
       <section className="relative h-auto py-10">
         <div className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${texture.src})` }}>
-          <div className="fixed 2xl:right-[-10px] monitor:right-[30px] transform opacity-50 -rotate-45 top-60 hidden xl:flex">
-            <Image src={arrows} alt="Emoticon" className="2xl:w-[250px] monitor:w-[325px]" />
+          <div className="fixed right-[10px] top-60 -rotate-15 hidden xl:flex pointer-events-none z-30 animate-pulse">
+            <motion.div
+              animate={{
+                y: [0, 15, 0],  // pohyb z původní pozice dolů o 15px a zpět nahoru
+              }}
+              transition={{
+                duration: 3,
+                ease: "easeInOut",
+                repeat: Infinity,
+                repeatType: "loop"
+              }}
+              className="drop-shadow-lg"
+            >
+              <Image
+                src={arrows}
+                alt="ExcMark"
+                width={250}
+                className="filter saturate-150 brightness-75"
+              />
+            </motion.div>      
           </div>
         </div>
 
@@ -97,7 +117,7 @@ export default function PhotosPage() {
 
         <div className="flex justify-center mt-[-85px]">
           <button
-            className={`w-full max-w-[950px] h-[50px] tracking-wide z-20 ml-14 mr-14 md:ml-20 md:mr-20 lg:ml-0 lg:mr-0 sm:ml-28 sm:mr-28 border-gray-400 border-[3px] text-gray-400 transition-all duration-500 ease-in-out transform hover:border-white hover:text-white font-bold uppercase rounded-lg ${buttonDisabled ? "opacity-50 cursor-not-allowed" : ""}`}
+            className={`w-full max-w-[950px] h-[50px] tracking-wide z-20 ml-14 mr-14 md:ml-20 md:mr-20 lg:ml-0 lg:mr-0 sm:ml-28 sm:mr-28 border-gray-400 border-[3px] text-gray-400 font-semibold text-lg transition-all duration-500 ease-in-out transform hover:border-white hover:text-white rounded-lg ${buttonDisabled ? "opacity-50 cursor-not-allowed" : ""}`}
             onClick={handleShowMore}
             disabled={buttonDisabled}
           >
@@ -148,7 +168,7 @@ export default function PhotosPage() {
 
         <div className="flex justify-center mt-[20px] mb-[30px] h-[50px]">
           <Link href="https://www.instagram.com/wait_band_official/" rel="noopener noreferrer" target="_blank" passHref>
-            <button className="w-[300px] h-[50px] tracking-wide bg-transparent text-gray-200 border-[3px] rounded-lg font-bold border-blue-500 hover:border-blue-500 uppercase transition-all duration-500 ease-in-out transform hover:text-blue-500 hover:opacity-100">
+            <button className="w-[300px] h-[50px] tracking-wide bg-transparent text-gray-200 border-[3px] rounded-lg font-semibold text-lg border-blue-600 transition-all duration-500 ease-in-out transform hover:text-blue-600 hover:opacity-100">
               Přejít na instagram
             </button>
           </Link>

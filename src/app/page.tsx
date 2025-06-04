@@ -89,12 +89,26 @@ export default function Home() {
                 style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%"}}
               >       
                 <div className="relative w-full h-auto overflow-hidden z-20">
-                  <div className="fixed right-[10px] top-72 rotate-3 opacity-50 hidden xl:flex pointer-events-none z-20">
-                    <Image 
-                      src={excMark}
-                      alt="ExcMark"                
-                      width={150}                
-                    />
+                  <div className="fixed right-[10px] top-72 hidden xl:flex pointer-events-none z-30 animate-pulse">
+                    <motion.div
+                      animate={{
+                        y: [0, 15, 0],  // pohyb z původní pozice dolů o 15px a zpět nahoru
+                      }}
+                      transition={{
+                        duration: 3,
+                        ease: "easeInOut",
+                        repeat: Infinity,
+                        repeatType: "loop"
+                      }}
+                      className="drop-shadow-lg"
+                    >
+                      <Image
+                        src={excMark}
+                        alt="ExcMark"
+                        width={150}
+                        className="filter saturate-150 brightness-75"
+                      />
+                    </motion.div>
                   </div>
                 </div>                
               </div> 
@@ -111,7 +125,7 @@ export default function Home() {
                   <motion.div
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
+                    transition={{ delay: 0.6, duration: 0.6, ease: "easeOut" }}
                     className="text-neonPink"
                   >
                     <FaAngleDoubleDown
@@ -123,7 +137,7 @@ export default function Home() {
                   <motion.div
                     initial={{ height: 0 }}
                     animate={{ height: "350px" }}
-                    transition={{ duration: 1, ease: "easeInOut" }}
+                    transition={{ delay: 0.6, duration: 1, ease: "easeInOut" }}
                     className="w-[2px] mt-2 bg-gradient-to-b from-pink-400 via-pink-300 to-pink-500 animate-pulse"
                   />
                 </div>

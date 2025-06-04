@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Navbar from "@/components/navbar/Navbar";
 import texture from "../../../public/assets/textures/texture.jpg";
@@ -7,10 +9,8 @@ import CustomCookieConsent from "@/components/cookie/CookieConsent";
 import { Metadata } from "next";
 import HeadingWithLine from "@/components/headingWithLine/HeadingWithLine";
 
-export const metadata: Metadata = {
-  title: "Alba - Wait",
-  description: "Albums page by create next app",  
-}
+import { motion } from "framer-motion";
+import { useEffect } from "react";
 
 const SpotifyEmbed = ({ url }: { url: string }) => (
   <div className="relative w-full max-w-md mx-auto">
@@ -29,6 +29,10 @@ const SpotifyEmbed = ({ url }: { url: string }) => (
 
 export default function AlbumsPage() {
     
+  useEffect(() => {
+    document.title = "Alba - Wait";
+  }, []);
+
   /*
   const album1Tracks = [
     { title: "Wait For Me", url: "https://soundcloud.com/wait-band-official/wait-for-me" },
@@ -62,7 +66,7 @@ export default function AlbumsPage() {
     { title: "Zkusíme Zastavit Svět", url: "https://soundcloud.com/wait-band-official/zkus-me-zastavit-sv-t" },
     { title: "Single", url: "https://soundcloud.com/wait-band-official/single" }
   ];
-  */  
+  */ 
 
   const spotifyAlbums = [
     "https://open.spotify.com/embed/album/36q0VGlGsqRDoe5TnwyP82?utm_source=generator",
@@ -91,12 +95,26 @@ export default function AlbumsPage() {
               className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
               style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%"}}
             >
-              <div className="fixed right-[-65px] top-40 opacity-50 hidden xl:flex">
-                <Image 
-                  src={x}
-                  alt="Emoticon"                
-                  className="2xl:w-[300px] monitor:w-[350px]"                 
-                />
+              <div className="fixed right-[-50px] top-32 hidden xl:flex pointer-events-none z-30 animate-pulse">
+                <motion.div
+                  animate={{
+                    y: [0, 15, 0],  // pohyb z původní pozice dolů o 15px a zpět nahoru
+                  }}
+                  transition={{
+                    duration: 3,
+                    ease: "easeInOut",
+                    repeat: Infinity,
+                    repeatType: "loop"
+                  }}
+                  className="drop-shadow-lg"
+                >
+                  <Image
+                    src={x}
+                    alt="ExcMark"
+                    width={280}
+                    className="filter saturate-150 brightness-75"
+                  />
+                </motion.div>      
               </div>
             </div> 
 

@@ -23,7 +23,7 @@ const HeadingWithLine = ({ lineHeight = "100px", label = "" }: HeadingWithLinePr
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
+          transition={{ delay: 0.6, duration: 0.6, ease: "easeOut" }}
           className="text-neonPink"
         >
           <FaAngleDoubleDown
@@ -35,7 +35,7 @@ const HeadingWithLine = ({ lineHeight = "100px", label = "" }: HeadingWithLinePr
         <motion.div
           initial={{ height: 0 }}
           animate={{ height: lineHeight }}
-          transition={{ duration: 1, ease: "easeInOut" }}
+          transition={{ delay: 0.6, duration: 1, ease: "easeInOut" }}
           className="w-[2px] mt-2 bg-gradient-to-b from-pink-400 via-pink-300 to-pink-500 animate-pulse"
         />
 

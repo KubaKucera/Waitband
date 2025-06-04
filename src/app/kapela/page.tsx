@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Navbar from "@/components/navbar/Navbar";
 import ivanImage from "../../../public/assets/images/band/ivan.jpg";
@@ -8,16 +10,17 @@ import texture from "../../../public/assets/textures/texture.jpg";
 import emoticon from "../../../public/assets/images/graffiti/emoticon2.png";
 import Footer from "@/components/footer/Footer";
 import CustomCookieConsent from "@/components/cookie/CookieConsent";
-import { Metadata } from "next";
 import HeadingWithLine from "@/components/headingWithLine/HeadingWithLine";
 
-export const metadata: Metadata = {
-  title: "Kapela - Wait",
-  description: "Band page by create next app",  
-}
+import { useEffect } from "react";
+import { motion } from "framer-motion";
 
 export default function BandPage(){
-    return (
+  useEffect(() => {
+    document.title = "Kapela - Wait";
+  }, []);  
+  
+  return (
         <>
           <CustomCookieConsent />
           <Navbar initialActiveLink="kapela"/>  
@@ -29,13 +32,27 @@ export default function BandPage(){
               className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
               style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%"}}
             >
-              <div className="fixed 2xl:right-[25px] monitor:right-[100px] top-72 rotate-25 opacity-50 transform hidden xl:flex">
-                <Image 
-                  src={emoticon}
-                  alt="Emoticon"                
-                  className="2xl:w-[330px] monitor:w-[400px]"                 
-                />
-              </div> 
+              <div className="fixed right-[50px] top-72 rotate-25 hidden xl:flex pointer-events-none z-30 animate-pulse">
+                <motion.div
+                  animate={{
+                    y: [0, 15, 0],  // pohyb z původní pozice dolů o 15px a zpět nahoru
+                  }}
+                  transition={{
+                    duration: 3,
+                    ease: "easeInOut",
+                    repeat: Infinity,
+                    repeatType: "loop"
+                  }}
+                  className="drop-shadow-lg"
+                >
+                  <Image
+                    src={emoticon}
+                    alt="ExcMark"
+                    width={310}
+                    className="filter saturate-150 brightness-75"
+                  />
+                </motion.div>      
+              </div>
             </div>                       
 
             {/* Content */}

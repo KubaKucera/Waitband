@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import heart from "../../../public/assets/images/graffiti/heart.png";
 import texture from "../../../public/assets/textures/texture.jpg";
+import { motion } from "framer-motion";
 
 export default function Newsletter(){
     const[email, setEmail] = useState("");
@@ -57,12 +58,26 @@ export default function Newsletter(){
         ></div> 
         
         <div className="relative w-full h-auto overflow-hidden z-20">
-          <div className="fixed left-[5px] top-[450px] opacity-50 hidden xl:flex pointer-events-none z-20">
-            <Image 
-              src={heart}
-              alt="Emoticon"                
-              width={250}                
-            />
+          <div className="fixed left-[0px] top-96 hidden xl:flex pointer-events-none z-30 animate-pulse">
+            <motion.div
+              animate={{
+                y: [0, 15, 0],  // pohyb z původní pozice dolů o 15px a zpět nahoru
+              }}
+              transition={{
+                duration: 3,
+                ease: "easeInOut",
+                repeat: Infinity,
+                repeatType: "loop"
+              }}
+              className="drop-shadow-lg"
+            >
+              <Image
+                src={heart}
+                alt="ExcMark"
+                width={200}
+                className="filter saturate-150 brightness-75"
+              />
+            </motion.div>
           </div>
         </div>
         
@@ -73,7 +88,7 @@ export default function Newsletter(){
           <p className="text-[14px] md:text-[16px] font-sans text-gray-400 max-w-md">
             Přihlášením se k odběru novinek dáváte souhlas se zpracováním{" "}
             <Link href="/osobni-udaje" target="_blank">
-              <span className="text-coralRed font-bold hover:underline cursor-pointer brightness-110">osobních údajů.</span>
+              <span className="text-blue-600 hover:underline font-semibold">osobních údajů.</span>
             </Link>
           </p>
         </div>
@@ -110,9 +125,9 @@ export default function Newsletter(){
     
           <button
             type="submit"
-            className="bg-buttonBlue hover:bg-blue-700 text-white font-semibold w-full md:w-48 py-2 px-6 rounded-md transition-all duration-300 ease-in-out"
+            className="w-full md:w-48 py-2 px-6 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-transform duration-300 hover:scale-105 ease-in-out"
           >
-            ODESLAT
+            Odeslat
           </button>
         </form>
       </div>
