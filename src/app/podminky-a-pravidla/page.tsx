@@ -12,7 +12,7 @@ export default function TermsAndConditionsPage(){
         <>
             <Navbar initialActiveLink=""/>
 
-            <section className="min-h-screen w-full relative p-28">
+            <section className="min-h-screen w-full relative p-28 text-white">
                 <h1 className="text-2xl font-bold">Podmínky a pravidla</h1>
                 <p>Datum účinnosti: 23. listopadu 2024</p>
 

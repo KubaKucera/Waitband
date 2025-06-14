@@ -63,9 +63,9 @@ function NextArrow({ onClick }: { onClick?: () => void }) {
 
 export default function ImageSlider() {
   const images = [
-    { src: image1, alt: "Slide1", width: 2120, height: 1280 },
+    { src: image4, alt: "Slide1", width: 2120, height: 1280 },
     { src: image2, alt: "Slide2", width: 2120, height: 1280 },
-    { src: image4, alt: "Slide4", width: 2120, height: 1280 },
+    { src: image1, alt: "Slide4", width: 2120, height: 1280 },
     { src: image5, alt: "Slide5", width: 2120, height: 1280 },
     { src: image8, alt: "Slide6", width: 2120, height: 1280 },
   ];
@@ -90,25 +90,27 @@ export default function ImageSlider() {
 
 
   return (
-    <div className="w-screen max-w-full mx-auto relative z-40 bg-gray-100">
-      <Slider {...settings}>
-        {images.map((img, index) => (
-          <div
-            key={index}
-            className="flex justify-center items-center w-screen h-[300px] sm:h-[400px] md:h-[500px] lg:h-[580px] xl:h-[680px] monitor:h-[825px]"
-          >
-            <Image
-              src={img.src}
-              alt={img.alt}
-              width={img.width}
-              height={img.height}
-              className="shadow-lg z-20 w-full h-full object-cover"
-              style={{ objectFit: "cover" }}
-              priority={index === 0}
-            />
-          </div>
-        ))}
-      </Slider>      
-    </div>
+    <>
+      <div className="w-screen max-w-full mx-auto relative z-40 bg-black">
+        <Slider {...settings}>
+          {images.map((img, index) => (
+            <div
+              key={index}
+              className="flex justify-center items-center w-screen h-[300px] sm:h-[400px] md:h-[500px] lg:h-[580px] xl:h-[680px] monitor:h-[825px]"
+            >
+              <Image
+                src={img.src}
+                alt={img.alt}
+                width={img.width}
+                height={img.height}
+                className="shadow-lg z-20 w-full h-full object-cover"
+                style={{ objectFit: "cover" }}
+                priority={index === 0} />
+            </div>
+          ))}
+        </Slider>
+      </div>
+      <hr className="w-screen max-w-full h-1 mt-[-4px] relative z-40 bg-gray-200"></hr>
+    </>
   );
 }

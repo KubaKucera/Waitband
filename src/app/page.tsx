@@ -7,45 +7,42 @@ import ImageSlider from "@/components/slider/ImageSlider";
 import texture from "../../public/assets/textures/texture.jpg";
 import Head from 'next/head';
 
-import { useState} from "react";
-import { FaAngleDoubleDown } from "react-icons/fa";
-import actualityImage1 from "../../public/assets/images/home/actuality1.jpg";
+import { useState } from "react";
+import actualityImage1 from "../../public/assets/images/home/actuality4.jpg";
 import actualityImage2 from "../../public/assets/images/albums/album4.jpg";
 import actualityImage3 from "../../public/assets/images/music/february29th.jpg";
-import excMark from "../../public/assets/images/graffiti/excMark.png";
-import Newsletter from "@/components/newsletter/Newsletter";
 import Footer from "@/components/footer/Footer";
 import CustomCookieConsent from "@/components/cookie/CookieConsent";
 import VideoModal from "@/components/videoModal/VideoModal";
 import ScrollToTopButton from '@/components/scrollToTopButton/ScrollToTopButton';
 import { motion } from "framer-motion";
+import HeadingWithLine from "@/components/headingWithLine/HeadingWithLine";
 
 const kaplickaVideos = [
-  { src: "https://www.youtube.com/embed/94ErS0EZXl4"},
-  { src: "https://www.youtube.com/embed/i3amiE1rJIU?si=plU_CW32grcp6n8p"},
-  { src: "https://www.youtube.com/embed/Bi0pPz3jlk4?si=25w03c6L3VXjIDx2"},
-  { src: "https://www.youtube.com/embed/Bz7f1Q4Xp8c?si=PqoV63hz7jOo2XIQ"},
+  { src: "https://www.youtube.com/embed/94ErS0EZXl4" },
+  { src: "https://www.youtube.com/embed/i3amiE1rJIU?si=plU_CW32grcp6n8p" },
+  { src: "https://www.youtube.com/embed/Bi0pPz3jlk4?si=25w03c6L3VXjIDx2" },
+  { src: "https://www.youtube.com/embed/Bz7f1Q4Xp8c?si=PqoV63hz7jOo2XIQ" },
 ];
 
 const knorVideos = [
-  { src: "https://www.youtube.com/embed/w4Xn_DzsC6o?si=hT1F35iYWkwi7uqt"},
-  { src: "https://www.youtube.com/embed/jmPkHuh_qK8?si=nzlPS8zT90tmrKIf"},
-  { src: "https://www.youtube.com/embed/Opv4jn-G0FE?si=oaD2r-0gfSQ5sHtJ"},
-  { src: "https://www.youtube.com/embed/x1lfnG7B9tc?si=Xk0UwA21mawc4D7t"},  
-  { src: "https://www.youtube.com/embed/OXu5fyqOYZg?si=U9W1wlBrwdryj8jr"},
-  { src: "https://www.youtube.com/embed/Y6G2wKUorIQ?si=ldE_Wnh6iRigZGlj"},
-  { src: "https://www.youtube.com/embed/Q-8a308aqLc?si=6aelfnvl4PjmIb3_"},  
-  { src: "https://www.youtube.com/embed/K56O9wrh7nU?si=Cqwx9yKCB9OoT02E"},   
+  { src: "https://www.youtube.com/embed/w4Xn_DzsC6o?si=hT1F35iYWkwi7uqt" },
+  { src: "https://www.youtube.com/embed/jmPkHuh_qK8?si=nzlPS8zT90tmrKIf" },
+  /*{ src: "https://www.youtube.com/embed/Opv4jn-G0FE?si=oaD2r-0gfSQ5sHtJ" },*/
+  { src: "https://www.youtube.com/embed/x1lfnG7B9tc?si=Xk0UwA21mawc4D7t" },
+  /*{ src: "https://www.youtube.com/embed/OXu5fyqOYZg?si=U9W1wlBrwdryj8jr" },*/
+  /*{ src: "https://www.youtube.com/embed/Y6G2wKUorIQ?si=ldE_Wnh6iRigZGlj" },*/
+  { src: "https://www.youtube.com/embed/Q-8a308aqLc?si=6aelfnvl4PjmIb3_" },
+  /*{ src: "https://www.youtube.com/embed/K56O9wrh7nU?si=Cqwx9yKCB9OoT02E" },*/
 ];
 
 const andelVideo = {
   src: "https://www.youtube.com/embed/x_XWIT7Hd0Q?si=AChedyZFClTKWaI6"
 };
 
-export default function Home() {  
-
+export default function Home() {
   const [showModal, setShowModal] = useState(false);
-  const [videoUrl, setVideoUrl] = useState("");  
+  const [videoUrl, setVideoUrl] = useState("");
 
   const handleVideoClick = (url: string) => {
     setVideoUrl(url);
@@ -62,234 +59,142 @@ export default function Home() {
     if (target) {
       target.scrollIntoView({ behavior: "smooth" });
     }
-  }
+  };
 
-  return (    
-        <>          
-          <Head>
-            <link rel="icon" href="/favicon.ico?v=4" />
-            <link rel="shortcut icon" href="/favicon.ico?v=4" />
-            <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=4" />
-            <meta name="theme-color" content="#ffffff" />
-          </Head>
+  return (
+    <>
+      <Head>
+        <link rel="icon" href="/favicon.ico?v=4" />
+        <link rel="shortcut icon" href="/favicon.ico?v=4" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=4" />
+        <meta name="theme-color" content="#ffffff" />
+      </Head>
 
-          <CustomCookieConsent />
-          <Navbar initialActiveLink="uvod" />
-          <ImageSlider />
-          <ScrollToTopButton />
+      <CustomCookieConsent />
+      <Navbar initialActiveLink="uvod" />
+      <ImageSlider />
+      <ScrollToTopButton />
 
-          <section className="relative w-full h-full z-30">            
+      <div className="relative w-full min-h-screen bg-fixed bg-cover bg-center bg-no-repeat pb-5" style={{ backgroundImage: `url(${texture.src})` }}>
+        <HeadingWithLine
+          height={2765}
+          offsetTop="45px"
+          position="left"
+          delay={0.4}
+          duration={0.6}
+          ease="easeOut"    
+          label="Úvod"
+        />
 
-            <div className='absolute w-full h-3 sm:h-3 md:h-5 bg-gray-100'></div>
+        <section className="p-11 text-gray-50">
+          {/* Nadpis */}
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-montserrat font-bold text-white">
+              Aktuality/Blog
+            </h2>
+            <div className="mt-3 mx-auto w-24 h-1 bg-gradient-to-r from-[#ff6a00] to-[#ee0979] rounded-full"></div>
+          </div>
 
-            <div className="relative min-h-[550px] z-20 top-0">              
-              
-              <div
-                className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
-                style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%"}}
-              >       
-                <div className="relative w-full h-auto overflow-hidden z-20">
-                  <div className="fixed right-[10px] top-72 hidden xl:flex pointer-events-none z-30 animate-pulse">
-                    <motion.div
-                      animate={{
-                        y: [0, 15, 0],  // pohyb z původní pozice dolů o 15px a zpět nahoru
-                      }}
-                      transition={{
-                        duration: 3,
-                        ease: "easeInOut",
-                        repeat: Infinity,
-                        repeatType: "loop"
-                      }}
-                      className="drop-shadow-lg"
-                    >
-                      <Image
-                        src={excMark}
-                        alt="ExcMark"
-                        width={150}
-                        className="filter saturate-150 brightness-75"
-                      />
-                    </motion.div>
-                  </div>
-                </div>                
-              </div> 
-
-              <div
-                className="absolute z-30 hidden xl:flex"
-                style={{
-                  top: "75px",
-                  left: "13px",
-                }}
+          {/* Grid s aktualitami */}
+          <div
+            className="
+              grid grid-cols-1
+              sm:grid-cols-1
+              md:grid-cols-2
+              lg:grid-cols-3
+              gap-12 sm:gap-12 lg:gap-40
+              items-start justify-center place-items-center
+              w-[85%] lg:w-[67%] monitor:w-[55%] mx-auto z-20
+            "
+          >
+            {[{ title: "KONCERT", subtitle: "SUPER HOT SUMMER", image: actualityImage1, link: "/koncerty" },
+              { title: "SONG", subtitle: "FEBRUARY 29TH", image: actualityImage3, link: "/hudba" },
+              { title: "ALBUM", subtitle: "WAIT FOR ME", image: actualityImage2, link: "/alba" }].map((item, index) => (
+              <Link
+                key={index}
+                href={item.link}
+                className={`
+                  group relative rounded-lg overflow-hidden shadow-md border border-gray-500 w-[350px]
+                  transform hover:-translate-y-1 hover:shadow-2xl transition-all duration-500 ease-out p-4 bg-gray-900
+                  ${index === 2 ? "md:col-span-2 md:justify-self-center lg:col-span-1 lg:justify-self-auto" : ""}
+                `}
               >
-                <div className="relative flex flex-col items-center">
-                  {/* Nadpis s ikonou */}
-                  <motion.div
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.6, duration: 0.6, ease: "easeOut" }}
-                    className="text-neonPink"
-                  >
-                    <FaAngleDoubleDown
-                      className="text-[32px] text-neonPink drop-shadow-[0_0_6px_#ff4dcf] transition-transform duration-300 hover:scale-110"
-                    />
-                  </motion.div>
-
-                  {/* Čára */}
-                  <motion.div
-                    initial={{ height: 0 }}
-                    animate={{ height: "350px" }}
-                    transition={{ delay: 0.6, duration: 1, ease: "easeInOut" }}
-                    className="w-[2px] mt-2 bg-gradient-to-b from-pink-400 via-pink-300 to-pink-500 animate-pulse"
-                  />
+                <h3 className="text-gray-400 font-semibold tracking-wider mb-1">
+                  {item.title}
+                </h3>
+                <p className="text-gray-50 text-2xl font-semibold mb-4">
+                  {item.subtitle}
+                </p>
+                <div className="relative w-full h-72 rounded-md overflow-hidden">
+                  <Image src={item.image} alt={item.title} fill objectFit="cover" className="transition-transform duration-500 transform group-hover:scale-105" />
                 </div>
-              </div>              
+              </Link>
+            ))}
+          </div>
 
-              <div className="relative grid gap-10 items-center justify-center w-[85%] lg:w-[67%] monitor:w-[55%] mx-auto pt-14 pb-16 sm:pt-14 sm:pb-16 md:pt-14 md:pb-16 lg:pt-14 lg:pb-11 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 z-20">
-                {[
-                  {
-                    title: "V STAND-UP COMEDY",
-                    subtitle: "MILOŠE KNORA",
-                    image: actualityImage1,
-                    link: "#showMiloseKnora",
-                    openInNewTab: false,
-                  },
-                  {
-                    title: "ALBUM",
-                    subtitle: "WAIT FOR ME",
-                    image: actualityImage2,
-                    link: "/alba",
-                    openInNewTab: false,
-                  },
-                  {
-                    title: "SONG",
-                    subtitle: "FEBRUARY 29TH",
-                    image: actualityImage3,
-                    link: "/hudba",
-                    openInNewTab: false,
-                  },
-                ].map((item, index) => (
-                  <div
-                    key={index}
-                    className={`flex flex-col items-center text-center group ${
-                      index === 2 ? "sm:col-span-full sm:justify-self-center lg:col-span-1" : ""
-                    } ${index === 0 || index === 2 ? "xl:mt-9 mt-0" : ""}`}
-                  >
-                    <h3 className="text-lightGray text-lg font-montserrat mb-2">
-                      {item.title}
-                      <br />
-                      <span className="text-white font-bold text-xl">
-                        {item.subtitle}
-                      </span>
-                    </h3>
-                    <div onClick={handleLinkClick} className="relative w-[300px] h-[300px] group-hover:brightness-100 brightness-75 transition-all overflow-hidden">
-                      <Link
-                        href={item.link}
-                        rel="noopener noreferrer"
-                        target={item.openInNewTab ? "_blank" : undefined}                        
-                      >
-                        <Image
-                          src={item.image}
-                          alt={item.title}
-                          layout="fill"
-                          objectFit="cover"
-                          className="rounded-md border-[2px] border-white transition-all duration-300"
-                        />
-                      </Link>
-                      
-                      {/*
-                      {index === 2 && (
-                        <div className="absolute w-[47px] h-[47px] flex items-center justify-center border-[3px] bg-blue-600 border-none mt-[2.5px] mr-[3px] group-hover:brightness-100 group-hover:cursor-pointer rounded-bl-lg text-lg top-0 right-0">
-                          <FaPlayCircle className="bg-transparent text-gray-200 mr-[-2px] transition-all duration-300 ease-in-out transform group-hover:scale-125 group-hover:mr-[-1px] z-20" />
-                        </div>
-                      )} */}
-                    </div>
-                    
-                    {/*
-                    <Link
-                      href={item.link}
-                      rel="noopener noreferrer"
-                      target={item.openInNewTab ? "_blank" : undefined}
-                    >
-                      <button className="mt-3 px-10 py-[9px] bg-transparent text-white border-[3px] rounded-lg font-bold border-blue-500 uppercase transition-all duration-300 opacity-85 group-hover:opacity-100 group-hover:border-blue-500 group-hover:text-blue-500">
-                        {index === 2 ? "Poslechnout" : "Prohlédnout"}
-                      </button>
-                    </Link> */}
-                  </div>
-                ))}
-              </div>  
-            </div>                       
-          </section>
+        </section>
 
-          {/* Video Section */}
-          <section className="relative h-auto bg-gray-100 p-11 mt-0 z-30">            
-            <div className="relative left-0 right-0 w-full mt-3 mb-7 z-10">
-              <h2 className="text-black font-montserrat text-[22px] monitor:text-[24px] text-center font-bold uppercase">
-                Kaplička Fest 2024
-              </h2>
-            </div>            
-
-            <div className='relative grid place-items-center gap-7 mx-auto lg:w-[80%] monitor:w-[64%] grid-cols-1 sm:grid-cols-2 z-20'>
-              {kaplickaVideos.map((video, index) => (
-                <div key={index} className="relative">
-                  <iframe
-                    src={video.src}                    
-                    title={`Kaplička video ${index + 1}`}
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    className='w-[347px] h-[195px] sm:w-[347px] sm:h-[195px] md:w-[560px] md:h-[315px]'                    
-                  ></iframe>                 
-                </div>
-              ))}
-            </div>      
-          </section>
-
-          <section id="showMiloseKnora" className="relative h-auto bg-gray-100 p-11 mt-[-40px] z-30">            
-            <div className="relative left-0 right-0 w-full mt-3 mb-7 z-10">
-              <h2 className="text-black font-montserrat text-[22px] monitor:text-[24px] text-center font-bold uppercase">
-                Show Miloše Knora
-              </h2>
-            </div>            
-
-            <div className='relative grid place-items-center gap-7 mx-auto lg:w-[80%] monitor:w-[64%] grid-cols-1 sm:grid-cols-2 z-20'>
-              {knorVideos.map((video, index) => (
-                <div key={index} className="relative">
-                  <iframe
-                    src={video.src}                    
-                    title={`Knor video ${index + 1}`}
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen  
-                    className='w-[347px] h-[195px] sm:w-[347px] sm:h-[195px] md:w-[560px] md:h-[315px]'                  
-                  ></iframe>                 
-                </div>
-              ))}
-            </div>                       
-          </section>
-
-          <section className="relative h-auto bg-gray-100 p-11 pb-11 sm:pb-0 md:pb-16 mt-[-40px] z-30">            
-            
-            <div className="relative left-0 right-0 w-full mt-3 mb-7 z-10">
-              <h2 className="text-black font-montserrat text-[22px] monitor:text-[24px] text-center font-bold uppercase">
-                Noc s Andělem
-              </h2>
-            </div>            
-
-            <div className='relative mx-auto w-full z-20'>
-              <div className="flex items-center justify-center w-full">
-                <iframe                   
-                  src={andelVideo.src}
-                  title="YouTube video player" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"                  
+        <section className="p-11 text-white">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-montserrat font-bold text-white">Kaplička Fest 2024</h2>
+            <div className="mt-3 mx-auto w-24 h-1 bg-gradient-to-r from-[#ff6a00] to-[#ee0979] rounded-full"></div>
+          </div>
+          <div className='grid gap-7 mx-auto lg:w-[80%] monitor:w-[64%] grid-cols-1 sm:grid-cols-2 place-items-center'>
+            {kaplickaVideos.map((video, index) => (
+              <div key={index} className="relative">
+                <iframe
+                  src={video.src}
+                  title={`Kaplicka video ${index + 1}`}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
-                  className='w-[347px] h-[195px] sm:w-[347px] sm:h-[195px] md:w-[560px] md:h-[315px] lg:w-[800px] lg:h-[450px]'
-                  ></iframe>                  
+                  className='w-[347px] h-[195px] sm:w-[347px] sm:h-[195px] md:w-[560px] md:h-[315px]'
+                ></iframe>
               </div>
-            </div>                       
-          </section>
+            ))}
+          </div>
+        </section>
 
-          <VideoModal showModal={showModal} videoUrl={videoUrl} onClose={handleClose} />
-          <Newsletter />
-          <Footer />
-        </>
+        <section id="showMiloseKnora" className="p-11 text-white">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-montserrat font-bold text-white">Show Miloše Knora</h2>
+            <div className="mt-3 mx-auto w-24 h-1 bg-gradient-to-r from-[#ff6a00] to-[#ee0979] rounded-full"></div>
+          </div>
+          <div className='grid gap-7 mx-auto lg:w-[80%] monitor:w-[64%] grid-cols-1 sm:grid-cols-2 place-items-center'>
+            {knorVideos.map((video, index) => (
+              <div key={index} className="relative">
+                <iframe
+                  src={video.src}
+                  title={`Knor video ${index + 1}`}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className='w-[347px] h-[195px] sm:w-[347px] sm:h-[195px] md:w-[560px] md:h-[315px]'
+                ></iframe>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="p-11 pb-11 text-white">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-montserrat font-bold text-white">Noc s Andělem</h2>
+            <div className="mt-3 mx-auto w-24 h-1 bg-gradient-to-r from-[#ff6a00] to-[#ee0979] rounded-full"></div>
+          </div>
+          <div className='flex justify-center'>
+            <iframe
+              src={andelVideo.src}
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              className='w-[347px] h-[195px] sm:w-[347px] sm:h-[195px] md:w-[560px] md:h-[315px] lg:w-[800px] lg:h-[450px]'
+            ></iframe>
+          </div>
+        </section>
+      </div>
+
+      <VideoModal showModal={showModal} videoUrl={videoUrl} onClose={handleClose} />
+      <Footer />
+    </>
   );
 }

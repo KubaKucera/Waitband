@@ -11,6 +11,7 @@ import HeadingWithLine from "@/components/headingWithLine/HeadingWithLine";
 
 import { motion } from "framer-motion";
 import { useEffect } from "react";
+import ScrollToTopButton from "@/components/scrollToTopButton/ScrollToTopButton";
 
 const SpotifyEmbed = ({ url }: { url: string }) => (
   <div className="relative w-full max-w-md mx-auto">
@@ -77,17 +78,27 @@ export default function AlbumsPage() {
   return (
         <>
           <CustomCookieConsent />
-          <Navbar initialActiveLink="alba"/>  
-          <HeadingWithLine lineHeight="655px" /> 
+          <Navbar initialActiveLink="alba"/>   
+          <ScrollToTopButton /> 
+          <HeadingWithLine
+            height={895}
+            offsetTop="110px"
+            position="left"
+            delay={0.4}
+            duration={0.6}
+            ease="easeOut"    
+            label="Alba"
+          />         
 
-          <section className="relative min-h-screen flex flex-col items-center gap-8 pt-20 pb-20 py-10 bg-gray-900">
+          <section className="relative min-h-screen flex flex-col items-center gap-8 pt-20 pb-16 py-10 bg-gray-900">
             
-            <div className="absolute pt-3 left-0 right-0 w-full z-10">
-              <h2 className="text-gray-100 font-montserrat text-[22px] monitor:text-[24px] text-center font-normal uppercase">
+            <div className="relative text-center z-20">
+              <h2 className="text-4xl sm:text-5xl font-montserrat font-bold text-white">
                 Přehled alb
               </h2>
+              <div className="mt-4 mx-auto w-28 h-1 bg-gradient-to-r from-[#ff6a00] to-[#ee0979] rounded-full"></div>
             </div>
-            <p className="text-gray-400 text-center text-lg max-w-3xl pt-14 z-10 leading-6">
+            <p className="text-gray-400 text-center text-lg max-w-3xl z-10 leading-6">
               Ukázky skladeb v níže uvedených albech jsou časově omezeny. 
               Pro plný poslech se prosím přihlaste do svého účtu na Spotify.
             </p>
@@ -95,7 +106,8 @@ export default function AlbumsPage() {
               className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
               style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%"}}
             >
-              <div className="fixed right-[-50px] top-32 hidden xl:flex pointer-events-none z-30 animate-pulse">
+              {/*
+              <div className="fixed right-[-50px] top-32 hidden xl:flex pointer-events-none z-30">
                 <motion.div
                   animate={{
                     y: [0, 15, 0],  // pohyb z původní pozice dolů o 15px a zpět nahoru
@@ -112,10 +124,10 @@ export default function AlbumsPage() {
                     src={x}
                     alt="ExcMark"
                     width={280}
-                    className="filter saturate-150 brightness-75"
+                    className="filter saturate-150 brightness-75 drop-shadow-[0_0_15px_rgba(255,0,0,0.5)]"
                   />
                 </motion.div>      
-              </div>
+              </div> */}
             </div> 
 
             <div className="flex flex-wrap justify-center gap-8">

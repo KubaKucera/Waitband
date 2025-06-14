@@ -7,7 +7,7 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {
+    extend: {      
       animation: {
         float: "float 6s ease-in-out infinite",
       },
@@ -69,6 +69,9 @@ const config: Config = {
         musicPink: "#9900FF", 
         magenta: "#ff00ff",
         brewersBlue: "#00040efc",
+      },
+      zIndex: {
+        100: '100',
       },
     },
   },

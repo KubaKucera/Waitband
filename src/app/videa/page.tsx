@@ -82,16 +82,25 @@ export default function VideosPage(){
   return (
     <>
       <Navbar initialActiveLink="videa" />
-      <CustomCookieConsent />
-      <HeadingWithLine lineHeight="1050px" />
+      <CustomCookieConsent />      
       <ScrollToTopButton />
+      <HeadingWithLine
+        height={1350}
+        offsetTop="110px"
+        position="left"
+        delay={0.4}
+        duration={0.6}
+        ease="easeOut"    
+        label="Videa"
+      />  
 
-      <section className="relative min-h-screen flex flex-col items-center justify-center py-24">
+      <section className="relative min-h-screen flex flex-col items-center justify-center pt-24 pb-16 py-10">
         <div
           className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%"}}
         >
-          <div className="fixed right-[-210px] top-44 hidden xl:flex pointer-events-none z-30 animate-pulse">
+          {/*
+          <div className="fixed right-[-210px] top-44 hidden xl:flex pointer-events-none z-30">
             <motion.div
               animate={{
                 y: [0, 15, 0],  // pohyb z původní pozice dolů o 15px a zpět nahoru
@@ -108,10 +117,10 @@ export default function VideosPage(){
                 src={mouthSmile}
                 alt="ExcMark"
                 width={425}
-                className="filter saturate-150 brightness-75"
+                className="filter saturate-150 brightness-75 drop-shadow-[0_0_15px_rgba(255,0,0,0.5)]"
               />
             </motion.div>      
-          </div>
+          </div> */}
         </div>        
 
         {/* Hlavní video - zvětšení výšky */}
@@ -163,13 +172,21 @@ export default function VideosPage(){
           ))}
         </div>  
 
-        <div className="flex justify-center mt-[30px] mb-[-20px] h-[50px]">
-          <Link href="https://www.youtube.com/@waitbandofficial6520/videos" rel="noopener noreferrer" target='_blank' passHref>
-            <button className="w-[300px] h-[50px] tracking-wide bg-transparent text-gray-200 border-[3px] rounded-lg font-semibold text-lg border-blue-600 transition-all duration-500 ease-in-out transform hover:text-blue-600 hover:opacity-100">
+        <div className="flex justify-center mt-[20px] h-[50px]">
+          <Link href="https://www.youtube.com/@waitbandofficial6520/videos" target='_blank'>
+            <button
+              className="w-[300px] h-[50px] tracking-wide bg-transparent text-gray-100 rounded-lg font-semibold text-lg transition-all duration-500 ease-in-out transform hover:rounded-md hover:text-neonPink hover:opacity-100"
+              style={{
+                borderWidth: "3px",
+                borderStyle: "solid",
+                borderImageSlice: 1,
+                borderImageSource: "linear-gradient(to right, #ff6a00, #ee0979)",
+              }}
+            >
               Všechna videa
             </button>
           </Link>
-        </div> 
+        </div>
       </section>
 
       <Footer />

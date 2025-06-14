@@ -24,6 +24,7 @@ import CustomCookieConsent from "@/components/cookie/CookieConsent";
 import HeadingWithLine from "@/components/headingWithLine/HeadingWithLine";
 
 import { motion } from "framer-motion";
+import ScrollToTopButton from "@/components/scrollToTopButton/ScrollToTopButton";
 
 /*
 export const metadata: Metadata = {
@@ -93,8 +94,17 @@ export default function MusicPage() {
   return (
     <>
       <CustomCookieConsent />
-      <Navbar initialActiveLink="hudba" />
-      <HeadingWithLine lineHeight="750px" />
+      <Navbar initialActiveLink="hudba" /> 
+      <ScrollToTopButton />  
+      <HeadingWithLine
+        height={1090}
+        offsetTop="110px"
+        position="left"
+        delay={0.4}
+        duration={0.6}
+        ease="easeOut"    
+        label="Hudba"
+      />   
 
       <section className="relative min-h-screen py-10 pt-20 pb-14 px-4 sm:px-6">
         {/* Background */}
@@ -102,7 +112,8 @@ export default function MusicPage() {
           className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%" }}
         >
-          <div className="fixed right-[25px] top-64 hidden xl:flex pointer-events-none z-30 animate-pulse">
+          {/*
+          <div className="fixed right-[25px] top-64 hidden xl:flex pointer-events-none z-30">
             <motion.div
               animate={{
                 y: [0, 15, 0],  // pohyb z původní pozice dolů o 15px a zpět nahoru
@@ -119,21 +130,23 @@ export default function MusicPage() {
                 src={dollar}
                 alt="ExcMark"
                 width={210}
-                className="filter saturate-150 brightness-75"
+                className="filter saturate-150 brightness-75 drop-shadow-[0_0_15px_rgba(255,0,0,0.5)]"
               />
             </motion.div>      
           </div>
+          */}
         </div>
 
         {/* Title */}
-        <div className="absolute pt-3 left-0 right-0 w-full z-10">
-          <h2 className="text-gray-100 font-montserrat text-[22px] monitor:text-[24px] text-center font-normal uppercase">
-            Výběr top songů
+        <div className="relative text-center z-20">
+          <h2 className="text-4xl sm:text-5xl font-montserrat font-bold text-white">
+            Naše top songy
           </h2>
+          <div className="mt-4 mx-auto w-28 h-1 bg-gradient-to-r from-[#ff6a00] to-[#ee0979] rounded-full"></div>
         </div>
 
         {/* Image Grid */}
-        <div className="container mx-auto mt-20 mb-10 flex items-center justify-center relative">
+        <div className="container mx-auto mt-10 mb-10 flex items-center justify-center relative">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols gap-6">
             {images.map((image, index) => (
               <div
@@ -147,7 +160,7 @@ export default function MusicPage() {
                     alt={`Photo ${index + 1}`}
                     layout="fill"
                     objectFit="cover"
-                    className="transition-all duration-300 ease-in-out transform hover:scale-110"
+                    className="transition-transform duration-300 transform hover:scale-105"
                   />
                 </div>
               </div>
@@ -155,9 +168,17 @@ export default function MusicPage() {
           </div>
         </div>
 
-        <div className="flex justify-center mb-[25px]">
-          <Link href="/alba" rel="noopener noreferrer" passHref>
-            <button className="w-[300px] h-[50px] tracking-wide bg-transparent text-gray-200 border-[3px] rounded-lg font-semibold text-lg border-blue-600 transition-all duration-500 ease-in-out transform hover:text-blue-600 hover:opacity-100">
+        <div className="flex justify-center mt-[20px] h-[50px]">
+          <Link href="/alba">
+            <button
+              className="w-[300px] h-[50px] tracking-wide bg-transparent text-gray-100 rounded-lg font-semibold text-lg transition-all duration-500 ease-in-out transform hover:rounded-md hover:text-neonPink hover:opacity-100"
+              style={{
+                borderWidth: "3px",
+                borderStyle: "solid",
+                borderImageSlice: 1,
+                borderImageSource: "linear-gradient(to right, #ff6a00, #ee0979)",
+              }}
+            >
               Přejít na alba
             </button>
           </Link>
@@ -171,21 +192,28 @@ export default function MusicPage() {
             e.stopPropagation(); 
             closeModal();
           }}
-          className="fixed inset-0 bg-white bg-opacity-80 backdrop-blur-xl z-50 flex flex-col items-center justify-center"        
+          className="fixed inset-0 bg-white bg-opacity-80 backdrop-blur-xl z-100 flex flex-col items-center justify-center"        
         >
           {/* Close Button */}
-          <div          
+          <button
+            aria-label="Zavřít"
             onClick={closeModal}
-            className="absolute w-[35px] h-[35px] bg-gray-600 bg-opacity-35 right-3 top-3 rounded-lg z-30"          
+            className="absolute top-5 right-5 p-1 rounded hover:bg-opacity-30 transition-colors z-40 flex items-center justify-center"
           >
-            <Image 
-              src={crossIcon}
-              alt="Cross Icon"
-              objectFit="cover"
-              layout="fill"              
-              className="opacity-80 cursor-pointer hover:opacity-100"
-            />
-          </div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={1.5}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="w-9 h-9 text-gray-700 hover:text-black"
+            >
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
 
           <div className="relative w-72 h-72 mb-3 mx-auto">
             <Image

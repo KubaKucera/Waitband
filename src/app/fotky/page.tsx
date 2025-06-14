@@ -4,6 +4,11 @@ import Link from "next/link";
 import Image from "next/image";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
+import CustomCookieConsent from "@/components/cookie/CookieConsent";
+import ScrollToTopButton from "@/components/scrollToTopButton/ScrollToTopButton";
+import HeadingWithLine from "@/components/headingWithLine/HeadingWithLine";
+import { useState, useEffect } from "react";
+
 import image1 from "../../../public/assets/images/photos/image1.jpg";
 import image2 from "../../../public/assets/images/photos/image2.jpg";
 import image3 from "../../../public/assets/images/photos/image7.jpg";
@@ -28,20 +33,13 @@ import image21 from "../../../public/assets/images/photos/image21.jpeg";
 import image22 from "../../../public/assets/images/photos/image22.jpeg";
 import image23 from "../../../public/assets/images/photos/image23.jpeg";
 import image24 from "../../../public/assets/images/photos/image24.jpg";
-import crossIcon from "../../../public/assets/images/interface/crossIcon.png";
-import texture from "../../../public/assets/textures/texture.jpg";
-import arrows from "../../../public/assets/images/graffiti/arrows.png";
-import CustomCookieConsent from "@/components/cookie/CookieConsent";
-import { useState, useEffect } from "react";
-import HeadingWithLine from "@/components/headingWithLine/HeadingWithLine";
-import ScrollToTopButton from "@/components/scrollToTopButton/ScrollToTopButton";
 
-import { motion } from "framer-motion";
+import texture from "../../../public/assets/textures/texture.jpg";
 
 const images = [
-  image24, image1, image2, image3, image4, image5, image6, image7, 
-  image8, image9, image10, image11, image12, image13, 
-  image14, image15, image16, image17, image18, image19, 
+  image24, image1, image2, image3, image4, image5, image6, image7,
+  image8, image9, image10, image11, image12, image13,
+  image14, image15, image16, image17, image18, image19,
   image20, image21, image22, image23
 ];
 
@@ -54,49 +52,52 @@ export default function PhotosPage() {
     document.title = "Fotky - Wait";
   }, []);
 
+  useEffect(() => {
+    if (selectedIndex !== null) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+  }, [selectedIndex]);
+
   const handleShowMore = () => {
     setShowMore(true);
     setButtonDisabled(true);
   };
 
   const closeModal = () => setSelectedIndex(null);
-  const goToNext = () => setSelectedIndex((prev) => (prev !== null && prev < images.length - 1 ? prev + 1 : prev));
-  const goToPrev = () => setSelectedIndex((prev) => (prev !== null && prev > 0 ? prev - 1 : prev));
+  const goToNext = () =>
+    setSelectedIndex((prev) =>
+      prev !== null && prev < images.length - 1 ? prev + 1 : prev
+    );
+  const goToPrev = () =>
+    setSelectedIndex((prev) => (prev !== null && prev > 0 ? prev - 1 : prev));
 
   return (
     <>
       <CustomCookieConsent />
       <Navbar initialActiveLink="fotky" />
-      <HeadingWithLine lineHeight="800px" />
-      <ScrollToTopButton />
+      <ScrollToTopButton />      
 
-      <section className="relative h-auto py-10">
-        <div className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${texture.src})` }}>
-          <div className="fixed right-[10px] top-60 -rotate-15 hidden xl:flex pointer-events-none z-30 animate-pulse">
-            <motion.div
-              animate={{
-                y: [0, 15, 0],  // pohyb z původní pozice dolů o 15px a zpět nahoru
-              }}
-              transition={{
-                duration: 3,
-                ease: "easeInOut",
-                repeat: Infinity,
-                repeatType: "loop"
-              }}
-              className="drop-shadow-lg"
-            >
-              <Image
-                src={arrows}
-                alt="ExcMark"
-                width={250}
-                className="filter saturate-150 brightness-75"
-              />
-            </motion.div>      
-          </div>
-        </div>
+      <HeadingWithLine
+        height={showMore ? 2630 : 1015} // zvětšení po kliknutí
+        offsetTop="110px"
+        position="left"
+        delay={0.4}
+        duration={0.6}
+        ease="easeOut"
+        label="Fotky"
+      />
 
+      <section
+        className="relative h-auto py-10"
+      >
+        <div
+          className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%" }}
+        ></div>
         <div className="container mx-auto px-4 flex justify-center">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-24 pb-24 place-items-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-16 pb-24 place-items-center">
             {images.slice(0, showMore ? images.length : 9).map((image, index) => (
               <div
                 key={index}
@@ -108,7 +109,7 @@ export default function PhotosPage() {
                   alt={`Photo ${index + 1}`}
                   layout="fill"
                   objectFit="cover"
-                  className="transition-all duration-300 ease-in-out transform hover:scale-110"
+                  className="transition-transform duration-300 transform hover:scale-105"
                 />
               </div>
             ))}
@@ -117,7 +118,9 @@ export default function PhotosPage() {
 
         <div className="flex justify-center mt-[-85px]">
           <button
-            className={`w-full max-w-[950px] h-[50px] tracking-wide z-20 ml-14 mr-14 md:ml-20 md:mr-20 lg:ml-0 lg:mr-0 sm:ml-28 sm:mr-28 border-gray-400 border-[3px] text-gray-400 font-semibold text-lg transition-all duration-500 ease-in-out transform hover:border-white hover:text-white rounded-lg ${buttonDisabled ? "opacity-50 cursor-not-allowed" : ""}`}
+            className={`w-full max-w-[950px] h-[50px] tracking-wide z-20 ml-14 mr-14 md:ml-20 md:mr-20 lg:ml-0 lg:mr-0 sm:ml-28 sm:mr-28 border-gray-400 border-[3px] text-gray-400 font-semibold text-lg transition-all duration-500 ease-in-out transform hover:border-white hover:text-white rounded-md ${
+              buttonDisabled ? "opacity-50 cursor-not-allowed" : ""
+            }`}
             onClick={handleShowMore}
             disabled={buttonDisabled}
           >
@@ -125,50 +128,116 @@ export default function PhotosPage() {
           </button>
         </div>
 
+        {/* Modal */}
         {selectedIndex !== null && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-85" onClick={closeModal}>
-            <div className="relative w-[90vw] h-[90vw] lg:max-w-[600px] lg:max-h-[600px] xl:max-w-[600px] xl:max-h-[600px] monitor:max-w-[770px] monitor:max-h-[770px] z-30" onClick={(e) => e.stopPropagation()}>
+          <div
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black bg-opacity-85"
+            onClick={closeModal}
+          >
+            {/* Close Button */}
+            <button
+              aria-label="Zavřít"
+              onClick={closeModal}
+              className="absolute top-5 right-5 p-1 rounded hover:bg-opacity-30 transition-colors z-40 flex items-center justify-center"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={1.5}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="w-9 h-9 text-gray-200"
+              >
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
+
+            {/* Previous Button */}
+            {selectedIndex > 0 && (
+              <button
+                aria-label="Předchozí"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  goToPrev();
+                }}
+                className="absolute left-5 top-1/2 -translate-y-1/2 z-40 p-2 text-gray-50 hover:text-gray-300"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={2}
+                  stroke="currentColor"
+                  className="w-8 h-8"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+            )}
+
+            {/* Next Button */}
+            {selectedIndex < images.length - 1 && (
+              <button
+                aria-label="Další"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  goToNext();
+                }}
+                className="absolute right-5 top-1/2 -translate-y-1/2 z-40 p-2 text-gray-50 hover:text-gray-300"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={2}
+                  stroke="currentColor"
+                  className="w-8 h-8"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            )}
+
+            {/* Image index */}
+            <div className="absolute bottom-5 right-5 text-gray-50 text-sm sm:text-base px-3 py-1 rounded-md z-40">
+              {selectedIndex + 1} / {images.length}
+            </div>
+
+            {/* Image */}
+            <div
+              className="relative w-[90vw] h-[90vw] lg:max-w-[600px] lg:max-h-[600px] xl:max-w-[600px] xl:max-h-[600px] monitor:max-w-[770px] monitor:max-h-[770px] z-30 rounded-lg border border-gray-300 p-2 bg-gray-900"
+              onClick={(e) => e.stopPropagation()}
+            >
               <Image
                 src={images[selectedIndex]}
                 alt="Selected Image"
                 layout="fill"
                 objectFit="cover"
-                className="border-[2px] border-white rounded-md"
+                className="rounded-lg"
               />
-              <div className="absolute top-2 right-2 w-8 h-8 bg-gray-600 bg-opacity-35 rounded-lg z-30">
-                <Image
-                  src={crossIcon}
-                  alt="Close"
-                  layout="fill"
-                  objectFit="cover"
-                  onClick={closeModal}
-                  className="cursor-pointer opacity-70 hover:opacity-100"
-                />
-              </div>
-              {selectedIndex > 0 && (
-                <button className="absolute left-0 top-1/2 -translate-y-1/2 z-30 h-10 sm:h-14 w-7 sm:w-7 md:h-14 md:w-9 flex items-center justify-center bg-white/80 hover:bg-white backdrop-blur-md rounded-r-full shadow-lg text-gray-700 hover:text-black" onClick={goToPrev} aria-label="Předchozí">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 ml-[-4px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-                  </svg>
-                </button>
-              )}
-              {selectedIndex < images.length - 1 && (
-                <button className="absolute right-0 top-1/2 -translate-y-1/2 z-30 h-10 sm:h-14 w-7 sm:w-7 md:h-14 md:w-9 flex items-center justify-center bg-white/80 hover:bg-white backdrop-blur-md rounded-l-full shadow-lg text-gray-700 hover:text-black" onClick={goToNext} aria-label="Další">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 mr-[-4px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                  </svg>
-                </button>
-              )}
-              <div className="absolute bottom-3 right-4 text-white text-sm sm:text-base bg-black bg-opacity-50 px-3 py-1 rounded-lg z-30">
-                {selectedIndex + 1} / {images.length}
-              </div>
             </div>
           </div>
         )}
 
-        <div className="flex justify-center mt-[20px] mb-[30px] h-[50px]">
-          <Link href="https://www.instagram.com/wait_band_official/" rel="noopener noreferrer" target="_blank" passHref>
-            <button className="w-[300px] h-[50px] tracking-wide bg-transparent text-gray-200 border-[3px] rounded-lg font-semibold text-lg border-blue-600 transition-all duration-500 ease-in-out transform hover:text-blue-600 hover:opacity-100">
+        <div className="flex justify-center mt-[20px] mb-4 h-[50px]">
+          <Link
+            href="https://www.instagram.com/wait_band_official/"
+            rel="noopener noreferrer"
+            target="_blank"
+            passHref
+          >
+            <button
+              className="w-[300px] h-[50px] tracking-wide bg-transparent text-gray-100 rounded-lg font-semibold text-lg transition-all duration-500 ease-in-out transform hover:rounded-md hover:text-neonPink hover:opacity-100"
+              style={{
+                borderWidth: "3px",
+                borderStyle: "solid",
+                borderImageSlice: 1,
+                borderImageSource: "linear-gradient(to right, #ff6a00, #ee0979)",
+              }}
+            >
               Přejít na instagram
             </button>
           </Link>

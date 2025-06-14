@@ -11,6 +11,8 @@ import texture from "../../../public/assets/textures/texture.jpg";
 import rightArrow from "../../../public/assets/images/graffiti/arrowRight.png";
 import leftArrow from "../../../public/assets/images/graffiti/arrowLeft.png";
 import { motion } from "framer-motion";
+import HeadingWithLine from "@/components/headingWithLine/HeadingWithLine";
+import ScrollToTopButton from "@/components/scrollToTopButton/ScrollToTopButton";
 
 export default function ContactPage() {
   const [nameInput, setNameInput] = useState('');
@@ -71,8 +73,18 @@ export default function ContactPage() {
     <>
       <CustomCookieConsent />
       <Navbar initialActiveLink="kontakt" />
+      <ScrollToTopButton />
+      <HeadingWithLine
+        height={600}
+        offsetTop="110px"
+        position="left"
+        delay={0.4}
+        duration={0.6}
+        ease="easeOut"    
+        label="Kontakt"
+      /> 
 
-      <div className="flex justify-center items-center py-24 pb-14 px-8 bg-fixed bg-cover bg-center bg-no-repeat min-h-screen" style={{ backgroundImage: `url(${texture.src})` }}>
+      <div className="flex justify-center items-center py-24 pb-14 px-8 bg-fixed bg-cover bg-center bg-no-repeat h-auto" style={{ backgroundImage: `url(${texture.src})` }}>
         {/*<Image src={rightArrow} alt="Arrow Right" className="hidden xl:block absolute left-[-150px] top-[160px] rotate-15 opacity-50 w-[265px] monitor:w-[330px]" />
         <Image src={leftArrow} alt="Arrow Left" className="hidden xl:block absolute right-[-150px] top-[425px] opacity-50 w-[265px] monitor:w-[330px]" /> */}
 

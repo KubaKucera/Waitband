@@ -12,7 +12,7 @@ interface NavbarProps {
 
 export default function Navbar({ initialActiveLink }: NavbarProps) {
     const [activeLink, setActiveLink] = useState(initialActiveLink);
-    const [navbarHeight, setNavbarHeight] = useState(77);
+    const [navbarHeight, setNavbarHeight] = useState(70);
     const [titleScale, setTitleScale] = useState(1);
     const [menuOpen, setMenuOpen] = useState(false);
 
@@ -35,6 +35,7 @@ export default function Navbar({ initialActiveLink }: NavbarProps) {
     };
 
     useEffect(() => {
+        /*
         const handleScroll = () => {
             const scrollY = window.scrollY;
             if (scrollY > 50) {
@@ -51,11 +52,12 @@ export default function Navbar({ initialActiveLink }: NavbarProps) {
         return () => {
             window.removeEventListener("scroll", handleScroll);
         };
+        */
     }, []);
 
     return (
         <nav
-            className={`bg-black text-white flex items-center justify-between px-10 space-x-0 md:justify-between md:space-x-0 lg:justify-center lg:space-x-20 monitor:space-x-32 font-nav border-b-[1px] border-gray-300 fixed top-0 left-0 right-0 z-50 text-[15px] transition-height duration-300 ease-in-out`}
+            className={`bg-black text-white flex items-center justify-between px-10 space-x-0 md:justify-between md:space-x-0 lg:justify-center lg:space-x-20 monitor:space-x-32 font-nav border-b-[1px] border-gray-300 fixed top-0 left-0 right-0 z-100 text-[15px] transition-height duration-300 ease-in-out`}
             style={{ height: `${navbarHeight}px` }}
         >
             <div className='flex items-center justify-center z-50'>
@@ -77,20 +79,17 @@ export default function Navbar({ initialActiveLink }: NavbarProps) {
                 {renderLinks(handleLinkClick, activeLink)}
             </div>
 
-            {/* Mobile Burger Menu */}
-            <div className="lg:hidden flex items-center">
-                <button
-                    onClick={toggleMenu}
-                    className="text-white focus:outline-none z-50"
-                >
+            {/* Mobile Burger Icon */}
+            <div className="lg:hidden z-50">
+                <button onClick={toggleMenu} className="text-white focus:outline-none">
                     {menuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
                 </button>
             </div>
 
-            {/* Mobile Menu */}
+            {/* Mobile Fullscreen Overlay Menu */}
             <div
-                className={`absolute top-full left-0 w-full bg-black text-xl bg-opacity-90 text-white flex flex-col items-center space-y-4 py-8 lg:hidden transition-all duration-500 ease-in-out ${
-                    menuOpen ? 'transform translate-y-0 opacity-100' : 'transform -translate-y-full opacity-0'
+                className={`fixed inset-0 bg-black bg-opacity-90 backdrop-blur-sm text-gray-50 text-2xl font-semibold flex flex-col items-center justify-center space-y-6 z-40 transition-all duration-300 ${
+                    menuOpen ? "opacity-100 translate-y-0 visible" : "opacity-0 -translate-y-full invisible"
                 }`}
             >
                 {renderLinks(handleLinkClick, activeLink)}

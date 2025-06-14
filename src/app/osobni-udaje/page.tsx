@@ -12,7 +12,7 @@ export default function PrivacyPolicyPage(){
         <>
             <Navbar initialActiveLink=""/>
 
-            <section className="relative min-h-screen w-full p-28">
+            <section className="relative min-h-screen w-full p-28 text-white">
                 <h1 className="text-2xl font-bold">Zásady ochrany osobních údajů</h1>
                 <p>Poslední aktualizace: 23. listopadu 2024</p>
                 <p>Tato Zásada ochrany osobních údajů popisuje naše zásady a postupy při shromažďování, používání a zpřístupňování Vašich údajů, když používáte Službu, a informuje Vás o Vašich právech na ochranu soukromí a o tom, jak Vás zákon chrání.</p>

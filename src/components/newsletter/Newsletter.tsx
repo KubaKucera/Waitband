@@ -57,35 +57,27 @@ export default function Newsletter(){
           style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%"}}
         ></div> 
         
-        <div className="relative w-full h-auto overflow-hidden z-20">
-          <div className="fixed left-[0px] top-96 hidden xl:flex pointer-events-none z-30 animate-pulse">
-            <motion.div
-              animate={{
-                y: [0, 15, 0],  // pohyb z původní pozice dolů o 15px a zpět nahoru
-              }}
-              transition={{
-                duration: 3,
-                ease: "easeInOut",
-                repeat: Infinity,
-                repeatType: "loop"
-              }}
-              className="drop-shadow-lg"
-            >
+        <div
+          className="absolute top-0 left-0 h-full pointer-events-none z-10"
+          style={{ width: "calc(50% - 200px)" }}
+        >
+          <div className="w-full h-full justify-center hidden xl:flex items-center animate-pulse">
+            <motion.div>
               <Image
                 src={heart}
-                alt="ExcMark"
-                width={200}
-                className="filter saturate-150 brightness-75"
+                alt="Heart"
+                width={210}
+                className="filter saturate-150 drop-shadow-[0_0_15px_rgba(255,0,0,0.5)]"
               />
             </motion.div>
           </div>
         </div>
-        
+
         {/* Nadpis Newsletter */}
         <div className="flex flex-col items-center space-y-2 text-center mt-4 z-20">
-          <h2 className="font-montserrat text-[40px] font-normal w-full">Pro naše fanoušky</h2>
+          <h2 className="font-montserrat text-[40px] font-normal w-screen max-w-full">Pro naše fanoušky</h2>
           <p className="text-lightGray font-sans text-xl">Přihlášení k odběru novinek</p>
-          <p className="text-[14px] md:text-[16px] font-sans text-gray-400 max-w-md">
+          <p className="text-[14px] md:text-[16px] font-sans text-gray-400 max-w-sm">
             Přihlášením se k odběru novinek dáváte souhlas se zpracováním{" "}
             <Link href="/osobni-udaje" target="_blank">
               <span className="text-blue-600 hover:underline font-semibold">osobních údajů.</span>
