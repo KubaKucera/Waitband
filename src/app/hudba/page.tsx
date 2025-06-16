@@ -154,7 +154,7 @@ export default function MusicPage() {
                 onClick={() => openModal(index)}
                 className="relative group cursor-pointer"
               >
-                <div className="relative w-[310px] h-[310px] mx-auto overflow-hidden rounded-md shadow-lg">
+                <div className="relative w-[310px] h-[310px] mx-auto overflow-hidden shadow-lg">
                   <Image
                     src={image}
                     alt={`Photo ${index + 1}`}

@@ -43,9 +43,19 @@ const images = [
   image20, image21, image22, image23
 ];
 
+function LoadingDots() {
+  return (
+    <span className="flex items-center justify-center space-x-2">
+      <span className="animate-pulse">.</span>
+      <span className="animate-pulse delay-200">.</span>
+      <span className="animate-pulse delay-400">.</span>
+    </span>
+  );
+}
+
 export default function PhotosPage() {
   const [showMore, setShowMore] = useState(false);
-  const [buttonDisabled, setButtonDisabled] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   useEffect(() => {
@@ -60,9 +70,13 @@ export default function PhotosPage() {
     }
   }, [selectedIndex]);
 
-  const handleShowMore = () => {
+  const handleShowMore = async () => {
+    setLoading(true);
+    // Simuluj načítání
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
     setShowMore(true);
-    setButtonDisabled(true);
+    setLoading(false);
   };
 
   const closeModal = () => setSelectedIndex(null);
@@ -77,10 +91,10 @@ export default function PhotosPage() {
     <>
       <CustomCookieConsent />
       <Navbar initialActiveLink="fotky" />
-      <ScrollToTopButton />      
+      <ScrollToTopButton />
 
       <HeadingWithLine
-        height={showMore ? 2630 : 1015} // zvětšení po kliknutí
+        height={showMore ? 2630 : 1015}
         offsetTop="110px"
         position="left"
         delay={0.4}
@@ -89,13 +103,12 @@ export default function PhotosPage() {
         label="Fotky"
       />
 
-      <section
-        className="relative h-auto py-10"
-      >
+      <section className="relative h-auto py-10">
         <div
           className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%" }}
-        ></div>
+          style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%" }}>
+        </div>
+
         <div className="container mx-auto px-4 flex justify-center">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-16 pb-24 place-items-center">
             {images.slice(0, showMore ? images.length : 9).map((image, index) => (
@@ -105,27 +118,44 @@ export default function PhotosPage() {
                 onClick={() => setSelectedIndex(index)}
               >
                 <Image
-                  src={image}
-                  alt={`Photo ${index + 1}`}
-                  layout="fill"
-                  objectFit="cover"
-                  className="transition-transform duration-300 transform hover:scale-105"
+                    src={image}
+                    alt={`Photo ${index + 1}`}
+                    fill
+                    objectFit="cover"
+                    className="transition-transform duration-300 transform hover:scale-105"
                 />
               </div>
             ))}
           </div>
         </div>
 
-        <div className="flex justify-center mt-[-85px]">
-          <button
-            className={`w-full max-w-[950px] h-[50px] tracking-wide z-20 ml-14 mr-14 md:ml-20 md:mr-20 lg:ml-0 lg:mr-0 sm:ml-28 sm:mr-28 border-gray-400 border-[3px] text-gray-400 font-semibold text-lg transition-all duration-500 ease-in-out transform hover:border-white hover:text-white rounded-md ${
-              buttonDisabled ? "opacity-50 cursor-not-allowed" : ""
-            }`}
-            onClick={handleShowMore}
-            disabled={buttonDisabled}
-          >
-            {buttonDisabled ? "Všechny fotky zobrazeny" : "Zobrazit více fotek"}
-          </button>
+        {/* Button Zobrazit vice*/}
+        {!showMore && (
+          <div className="flex justify-center mt-[-85px]">
+            <button
+              disabled={loading}
+              onClick={handleShowMore}
+              className={`w-full max-w-[950px] h-[50px] tracking-wide z-20 ml-14 mr-14 md:ml-20 md:mr-20 lg:ml-0 lg:mr-0 sm:ml-28 sm:mr-28 border-gray-400 border-[3px] text-gray-400 font-semibold text-lg transition-all duration-500 ease-in-out transform hover:border-gray-100 hover:text-gray-100 rounded-md ${
+                loading ? "opacity-50 cursor-not-allowed" : ""
+              }`}
+            >
+              {loading ? <LoadingDots /> : "Zobrazit více fotek"}
+            </button>
+          </div>
+        )}
+
+        {/* Button Instagram*/}
+        <div className={`flex justify-center mb-4 h-[50px] ${ showMore ? "mt-[-40px]" : "mt-[20px]"} `}>
+          <Link
+            href="https://www.instagram.com/wait_band_official/"
+            rel="noopener noreferrer"
+            target="_blank">
+            <button
+              className="w-[300px] h-[50px] tracking-wide bg-transparent text-gray-100 rounded-lg font-semibold text-lg transition-all duration-500 ease-in-out transform hover:rounded-md hover:text-neonPink hover:opacity-100"
+              style={{ borderWidth: "3px", borderStyle: "solid", borderImageSlice: 1, borderImageSource: "linear-gradient(to right, #ff6a00, #ee0979)" }}>
+              Přejít na Instagram
+            </button>
+          </Link>
         </div>
 
         {/* Modal */}
@@ -137,9 +167,11 @@ export default function PhotosPage() {
             {/* Close Button */}
             <button
               aria-label="Zavřít"
-              onClick={closeModal}
-              className="absolute top-5 right-5 p-1 rounded hover:bg-opacity-30 transition-colors z-40 flex items-center justify-center"
-            >
+              onClick={(e) => {
+                e.stopPropagation();
+                closeModal();
+              }}
+              className="absolute top-5 right-5 p-1 rounded hover:bg-opacity-30 transition-colors z-40 flex items-center justify-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -148,8 +180,7 @@ export default function PhotosPage() {
                 strokeWidth={1.5}
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="w-9 h-9 text-gray-200"
-              >
+                className="w-9 h-9 text-gray-200">
                 <line x1="18" y1="6" x2="6" y2="18" />
                 <line x1="6" y1="6" x2="18" y2="18" />
               </svg>
@@ -160,20 +191,18 @@ export default function PhotosPage() {
               <button
                 aria-label="Předchozí"
                 onClick={(e) => {
-                  e.stopPropagation();
-                  goToPrev();
+                    e.stopPropagation();
+                    goToPrev();
                 }}
-                className="absolute left-5 top-1/2 -translate-y-1/2 z-40 p-2 text-gray-50 hover:text-gray-300"
-              >
+                className="absolute left-5 top-1/2 -translate-y-1/2 z-40 p-2 text-gray-50 hover:text-gray-300">
                 <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={2}
-                  stroke="currentColor"
-                  className="w-8 h-8"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={2}
+                    stroke="currentColor"
+                    className="w-8 h-8">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
                 </svg>
               </button>
             )}
@@ -183,20 +212,18 @@ export default function PhotosPage() {
               <button
                 aria-label="Další"
                 onClick={(e) => {
-                  e.stopPropagation();
-                  goToNext();
+                    e.stopPropagation();
+                    goToNext();
                 }}
-                className="absolute right-5 top-1/2 -translate-y-1/2 z-40 p-2 text-gray-50 hover:text-gray-300"
-              >
+                className="absolute right-5 top-1/2 -translate-y-1/2 z-40 p-2 text-gray-50 hover:text-gray-300">
                 <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={2}
-                  stroke="currentColor"
-                  className="w-8 h-8"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={2}
+                    stroke="currentColor"
+                    className="w-8 h-8">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                 </svg>
               </button>
             )}
@@ -214,7 +241,7 @@ export default function PhotosPage() {
               <Image
                 src={images[selectedIndex]}
                 alt="Selected Image"
-                layout="fill"
+                fill
                 objectFit="cover"
                 className="rounded-lg"
               />
@@ -222,26 +249,6 @@ export default function PhotosPage() {
           </div>
         )}
 
-        <div className="flex justify-center mt-[20px] mb-4 h-[50px]">
-          <Link
-            href="https://www.instagram.com/wait_band_official/"
-            rel="noopener noreferrer"
-            target="_blank"
-            passHref
-          >
-            <button
-              className="w-[300px] h-[50px] tracking-wide bg-transparent text-gray-100 rounded-lg font-semibold text-lg transition-all duration-500 ease-in-out transform hover:rounded-md hover:text-neonPink hover:opacity-100"
-              style={{
-                borderWidth: "3px",
-                borderStyle: "solid",
-                borderImageSlice: 1,
-                borderImageSource: "linear-gradient(to right, #ff6a00, #ee0979)",
-              }}
-            >
-              Přejít na instagram
-            </button>
-          </Link>
-        </div>
       </section>
 
       <Footer />

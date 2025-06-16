@@ -11,7 +11,23 @@ import Footer from "@/components/footer/Footer";
 import HeadingWithLine from "@/components/headingWithLine/HeadingWithLine";
 import ScrollToTopButton from "@/components/scrollToTopButton/ScrollToTopButton";
 import Link from "next/link";
+import { PlayCircle } from "lucide-react";
 import { motion } from "framer-motion";
+
+function PlayIcon({ size = 32, color = '#fff', className = '' }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 32 32"
+      fill={color}
+      aria-label="Play"      
+      className={className}>
+      <path d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13zM12 9l12 7-12 7z" ></path>
+    </svg>
+  )
+}
 
 const videos = [
   {
@@ -136,7 +152,7 @@ export default function VideosPage(){
             frameBorder="0"
             allow="autoplay"
             allowFullScreen     
-            className="h-[250px] w-[450px] md:h-[440px] md:w-[790px] px-1"       
+            className="h-[210px] w-[410px] sm:h-[250px] sm:w-[450px] md:h-[440px] md:w-[790px] px-1"       
         ></iframe>
           <h2 className="text-white text-2xl sm:text-2xl md:text-4xl font-normal mt-4 text-left w-full px-2">{selectedTitle}</h2>
         </div>
@@ -163,7 +179,7 @@ export default function VideosPage(){
                   {video.id === currentPlayingVideoId ? (
                     <span className="text-white text-[20px] font-normal">Aktivní...</span> // Zobrazí text "Přehrává se"
                   ) : (
-                    <FaPlayCircle className="text-white text-[30px] sm:text-[30px] md:text-[37px]" />
+                    <PlayIcon size={32} color="#fff" />
                   )}
                 </div>
               </div>

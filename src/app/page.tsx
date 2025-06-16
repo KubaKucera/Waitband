@@ -86,7 +86,7 @@ export default function Home() {
           label="Úvod"
         />
 
-        <section className="p-11 text-gray-50">
+        <section id="uvod" className="p-11 text-gray-50">
           {/* Nadpis */}
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-montserrat font-bold text-white">

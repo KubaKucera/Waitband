@@ -65,7 +65,7 @@ export default function BandPage() {
           backgroundImage: `url(${texture.src})`,
         }}
       >
-        <section className="max-w-screen-xl mx-auto pr-14 pl-14 sm:pr-14 sm:pl-14 md:pr-0 md:pl-0">
+        <section className="max-w-screen-xl mx-auto pr-10 pl-10 sm:pr-10 sm:pl-10 md:pr-0 md:pl-0">
           {/* Title */}
           <div className="relative text-center z-20">
             <h2 className="text-4xl sm:text-5xl font-montserrat font-bold text-white">
