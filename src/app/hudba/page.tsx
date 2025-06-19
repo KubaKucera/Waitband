@@ -106,84 +106,62 @@ export default function MusicPage() {
         label="Hudba"
       />   
 
-      <section className="relative min-h-screen py-10 pt-20 pb-14 px-4 sm:px-6">
-        {/* Background */}
-        <div
-          className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%" }}
-        >
-          {/*
-          <div className="fixed right-[25px] top-64 hidden xl:flex pointer-events-none z-30">
-            <motion.div
-              animate={{
-                y: [0, 15, 0],  // pohyb z původní pozice dolů o 15px a zpět nahoru
-              }}
-              transition={{
-                duration: 3,
-                ease: "easeInOut",
-                repeat: Infinity,
-                repeatType: "loop"
-              }}
-              className="drop-shadow-lg"
-            >
-              <Image
-                src={dollar}
-                alt="ExcMark"
-                width={210}
-                className="filter saturate-150 brightness-75 drop-shadow-[0_0_15px_rgba(255,0,0,0.5)]"
-              />
-            </motion.div>      
+      <div
+        className="relative w-full min-h-screen bg-fixed bg-cover bg-center bg-no-repeat pb-5"
+        style={{
+          backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.7), rgba(20, 20, 20, 0.8)), url(${texture.src})`,
+        }}
+      > 
+        <section className="relative z-10 py-10 pt-20 pb-10 px-4 sm:px-6">          
+
+          {/* Title */}
+          <div className="relative text-center z-20">
+            <h2 className="text-4xl sm:text-5xl font-montserrat font-bold text-white">
+              Naše top songy
+            </h2>
+            <div className="mt-4 mx-auto w-28 h-1 bg-gradient-to-r from-[#ff6a00] to-[#ee0979] rounded-full"></div>
           </div>
-          */}
-        </div>
 
-        {/* Title */}
-        <div className="relative text-center z-20">
-          <h2 className="text-4xl sm:text-5xl font-montserrat font-bold text-white">
-            Naše top songy
-          </h2>
-          <div className="mt-4 mx-auto w-28 h-1 bg-gradient-to-r from-[#ff6a00] to-[#ee0979] rounded-full"></div>
-        </div>
-
-        {/* Image Grid */}
-        <div className="container mx-auto mt-10 mb-10 flex items-center justify-center relative">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols gap-6">
-            {images.map((image, index) => (
-              <div
-                key={index}
-                onClick={() => openModal(index)}
-                className="relative group cursor-pointer"
-              >
-                <div className="relative w-[310px] h-[310px] mx-auto overflow-hidden shadow-lg">
-                  <Image
-                    src={image}
-                    alt={`Photo ${index + 1}`}
-                    layout="fill"
-                    objectFit="cover"
-                    className="transition-transform duration-300 transform hover:scale-105"
-                  />
+          {/* Image Grid */}
+          <div className="container mx-auto mt-10 mb-10 flex items-center justify-center relative">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols gap-6">
+              {images.map((image, index) => (
+                <div
+                  key={index}
+                  onClick={() => openModal(index)}
+                  className="relative group cursor-pointer"
+                >
+                  <div className="relative w-[310px] h-[310px] mx-auto overflow-hidden shadow-lg">
+                    <Image
+                      src={image}
+                      alt={`Photo ${index + 1}`}
+                      layout="fill"
+                      objectFit="cover"
+                      className="transition-transform duration-300 transform hover:scale-105"
+                    />
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
 
-        <div className="flex justify-center mt-[20px] h-[50px]">
-          <Link href="/alba">
-            <button
-              className="w-[300px] h-[50px] tracking-wide bg-transparent text-gray-100 rounded-lg font-semibold text-lg transition-all duration-500 ease-in-out transform hover:rounded-md hover:text-neonPink hover:opacity-100"
-              style={{
-                borderWidth: "3px",
-                borderStyle: "solid",
-                borderImageSlice: 1,
-                borderImageSource: "linear-gradient(to right, #ff6a00, #ee0979)",
-              }}
-            >
-              Přejít na alba
-            </button>
-          </Link>
-        </div>
-      </section>
+          <div className="flex justify-center mt-[20px] h-[50px]">
+            <Link href="/alba">
+              <button
+                className="w-[300px] h-[50px] tracking-wide bg-transparent text-gray-100 rounded-lg font-semibold text-lg transition-all duration-500 ease-in-out transform hover:rounded-md hover:text-neonPink hover:opacity-100"
+                style={{
+                  borderWidth: "3px",
+                  borderStyle: "solid",
+                  borderImageSlice: 1,
+                  borderImageSource: "linear-gradient(to right, #ff6a00, #ee0979)",
+                }}
+              >
+                Přejít na alba
+              </button>
+            </Link>
+          </div>
+        </section>
+      </div>      
 
       {modalData && (
         <div 

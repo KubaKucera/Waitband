@@ -90,52 +90,31 @@ export default function AlbumsPage() {
             label="Alba"
           />         
 
-          <section className="relative min-h-screen flex flex-col items-center gap-8 pt-20 pb-16 py-10 bg-gray-900">
-            
-            <div className="relative text-center z-20">
-              <h2 className="text-4xl sm:text-5xl font-montserrat font-bold text-white">
-                Přehled alb
-              </h2>
-              <div className="mt-4 mx-auto w-28 h-1 bg-gradient-to-r from-[#ff6a00] to-[#ee0979] rounded-full"></div>
-            </div>
-            <p className="text-gray-400 text-center text-lg max-w-3xl z-10 leading-6">
-              Ukázky skladeb v níže uvedených albech jsou časově omezeny. 
-              Pro plný poslech se prosím přihlaste do svého účtu na Spotify.
-            </p>
-            <div
-              className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
-              style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%"}}
-            >
-              {/*
-              <div className="fixed right-[-50px] top-32 hidden xl:flex pointer-events-none z-30">
-                <motion.div
-                  animate={{
-                    y: [0, 15, 0],  // pohyb z původní pozice dolů o 15px a zpět nahoru
-                  }}
-                  transition={{
-                    duration: 3,
-                    ease: "easeInOut",
-                    repeat: Infinity,
-                    repeatType: "loop"
-                  }}
-                  className="drop-shadow-lg"
-                >
-                  <Image
-                    src={x}
-                    alt="ExcMark"
-                    width={280}
-                    className="filter saturate-150 brightness-75 drop-shadow-[0_0_15px_rgba(255,0,0,0.5)]"
-                  />
-                </motion.div>      
-              </div> */}
-            </div> 
+          <div
+            className="relative w-full min-h-screen bg-fixed bg-cover bg-center bg-no-repeat pb-5"
+            style={{
+              backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.7), rgba(20, 20, 20, 0.8)), url(${texture.src})`,
+            }}
+          >
+            <section className="relative min-h-screen flex flex-col items-center gap-8 pt-20 pb-16 py-10">            
+              <div className="relative text-center z-20">
+                <h2 className="text-4xl sm:text-5xl font-montserrat font-bold text-white">
+                  Přehled alb
+                </h2>
+                <div className="mt-4 mx-auto w-28 h-1 bg-gradient-to-r from-[#ff6a00] to-[#ee0979] rounded-full"></div>
+              </div>
+              <p className="text-gray-400 text-center text-lg max-w-3xl z-10 leading-6">
+                Ukázky skladeb v níže uvedených albech jsou časově omezeny. 
+                Pro plný poslech se prosím přihlaste do svého účtu na Spotify.
+              </p>              
 
-            <div className="flex flex-wrap justify-center gap-8">
-              {spotifyAlbums.map((url, index) => (
-                <SpotifyEmbed key={index} url={url} />
-              ))}
-            </div>
-          </section>           
+              <div className="flex flex-wrap justify-center gap-8">
+                {spotifyAlbums.map((url, index) => (
+                  <SpotifyEmbed key={index} url={url} />
+                ))}
+              </div>
+            </section>
+          </div>                     
 
           {/*
           <section className="relative min-h-screen flex items-center justify-center p-20 px-4 sm:px-8 lg:px-16">

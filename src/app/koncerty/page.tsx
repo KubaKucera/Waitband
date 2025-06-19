@@ -42,12 +42,13 @@ export default function ConsertsPage() {
 
       {/* Fixed background */}
       <div
-        className="w-full h-[100vh] fixed inset-0 z-0 bg-center bg-no-repeat bg-cover"
-        style={{ backgroundImage: `url('${back.src}')` }}>
-      </div>
+        className="w-full h-[100vh] fixed inset-0 z-0 bg-center bg-no-repeat bg-cover animate-zoomSlow"
+        style={{
+          backgroundImage: `linear-gradient(to bottom right, rgba(34, 0, 64, 0.6), rgba(0, 0, 0, 0.85)), url('${back.src}')`,
+        }}
+      ></div>
 
-      {/* Black overlay over background */}
-      <div className="fixed inset-0 z-10 bg-black opacity-70 pointer-events-none" />
+      <div className="fixed inset-0 z-10 bg-black bg-opacity-40 backdrop-blur-sm pointer-events-none" />
 
       <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-20 py-10">
         

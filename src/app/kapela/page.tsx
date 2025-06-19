@@ -59,13 +59,13 @@ export default function BandPage() {
       />  
 
       {/* Pozadí s texturou */}
-      <main
-        className="h-auto py-10 pt-20 pb-14 px-4 sm:px-6 lg:px-8 bg-fixed bg-cover bg-center"
+      <div
+        className="relative w-full min-h-screen bg-fixed bg-cover bg-center bg-no-repeat pb-5"
         style={{
-          backgroundImage: `url(${texture.src})`,
+          backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.7), rgba(20, 20, 20, 0.8)), url(${texture.src})`,
         }}
       >
-        <section className="max-w-screen-xl mx-auto pr-10 pl-10 sm:pr-10 sm:pl-10 md:pr-0 md:pl-0">
+        <section className="max-w-screen-xl mx-auto z-10 py-10 pt-20 pb-10 px-4 pr-10 pl-10 sm:pr-10 sm:pl-10 sm:px-6">
           {/* Title */}
           <div className="relative text-center z-20">
             <h2 className="text-4xl sm:text-5xl font-montserrat font-bold text-white">
@@ -99,7 +99,7 @@ export default function BandPage() {
             ))}
           </div>
         </section>
-      </main>
+      </div>
 
       <Footer />
     </>
