@@ -1,15 +1,12 @@
 'use client';
 
 import Link from "next/link";
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import Navbar from "@/components/navbar/Navbar";
 import ReCAPTCHA from "react-google-recaptcha";
 import Footer from "@/components/footer/Footer";
 import CustomCookieConsent from "@/components/cookie/CookieConsent";
 import texture from "../../../public/assets/textures/texture.jpg";
-import rightArrow from "../../../public/assets/images/graffiti/arrowRight.png";
-import leftArrow from "../../../public/assets/images/graffiti/arrowLeft.png";
 import { motion } from "framer-motion";
 import HeadingWithLine from "@/components/headingWithLine/HeadingWithLine";
 import ScrollToTopButton from "@/components/scrollToTopButton/ScrollToTopButton";
@@ -86,7 +83,7 @@ export default function ContactPage() {
 
 
       <div
-        className="relative w-full min-h-screen bg-fixed bg-cover bg-center bg-no-repeat pb-5"
+        className="relative w-full h-auto bg-fixed bg-cover bg-center bg-no-repeat pb-5"
         style={{
           backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.7), rgba(20, 20, 20, 0.8)), url(${texture.src})`,
         }}

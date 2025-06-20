@@ -4,15 +4,11 @@ import Image from "next/image";
 import Navbar from "@/components/navbar/Navbar";
 import CustomCookieConsent from "@/components/cookie/CookieConsent";
 import texture from "../../../public/assets/textures/texture.jpg";
-import mouthSmile from "../../../public/assets/images/graffiti/mouthSmile.png";
 import { useState, useRef, useEffect } from "react";
-import { FaPlayCircle } from "react-icons/fa";
 import Footer from "@/components/footer/Footer";
 import HeadingWithLine from "@/components/headingWithLine/HeadingWithLine";
 import ScrollToTopButton from "@/components/scrollToTopButton/ScrollToTopButton";
 import Link from "next/link";
-import { PlayCircle } from "lucide-react";
-import { motion } from "framer-motion";
 
 function PlayIcon({ size = 32, color = '#fff', className = '' }) {
   return (
@@ -31,17 +27,25 @@ function PlayIcon({ size = 32, color = '#fff', className = '' }) {
 
 const videos = [
   {
+    id: "w4Xn_DzsC6o",
+    title: "WAIT - Losing Sleep (Live - Show Miloše Knora)",
+  },
+  {
     id: "M_ugx3HzqME",
-    title: " WAIT - Horoskop (Official Music Video)",
+    title: "WAIT - Horoskop (Official Music Video)",
   },
   {
     id: "8Tupra8tJiY",
     title: "WAIT - Modelka (Official Music Video)",    
-  },  
+  },      
   {
     id: "OkWHNAsE0Zg",
     title: "WAIT - Nekonečnej Seriál (Live @ Erpet Prague)",
-  },  
+  }, 
+  {
+    id: "jmPkHuh_qK8",
+    title: "WAIT - Achiever (Live - Show Miloše Knora) ",
+  },
   {
     id: "OUStNRHRgjE",
     title: "WAIT - Hate you (Official Music Video)",
@@ -52,7 +56,11 @@ const videos = [
   },
   {
     id: "2dtwW_3dxGM",
-    title: "WAIT - Perfect Liar (Official Music Video) ",
+    title: "WAIT - Perfect Liar (Official Music Video)",
+  },
+  {
+    id: "Q-8a308aqLc",
+    title: "WAIT - Every Day Blue (Live - Show Miloše Knora)",
   },
   {
     id: "iuyv0jPlWZg",
@@ -101,7 +109,7 @@ export default function VideosPage(){
       <CustomCookieConsent />      
       <ScrollToTopButton />
       <HeadingWithLine
-        height={1350}
+        height={1615}
         offsetTop="110px"
         position="left"
         delay={0.4}
@@ -155,7 +163,7 @@ export default function VideosPage(){
                     onClick={() => handleVideoClick(video.id, video.title)}
                   >
                     {video.id === currentPlayingVideoId ? (
-                      <span className="text-white text-[20px] font-normal">Aktivní...</span> // Zobrazí text "Přehrává se"
+                      <span className="text-white text-[20px] font-normal">Spuštěno...</span> // Zobrazí text "Přehrává se"
                     ) : (
                       <PlayIcon size={32} color="#fff" />
                     )}

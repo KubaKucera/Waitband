@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
 import Slider from "react-slick";
 import image1 from "../../../public/assets/images/slider/slides/image2.jpeg";
 import image2 from "../../../public/assets/images/slider/slides/image3.jpg";

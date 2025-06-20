@@ -7,7 +7,6 @@ import pavelImage from "../../../public/assets/images/band/pavel.jpg";
 import martinaImage from  "../../../public/assets/images/band/martina.jpg";
 import marekImage from  "../../../public/assets/images/band/marek.jpg";
 import texture from "../../../public/assets/textures/texture.jpg";
-import emoticon from "../../../public/assets/images/graffiti/emoticon2.png";
 import Footer from "@/components/footer/Footer";
 import CustomCookieConsent from "@/components/cookie/CookieConsent";
 import HeadingWithLine from "@/components/headingWithLine/HeadingWithLine";
@@ -60,7 +59,7 @@ export default function BandPage() {
 
       {/* Pozadí s texturou */}
       <div
-        className="relative w-full min-h-screen bg-fixed bg-cover bg-center bg-no-repeat pb-5"
+        className="relative w-full h-auto bg-fixed bg-cover bg-center bg-no-repeat pb-5"
         style={{
           backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.7), rgba(20, 20, 20, 0.8)), url(${texture.src})`,
         }}

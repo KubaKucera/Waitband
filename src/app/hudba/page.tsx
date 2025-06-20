@@ -17,13 +17,10 @@ import texture from "../../../public/assets/textures/texture.jpg";
 import appleMusic from "../../../public/assets/icons/appleMusic.svg";
 import spotify from "../../../public/assets/icons/spotify.svg";
 import soundcloud from "../../../public/assets/icons/soundcloud.svg";
-import dollar from "../../../public/assets/images/graffiti/dollar.png";
-import crossIcon from "../../../public/assets/images/interface/crossIcon.png";
 import { useEffect, useState } from "react";
 import CustomCookieConsent from "@/components/cookie/CookieConsent";
 import HeadingWithLine from "@/components/headingWithLine/HeadingWithLine";
 
-import { motion } from "framer-motion";
 import ScrollToTopButton from "@/components/scrollToTopButton/ScrollToTopButton";
 
 /*
@@ -170,8 +167,21 @@ export default function MusicPage() {
             e.stopPropagation(); 
             closeModal();
           }}
-          className="fixed inset-0 bg-white bg-opacity-80 backdrop-blur-xl z-100 flex flex-col items-center justify-center"        
+          className="fixed inset-0 z-100 flex flex-col items-center justify-center"        
         >
+          {/* Background cover image behind blur */}
+          <div
+            className="fixed inset-0 z-[-1] bg-cover bg-center"
+            style={{
+              backgroundImage: `url(${modalData.image.src})`,
+              opacity: 1, // nebo zkus i nižší hodnotu
+              filter: "blur(4px)",
+            }}
+          />
+
+          {/* Blur + white overlay */}
+          <div className="absolute inset-0 bg-white bg-opacity-70 backdrop-blur-xl pointer-events-none z-0" />
+
           {/* Close Button */}
           <button
             aria-label="Zavřít"
@@ -203,7 +213,7 @@ export default function MusicPage() {
             />
           </div>
 
-          <div className="space-y-[-3px] mb-[30px]">
+          <div className="space-y-[-3px] mb-[30px] z-10">
             <h2 className="text-black text-xl font-bold text-center">{modalData.title}</h2>
             <p className="text-center text-gray-700">Vyber hudební službu</p>
           </div>          

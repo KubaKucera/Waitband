@@ -6,10 +6,8 @@ import back from "../../../public/assets/images/conserts/back.png";
 import CustomCookieConsent from "@/components/cookie/CookieConsent";
 import Footer from "@/components/footer/Footer";
 import consertsImage from "../../../public/assets/images/conserts/consertsImage.jpg";
-import { Metadata } from "next";
 import HeadingWithLine from "@/components/headingWithLine/HeadingWithLine";
 
-import { motion } from "framer-motion";
 import { useEffect } from "react";
 import ScrollToTopButton from "@/components/scrollToTopButton/ScrollToTopButton";
 

@@ -1,15 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import Navbar from "@/components/navbar/Navbar";
 import texture from "../../../public/assets/textures/texture.jpg";
-import x from "../../../public/assets/images/graffiti/x.png";
 import Footer from "@/components/footer/Footer";
 import CustomCookieConsent from "@/components/cookie/CookieConsent";
-import { Metadata } from "next";
 import HeadingWithLine from "@/components/headingWithLine/HeadingWithLine";
 
-import { motion } from "framer-motion";
 import { useEffect } from "react";
 import ScrollToTopButton from "@/components/scrollToTopButton/ScrollToTopButton";
 
