@@ -171,7 +171,7 @@ export default function MusicPage() {
         >
           {/* Background cover image behind blur */}
           <div
-            className="fixed inset-0 z-[-1] bg-cover bg-center"
+            className="fixed inset-0 h-[100vh] z-[-1] bg-cover bg-center"
             style={{
               backgroundImage: `url(${modalData.image.src})`,
               opacity: 1, // nebo zkus i nižší hodnotu
@@ -180,7 +180,7 @@ export default function MusicPage() {
           />
 
           {/* Blur + white overlay */}
-          <div className="absolute inset-0 bg-white bg-opacity-70 backdrop-blur-xl pointer-events-none z-0" />
+          <div className="absolute inset-0 bg-white bg-opacity-70 backdrop-blur-2xl pointer-events-none z-0" />
 
           {/* Close Button */}
           <button
