@@ -92,7 +92,7 @@ export default function Home() {
 
         <section id="uvod" className="p-11 text-white relative z-10">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-montserrat font-bold">Aktuality / Blog</h2>
+            <h2 className="text-3xl sm:text-4xl font-montserrat font-bold">Aktuality/Blog</h2>
             <div className="mt-3 mx-auto w-24 h-1 bg-gradient-to-r from-[#ff6a00] to-[#ee0979] rounded-full"></div>
           </div>
 
@@ -163,7 +163,7 @@ export default function Home() {
             <div className="mt-3 mx-auto w-24 h-1 bg-gradient-to-r from-[#ff6a00] to-[#ee0979] rounded-full"></div>
           </div>
           <div className="flex justify-center">
-            <div className="w-[347px] sm:w-[347px] md:w-[560px]">
+            <div className="w-full max-w-[560px]">
               {renderYouTubeLite(andelVideo.src)}
             </div>
           </div>

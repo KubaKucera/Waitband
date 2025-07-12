@@ -78,17 +78,19 @@ export default function ConsertsPage() {
           </div>
 
           {/* Image with overlay and text */}
-          <div className="relative flex h-[190px] w-full flex-col items-center justify-center mt-6 rounded-tr-2xl rounded-tl-2xl overflow-hidden">
-            <Image
-              src={consertsImage}
-              alt="Conserts Image"
-              className="object-cover h-full w-full pointer-events-none brightness-30"
-              priority
-            />
-            <div className="absolute inset-0 bg-black opacity-40"></div>
-            <h2 className="absolute text-[30px] monitor:text-[40px] md:text-[32px] lg:text-4xl text-center font-montserrat font-semibold text-white z-10 px-4">
-              Budeme se na vás těšit!
-            </h2>
+          <div className="w-full flex justify-center mt-6">
+            <div className="relative flex h-[190px] w-full max-w-[650px] flex-col items-center justify-center rounded-tr-2xl rounded-tl-2xl overflow-hidden">
+              <Image
+                src={consertsImage}
+                alt="Conserts Image"
+                className="object-cover h-full w-full pointer-events-none brightness-30"
+                priority
+              />
+              <div className="absolute inset-0 bg-black opacity-40"></div>
+              <h2 className="absolute text-[30px] monitor:text-[40px] md:text-[32px] lg:text-4xl text-center font-montserrat font-semibold text-white z-10 px-4">
+                Budeme se na vás těšit!
+              </h2>
+            </div>
           </div>
         </div>
       </section>

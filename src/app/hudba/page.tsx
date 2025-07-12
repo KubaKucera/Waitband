@@ -186,7 +186,7 @@ export default function MusicPage() {
           <button
             aria-label="Zavřít"
             onClick={closeModal}
-            className="absolute top-5 right-5 p-1 rounded hover:bg-opacity-30 transition-colors z-40 flex items-center justify-center"
+            className="absolute top-3 right-3 p-1 rounded hover:bg-opacity-30 transition-colors z-40 flex items-center justify-center"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

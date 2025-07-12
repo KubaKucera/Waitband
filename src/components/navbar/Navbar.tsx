@@ -2,154 +2,124 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { FaTimes, FaBars } from 'react-icons/fa';
-import title from "../../../public/assets/images/navbar/waitTitle.png";
 import { useEffect, useState } from "react";
+import { FaBars, FaTimes } from "react-icons/fa";
+import title from "../../../public/assets/images/navbar/waitTitle.png";
 
 interface NavbarProps {
-    initialActiveLink: string;
+  initialActiveLink: string;
 }
+
+const navLinks = [
+  { name: "Úvod", href: "/", key: "uvod" },
+  { name: "Koncerty", href: "/koncerty", key: "koncerty" },
+  { name: "Hudba", href: "/hudba", key: "hudba" },
+  { name: "Alba", href: "/alba", key: "alba" },
+  { name: "Fotky", href: "/fotky", key: "fotky" },
+  { name: "Videa", href: "/videa", key: "videa" },
+  { name: "Kapela", href: "/kapela", key: "kapela" },
+  { name: "Rider", href: "/assets/files/waitRider.pdf", external: true, key: "rider" },
+  { name: "Kontakt", href: "/kontakt", key: "kontakt" },
+];
 
 export default function Navbar({ initialActiveLink }: NavbarProps) {
-    const [activeLink, setActiveLink] = useState(initialActiveLink);
-    const [navbarHeight, setNavbarHeight] = useState(70);
-    const [titleScale, setTitleScale] = useState(1);
-    const [menuOpen, setMenuOpen] = useState(false);
+  const [activeLink, setActiveLink] = useState(initialActiveLink);
+  const [navbarHeight, setNavbarHeight] = useState(70);
+  const [titleScale, setTitleScale] = useState(1);
+  const [menuOpen, setMenuOpen] = useState(false);
 
-    const handleLinkClick = (link: string) => {
-        setActiveLink(link);
-        closeMenu(); // Zavře mobilní menu po kliknutí
+  const handleLinkClick = (key: string) => {
+    setActiveLink(key);
+    setMenuOpen(false);
+  };
+
+  const handleLogoClick = () => {
+    setActiveLink("uvod");
+    setMenuOpen(false);
+  };
+
+  const toggleMenu = () => setMenuOpen((prev) => !prev);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      setNavbarHeight(scrollY > 50 ? 63 : 70);
+      setTitleScale(scrollY > 50 ? 0.85 : 1);
     };
 
-    const handleLogoClick = () => {
-        setActiveLink("uvod");
-        setMenuOpen(false); // Zavře mobilní menu po kliknutí na logo
-    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-    const openMenu = () => {
-        setMenuOpen(true);
-    };
-
-    const closeMenu = () => {
-        setMenuOpen(false);
-    };
-
-    useEffect(() => {
-        /*
-        const handleScroll = () => {
-            const scrollY = window.scrollY;
-            if (scrollY > 50) {
-                setNavbarHeight(63);
-                setTitleScale(0.85);
-            } else {
-                setNavbarHeight(70);
-                setTitleScale(1);
-            }
-        };
-
-        window.addEventListener("scroll", handleScroll);
-
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-        };
-        */
-    }, []);
-
-    return (
-        <nav
-            className={`bg-black text-white flex items-center justify-between px-10 space-x-0 md:justify-between md:space-x-0 lg:justify-center lg:space-x-20 monitor:space-x-32 font-nav border-b-[1px] border-gray-300 fixed top-0 left-0 right-0 z-100 text-[15px] transition-height duration-300 ease-in-out`}
-            style={{ height: `${navbarHeight}px` }}
-        >
-            <div className='flex items-center justify-center z-50'>
-                <Link href="/" onClick={handleLogoClick}>
-                    <Image
-                        src={title}
-                        className="h-11 w-[100%] flex scale-100 items-center justify-start transition-scale duration-300 ease-in-out z-50"
-                        style={{ scale: `${titleScale}` }}
-                        alt="Title"
-                        width={185}
-                        height={185}
-                        priority={false}
-                    />
-                </Link>
-            </div>
-
-            {/* Desktop Links */}
-            <div className="hidden lg:flex items-center space-x-7">
-                {renderLinks(handleLinkClick, activeLink)}
-            </div>
-
-            {/* Mobile Burger Icon */}
-            <div className="lg:hidden z-50">
-                <button onClick={toggleMenu} className="text-white focus:outline-none">
-                    {menuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
-                </button>
-            </div>
-
-            {/* Mobile Fullscreen Overlay Menu */}
-            <div
-                className={`fixed inset-0 bg-black bg-opacity-90 backdrop-blur-sm text-gray-50 text-2xl font-semibold flex flex-col items-center justify-center space-y-6 z-40 transition-all duration-300 ${
-                    menuOpen ? "opacity-100 translate-y-0 visible" : "opacity-0 -translate-y-full invisible"
-                }`}
-            >
-                {renderLinks(handleLinkClick, activeLink)}
-            </div>
-        </nav>
-    );
-
-    function toggleMenu() {
-        setMenuOpen(prevState => !prevState);
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
     }
-}
+  }, [menuOpen]);
 
-const renderLinks = (handleClick: (link: string) => void, activeLink: string) => {
-    return (
-        <>
-            <Link href="/" onClick={() => handleClick('uvod')}>
-                <span className={`uppercase font-bold ${activeLink === 'uvod' ? 'text-neonPink' : 'text-lightGray'} hover:text-neonPink`}>
-                    Úvod
-                </span>
+  return (
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 bg-black border-b border-gray-700 transition-all duration-300 text-white font-nav`}
+      style={{ height: `77px` }}
+    >
+      <div className="flex items-center justify-between sm:justify-between md:justify-evenly px-6 lg:px-12 h-full">
+        {/* Logo */}
+        <Link href="/" onClick={handleLogoClick} className="z-50">
+          <Image
+            src={title}
+            alt="Title"            
+            className="w-32 h-auto sm:w-32 sm:h-auto md:w-44 md:h-auto transition-transform duration-500"
+            style={{ transform: `scale(${titleScale})` }}
+          />
+        </Link>
+
+        {/* Desktop Links */}
+        <div className="hidden lg:flex gap-8 items-center text-[15px]">
+          {navLinks.map(({ name, href, key, external }) => (
+            <Link
+              key={key}
+              href={href}
+              target={external ? "_blank" : undefined}
+              onClick={() => handleLinkClick(key)}
+              className={`uppercase font-bold transition-colors ${
+                activeLink === key ? "text-neonPink" : "text-lightGray"
+              } hover:text-neonPink`}
+            >
+              {name}
             </Link>
-            <Link href="/koncerty" onClick={() => handleClick('koncerty')}>
-                <span className={`uppercase font-bold ${activeLink === 'koncerty' ? 'text-neonPink' : 'text-lightGray'} hover:text-neonPink`}>
-                    Koncerty
-                </span>
-            </Link>
-            <Link href="/hudba" onClick={() => handleClick('hudba')}>
-                <span className={`uppercase font-bold ${activeLink === 'hudba' ? 'text-neonPink' : 'text-lightGray'} hover:text-neonPink`}>
-                    Hudba
-                </span>
-            </Link>
-            <Link href="/alba" onClick={() => handleClick('alba')}>
-                <span className={`uppercase font-bold ${activeLink === 'alba' ? 'text-neonPink' : 'text-lightGray'} hover:text-neonPink`}>
-                    Alba
-                </span>
-            </Link>
-            <Link href="/fotky" onClick={() => handleClick('fotky')}>
-                <span className={`uppercase font-bold ${activeLink === 'fotky' ? 'text-neonPink' : 'text-lightGray'} hover:text-neonPink`}>
-                    Fotky
-                </span>
-            </Link>
-            <Link href="/videa" onClick={() => handleClick('videa')}>
-                <span className={`uppercase font-bold ${activeLink === 'videa' ? 'text-neonPink' : 'text-lightGray'} hover:text-neonPink`}>
-                    Videa
-                </span>
-            </Link>
-            <Link href="/kapela" onClick={() => handleClick('kapela')}>
-                <span className={`uppercase font-bold ${activeLink === 'kapela' ? 'text-neonPink' : 'text-lightGray'} hover:text-neonPink`}>
-                    Kapela
-                </span>
-            </Link>
-            <Link href="/assets/files/waitRider.pdf" target="_blank">
-                <span className={`flex items-center uppercase font-bold ${activeLink === 'rider' ? 'text-neonPink' : 'text-lightGray'} hover:text-neonPink`}>
-                    Rider                    
-                </span>
-            </Link>
-            <Link href="/kontakt" onClick={() => handleClick('kontakt')}>
-                <span className={`uppercase font-bold ${activeLink === 'kontakt' ? 'text-neonPink' : 'text-lightGray'} hover:text-neonPink`}>
-                    Kontakt
-                </span>
-            </Link>
-        </>
-    );
-};
+          ))}
+        </div>
+
+        {/* Mobile Burger */}
+        <div className="lg:hidden z-50">
+          <button onClick={toggleMenu}>
+            {menuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu Overlay */}
+      <div
+        className={`lg:hidden fixed inset-0 bg-black bg-opacity-95 backdrop-blur-md flex flex-col items-center justify-center space-y-8 text-2xl font-semibold transform transition-all duration-300 z-40 ${
+          menuOpen ? "translate-y-0 opacity-100 visible" : "-translate-y-full opacity-0 invisible"
+        }`}
+      >
+        {navLinks.map(({ name, href, key, external }) => (
+          <Link
+            key={key}
+            href={href}
+            target={external ? "_blank" : undefined}
+            onClick={() => handleLinkClick(key)}
+            className={`uppercase ${
+              activeLink === key ? "text-neonPink" : "text-lightGray"
+            } hover:text-neonPink transition-colors`}
+          >
+            {name}
+          </Link>
+        ))}
+      </div>
+    </nav>
+  );
+}
