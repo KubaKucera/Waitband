@@ -5,16 +5,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
-import Navbar from "@/components/navbar/Navbar";
 import ImageSlider from "@/components/slider/ImageSlider";
 import texture from "../../public/assets/textures/texture.jpg";
 import actualityImage1 from "../../public/assets/images/home/actuality4.jpg";
 import actualityImage2 from "../../public/assets/images/albums/album4.jpg";
 import actualityImage3 from "../../public/assets/images/music/february29th.jpg";
-import Footer from "@/components/footer/Footer";
-import CustomCookieConsent from "@/components/cookie/CookieConsent";
 import VideoModal from "@/components/videoModal/VideoModal";
-import ScrollToTopButton from "@/components/scrollToTopButton/ScrollToTopButton";
 import HeadingWithLine from "@/components/headingWithLine/HeadingWithLine";
 import LiteYouTubeEmbed from "@/components/liteYtEmbed/LiteYouTubeEmbed";
 
@@ -57,22 +53,8 @@ export default function Home() {
   );
 
   return (
-    <>
-      <Head>
-        <title>Hudební projekt – Úvod</title>
-        <meta name="description" content="Oficiální stránka hudebního projektu. Sledujte koncerty, videa a novinky." />
-        <meta property="og:title" content="Hudební projekt" />
-        <meta property="og:description" content="Koncerty, hudba a videa. Sledujte nás!" />
-        <meta property="og:image" content="/og-image.jpg" />
-        <meta property="og:url" content="https://tvujweb.cz" />
-        <meta name="theme-color" content="#000000" />
-        <link rel="icon" href="/favicon.ico?v=4" />
-      </Head>
-
-      <CustomCookieConsent />
-      <Navbar initialActiveLink="uvod" />
+    <>  
       <ImageSlider />
-      <ScrollToTopButton />
 
       <div
         className="relative w-full min-h-screen bg-fixed bg-cover bg-center bg-no-repeat pb-5"
@@ -85,7 +67,7 @@ export default function Home() {
           offsetTop="45px"
           position="left"
           delay={0.4}
-          duration={0.6}
+          duration={1}
           ease="easeOut"
           label="Úvod"
         />
@@ -170,8 +152,7 @@ export default function Home() {
         </section>
       </div>
 
-      <VideoModal showModal={showModal} videoUrl={videoUrl} onClose={handleClose} />
-      <Footer />
+      <VideoModal showModal={showModal} videoUrl={videoUrl} onClose={handleClose} />      
 
       {/* Lite YouTube Script */}
       <script src="https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.2.0/src/lite-yt-embed.js" async></script>

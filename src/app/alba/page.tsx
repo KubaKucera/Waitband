@@ -1,13 +1,9 @@
 "use client";
 
-import Navbar from "@/components/navbar/Navbar";
 import texture from "../../../public/assets/textures/texture.jpg";
-import Footer from "@/components/footer/Footer";
-import CustomCookieConsent from "@/components/cookie/CookieConsent";
 import HeadingWithLine from "@/components/headingWithLine/HeadingWithLine";
 
 import { useEffect } from "react";
-import ScrollToTopButton from "@/components/scrollToTopButton/ScrollToTopButton";
 
 const SpotifyEmbed = ({ url }: { url: string }) => (
   <div className="relative w-full max-w-md mx-auto">
@@ -72,16 +68,13 @@ export default function AlbumsPage() {
   ];
   
   return (
-        <>
-          <CustomCookieConsent />
-          <Navbar initialActiveLink="alba"/>   
-          <ScrollToTopButton /> 
+        <>          
           <HeadingWithLine
             height={895}
             offsetTop="110px"
             position="left"
             delay={0.4}
-            duration={0.6}
+            duration={1}
             ease="easeOut"    
             label="Alba"
           />         
@@ -196,8 +189,6 @@ export default function AlbumsPage() {
               </div>
             </div>            
           </section>  */}
-
-          <Footer />                       
         </>
     );
 }

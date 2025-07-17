@@ -1,13 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import Navbar from "@/components/navbar/Navbar";
-import CustomCookieConsent from "@/components/cookie/CookieConsent";
 import texture from "../../../public/assets/textures/texture.jpg";
 import { useState, useRef, useEffect } from "react";
-import Footer from "@/components/footer/Footer";
 import HeadingWithLine from "@/components/headingWithLine/HeadingWithLine";
-import ScrollToTopButton from "@/components/scrollToTopButton/ScrollToTopButton";
 import Link from "next/link";
 
 function PlayIcon({ size = 32, color = '#fff', className = '' }) {
@@ -104,16 +100,13 @@ export default function VideosPage(){
   };   
 
   return (
-    <>
-      <Navbar initialActiveLink="videa" />
-      <CustomCookieConsent />      
-      <ScrollToTopButton />
+    <>      
       <HeadingWithLine
         height={1615}
         offsetTop="110px"
         position="left"
         delay={0.4}
-        duration={0.6}
+        duration={1.6}
         ease="easeOut"    
         label="Videa"
       />  
@@ -190,9 +183,7 @@ export default function VideosPage(){
             </Link>
           </div>
         </section>
-      </div>      
-
-      <Footer />
+      </div>
     </>
   );
 }

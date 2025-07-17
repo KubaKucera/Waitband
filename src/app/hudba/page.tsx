@@ -2,8 +2,6 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import Navbar from "@/components/navbar/Navbar";
-import Footer from "@/components/footer/Footer";
 import image1 from "../../../public/assets/images/music/february29th.jpg";
 import image2 from "../../../public/assets/images/music/achiever.jpg";
 import image3 from "../../../public/assets/images/music/losingSleep.jpg";
@@ -18,10 +16,7 @@ import appleMusic from "../../../public/assets/icons/appleMusic.svg";
 import spotify from "../../../public/assets/icons/spotify.svg";
 import soundcloud from "../../../public/assets/icons/soundcloud.svg";
 import { useEffect, useState } from "react";
-import CustomCookieConsent from "@/components/cookie/CookieConsent";
 import HeadingWithLine from "@/components/headingWithLine/HeadingWithLine";
-
-import ScrollToTopButton from "@/components/scrollToTopButton/ScrollToTopButton";
 
 /*
 export const metadata: Metadata = {
@@ -89,16 +84,13 @@ export default function MusicPage() {
   };
 
   return (
-    <>
-      <CustomCookieConsent />
-      <Navbar initialActiveLink="hudba" /> 
-      <ScrollToTopButton />  
+    <>        
       <HeadingWithLine
         height={1090}
         offsetTop="110px"
         position="left"
         delay={0.4}
-        duration={0.6}
+        duration={1}
         ease="easeOut"    
         label="Hudba"
       />   
@@ -268,8 +260,6 @@ export default function MusicPage() {
           </div>
         </div>
       )}
-
-      <Footer />
     </>
   );
 }

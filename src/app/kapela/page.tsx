@@ -1,18 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import Navbar from "@/components/navbar/Navbar";
 import ivanImage from "../../../public/assets/images/band/ivan.jpg";
 import pavelImage from "../../../public/assets/images/band/pavel.jpg";
 import martinaImage from  "../../../public/assets/images/band/martina.jpg";
 import marekImage from  "../../../public/assets/images/band/marek.jpg";
 import texture from "../../../public/assets/textures/texture.jpg";
-import Footer from "@/components/footer/Footer";
-import CustomCookieConsent from "@/components/cookie/CookieConsent";
 import HeadingWithLine from "@/components/headingWithLine/HeadingWithLine";
 
 import { useEffect } from "react";
-import ScrollToTopButton from "@/components/scrollToTopButton/ScrollToTopButton";
 
 export default function BandPage() {
   useEffect(() => {
@@ -43,16 +39,13 @@ export default function BandPage() {
   ];
 
   return (
-    <>
-      <CustomCookieConsent />
-      <Navbar initialActiveLink="kapela" />     
-      <ScrollToTopButton /> 
+    <>       
       <HeadingWithLine
         height={475}
         offsetTop="110px"
         position="left"
         delay={0.4}
-        duration={0.6}
+        duration={1}
         ease="easeOut"    
         label="Kapela"
       />  
@@ -99,8 +92,6 @@ export default function BandPage() {
           </div>
         </section>
       </div>
-
-      <Footer />
     </>
   );
 }

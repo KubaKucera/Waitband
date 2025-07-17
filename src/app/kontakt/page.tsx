@@ -2,14 +2,10 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import Navbar from "@/components/navbar/Navbar";
 import ReCAPTCHA from "react-google-recaptcha";
-import Footer from "@/components/footer/Footer";
-import CustomCookieConsent from "@/components/cookie/CookieConsent";
 import texture from "../../../public/assets/textures/texture.jpg";
 import { motion } from "framer-motion";
 import HeadingWithLine from "@/components/headingWithLine/HeadingWithLine";
-import ScrollToTopButton from "@/components/scrollToTopButton/ScrollToTopButton";
 
 export default function ContactPage() {
   const [nameInput, setNameInput] = useState('');
@@ -67,16 +63,13 @@ export default function ContactPage() {
   };
 
   return (
-    <>
-      <CustomCookieConsent />
-      <Navbar initialActiveLink="kontakt" />
-      <ScrollToTopButton />
+    <>      
       <HeadingWithLine
         height={600}
         offsetTop="110px"
         position="left"
         delay={0.4}
-        duration={0.6}
+        duration={1}
         ease="easeOut"    
         label="Kontakt"
       /> 
@@ -132,7 +125,7 @@ export default function ContactPage() {
               </div>
 
               <div className="flex flex-col space-y-2 text-sm text-gray-700">
-                <label className="flex items-center"><input type="checkbox" className="mr-2" /> Moje zpráva se nevztahuje na výše uvedené</label>
+                <label className="flex items-center"><input type="checkbox" className="mr-2" /> Beru na vědomí, že tento formulář slouží k seriózním a relevantním dotazům.</label>
                 <label className="flex items-center"><input type="checkbox" className="mr-2" /> Souhlasím se zpracováním osobních údajů</label>
               </div>
 
@@ -142,9 +135,7 @@ export default function ContactPage() {
             </form>
           </motion.div>
         </div>
-      </div>     
-
-      <Footer />
+      </div>
     </>
   );
 }

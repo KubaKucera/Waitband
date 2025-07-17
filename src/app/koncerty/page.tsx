@@ -1,15 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import Navbar from "@/components/navbar/Navbar";
 import back from "../../../public/assets/images/conserts/back.png";
-import CustomCookieConsent from "@/components/cookie/CookieConsent";
-import Footer from "@/components/footer/Footer";
 import consertsImage from "../../../public/assets/images/conserts/consertsImage.jpg";
 import HeadingWithLine from "@/components/headingWithLine/HeadingWithLine";
 
 import { useEffect } from "react";
-import ScrollToTopButton from "@/components/scrollToTopButton/ScrollToTopButton";
 
 const concertData = [
   "24.11.2024, 20:00 – Pardubice, Ateliér Klose",
@@ -24,23 +20,20 @@ export default function ConsertsPage() {
   }, []);
 
   return (
-    <>
-      <CustomCookieConsent />
-      <Navbar initialActiveLink="koncerty" />
-      <ScrollToTopButton />
+    <>      
       <HeadingWithLine
         height={860}
         offsetTop="110px"
         position="left"
         delay={0.4}
-        duration={0.6}
+        duration={1}
         ease="easeOut"
         label="Koncerty"
       />
 
       {/* Fixed background */}
       <div
-        className="w-full h-[100vh] fixed inset-0 z-0 bg-center bg-no-repeat bg-cover animate-zoomSlow"
+        className="w-full h-[100vh] fixed z-0 bg-center bg-no-repeat bg-cover animate-zoomSlow"
         style={{
           backgroundImage: `linear-gradient(to bottom right, rgba(34, 0, 64, 0.6), rgba(0, 0, 0, 0.85)), url('${back.src}')`,
         }}
@@ -94,8 +87,6 @@ export default function ConsertsPage() {
           </div>
         </div>
       </section>
-
-      <Footer />
     </>
   );
 }

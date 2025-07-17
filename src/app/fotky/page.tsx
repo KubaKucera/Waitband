@@ -88,17 +88,13 @@ export default function PhotosPage() {
     setSelectedIndex((prev) => (prev !== null && prev > 0 ? prev - 1 : prev));
 
   return (
-    <>
-      <CustomCookieConsent />
-      <Navbar initialActiveLink="fotky" />
-      <ScrollToTopButton />
-
+    <> 
       <HeadingWithLine
         height={showMore ? 2615 : 1015}
         offsetTop="110px"
         position="left"
         delay={0.4}
-        duration={0.6}
+        duration={1}
         ease="easeOut"
         label="Fotky"
       />
@@ -250,9 +246,7 @@ export default function PhotosPage() {
             </div>
           )}
         </section>
-      </div>      
-
-      <Footer />
+      </div> 
     </>
   );
 }

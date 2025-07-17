@@ -1,5 +1,3 @@
-import Footer from "@/components/footer/Footer";
-import Navbar from "@/components/navbar/Navbar";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -10,8 +8,6 @@ export const metadata: Metadata = {
 export default function TermsAndConditionsPage(){
     return (
         <>
-            <Navbar initialActiveLink=""/>
-
             <section className="min-h-screen w-full relative p-28 text-white">
                 <h1 className="text-2xl font-bold">Podmínky a pravidla</h1>
                 <p>Datum účinnosti: 23. listopadu 2024</p>
@@ -30,8 +26,6 @@ export default function TermsAndConditionsPage(){
 
                 <p>Pokud máte jakékoli dotazy ohledně těchto podmínek, neváhejte nás kontaktovat na našich kontaktních údajích uvedených na webových stránkách.</p>
             </section>
-
-            <Footer />
         </>
     );
 }

@@ -1,6 +1,4 @@
 import { Metadata } from "next";
-import Navbar from "@/components/navbar/Navbar";
-import Footer from "@/components/footer/Footer";
 
 export const metadata: Metadata = {
     title: "Osobní údaje - Wait",
@@ -9,9 +7,7 @@ export const metadata: Metadata = {
 
 export default function PrivacyPolicyPage(){
     return (
-        <>
-            <Navbar initialActiveLink=""/>
-
+        <> 
             <section className="relative min-h-screen w-full p-28 text-white">
                 <h1 className="text-2xl font-bold">Zásady ochrany osobních údajů</h1>
                 <p>Poslední aktualizace: 23. listopadu 2024</p>
@@ -106,8 +102,6 @@ export default function PrivacyPolicyPage(){
                 <li>Vytváření nových funkcí a rozšíření našich služeb</li>
                 </ul>
             </section>
-
-            <Footer />
         </>
     );
 }

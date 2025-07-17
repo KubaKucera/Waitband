@@ -4,6 +4,10 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import PageTransition from "@/components/transition/PageTransition";
+import Navbar from "@/components/navbar/Navbar";
+import CustomCookieConsent from "@/components/cookie/CookieConsent";
+import ScrollToTopButton from "@/components/scrollToTopButton/ScrollToTopButton";
+import Footer from "@/components/footer/Footer";
 
 export const metadata: Metadata = {
   title: "Wait - Oficiální web české crossover kapely",
@@ -22,8 +26,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>  
-        <PageTransition>{children}</PageTransition>
+      <body className="relative">
+        <CustomCookieConsent />
+        <Navbar />
+        <ScrollToTopButton />
+        <PageTransition>
+          {children}
+        </PageTransition>
+        <Footer />
       </body>
     </html>
   );
