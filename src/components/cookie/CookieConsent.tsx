@@ -33,9 +33,7 @@ export default function CustomCookieConsent() {
   };
 
   return (
-    <>
-      <h1>Welcome to my website</h1>
-      
+    <>            
       {showConsent && (
         <CookieConsent          
           cookieName="myWebsiteCookieConsent"

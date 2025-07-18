@@ -95,7 +95,7 @@ export default function ImageSlider() {
           {images.map((img, index) => (
             <div
               key={index}
-              className="flex justify-center items-center w-screen h-[300px] sm:h-[400px] md:h-[500px] lg:h-[580px] xl:h-[680px] monitor:h-[825px]"
+              className="flex justify-center items-center w-screen h-[360px] sm:h-[360px] md:h-[500px] lg:h-[705px] xl:h-[705px] monitor:h-[825px]"
             >
               <Image
                 src={img.src}

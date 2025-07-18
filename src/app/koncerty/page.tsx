@@ -33,7 +33,7 @@ export default function ConsertsPage() {
 
       {/* Fixed background */}
       <div
-        className="w-full h-[100vh] fixed z-0 bg-center bg-no-repeat bg-cover animate-zoomSlow"
+        className="w-full h-[105vh] fixed z-0 bg-center bg-no-repeat bg-cover animate-zoomSlow"
         style={{
           backgroundImage: `linear-gradient(to bottom right, rgba(34, 0, 64, 0.6), rgba(0, 0, 0, 0.85)), url('${back.src}')`,
         }}
@@ -41,7 +41,7 @@ export default function ConsertsPage() {
 
       <div className="fixed inset-0 z-10 bg-black bg-opacity-40 backdrop-blur-sm pointer-events-none" />
 
-      <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-20 py-10">
+      <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-[105px] py-10">
         
         <div className="relative text-center z-20">
           <h2 className="text-4xl sm:text-5xl font-montserrat font-bold text-white">

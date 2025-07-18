@@ -86,7 +86,7 @@ export default function MusicPage() {
   return (
     <>        
       <HeadingWithLine
-        height={1090}
+        height={1100}
         offsetTop="110px"
         position="left"
         delay={0.4}
@@ -101,7 +101,7 @@ export default function MusicPage() {
           backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.7), rgba(20, 20, 20, 0.8)), url(${texture.src})`,
         }}
       > 
-        <section className="relative z-10 py-10 pt-20 pb-10 px-4 sm:px-6">          
+        <section className="relative z-10 py-10 pt-[105px] pb-10 px-4 sm:px-6">          
 
           {/* Title */}
           <div className="relative text-center z-20">

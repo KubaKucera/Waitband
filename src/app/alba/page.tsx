@@ -70,7 +70,7 @@ export default function AlbumsPage() {
   return (
         <>          
           <HeadingWithLine
-            height={895}
+            height={905}
             offsetTop="110px"
             position="left"
             delay={0.4}
@@ -85,7 +85,7 @@ export default function AlbumsPage() {
               backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.7), rgba(20, 20, 20, 0.8)), url(${texture.src})`,
             }}
           >
-            <section className="relative min-h-screen flex flex-col items-center gap-8 pt-20 pb-16 py-10">            
+            <section className="relative min-h-screen flex flex-col items-center gap-8 pt-[105px] pb-12 py-10">            
               <div className="relative text-center z-20">
                 <h2 className="text-4xl sm:text-5xl font-montserrat font-bold text-white">
                   Přehled alb

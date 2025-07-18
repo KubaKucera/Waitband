@@ -65,7 +65,7 @@ export default function ContactPage() {
   return (
     <>      
       <HeadingWithLine
-        height={600}
+        height={610}
         offsetTop="110px"
         position="left"
         delay={0.4}
@@ -81,7 +81,7 @@ export default function ContactPage() {
           backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.7), rgba(20, 20, 20, 0.8)), url(${texture.src})`,
         }}
       > 
-        <div className="flex justify-center items-center py-24 pb-10 px-8 bg-fixed bg-cover bg-center bg-no-repeat h-auto">
+        <div className="h-auto flex justify-center items-center pt-[120px] pb-10 px-8 bg-fixed bg-cover bg-center bg-no-repeat">
           {/*<Image src={rightArrow} alt="Arrow Right" className="hidden xl:block absolute left-[-150px] top-[160px] rotate-15 opacity-50 w-[265px] monitor:w-[330px]" />
           <Image src={leftArrow} alt="Arrow Left" className="hidden xl:block absolute right-[-150px] top-[425px] opacity-50 w-[265px] monitor:w-[330px]" /> */}
 

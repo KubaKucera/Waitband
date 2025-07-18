@@ -49,7 +49,7 @@ export default function Navbar() {
       className={`fixed top-0 left-0 right-0 z-50 bg-black/70 backdrop-blur-md border-b border-gray-700 transition-all duration-300 text-white font-nav`}
       style={{ height: `77px` }}
     >
-      <div className="flex items-center justify-between sm:justify-between md:justify-evenly px-6 lg:px-12 h-full">
+      <div className="flex items-center justify-between sm:justify-between md:justify-between lg:justify-evenly px-6 lg:px-12 h-full">
         {/* Logo */}
         <Link
           href="/"
@@ -88,7 +88,7 @@ export default function Navbar() {
         <div className="lg:hidden z-50">
           <button
             onClick={toggleMenu}
-            className="cursor-pointer hover:text-neonPink transition-colors"
+            className="cursor-pointer transition-colors"
             aria-label={menuOpen ? "Zavřít menu" : "Otevřít menu"}
           >
             {menuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}

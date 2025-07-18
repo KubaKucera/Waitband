@@ -52,12 +52,12 @@ export default function BandPage() {
 
       {/* Pozadí s texturou */}
       <div
-        className="relative w-full h-auto bg-fixed bg-cover bg-center bg-no-repeat pb-5"
+        className="relative w-full bg-fixed bg-cover bg-center bg-no-repeat pb-5"
         style={{
           backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.7), rgba(20, 20, 20, 0.8)), url(${texture.src})`,
         }}
       >
-        <section className="max-w-screen-xl mx-auto z-10 py-10 pt-20 pb-10 px-4 pr-10 pl-10 sm:pr-10 sm:pl-10 sm:px-6">
+        <section className="max-w-screen-xl h-auto mx-auto z-10 py-10 pt-[105px] pb-10 px-4 pr-10 pl-10 sm:pr-10 sm:pl-10 sm:px-6">
           {/* Title */}
           <div className="relative text-center z-20">
             <h2 className="text-4xl sm:text-5xl font-montserrat font-bold text-white">

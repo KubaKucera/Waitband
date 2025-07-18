@@ -117,7 +117,7 @@ export default function VideosPage(){
           backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.7), rgba(20, 20, 20, 0.8)), url(${texture.src})`,
         }}
       > 
-        <section className="relative min-h-screen flex flex-col items-center justify-center pt-24 pb-10 py-10">          
+        <section className="relative min-h-screen flex flex-col items-center justify-center pt-[110px] pb-10 py-10">          
           {/* Hlavní video - zvětšení výšky */}
           <div className="w-full max-w-[820px] h-auto mb-8 z-30 flex flex-col items-center px-4">
             <iframe
