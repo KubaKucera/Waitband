@@ -46,10 +46,10 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 bg-black/70 backdrop-blur-md border-b border-gray-700 transition-all duration-300 text-white font-nav`}
+      className={`fixed top-0 left-0 right-0 z-50 bg-black/70 backdrop-blur-md border-b border-gray-700 transition-all duration-300 text-navbarWhite font-nav`}
       style={{ height: `77px` }}
     >
-      <div className="flex items-center justify-between sm:justify-between md:justify-between lg:justify-evenly px-6 lg:px-12 h-full">
+      <div className="flex items-center justify-between sm:justify-between md:justify-between lg:justify-evenly px-6 lg:px-0 h-full">
         {/* Logo */}
         <Link
           href="/"
@@ -68,7 +68,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Links */}
-        <div className="hidden lg:flex gap-8 items-center text-[15px]">
+        <div className="hidden lg:flex gap-7 items-center text-[15px]">
           {navLinks.map(({ name, href, key, external }) => (
             <Link
               key={key}

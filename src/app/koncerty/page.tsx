@@ -11,7 +11,7 @@ const concertData = [
   "24.11.2024, 20:00 – Pardubice, Ateliér Klose",
   "17.1.2025, 20:30 – Praha, Rock Café",
   "29.3.2025, 00:00 – Pardubice, divadlo",
-  "18.7.2025, 19:00 – Sečská Přehrada, Vyhlídková věž, 538 07 Seč",
+  "18.7.2025, 20:00 – Autokemp Sečská přehrada",
 ];
 
 export default function ConsertsPage() {

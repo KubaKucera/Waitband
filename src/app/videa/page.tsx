@@ -170,9 +170,9 @@ export default function VideosPage(){
           <div className="flex justify-center mt-[20px] h-[50px]">
             <Link href="https://www.youtube.com/@waitbandofficial6520/videos" target='_blank'>
               <button
-                className="w-[300px] h-[50px] tracking-wide bg-transparent text-gray-100 rounded-lg font-semibold text-lg transition-all duration-500 ease-in-out transform hover:rounded-md hover:text-neonPink hover:opacity-100"
+                className="w-[300px] h-[50px] uppercase tracking-wide bg-transparent text-gray-100 rounded-lg font-semibold text-[14px] transition-all duration-500 ease-in-out transform hover:rounded-md hover:text-neonPink hover:opacity-100"
                 style={{
-                  borderWidth: "3px",
+                  borderWidth: "2px",
                   borderStyle: "solid",
                   borderImageSlice: 1,
                   borderImageSource: "linear-gradient(to right, #ff6a00, #ee0979)",

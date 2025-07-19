@@ -27,16 +27,16 @@ import image19 from "../../../public/assets/images/photos/image19.jpeg";
 import image20 from "../../../public/assets/images/photos/image20.jpeg";
 import image21 from "../../../public/assets/images/photos/image21.jpeg";
 import image22 from "../../../public/assets/images/photos/image22.jpeg";
-import image23 from "../../../public/assets/images/photos/image23.jpeg";
 import image24 from "../../../public/assets/images/photos/image24.jpg";
+import image25 from "../../../public/assets/images/photos/image25.jpg";
 
 import texture from "../../../public/assets/textures/texture.jpg";
 
 const images = [
-  image24, image1, image2, image3, image4, image5, image6, image7,
+  image25, image24, image1, image2, image3, image4, image5, image6, image7,
   image8, image9, image10, image11, image12, image13,
   image14, image15, image16, image17, image18, image19,
-  image20, image21, image22, image23
+  image20, image21, image22
 ];
 
 function LoadingDots() {
@@ -119,7 +119,7 @@ export default function PhotosPage() {
               <button
                 disabled={loading}
                 onClick={handleShowMore}
-                className={`w-full max-w-[950px] h-[50px] tracking-wide z-20 ml-14 mr-14 md:ml-20 md:mr-20 lg:ml-0 lg:mr-0 sm:ml-28 sm:mr-28 border-gray-400 border-[3px] text-gray-400 font-semibold text-lg transition-all duration-500 ease-in-out transform hover:border-gray-100 hover:text-gray-100 rounded-md ${
+                className={`w-full uppercase max-w-[950px] h-[50px] tracking-wide z-20 ml-14 mr-14 md:ml-20 md:mr-20 lg:ml-0 lg:mr-0 sm:ml-28 sm:mr-28 border-gray-400 border-[2px] text-white font-semibold text-[14px] transition-all duration-500 ease-in-out transform hover:border-gray-100 hover:text-gray-100 ${
                   loading ? "opacity-50 cursor-not-allowed" : ""
                 }`}
               >
@@ -131,9 +131,9 @@ export default function PhotosPage() {
           <div className={`flex justify-center h-[50px] ${showMore ? "mt-[-40px]" : "mt-[20px]"}`}>
             <Link href="https://www.instagram.com/wait_band_official/" target="_blank">
               <button
-                className="w-[300px] h-[50px] tracking-wide bg-transparent text-gray-100 rounded-lg font-semibold text-lg transition-all duration-500 ease-in-out transform hover:rounded-md hover:text-neonPink hover:opacity-100"
+                className="w-[300px] h-[50px] uppercase tracking-wide bg-transparent text-gray-100 rounded-lg font-semibold text-[14px] transition-all duration-500 ease-in-out transform hover:rounded-md hover:text-neonPink hover:opacity-100"
                 style={{
-                  borderWidth: "3px",
+                  borderWidth: "2px",
                   borderStyle: "solid",
                   borderImageSlice: 1,
                   borderImageSource: "linear-gradient(to right, #ff6a00, #ee0979)",

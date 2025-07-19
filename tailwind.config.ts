@@ -22,7 +22,8 @@ const config: Config = {
         nav: ['"Poppins"', 'sans-serif'],
         montserrat: ['Montserrat', 'sans-serif'], 
         inter: ['Inter', 'sans-serif'],
-        nunito: ['Nunito', 'sans-serif'],              
+        nunito: ['Nunito', 'sans-serif'], 
+        parabolica: ['"Parabolica Sans"', 'sans-serif']            
       },
       dropShadow: {
         'custom': '23px 3px 6px rgba(0, 0, 0, 0.33)',        
@@ -69,6 +70,7 @@ const config: Config = {
         musicPink: "#9900FF", 
         magenta: "#ff00ff",
         brewersBlue: "#00040efc",
+        navbarWhite: "#fafcfe"
       },
       zIndex: {
         100: '100',

@@ -137,9 +137,9 @@ export default function MusicPage() {
           <div className="flex justify-center mt-[20px] h-[50px]">
             <Link href="/alba">
               <button
-                className="w-[300px] h-[50px] tracking-wide bg-transparent text-gray-100 rounded-lg font-semibold text-lg transition-all duration-500 ease-in-out transform hover:rounded-md hover:text-neonPink hover:opacity-100"
+                className="w-[300px] h-[50px] uppercase tracking-wide bg-transparent text-gray-100 rounded-lg font-semibold text-[14px] transition-all duration-500 ease-in-out transform hover:rounded-md hover:text-neonPink hover:opacity-100"
                 style={{
-                  borderWidth: "3px",
+                  borderWidth: "2px",
                   borderStyle: "solid",
                   borderImageSlice: 1,
                   borderImageSource: "linear-gradient(to right, #ff6a00, #ee0979)",
@@ -159,7 +159,7 @@ export default function MusicPage() {
             e.stopPropagation(); 
             closeModal();
           }}
-          className="fixed inset-0 z-100 flex flex-col items-center justify-center"        
+          className="fixed inset-0 z-100 flex flex-col items-center justify-center monitor:justify-start monitor:p-14"        
         >
           {/* Background cover image behind blur */}
           <div
