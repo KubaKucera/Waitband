@@ -1,10 +1,5 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
 # dependencies
 /node_modules
-/.pnp
-.pnp.js
-.yarn/install-state.gz
 
 # testing
 /coverage
@@ -26,53 +21,16 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
-.env*.local
+.env*
+.env.local
 
 # vercel
 .vercel
 
 # typescript
 *.tsbuildinfo
-next-env.d.ts
 
-# next-video
-videos/*
-!videos/*.json
-!videos/*.js
-!videos/*.ts
-public/_next-video
-
-# next-video
-videos/*
-!videos/*.json
-!videos/*.js
-!videos/*.ts
-public/_next-video
-
-# next-video
-public/assets/videos/*
-!public/assets/videos/*.json
-!public/assets/videos/*.js
-!public/assets/videos/*.ts
-public/_next-video
-
-# next-video
-videos/*
-!videos/*.json
-!videos/*.js
-!videos/*.ts
-public/_next-video
-
-# next-video
-videos/*
-!videos/*.json
-!videos/*.js
-!videos/*.ts
-public/_next-video
-
-# next-video
-videos/*
-!videos/*.json
-!videos/*.js
-!videos/*.ts
-public/_next-video
+# videos (ak chceš ignorovať lokálne videá)
+/videos
+/public/_next-video
+/public/assets/videos
