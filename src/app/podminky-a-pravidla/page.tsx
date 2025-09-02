@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Podmínky a pravidla - Wait",
+    title: "Podmínky a pravidla | Wait",
     description: "TermsAndConditions page by create next app",  
 }
 

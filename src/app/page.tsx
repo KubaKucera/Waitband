@@ -1,162 +1,409 @@
 "use client";
 
-import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
 import ImageSlider from "@/components/slider/ImageSlider";
 import texture from "../../public/assets/textures/texture.jpg";
-import actualityImage1 from "../../public/assets/images/home/actuality4.jpg";
-import actualityImage2 from "../../public/assets/images/albums/album4.jpg";
-import actualityImage3 from "../../public/assets/images/music/february29th.jpg";
-import VideoModal from "@/components/videoModal/VideoModal";
-import HeadingWithLine from "@/components/headingWithLine/HeadingWithLine";
+import { AnimatePresence, motion } from "framer-motion";
+import AnnouncementModal from "@/components/announcementModal/AnnouncementModal";
+import SideAccentLineHome from "@/components/sideAccentLineHome/SideAccentLineHome";
+import TitleWithLines from "@/components/titleWithLines/TitleWithLines";
+import { newsData, NewsItem } from "../data/newsData";
+import Image from "next/image";
+import { ExternalLink, X } from "lucide-react";
+import Link from "next/link";
+import image1 from "../../public/assets/images/music/february29th.jpg";
+import image2 from "../../public/assets/images/music/carelessDreaming.jpg";
+import image3 from "../../public/assets/images/music/losingSleep.jpg";
+import appleMusic from "../../public/assets/icons/appleMusic.svg";
+import spotify from "../../public/assets/icons/spotify.svg";
+import soundcloud from "../../public/assets/icons/soundcloud.svg";
 import LiteYouTubeEmbed from "@/components/liteYtEmbed/LiteYouTubeEmbed";
 
-const kaplickaVideos = [
-  { src: "94ErS0EZXl4" },
-  { src: "i3amiE1rJIU" },
-  { src: "Bi0pPz3jlk4" },
-  { src: "Bz7f1Q4Xp8c" },
+const images = [image1, image2, image3];
+
+const soundcloudSongs = [
+  { title: "February 29th", url: "https://soundcloud.com/wait-band-official/february-29th" },
+  { title: "Careless Dreaming", url: "https://soundcloud.com/wait-band-official/careless-dreaming" },
+  { title: "Losing Sleep", url: "https://soundcloud.com/wait-band-official/losing-sleep" },
+  { title: "Daydream", url: "https://soundcloud.com/wait-band-official/daydream" },
+  { title: "Follow Me To Hell", url: "https://soundcloud.com/wait-band-official/follow-me-to-hell" },  
+  { title: "Subway Train", url: "https://soundcloud.com/wait-band-official/subway-train" },
+  { title: "Hate You", url: "https://soundcloud.com/wait-band-official/hate-you" },
+  { title: "Horoskop", url: "https://soundcloud.com/wait-band-official/horoskop-horoscope" },  
+  { title: "Achiever", url: "https://soundcloud.com/wait-band-official/achiever" },
 ];
 
-const knorVideos = [  
-  { src: "jmPkHuh_qK8" },
-  { src: "x1lfnG7B9tc" },
-  { src: "Q-8a308aqLc" },
-  { src: "K56O9wrh7nU" },
+const appleMusicSongs = [
+  { title: "February 29th", url: "https://music.apple.com/gh/album/february-29th/1479578756?i=1479579086" },
+  { title: "Careless Dreaming", url: "https://music.apple.com/gh/album/careless-dreaming/1479578756?i=1479578960" },
+  { title: "Losing Sleep", url: "https://music.apple.com/gh/album/losing-sleep/1479578756?i=1479578767" },
+  { title: "Daydream", url: "https://music.apple.com/gh/album/daydream/1479578756?i=1479578955" },
+  { title: "Follow Me To Hell", url: "https://music.apple.com/gh/album/follow-me-to-hell/1122535403?i=1122535560" },
+  { title: "Subway Train", url: "https://music.apple.com/gh/album/subway-train/1479578756?i=1479578770" },
+  { title: "Hate You", url: "https://music.apple.com/gh/album/hate-you/1122535403?i=1122535559" },
+  { title: "Horoskop", url: "" },
+  { title: "Achiever", url: "https://music.apple.com/gh/album/achiever/1122535403?i=1122535815" },
 ];
 
-const andelVideo = { src: "x_XWIT7Hd0Q" };
+const spotifyMusicSongs = [
+  { title: "February 29th", url: "https://open.spotify.com/track/4hy5ZgeVleEN4LxzX4DVUi" },
+  { title: "Careless Dreaming", url: "https://open.spotify.com/track/6TuqwEvhvUhmbyfYX96cIL" },  
+  { title: "Losing Sleep", url: "https://open.spotify.com/track/56Cp5nf8gnYEGjQAigUciX" },
+  { title: "Daydream", url: "https://open.spotify.com/track/3mQLGi3hzXECZ2CsocLDMt" },
+  { title: "Follow Me To Hell", url: "https://open.spotify.com/track/6hEF1OxQBlMdwhDo8Q18CF" },
+  { title: "Subway Train", url: "https://open.spotify.com/track/2Grjcg1SoCU7vWsqoCX9Qr" },
+  { title: "Hate You", url: "https://open.spotify.com/track/2rrTaT2f8xdzNWYgFyuJzf" },
+  { title: "Horoskop", url: "" },  
+  { title: "Achiever", url: "https://open.spotify.com/track/2P5boFog1gp3RZR5qZNpVT" },
+];
 
 export default function Home() {
-  const [showModal, setShowModal] = useState(false);
-  const [videoUrl, setVideoUrl] = useState("");
+  const [active, setActive] = useState<NewsItem | null>(null);  
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
 
-  const handleVideoClick = (url: string) => {
-    setVideoUrl(url);
-    setShowModal(true);
-  };
-
-  const handleClose = () => {
-    setShowModal(false);
-  };  
-
-  const renderYouTubeLite = (videoId: string) => (
-    <LiteYouTubeEmbed
-      key={videoId}
-      videoId={videoId}
-      className="w-[347px] h-[195px] sm:w-[347px] sm:h-[195px] md:w-[560px] md:h-[315px]"
-      title="Ukázka z koncertu"
-    />
+  useEffect(() => {
+    const checkScreen = () => setIsLargeScreen(window.innerWidth >= 1600);
+    checkScreen();
+    window.addEventListener("resize", checkScreen);
+    return () => window.removeEventListener("resize", checkScreen);
+  }, []);
+   
+  const SectionTitle = ({ title }: { title: string }) => (
+    <div className="flex items-center w-full max-w-5xl mx-auto px-6">
+      <h2 className="text-white text-3xl sm:text-3xl md:text-4xl font-bold tracking-wide whitespace-nowrap uppercase">
+        {title}
+      </h2>
+      <div className="flex-1 h-[2px] bg-white ml-6 w-[800px]"></div>
+    </div>
   );
+
+  const [modalData, setModalData] = useState<{ image: any; title: string; index: number } | null>(null);
+  
+    const openModal = (index: number) => {
+      setModalData({
+        image: images[index],
+        title: soundcloudSongs[index].title,
+        index,
+      });
+      document.body.style.overflow = "hidden";
+    };
+  
+    const closeModal = () => {
+      setModalData(null);
+      document.body.style.overflow = "";
+    };
+
+  useEffect(() => {
+    if (active) {
+      document.documentElement.style.overflow = "hidden";
+      document.body.style.overflow = "hidden";
+    } else {
+      document.documentElement.style.overflow = "auto";
+      document.body.style.overflow = "auto";
+    }
+  
+    return () => {
+      document.documentElement.style.overflow = "auto";
+      document.body.style.overflow = "auto";
+    };
+  }, [active]);
 
   return (
     <>  
-      <ImageSlider />
+      <AnnouncementModal />
+
+      {/* Hero se sliderem */}
+      <motion.div
+        initial={{ opacity: 0, y: 30, scale: 0.98 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ delay: 0.6, duration: 1, ease: "easeOut" }}
+        className="flex flex-col items-center gap-6 w-full"
+      >
+        <ImageSlider />
+      </motion.div>
 
       <div
-        className="relative w-full min-h-screen bg-fixed bg-cover bg-center bg-no-repeat pb-5"
+        className="relative w-full min-h-screen bg-fixed bg-cover bg-center bg-no-repeat text-white"
         style={{
-          backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.7), rgba(20, 20, 20, 0.8)), url(${texture.src})`,
+          backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(20, 20, 20, 0.85)), url(${texture.src})`,
         }}
-      >   
-        <HeadingWithLine
-          height={2640}
-          offsetTop="45px"
-          position="left"
-          delay={0.4}
-          duration={1}
-          ease="easeOut"
-          label="Úvod"
-        />
+      >
+        <SideAccentLineHome targetId="uvod-section" />
 
-        <section id="uvod" className="p-11 text-white relative z-10">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-montserrat font-bold">Aktuality/Blog</h2>
-            <div className="mt-3 mx-auto w-24 h-1 bg-gradient-to-r from-[#ff6a00] to-[#ee0979] rounded-full"></div>
-          </div>
+        <motion.div
+          initial={{ opacity: 0, y: 30, scale: 0.98 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ delay: 0.6, duration: 1, ease: "easeOut" }}
+          className="w-full"
+        >
+          <section id="uvod-section" className="relative flex flex-col items-center px-4 pt-[50px]">
+            <TitleWithLines title="Úvod Wait" />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-40 items-start justify-center place-items-center w-[85%] lg:w-[67%] monitor:w-[55%] mx-auto z-20">
-            {[
-              { title: "KONCERT", subtitle: "SUPER HOT SUMMER", image: actualityImage1, link: "/koncerty", alt: "Plakát koncertu" },
-              { title: "SONG", subtitle: "FEBRUARY 29TH", image: actualityImage3, link: "/hudba", alt: "Obal písně February 29th" },
-              { title: "ALBUM", subtitle: "WAIT FOR ME", image: actualityImage2, link: "/alba", alt: "Obal alba Wait For Me" },
-            ].map((item, index) => (
-              <Link
-                key={index}
-                href={item.link}
-                className={`group relative rounded-lg overflow-hidden shadow-md border border-gray-600 w-[350px] transform hover:-translate-y-1 hover:shadow-2xl transition-all duration-500 ease-out p-4 bg-gray-800
-                  ${
-                    index === 2
-                      ? "md:col-span-2 md:justify-self-center lg:col-span-1 lg:justify-self-auto"
-                      : ""
-                  }
-                `}
-              >
-                <h3 className="text-gray-300 font-semibold tracking-wider mb-1">{item.title}</h3>
-                <p className="text-gray-100 text-2xl font-semibold mb-4">{item.subtitle}</p>
-                <div className="relative w-full h-72 rounded-md overflow-hidden">
-                  <Image
-                    src={item.image}
-                    alt={item.alt}
-                    fill
-                    objectFit="cover"
-                    className="transition-transform duration-500 transform group-hover:scale-105"
-                  />
-                </div>
-              </Link>
-            ))}
-          </div>
-        </section>
+            {/* Novinky */}
+            <section id="novinky-section" className="relative flex flex-col items-center w-full max-w-6xl mt-12">
+              <SectionTitle title="Novinky" />
 
-        <section className="p-11 text-white relative z-10">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-montserrat font-bold">Kaplička Fest 2024</h2>
-            <div className="mt-3 mx-auto w-24 h-1 bg-gradient-to-r from-[#ff6a00] to-[#ee0979] rounded-full"></div>
-          </div>
-          <div className="grid gap-7 mx-auto lg:w-[80%] monitor:w-[64%] grid-cols-1 sm:grid-cols-2 place-items-center">
-            {kaplickaVideos.map((v, i) => (
-              <div key={i} className="w-full max-w-[560px]">
-                {renderYouTubeLite(v.src)}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-11 w-full">
+                {newsData.slice(0, 3).map((item) => (
+                  <motion.div
+                    key={item.id}
+                    className="relative group cursor-pointer rounded-xl bg-white/5 hover:bg-white/10 overflow-hidden shadow-lg transition"
+                    onClick={() => setActive(item)}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, ease: "easeOut" }}
+                  >
+                    <div className="relative h-72 sm:h-72 md:h-56 w-full">
+                      <Image
+                        src={item.image}
+                        alt={item.title}
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                    </div>
+                    <div className="p-5 text-white">
+                      <span className="inline-block border-neonPink border-2 px-2 py-0.5 rounded-full text-xs font-semibold mb-1">
+                        {item.category}
+                      </span>
+                      <p className="text-xs text-gray-400">{item.date}</p>
+                      <h3 className="text-xl font-semibold mt-1">{item.title}</h3>
+                      <p className="text-sm text-gray-300 mt-2">{item.excerpt}</p>
+                    </div>
+                  </motion.div>
+                ))}
               </div>
-            ))}
-          </div>
-        </section>
 
-        <section id="showMilosKnora" className="p-11 text-white relative z-10">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-montserrat font-bold">Show Miloše Knora</h2>
-            <div className="mt-3 mx-auto w-24 h-1 bg-gradient-to-r from-[#ff6a00] to-[#ee0979] rounded-full"></div>
-          </div>
-          <div className="grid gap-7 mx-auto lg:w-[80%] monitor:w-[64%] grid-cols-1 sm:grid-cols-2 place-items-center">
-            {knorVideos.map((v, i) => (
-              <div key={i} className="w-full max-w-[560px]">
-                {renderYouTubeLite(v.src)}
+              <div className="flex justify-center mt-11 mb-12">
+                <Link href="/novinky">
+                  <button
+                    className="w-[300px] h-[50px] uppercase tracking-wide bg-transparent text-gray-100 rounded-lg font-semibold text-[14px]
+                    transition-all duration-500 ease-in-out transform 
+                    hover:scale-105 hover:shadow-[0_0_12px_rgba(238,9,121,0.4)]
+                    hover:bg-gradient-to-r hover:from-[#ff6a00] hover:to-[#ee0979] 
+                    hover:bg-clip-text hover:text-transparent border-[2px]"
+                    style={{
+                      borderImageSlice: 1,
+                      borderImageSource: "linear-gradient(to right, #ff6a00, #ee0979)",
+                    }}
+                  >
+                    Zobrazit vše
+                  </button>
+                </Link>
               </div>
-            ))}
-          </div>
-        </section>
+            </section>
 
-        <section className="p-11 pb-11 text-white relative z-10">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-montserrat font-bold">Noc s Andělem</h2>
-            <div className="mt-3 mx-auto w-24 h-1 bg-gradient-to-r from-[#ff6a00] to-[#ee0979] rounded-full"></div>
-          </div>
-          <div className="flex justify-center">
-            <div className="w-full max-w-[560px]">
-              {renderYouTubeLite(andelVideo.src)}
-            </div>
-          </div>
-        </section>
+            {/* Hudba */}
+            <section id="hudba-section" className="relative flex flex-col items-center w-full max-w-6xl mt-12">
+              <SectionTitle title="Hudba" />
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-11 w-full px-2">
+                {[image1, image2, image3].map((img, index) => (
+                  <div
+                    key={index}
+                    className="relative group cursor-pointer w-full aspect-square overflow-hidden shadow-lg"
+                    onClick={() => openModal(index)}
+                  >
+                    <Image
+                      src={img}
+                      alt={`Song ${index + 1}`}
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex justify-center mt-11 mb-12">
+                <Link href="/hudba">
+                  <button
+                    className="w-[300px] h-[50px] uppercase tracking-wide bg-transparent text-gray-100 rounded-lg font-semibold text-[14px]
+                    transition-all duration-500 ease-in-out transform 
+                    hover:scale-105 hover:shadow-[0_0_12px_rgba(238,9,121,0.4)]
+                    hover:bg-gradient-to-r hover:from-[#ff6a00] hover:to-[#ee0979] 
+                    hover:bg-clip-text hover:text-transparent border-[2px]"
+                    style={{
+                      borderImageSlice: 1,
+                      borderImageSource: "linear-gradient(to right, #ff6a00, #ee0979)",
+                    }}
+                  >
+                    Poslechnout více
+                  </button>
+                </Link>
+              </div>
+            </section>
+
+            {/* Videa */}
+            <section id="videa-section" className="relative flex flex-col items-center w-full max-w-6xl mt-12">
+              <SectionTitle title="Videa" />
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-11 w-full px-2">
+                <LiteYouTubeEmbed videoId="w4Xn_DzsC6o" title="WAIT - Losing Sleep (Live)" />
+                <LiteYouTubeEmbed videoId="M_ugx3HzqME" title="WAIT - Horoskop (Official Music Video)" />
+                <LiteYouTubeEmbed videoId="8Tupra8tJiY" title="WAIT - Modelka (Official Music Video)" />
+              </div>
+
+              <div className="flex justify-center mt-11 mb-1">
+                <Link href="/videa">
+                  <button
+                    className="w-[300px] h-[50px] uppercase tracking-wide bg-transparent text-gray-100 rounded-lg font-semibold text-[14px]
+                    transition-all duration-500 ease-in-out transform 
+                    hover:scale-105 hover:shadow-[0_0_12px_rgba(238,9,121,0.4)]
+                    hover:bg-gradient-to-r hover:from-[#ff6a00] hover:to-[#ee0979] 
+                    hover:bg-clip-text hover:text-transparent border-[2px]"
+                    style={{
+                      borderImageSlice: 1,
+                      borderImageSource: "linear-gradient(to right, #ff6a00, #ee0979)",
+                    }}
+                  >
+                    Více videí
+                  </button>
+                </Link>
+              </div>
+            </section>
+          </section>
+        </motion.div>        
       </div>
 
-      <VideoModal showModal={showModal} videoUrl={videoUrl} onClose={handleClose} />      
+      {/* Modal news */}
+      <AnimatePresence>
+              {active && (
+                <motion.div
+                  key="modal"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
+                  onClick={() => setActive(null)}
+                >
+                  <button
+                    className="absolute top-4 right-4 text-white hover:text-gray-300 transition z-20"
+                    onClick={() => setActive(null)}
+                  >
+                    <X className="w-8 h-8" />
+                  </button>
+                  <motion.div
+                    initial={{ scale: 0.9, opacity: 0 }}
+                    animate={{ scale: isLargeScreen ? 1.25 : 1, opacity: 1 }}
+                    exit={{ scale: 0.9, opacity: 0 }}
+                    transition={{ duration: 0.4, ease: "easeOut" }}
+                    className="relative bg-neutral-900 text-white max-w-3xl w-full rounded-2xl shadow-2xl overflow-hidden"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <div className="relative h-80 monitor:h-96 w-full">
+                      <Image
+                        src={active.image}
+                        alt={active.title}
+                        fill
+                        className="object-cover object-top"
+                      />
+                    </div>
+                    <div className="bg-neutral-800 p-6 max-h-[240px] monitor:max-h-[270px] overflow-y-auto space-y-4">
+                      <span className="inline-block border-neonPink border-2 text-white px-2 py-0.5 rounded-full text-xs font-semibold mb-2">
+                        {active.category}
+                      </span>
+                      <p className="text-sm text-gray-400">{active.date}</p>
+                      <h2 className="text-2xl font-bold">{active.title}</h2>
+                      <p className="text-gray-200 whitespace-pre-wrap">
+                        {active.content}
+                      </p>
+                      {active.link && (
+                        <a
+                          href={active.link}
+                          target="_blank"
+                          className="inline-flex items-center gap-2 text-sm mt-3 text-neonPink hover:underline"
+                        >
+                          Více zde <ExternalLink className="w-4 h-4" />
+                        </a>
+                      )}
+                    </div>
+                  </motion.div>
+                </motion.div>
+              )}
+      </AnimatePresence>
 
-      {/* Lite YouTube Script */}
-      <script src="https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.2.0/src/lite-yt-embed.js" async></script>
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.2.0/src/lite-yt-embed.css" />
+      {/* MODAL hudba */}
+      {modalData && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.25 }}
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-10 bg-black/50 backdrop-blur-sm monitor:scale-125"
+          onClick={closeModal}
+        >
+          <motion.div
+            initial={{ y: 30, scale: 0.95, opacity: 0 }}
+            animate={{ y: 0, scale: 1, opacity: 1 }}
+            exit={{ y: 30, scale: 0.95, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            onClick={(e) => e.stopPropagation()}
+            className="relative bg-white rounded-xl shadow-2xl max-w-md w-full p-6 flex flex-col items-center"
+          >
+            {/* Zavřít */}
+            <button
+              aria-label="Zavřít"
+              onClick={closeModal}
+              className="absolute top-4 right-4 p-1 rounded-full hover:bg-gray-200 transition-colors"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="w-6 h-6 text-gray-700 hover:text-black"
+              >
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
+
+            {/* Obrázek */}
+            <div className="relative w-[80%] max-w-[250px] sm:max-w-[300px] aspect-square rounded-lg overflow-hidden mb-4 shadow-lg">
+              <Image src={modalData.image} alt={modalData.title} fill className="object-cover" />
+            </div>
+
+            {/* Titulek */}
+            <motion.div
+              initial={{ y: 10, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.1, duration: 0.3 }}
+              className="text-center mb-6"
+            >
+              <h2 className="text-black text-2xl font-bold">{modalData.title}</h2>
+              <p className="text-gray-500">Vyber hudební službu</p>
+            </motion.div>
+
+            {/* Ovládací tlačítka */}
+            <div className="w-full space-y-3">
+              {[
+                { icon: appleMusic, label: "Apple Music", url: appleMusicSongs[modalData.index].url },
+                { icon: spotify, label: "Spotify", url: spotifyMusicSongs[modalData.index].url },
+                { icon: soundcloud, label: "Soundcloud", url: soundcloudSongs[modalData.index].url },
+              ].map(({ icon, label, url }, i) =>
+                url ? (
+                  <motion.a
+                    key={i}
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    initial={{ y: 10, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.15 + i * 0.05, duration: 0.25 }}
+                    className="flex items-center justify-between bg-gray-100 px-4 py-3 rounded-lg shadow hover:bg-gray-200 transition-all"
+                  >
+                    <Image src={icon} alt={label} width={80} />
+                    <span className="text-black font-medium">Přehrát</span>
+                  </motion.a>
+                ) : null
+              )}
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
     </>
   );
 }

@@ -19,7 +19,7 @@ const LiteYouTubeEmbed: React.FC<LiteYouTubeEmbedProps> = ({
   return (
     <div
       onClick={() => setIframeLoaded(true)}
-      className={`relative w-full overflow-hidden pt-[56.25%] rounded-xl shadow-lg bg-black cursor-pointer group ${className}`}
+      className={`relative w-full overflow-hidden pt-[60%] rounded-xl shadow-lg bg-black cursor-pointer group ${className}`}
     >
       {!isIframeLoaded ? (
         <>

@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import HeadingWithLine from "@/components/headingWithLine/HeadingWithLine";
 import { useState, useEffect } from "react";
 
 import image1 from "../../../public/assets/images/photos/image1.jpg";
@@ -31,6 +30,20 @@ import image24 from "../../../public/assets/images/photos/image24.jpg";
 import image25 from "../../../public/assets/images/photos/image25.jpg";
 
 import texture from "../../../public/assets/textures/texture.jpg";
+import TitleWithLines from "@/components/titleWithLines/TitleWithLines";
+import { motion, AnimatePresence } from "framer-motion";
+import VerticalScrollIndicator from "@/components/sideAccentLine/SideAccentLine";
+
+import {
+  Maximize2,
+  Minimize2,
+  ZoomIn,
+  ZoomOut,
+  Share2,
+  X,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 
 const images = [
   image25, image24, image1, image2, image3, image4, image5, image6, image7,
@@ -52,237 +65,220 @@ function LoadingDots() {
 export default function PhotosPage() {
   const [showMore, setShowMore] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);  
+  const [zoom, setZoom] = useState(1);
+  const [isFullscreen, setIsFullscreen] = useState(false);
 
   useEffect(() => {
-    document.title = "Fotky - Wait";
+    document.title = "Fotky | Wait";
   }, []);
 
   useEffect(() => {
     document.body.style.overflow = selectedIndex !== null ? "hidden" : "";
   }, [selectedIndex]);
 
-  const handleShowMore = async () => {
-    setLoading(true);
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    setShowMore(true);
-    setLoading(false);
+  // posloucháme změnu fullscreen režimu (např. klávesa ESC)
+  useEffect(() => {
+    const handleChange = () => {
+      setIsFullscreen(!!document.fullscreenElement);
+    };
+    document.addEventListener("fullscreenchange", handleChange);
+    return () => document.removeEventListener("fullscreenchange", handleChange);
+  }, []);
+
+  const handleShowMore = () => setShowMore(true);
+
+  const closeModal = () => {
+    setSelectedIndex(null);
+    setZoom(1);
+    setIsFullscreen(false);
+    if (document.fullscreenElement) {
+      document.exitFullscreen().catch(() => {});
+    }
   };
 
-  const closeModal = () => setSelectedIndex(null);
   const goToNext = () =>
     setSelectedIndex((prev) => (prev !== null && prev < images.length - 1 ? prev + 1 : prev));
   const goToPrev = () =>
     setSelectedIndex((prev) => (prev !== null && prev > 0 ? prev - 1 : prev));
 
+  const toggleFullscreen = () => {
+    const el = document.getElementById("photo-modal");
+    if (!el) return;
+
+    if (!document.fullscreenElement) {
+      el.requestFullscreen().catch(() => {});
+    } else {
+      document.exitFullscreen().catch(() => {});
+    }
+  };
+
+  const handleShare = async () => {
+    if (navigator.share && selectedIndex !== null) {
+      try {
+        await navigator.share({
+          title: "Fotka z galerie Wait",
+          url: images[selectedIndex].src,
+        });
+      } catch {}
+    } else {
+      navigator.clipboard.writeText(images[selectedIndex!].src);
+      alert("Odkaz ke stažení byl zkopírován!");
+    }
+  };
+
   return (
-    <>
-      <HeadingWithLine
-        height={showMore ? 2615 : 1015}
-        offsetTop="110px"
-        position="left"
-        delay={0.4}
-        duration={1}
-        ease="easeOut"
-        label="Fotky"
-      />
+    <>      
+      <VerticalScrollIndicator targetId="photo-section"/>
 
       <div
-        className="relative w-full min-h-screen bg-fixed bg-cover bg-center bg-no-repeat pb-5"
+        className="relative w-full min-h-screen bg-fixed bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.7), rgba(20, 20, 20, 0.8)), url(${texture.src})`,
+          backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(20, 20, 20, 0.85)), url(${texture.src})`,
         }}
       >
-        <section className="relative h-auto py-10">
-          <div className="container mx-auto px-4 flex justify-center">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-[85px] pb-24 place-items-center">
-              {images.slice(0, showMore ? images.length : 9).map((image, index) => (
-                <div
-                  key={index}
-                  className="relative w-[340px] h-[340px] md:w-[300px] md:h-[300px] overflow-hidden cursor-pointer"
-                  onClick={() => setSelectedIndex(index)}
-                >
-                  <Image
-                    src={image}
-                    alt={`Photo ${index + 1}`}
-                    fill
-                    objectFit="cover"
-                    className="transition-transform duration-300 transform hover:scale-105"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {!showMore && (
-            <div className="flex justify-center mt-[-85px]">
-              <button
-                disabled={loading}
-                onClick={handleShowMore}
-                className={`w-full uppercase max-w-[950px] h-[50px] tracking-wide z-20 ml-14 mr-14 md:ml-20 md:mr-20 lg:ml-0 lg:mr-0 sm:ml-28 sm:mr-28 border-gray-400 border-[2px] text-white font-semibold text-[14px] transition-all duration-500 ease-in-out transform hover:border-gray-100 hover:text-gray-100 ${
-                  loading ? "opacity-50 cursor-not-allowed" : ""
-                }`}
-              >
-                {loading ? <LoadingDots /> : "Zobrazit více fotek"}
-              </button>
-            </div>
-          )}
-
-          <div className={`flex justify-center h-[50px] ${showMore ? "mt-[-40px]" : "mt-[20px]"}`}>
-            <Link href="https://www.instagram.com/wait_band_official/" target="_blank">
-              <button
-                className="w-[300px] h-[50px] uppercase tracking-wide bg-transparent text-gray-100 rounded-lg font-semibold text-[14px] transition-all duration-500 ease-in-out transform hover:rounded-md hover:text-neonPink hover:opacity-100"
-                style={{
-                  borderWidth: "2px",
-                  borderStyle: "solid",
-                  borderImageSlice: 1,
-                  borderImageSource: "linear-gradient(to right, #ff6a00, #ee0979)",
-                }}
-              >
-                Přejít na Instagram
-              </button>
-            </Link>
-          </div>
-
-          {selectedIndex !== null && (
-            <div
-              className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-black bg-opacity-85 px-4"
-              onClick={closeModal}
-            >
-              <button
-                aria-label="Zavřít"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  closeModal();
-                }}
-                className="absolute top-5 right-5 p-1 rounded hover:bg-opacity-30 transition-colors z-40 flex items-center justify-center"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={1.5}
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="w-9 h-9 text-gray-200"
-                >
-                  <line x1="18" y1="6" x2="6" y2="18" />
-                  <line x1="6" y1="6" x2="18" y2="18" />
-                </svg>
-              </button>
-
-              <div
-                className="relative w-[90vw] h-[90vw] lg:max-w-[600px] lg:max-h-[600px] md:max-w-[600px] md:max-h-[600px] sm:max-w-[500px] sm:max-h-[500px] xl:max-w-[600px] xl:max-h-[600px] monitor:max-w-[770px] monitor:max-h-[770px] z-30 rounded-lg border-2 border-white p-2 bg-gray-900"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <Image
-                  src={images[selectedIndex]}
-                  alt="Selected Image"
-                  fill
-                  objectFit="cover"
-                  className="rounded-lg"
-                />
-              </div>
-
-              {/* Desktop arrows */}
-              {selectedIndex > 0 && (
-                <button
-                  aria-label="Předchozí"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    goToPrev();
-                  }}
-                  className="hidden sm:flex absolute left-5 top-1/2 -translate-y-1/2 z-40 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-colors items-center justify-center shadow-lg"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={2}
-                    stroke="currentColor"
-                    className="w-8 h-8 text-gray-50"
+        <section id="photo-section" className="relative min-h-screen flex flex-col items-center px-4 gap-8 pt-[110px]">
+          {/* Titulek */}
+          <TitleWithLines title="Fotogalerie" delay={0.3} />      
+          
+          <motion.div
+            initial={{ opacity: 0, y: 30, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ delay: 0.6, duration: 1, ease: "easeOut" }}
+            className="flex flex-col items-center gap-8 w-full"
+          >
+            <div className="container mx-auto px-4 flex justify-center">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 place-items-center">
+                {images.slice(0, showMore ? images.length : 9).map((image, index) => (
+                  <div
+                    key={index}
+                    className="relative w-[340px] h-[340px] md:w-[320px] md:h-[320px] overflow-hidden cursor-pointer"
+                    onClick={() => setSelectedIndex(index)}
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-                  </svg>
+                    <Image
+                      src={image}
+                      alt={`Photo ${index + 1}`}
+                      fill
+                      objectFit="cover"
+                      className="transition-transform duration-300 transform hover:scale-105"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {!showMore && (
+              <div className="relative flex justify-center w-full">
+                <button
+                  disabled={loading}
+                  onClick={handleShowMore}
+                  className={`w-full uppercase max-w-[1010px] h-[50px] tracking-wide z-20 ml-14 mr-14 md:ml-20 md:mr-20 lg:ml-0 lg:mr-0 sm:ml-28 sm:mr-28 border-gray-400 border-[2px] text-gray-200 font-semibold text-[14px] transition-all duration-500 ease-in-out transform hover:border-gray-100 hover:text-white ${
+                    loading ? "opacity-50 cursor-not-allowed" : ""
+                  }`}
+                >
+                  {loading ? <LoadingDots /> : "Zobrazit více fotek"}
                 </button>
+              </div>
+            )}
+
+            <div className={`flex justify-center h-[50px] mb-1 ${showMore ? "mt-[15px]" : "mt-0"}`}>
+              <Link href="https://www.instagram.com/wait_band_official/" target="_blank">
+                <button
+                  className="w-[300px] h-[50px] uppercase tracking-wide bg-transparent text-gray-100 rounded-lg font-semibold text-[14px]
+                  transition-all duration-500 ease-in-out transform 
+                  hover:scale-105 hover:shadow-[0_0_12px_rgba(238,9,121,0.4)]
+                  hover:bg-gradient-to-r hover:from-[#ff6a00] hover:to-[#ee0979] 
+                  hover:bg-clip-text hover:text-transparent border-[2px]"
+                  style={{
+                    borderImageSlice: 1,
+                    borderImageSource: "linear-gradient(to right, #ff6a00, #ee0979)",
+                    transition: "all 0.5s ease-in-out",
+                  }}
+                >
+                  Přejít na Instagram
+                </button>
+              </Link>
+            </div>
+
+            <AnimatePresence>
+              {selectedIndex !== null && (
+                <motion.div
+                  id="photo-modal"
+                  className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-black/90"                  
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                >
+                  {/* Controls */}
+                  <div className="absolute top-4 right-4 flex gap-3 z-50">                    
+                    <button onClick={() => setZoom((z) => Math.min(z + 0.5, 3))} className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition">
+                      <ZoomIn className="text-white w-6 h-6" />
+                    </button>
+                    <button onClick={() => setZoom((z) => Math.max(z - 0.5, 1))} className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition">
+                      <ZoomOut className="text-white w-6 h-6" />
+                    </button>
+                    <button onClick={toggleFullscreen} className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition">
+                      {isFullscreen ? (
+                        <Minimize2 className="text-white w-6 h-6" />
+                      ) : (
+                        <Maximize2 className="text-white w-6 h-6" />
+                      )}
+                    </button>
+                    <button onClick={handleShare} className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition">
+                      <Share2 className="text-white w-6 h-6" />
+                    </button>
+                    <button onClick={closeModal} className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition">
+                      <X className="text-white w-6 h-6" />
+                    </button>
+                  </div>
+
+                  {/* Image */}
+                  <motion.div
+                    key={selectedIndex}
+                    initial={{ scale: 0.95, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.4, ease: "easeOut" }}
+                    className="relative w-[90vw] h-[90vh] flex items-center justify-center"
+                    style={{ overflow: "hidden" }}
+                  >
+                    <Image
+                      src={images[selectedIndex]}
+                      alt="Selected"
+                      fill
+                      style={{
+                        objectFit: "contain",
+                        transform: `scale(${zoom})`,
+                        transition: "transform 0.3s ease",
+                      }}
+                    />
+                  </motion.div>
+
+                  {/* Navigation arrows */}
+                  {selectedIndex > 0 && (
+                    <button
+                      onClick={goToPrev}
+                      className="absolute left-6 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/10 hover:bg-white/20 transition z-50"
+                    >
+                      <ChevronLeft className="w-8 h-8 text-white" />
+                    </button>
+                  )}
+                  {selectedIndex < images.length - 1 && (
+                    <button
+                      onClick={goToNext}
+                      className="absolute right-6 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/10 hover:bg-white/20 transition z-50"
+                    >
+                      <ChevronRight className="w-8 h-8 text-white" />
+                    </button>
+                  )}
+
+                  {/* Index */}
+                  <div className="absolute text-gray-300 text-lg bottom-6 right-6">
+                    {selectedIndex + 1} / {images.length}
+                  </div>
+                </motion.div>
               )}
-
-              {selectedIndex < images.length - 1 && (
-                <button
-                  aria-label="Další"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    goToNext();
-                  }}
-                  className="hidden sm:flex absolute right-5 top-1/2 -translate-y-1/2 z-40 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-colors items-center justify-center shadow-lg"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={2}
-                    stroke="currentColor"
-                    className="w-8 h-8 text-gray-50"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                  </svg>
-                </button>
-              )}
-
-              {/* Mobile arrows under modal */}
-              <div className="sm:hidden flex w-full max-w-[600px] mx-auto mt-4 gap-4 px-4">
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    goToPrev();
-                  }}
-                  disabled={selectedIndex === 0}
-                  className="flex-1 py-4 bg-white/10 backdrop-blur-sm rounded-lg text-gray-200 hover:bg-white/20 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-8 h-8 mx-auto"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={2}
-                    stroke="currentColor"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-                  </svg>
-                </button>
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    goToNext();
-                  }}
-                  disabled={selectedIndex === images.length - 1}
-                  className="flex-1 py-4 bg-white/10 backdrop-blur-sm rounded-lg text-gray-200 hover:bg-white/20 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-8 h-8 mx-auto"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={2}
-                    stroke="currentColor"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                  </svg>
-                </button>
-              </div>
-
-              {/* Mobile index label */}
-              <div className="sm:hidden w-full flex justify-center mt-4">
-                <div className="text-gray-300 text-sm">{selectedIndex + 1} / {images.length}</div>
-              </div>
-
-              {/* Desktop index label */}
-              <div className="hidden sm:block absolute bottom-5 right-5 text-gray-50 text-base lg:text-lg px-3 py-1 rounded-md z-40">
-                {selectedIndex + 1} / {images.length}
-              </div>
-            </div>
-          )}
+            </AnimatePresence>
+          </motion.div>              
         </section>
       </div>
     </>

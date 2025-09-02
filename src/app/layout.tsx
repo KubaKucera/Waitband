@@ -8,9 +8,10 @@ import Navbar from "@/components/navbar/Navbar";
 import CustomCookieConsent from "@/components/cookie/CookieConsent";
 import ScrollToTopButton from "@/components/scrollToTopButton/ScrollToTopButton";
 import Footer from "@/components/footer/Footer";
+import Newsletter from "@/components/newsletter/Newsletter";
 
 export const metadata: Metadata = {
-  title: "Wait - Oficiální web české crossover kapely",
+  title: "Wait | Oficiální web české crossover kapely",
   description: "Wait Official page by create next app",
   icons: {
     icon:['/favicon.ico?v=5'],
@@ -25,14 +26,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full">
-      <body className="min-h-screen flex flex-col">
+    <html lang="en" className="h-full overflow-x-hidden">
+      <body className="min-h-screen flex flex-col overflow-x-hidden">
         <CustomCookieConsent />
         <Navbar />
-        <ScrollToTopButton />
-        <PageTransition>
-          {children}
-        </PageTransition>
+        <ScrollToTopButton />        
+        {children}
+        <Newsletter />
         <Footer />
       </body>
     </html>

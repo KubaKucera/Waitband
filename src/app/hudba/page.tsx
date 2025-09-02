@@ -2,69 +2,66 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+
 import image1 from "../../../public/assets/images/music/february29th.jpg";
-import image2 from "../../../public/assets/images/music/achiever.jpg";
+import image2 from "../../../public/assets/images/music/carelessDreaming.jpg";
 import image3 from "../../../public/assets/images/music/losingSleep.jpg";
 import image4 from "../../../public/assets/images/music/daydream.jpg";
 import image5 from "../../../public/assets/images/music/followMeToHell.jpg";
-import image6 from "../../../public/assets/images/music/carelessDreaming.jpg";
+import image6 from "../../../public/assets/images/music/subwayTrain.jpg";
 import image7 from "../../../public/assets/images/music/hateYou.jpg";
-import image8 from "../../../public/assets/images/music/horoscop.jpeg";
-import image9 from "../../../public/assets/images/music/subwayTrain.jpg";
+import image8 from "../../../public/assets/images/music/horoscop.jpg";
+import image9 from "../../../public/assets/images/music/achiever.jpg";
 import texture from "../../../public/assets/textures/texture.jpg";
 import appleMusic from "../../../public/assets/icons/appleMusic.svg";
 import spotify from "../../../public/assets/icons/spotify.svg";
 import soundcloud from "../../../public/assets/icons/soundcloud.svg";
-import { useEffect, useState } from "react";
-import HeadingWithLine from "@/components/headingWithLine/HeadingWithLine";
-
-/*
-export const metadata: Metadata = {
-  title: "Hudba - Wait",
-  description: "Music page by create next app",  
-}*/
+import TitleWithLines from "@/components/titleWithLines/TitleWithLines";
+import { motion } from "framer-motion";
+import SideAccentLine from "@/components/sideAccentLine/SideAccentLine";
 
 const images = [image1, image2, image3, image4, image5, image6, image7, image8, image9];
 
 const soundcloudSongs = [
   { title: "February 29th", url: "https://soundcloud.com/wait-band-official/february-29th" },
-  { title: "Achiever", url: "https://soundcloud.com/wait-band-official/achiever" },
+  { title: "Careless Dreaming", url: "https://soundcloud.com/wait-band-official/careless-dreaming" },
   { title: "Losing Sleep", url: "https://soundcloud.com/wait-band-official/losing-sleep" },
   { title: "Daydream", url: "https://soundcloud.com/wait-band-official/daydream" },
-  { title: "Follow Me To Hell", url: "https://soundcloud.com/wait-band-official/follow-me-to-hell" },
-  { title: "Careless Dreaming", url: "https://soundcloud.com/wait-band-official/careless-dreaming" },    
+  { title: "Follow Me To Hell", url: "https://soundcloud.com/wait-band-official/follow-me-to-hell" },  
+  { title: "Subway Train", url: "https://soundcloud.com/wait-band-official/subway-train" },
   { title: "Hate You", url: "https://soundcloud.com/wait-band-official/hate-you" },
-  { title: "Horoskop", url: "https://soundcloud.com/wait-band-official/horoskop-horoscope" },
-  { title: "Subway Train", url: "https://soundcloud.com/wait-band-official/subway-train" },   
+  { title: "Horoskop", url: "https://soundcloud.com/wait-band-official/horoskop-horoscope" },  
+  { title: "Achiever", url: "https://soundcloud.com/wait-band-official/achiever" },
 ];
 
 const appleMusicSongs = [
   { title: "February 29th", url: "https://music.apple.com/gh/album/february-29th/1479578756?i=1479579086" },
-  { title: "Achiever", url: "https://music.apple.com/gh/album/achiever/1122535403?i=1122535815" }, //Todo
+  { title: "Careless Dreaming", url: "https://music.apple.com/gh/album/careless-dreaming/1479578756?i=1479578960" },
   { title: "Losing Sleep", url: "https://music.apple.com/gh/album/losing-sleep/1479578756?i=1479578767" },
   { title: "Daydream", url: "https://music.apple.com/gh/album/daydream/1479578756?i=1479578955" },
-  { title: "Follow Me To Hell", url: "https://music.apple.com/gh/album/follow-me-to-hell/1122535403?i=1122535560" },  //Todo
-  { title: "Careless Dreaming", url: "https://music.apple.com/gh/album/careless-dreaming/1479578756?i=1479578960" },  
-  { title: "Hate You", url: "https://music.apple.com/gh/album/hate-you/1122535403?i=1122535559" }, //Todo
-  { title: "Horoskop", url: "" }, //Todo
-  { title: "Subway Train", url: "https://music.apple.com/gh/album/subway-train/1479578756?i=1479578770" },  
+  { title: "Follow Me To Hell", url: "https://music.apple.com/gh/album/follow-me-to-hell/1122535403?i=1122535560" },
+  { title: "Subway Train", url: "https://music.apple.com/gh/album/subway-train/1479578756?i=1479578770" },
+  { title: "Hate You", url: "https://music.apple.com/gh/album/hate-you/1122535403?i=1122535559" },
+  { title: "Horoskop", url: "" },
+  { title: "Achiever", url: "https://music.apple.com/gh/album/achiever/1122535403?i=1122535815" },
 ];
 
 const spotifyMusicSongs = [
   { title: "February 29th", url: "https://open.spotify.com/track/4hy5ZgeVleEN4LxzX4DVUi" },
-  { title: "Achiever", url: "https://open.spotify.com/track/2P5boFog1gp3RZR5qZNpVT" },
+  { title: "Careless Dreaming", url: "https://open.spotify.com/track/6TuqwEvhvUhmbyfYX96cIL" },  
   { title: "Losing Sleep", url: "https://open.spotify.com/track/56Cp5nf8gnYEGjQAigUciX" },
   { title: "Daydream", url: "https://open.spotify.com/track/3mQLGi3hzXECZ2CsocLDMt" },
   { title: "Follow Me To Hell", url: "https://open.spotify.com/track/6hEF1OxQBlMdwhDo8Q18CF" },
-  { title: "Careless Dreaming", url: "https://open.spotify.com/track/6TuqwEvhvUhmbyfYX96cIL" },  
+  { title: "Subway Train", url: "https://open.spotify.com/track/2Grjcg1SoCU7vWsqoCX9Qr" },
   { title: "Hate You", url: "https://open.spotify.com/track/2rrTaT2f8xdzNWYgFyuJzf" },
-  { title: "Horoskop", url: "" }, //Todo
-  { title: "Subway Train", url: "https://open.spotify.com/track/2Grjcg1SoCU7vWsqoCX9Qr" },  
+  { title: "Horoskop", url: "" },  
+  { title: "Achiever", url: "https://open.spotify.com/track/2P5boFog1gp3RZR5qZNpVT" },
 ];
 
 export default function MusicPage() {
   useEffect(() => {
-    document.title = "Hudba - Wait"
+    document.title = "Hudba | Wait";
   }, []);
 
   const [modalData, setModalData] = useState<{ image: any; title: string; index: number } | null>(null);
@@ -75,190 +72,156 @@ export default function MusicPage() {
       title: soundcloudSongs[index].title,
       index,
     });
-    document.body.style.overflow = 'hidden'; // zakáže scroll
+    document.body.style.overflow = "hidden";
   };
 
   const closeModal = () => {
     setModalData(null);
-    document.body.style.overflow = ''; // povolí scroll zpět
+    document.body.style.overflow = "";
   };
 
   return (
-    <>        
-      <HeadingWithLine
-        height={1100}
-        offsetTop="110px"
-        position="left"
-        delay={0.4}
-        duration={1}
-        ease="easeOut"    
-        label="Hudba"
-      />   
+    <>   
+      <SideAccentLine targetId="music-section"/>
 
       <div
-        className="relative w-full min-h-screen bg-fixed bg-cover bg-center bg-no-repeat pb-5"
+        className="relative w-full min-h-screen bg-fixed bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.7), rgba(20, 20, 20, 0.8)), url(${texture.src})`,
+          backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(20, 20, 20, 0.85)), url(${texture.src})`,
         }}
-      > 
-        <section className="relative z-10 py-10 pt-[105px] pb-10 px-4 sm:px-6">          
+      >        
+        <section id="music-section" className="relative min-h-screen flex flex-col items-center px-4 gap-8 pt-[110px]">
+          
+          <TitleWithLines title="Hudba" delay={0.3} />  
 
-          {/* Title */}
-          <div className="relative text-center z-20">
-            <h2 className="text-4xl sm:text-5xl font-montserrat font-bold text-white">
-              Naše top songy
-            </h2>
-            <div className="mt-4 mx-auto w-28 h-1 bg-gradient-to-r from-[#ff6a00] to-[#ee0979] rounded-full"></div>
-          </div>
-
-          {/* Image Grid */}
-          <div className="container mx-auto mt-10 mb-10 flex items-center justify-center relative">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols gap-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ delay: 0.6, duration: 1, ease: "easeOut" }}
+            className="flex flex-col items-center gap-8 w-full"
+          >
+            {/* Grid skladeb */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-6xl px-2">
               {images.map((image, index) => (
                 <div
                   key={index}
                   onClick={() => openModal(index)}
-                  className="relative group cursor-pointer"
+                  className="relative group cursor-pointer w-full aspect-square overflow-hidden shadow-md"
                 >
-                  <div className="relative w-[310px] h-[310px] mx-auto overflow-hidden shadow-lg">
-                    <Image
-                      src={image}
-                      alt={`Photo ${index + 1}`}
-                      layout="fill"
-                      objectFit="cover"
-                      className="transition-transform duration-300 transform hover:scale-105"
-                    />
-                  </div>
+                  <Image
+                    src={image}
+                    alt={`Photo ${index + 1}`}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
                 </div>
               ))}
             </div>
-          </div>
 
-          <div className="flex justify-center mt-[20px] h-[50px]">
-            <Link href="/alba">
-              <button
-                className="w-[300px] h-[50px] uppercase tracking-wide bg-transparent text-gray-100 rounded-lg font-semibold text-[14px] transition-all duration-500 ease-in-out transform hover:rounded-md hover:text-neonPink hover:opacity-100"
-                style={{
-                  borderWidth: "2px",
-                  borderStyle: "solid",
-                  borderImageSlice: 1,
-                  borderImageSource: "linear-gradient(to right, #ff6a00, #ee0979)",
-                }}
-              >
-                Přejít na alba
-              </button>
-            </Link>
-          </div>
-        </section>
-      </div>      
-
-      {modalData && (
-        <div 
-          onClick={(e) => {
-            e.preventDefault(); 
-            e.stopPropagation(); 
-            closeModal();
-          }}
-          className="fixed inset-0 z-100 flex flex-col items-center justify-center monitor:justify-start monitor:p-14"        
-        >
-          {/* Background cover image behind blur */}
-          <div
-            className="fixed inset-0 h-[100vh] z-[-1] bg-cover bg-center"
-            style={{
-              backgroundImage: `url(${modalData.image.src})`,
-              opacity: 1, // nebo zkus i nižší hodnotu
-              filter: "blur(4px)",
-            }}
-          />
-
-          {/* Blur + white overlay */}
-          <div className="absolute inset-0 bg-white bg-opacity-70 backdrop-blur-2xl pointer-events-none z-0" />
-
-          {/* Close Button */}
-          <button
-            aria-label="Zavřít"
-            onClick={closeModal}
-            className="absolute top-3 right-3 p-1 rounded hover:bg-opacity-30 transition-colors z-40 flex items-center justify-center"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth={1.5}
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="w-9 h-9 text-gray-700 hover:text-black"
-            >
-              <line x1="18" y1="6" x2="6" y2="18" />
-              <line x1="6" y1="6" x2="18" y2="18" />
-            </svg>
-          </button>
-
-          <div className="relative w-72 h-72 mb-3 mx-auto">
-            <Image
-              src={modalData.image}
-              alt={modalData.title}
-              layout="fill"
-              objectFit="cover"
-              className="rounded-md"
-            />
-          </div>
-
-          <div className="space-y-[-3px] mb-[30px] z-10">
-            <h2 className="text-black text-xl font-bold text-center">{modalData.title}</h2>
-            <p className="text-center text-gray-700">Vyber hudební službu</p>
-          </div>          
-
-          {/* Modal Content */}
-          <div 
-            onClick={(e) => e.stopPropagation()}
-            className="relative bg-white rounded-lg shadow-lg p-6 w-[90%] max-w-[475px]"          
-          >
-            {/* Buttons */}
-            <div className=" space-y-4">
-              <Link
-                href={appleMusicSongs[modalData.index].url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-between bg-gray-100 px-4 h-[65px] rounded-md shadow hover:bg-gray-200"
-              >                
-                <Image 
-                  src={appleMusic}
-                  alt="AppleMusic"
-                  width={125}                  
-                />
-                <span className="text-black font-medium">Přehrát</span>
-              </Link>
-              <Link
-                href={spotifyMusicSongs[modalData.index].url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-between bg-gray-100 px-4 h-[65px] rounded-md shadow hover:bg-gray-200"
-              >
-                <Image 
-                  src={spotify}
-                  alt="Spotify"
-                  width={125}                  
-                />
-                <span className="text-black font-medium">Přehrát</span>
-              </Link>
-              <Link
-                href={soundcloudSongs[modalData.index].url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-between bg-gray-100 px-4 h-[65px] rounded-md shadow hover:bg-gray-200"
-              >
-                <Image 
-                  src={soundcloud}
-                  alt="Soundcloud"
-                  width={150}                  
-                />
-                <span className="text-black font-medium">Přehrát</span>
+            {/* Tlačítko alba */}
+            <div className="flex justify-center h-[50px] mb-1 mt-4">
+              <Link href="/alba">
+                <button
+                  className="w-[300px] h-[50px] uppercase tracking-wide bg-transparent text-gray-100 rounded-lg font-semibold text-[14px]
+                  transition-all duration-500 ease-in-out transform 
+                  hover:scale-105 hover:shadow-[0_0_12px_rgba(238,9,121,0.4)]
+                  hover:bg-gradient-to-r hover:from-[#ff6a00] hover:to-[#ee0979] 
+                  hover:bg-clip-text hover:text-transparent border-[2px]"
+                  style={{
+                    borderImageSlice: 1,
+                    borderImageSource: "linear-gradient(to right, #ff6a00, #ee0979)",
+                    transition: "all 0.5s ease-in-out",
+                  }}
+                >
+                  Přejít na Alba
+                </button>
               </Link>
             </div>
-          </div>
-        </div>
+          </motion.div>          
+        </section>
+      </div>
+
+      {/* MODAL */}
+      {modalData && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.25 }}
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-10 bg-black/50 backdrop-blur-sm monitor:scale-125"
+          onClick={closeModal}
+        >
+          <motion.div
+            initial={{ y: 30, scale: 0.95, opacity: 0 }}
+            animate={{ y: 0, scale: 1, opacity: 1 }}
+            exit={{ y: 30, scale: 0.95, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            onClick={(e) => e.stopPropagation()}
+            className="relative bg-white rounded-xl shadow-2xl max-w-md w-full p-6 flex flex-col items-center"
+          >
+            {/* Zavřít */}
+            <button
+              aria-label="Zavřít"
+              onClick={closeModal}
+              className="absolute top-4 right-4 p-1 rounded-full hover:bg-gray-200 transition-colors"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="w-6 h-6 text-gray-700 hover:text-black"
+              >
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
+
+            {/* Obrázek */}
+            <div className="relative w-[80%] max-w-[250px] sm:max-w-[300px] aspect-square rounded-lg overflow-hidden mb-4 shadow-lg">
+              <Image src={modalData.image} alt={modalData.title} fill className="object-cover" />
+            </div>
+
+            {/* Titulek */}
+            <motion.div
+              initial={{ y: 10, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.1, duration: 0.3 }}
+              className="text-center mb-6"
+            >
+              <h2 className="text-black text-2xl font-bold">{modalData.title}</h2>
+              <p className="text-gray-500">Vyber hudební službu</p>
+            </motion.div>
+
+            {/* Ovládací tlačítka */}
+            <div className="w-full space-y-3">
+              {[
+                { icon: appleMusic, label: "Apple Music", url: appleMusicSongs[modalData.index].url },
+                { icon: spotify, label: "Spotify", url: spotifyMusicSongs[modalData.index].url },
+                { icon: soundcloud, label: "Soundcloud", url: soundcloudSongs[modalData.index].url },
+              ].map(({ icon, label, url }, i) =>
+                url ? (
+                  <motion.a
+                    key={i}
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    initial={{ y: 10, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.15 + i * 0.05, duration: 0.25 }}
+                    className="flex items-center justify-between bg-gray-100 px-4 py-3 rounded-lg shadow hover:bg-gray-200 transition-all"
+                  >
+                    <Image src={icon} alt={label} width={80} />
+                    <span className="text-black font-medium">Přehrát</span>
+                  </motion.a>
+                ) : null
+              )}
+            </div>
+          </motion.div>
+        </motion.div>
       )}
     </>
   );

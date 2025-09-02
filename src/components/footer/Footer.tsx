@@ -13,47 +13,12 @@ import {
 } from "react-icons/fa";
 
 import logo from "../../../public/assets/images/navbar/logo.jpg";
+import { FaArrowUp } from "react-icons/fa6";
 
-export default function FooterWithNewsletter() {
-  const [email, setEmail] = useState("");
-  const [answer, setAnswer] = useState("");
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
+export default function FooterWithNewsletter() { 
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (!email.includes("@")) {
-      setError("Zadejte platný email.");
-      return;
-    }
-
-    if (!answer) {
-      setError("Vyberte, jak se máte.");
-      return;
-    }
-
-    setError("");
-    setSuccess("");
-
-    try {
-      const res = await fetch("/api/subscribe", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, answer }),
-      });
-
-      if (res.ok) {
-        setSuccess("Email úspěšně odeslán!");
-        setEmail("");
-        setAnswer("");
-      } else {
-        const data = await res.json();
-        setError(data.error || "Něco se nepodařilo, zkuste to znovu.");
-      }
-    } catch {
-      setError("Chyba připojení, zkuste to znovu.");
-    }
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const renderSocialLinks = () => (
@@ -73,7 +38,7 @@ export default function FooterWithNewsletter() {
         },
         {
           icon: <FaYoutube />,
-          href: "https://www.youtube.com/@waitbandofficial6520",
+          href: "https://www.youtube.com/@waitbandofficial",
           label: "YouTube",
           bg: "bg-youtubeRed",
         },
@@ -112,67 +77,6 @@ export default function FooterWithNewsletter() {
 
   return (
     <footer className="bg-white text-gray-800 relative z-40 select-none px-6 py-12 md:px-16">
-      {/* Newsletter */}
-      <div className="max-w-3xl mx-auto text-center mb-16">
-        <h2 className="font-montserrat text-4xl md:text-5xl font-normal mb-2">
-          Pro naše fanoušky
-        </h2>
-        <p className="text-gray-700 text-lg mb-2">
-          Přihlášení k odběru novinek
-        </p>
-        <p className="text-sm md:text-base text-gray-600 mb-1">
-          Přihlášením se k odběru novinek dáváte souhlas
-        </p>
-        <p className="text-sm md:text-base text-gray-600 mb-6">
-          se zpracováním{" "}
-          <Link
-            href="/osobni-udaje"
-            target="_blank"
-            className="text-blue-600 hover:underline font-semibold"
-          >
-            osobních údajů.
-          </Link>
-        </p>
-
-        <form
-          onSubmit={handleSubmit}
-          className="w-full max-w-md mx-auto flex flex-col space-y-4"
-          noValidate
-        >
-          <input
-            type="email"
-            placeholder="Zadejte svůj email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            className="w-full px-4 py-3 rounded-md border border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-pink-500 transition"
-          />
-
-          <select
-            value={answer}
-            onChange={(e) => setAnswer(e.target.value)}
-            required
-            className="w-full px-4 py-3 rounded-md border border-gray-300 text-gray-900 cursor-pointer focus:outline-none focus:ring-2 focus:ring-pink-500 transition"
-          >
-            <option value="">Jak se máte?</option>
-            <option value="dobře">Dobře</option>
-            <option value="fajn">Fajn</option>
-            <option value="super">Super</option>
-            <option value="mohlo by to být lepší">Mohlo by to být lepší</option>
-          </select>
-
-          {error && <p className="text-red-500 text-sm">{error}</p>}
-          {success && <p className="text-green-500 text-sm">{success}</p>}
-
-          <button
-            type="submit"
-            className="w-full py-3 bg-pink-600 text-white font-semibold rounded-md hover:bg-pink-700 transition-transform duration-300 hover:scale-105 ease-in-out"
-          >
-            Odeslat
-          </button>
-        </form>
-      </div>
-
       {/* Footer content */}
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 items-center text-center md:text-left">
         {/* Logo & text */}
@@ -190,13 +94,41 @@ export default function FooterWithNewsletter() {
 
         {/* Odkazy & copyright */}
         <div className="flex flex-col items-center md:items-end space-y-2 text-sm text-gray-600">
-          <Link href="/osobni-udaje" target="_blank" className="hover:text-blue-600 hover:underline">
-            Zásady ochrany osobních údajů
+          <Link
+            href="/osobni-udaje"
+            target="_blank"
+            className="hover:text-blue-500 underline"
+          >
+            Soukromí & Používání Cookies
           </Link>
-          <Link href="/podminky-a-pravidla" target="_blank" className="hover:text-blue-600 hover:underline">
+          <Link
+            href="/podminky-a-pravidla"
+            target="_blank"
+            className="hover:text-blue-500 underline"
+          >
             Podmínky a pravidla
           </Link>
-          <p className="mt-4">&copy; 2024 WAIT – Všechna práva vyhrazena.</p>
+          <Link
+            href="/assets/files/waitRider.pdf"
+            target="_blank"
+            className="hover:text-blue-500 underline"
+          >
+            Technický rider
+          </Link>
+          <p className="mt-4 text-center md:text-right">
+            &copy; 2024 WAIT – Všechna práva vyhrazena.
+          </p>
+        </div>
+
+        {/* Tlačítko nahoru - viditelné jen na sm a menších */}
+        <div className="mt-0 flex justify-center sm:hidden">
+          <button
+            onClick={scrollToTop}
+            aria-label="Scroll to top"
+            className="flex items-center gap-2 bg-neonPink text-white font-semibold py-2 px-4 rounded-full shadow-lg hover:bg-pink-600 transition"
+          >
+            Nahoru <FaArrowUp />
+          </button>
         </div>
       </div>
     </footer>

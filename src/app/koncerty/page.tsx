@@ -1,92 +1,92 @@
 "use client";
 
 import Image from "next/image";
-import back from "../../../public/assets/images/conserts/back.png";
+import texture from "../../../public/assets/textures/texture.jpg";
 import consertsImage from "../../../public/assets/images/conserts/consertsImage.jpg";
-import HeadingWithLine from "@/components/headingWithLine/HeadingWithLine";
-
 import { useEffect } from "react";
+import { FaMapMarkerAlt } from "react-icons/fa";
+import TitleWithLines from "@/components/titleWithLines/TitleWithLines";
+import { motion } from "framer-motion";
+import SideAccentLine from "@/components/sideAccentLine/SideAccentLine";
 
 const concertData = [
-  "24.11.2024, 20:00 – Pardubice, Ateliér Klose",
   "17.1.2025, 20:30 – Praha, Rock Café",
-  "29.3.2025, 00:00 – Pardubice, divadlo",
+  "29.3.2025, 00:00 – Pardubice, Divadlo",
   "18.7.2025, 20:00 – Autokemp Sečská přehrada",
+  "6.9.2025, 20:00 – Hrad Pecka"
 ];
 
 export default function ConsertsPage() {
   useEffect(() => {
-    document.title = "Koncerty - Wait";
+    document.title = "Koncerty | Wait";
   }, []);
 
   return (
-    <>      
-      <HeadingWithLine
-        height={860}
-        offsetTop="110px"
-        position="left"
-        delay={0.4}
-        duration={1}
-        ease="easeOut"
-        label="Koncerty"
-      />
-
-      {/* Fixed background */}
+    <>
+      <SideAccentLine targetId="concert-section"/>
+      
       <div
-        className="w-full h-[105vh] fixed z-0 bg-center bg-no-repeat bg-cover animate-zoomSlow"
+        className="relative w-full bg-fixed bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `linear-gradient(to bottom right, rgba(34, 0, 64, 0.6), rgba(0, 0, 0, 0.85)), url('${back.src}')`,
+          backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(20, 20, 20, 0.85)), url(${texture.src})`,
         }}
-      ></div>
+      >
+        <section id="concert-section" className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden gap-8 pt-[110px]">
+          {/* Titulek */}
+          <TitleWithLines title="Koncerty 2025" delay={0.3} />
 
-      <div className="fixed inset-0 z-10 bg-black bg-opacity-40 backdrop-blur-sm pointer-events-none" />
+          <motion.div
+            initial={{ opacity: 0, y: 30, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ delay: 0.6, duration: 1, ease: "easeOut" }}
+            className="flex flex-col items-center gap-8 w-full"
+          >
+            {/* Seznam koncertů */}
+            <div className="w-full max-w-3xl z-10 flex flex-col gap-10 px-4 sm:px-6 md:px-0">
+              {concertData.map((text, index) => {
+                const [dateTime, locationRaw] = text.split(" – ");
+                const [city, place] = locationRaw.split(", ");
 
-      <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-[105px] py-10">
-        
-        <div className="relative text-center z-20">
-          <h2 className="text-4xl sm:text-5xl font-montserrat font-bold text-white">
-            Plány koncertů
-          </h2>
-          <div className="mt-4 mx-auto w-28 h-1 bg-gradient-to-r from-[#ff6a00] to-[#ee0979] rounded-full"></div>
-        </div>
+                return (
+                  <div                   
+                    className="flex flex-col items-center w-full mx-auto bg-gradient-to-r from-white/5 via-white/10 to-white/5 backdrop-blur-lg border border-white/20 rounded-3xl px-8 py-10 shadow-xl hover:shadow-2xl hover:scale-[1.03] transition-all duration-300"
+                  >
+                    {/* Datum a čas */}
+                    <div className="text-center mb-4">
+                      <span className="text-3xl sm:text-4xl font-extrabold text-white drop-shadow-lg">{dateTime}</span>
+                    </div>
 
-        {/* Main Concerts Container */}
-        <div className="relative w-[700px] monitor:w-[780px] z-40 rounded-md pt-8 pr-8 pl-8 transform -translate-y-5">
-          {/* Concert List */}
-          <div className="flex flex-col items-center text-center space-y-8 pb-6 mt-10">
-            {concertData.map((text, index) => {
-              const [city, location] = text.split(" – ");
-              const formattedLocation = location.split(", ").join(", ");
+                    {/* Místo konání */}
+                    <div className="flex items-center justify-center gap-4 text-xl sm:text-2xl text-white/80">
+                      <FaMapMarkerAlt className="text-orange-400 text-2xl" />
+                      <span className="text-orange-400">{place ? `${city}, ${place}` : city}</span>
+                    </div>
 
-              return (
-                <div
-                  key={index}
-                  className="w-full bg-[#ffffff2c] backdrop-blur-sm text-white px-8 py-6 rounded-lg shadow-lg transition-transform transform hover:scale-[1.03] hover:shadow-2xl duration-300 ease-in-out max-w-[650px] mx-auto"
-                >
-                  <p className="text-[22px] md:text-[24px] font-semibold">{city}</p>
-                  <p className="text-[18px] md:text-[20px] text-gray-200 mt-2">{formattedLocation}</p>
+                    {/* Dekorativní gradient linka */}
+                    <div className="mt-6 h-1 w-20 mx-auto rounded-full bg-gradient-to-r bg-white/90 group-hover:w-32 transition-all duration-300"></div>
+                  </div>
+                );
+              })}
+              
+              <div className="relative w-full flex justify-center mt-6 px-4 sm:px-6 md:px-0">
+                <div className="relative flex h-[235px] w-full max-w-3xl flex-col items-center justify-center rounded-3xl overflow-hidden">
+                  <Image
+                    src={consertsImage}
+                    alt="Conserts Image"
+                    className="object-cover h-full w-full pointer-events-none animate-pulse"
+                    priority
+                  />
+                  {/* Overlay + backdrop blur */}
+                  <div className="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
+                  <h2 className="absolute text-[30px] sm:text-[40px] text-center font-montserrat text-white z-10 px-4">
+                    Těšíme se na vás!
+                  </h2>
                 </div>
-              );
-            })}
-          </div>
-
-          {/* Image with overlay and text */}
-          <div className="w-full flex justify-center mt-6">
-            <div className="relative flex h-[190px] w-full max-w-[650px] flex-col items-center justify-center rounded-tr-2xl rounded-tl-2xl overflow-hidden">
-              <Image
-                src={consertsImage}
-                alt="Conserts Image"
-                className="object-cover h-full w-full pointer-events-none brightness-30"
-                priority
-              />
-              <div className="absolute inset-0 bg-black opacity-40"></div>
-              <h2 className="absolute text-[30px] monitor:text-[40px] md:text-[32px] lg:text-4xl text-center font-montserrat font-semibold text-white z-10 px-4">
-                Budeme se na vás těšit!
-              </h2>
+              </div>
             </div>
-          </div>
-        </div>
-      </section>
+          </motion.div>          
+        </section>
+      </div>
     </>
   );
 }

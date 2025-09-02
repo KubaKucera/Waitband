@@ -1,194 +1,150 @@
 "use client";
 
+import TitleWithLines from "@/components/titleWithLines/TitleWithLines";
 import texture from "../../../public/assets/textures/texture.jpg";
-import HeadingWithLine from "@/components/headingWithLine/HeadingWithLine";
-
+import Image from "next/image";
+import Link from "next/link";
 import { useEffect } from "react";
+import { FaSpotify, FaApple, FaYoutube } from "react-icons/fa";
+import { motion } from "framer-motion";
+import SideAccentLine from "@/components/sideAccentLine/SideAccentLine";
 
-const SpotifyEmbed = ({ url }: { url: string }) => (
-  <div className="relative w-full max-w-md mx-auto">
+const AlbumCard = ({
+  title,
+  year,
+  url,
+  cover,
+  links,
+}: {
+  title: string;
+  year: string;
+  url: string;
+  cover: any;
+  links?: { spotify?: string; apple?: string; youtube?: string };
+}) => (
+  <div className="flex flex-col items-center gap-4 w-full max-w-[380px] sm:max-w-[420px]">
+    {cover && (
+      <Image
+        src={cover}
+        alt={title}
+        width={400}
+        height={300}
+        className="rounded-md shadow-lg"
+      />
+    )}
+    <h3 className="text-white text-lg font-montserrat font-semibold text-center uppercase">
+      {title} ({year})
+    </h3>
     <iframe
       src={url}
       width="100%"
-      height="380"
+      height="400"
       frameBorder="0"
       allow="encrypted-media"
-      className="rounded-md shadow-lg"
-      title="Spotify Album"
-      allowFullScreen  
+      className="rounded-md shadow-lg w-full"
+      title={`Spotify - ${title}`}
+      allowFullScreen
     ></iframe>
+    {links && (
+      <div className="flex gap-4 mt-2 text-white text-2xl">
+        {links.spotify && (
+          <a href={links.spotify} target="_blank" rel="noopener noreferrer">
+            <FaSpotify />
+          </a>
+        )}
+        {links.apple && (
+          <a href={links.apple} target="_blank" rel="noopener noreferrer">
+            <FaApple />
+          </a>
+        )}
+        {links.youtube && (
+          <a href={links.youtube} target="_blank" rel="noopener noreferrer">
+            <FaYoutube />
+          </a>
+        )}
+      </div>
+    )}
   </div>
 );
 
 export default function AlbumsPage() {
-    
   useEffect(() => {
-    document.title = "Alba - Wait";
+    document.title = "Alba | Wait";
   }, []);
 
-  /*
-  const album1Tracks = [
-    { title: "Wait For Me", url: "https://soundcloud.com/wait-band-official/wait-for-me" },
-    { title: "Perfect Liar", url: "https://soundcloud.com/wait-band-official/perfect-liar" },
-    { title: "Hate You", url: "https://soundcloud.com/wait-band-official/hate-you" },
-    { title: "Follow Me To Hell", url: "https://soundcloud.com/wait-band-official/follow-me-to-hell" },
-    { title: "My Guide", url: "https://soundcloud.com/wait-band-official/my-guide" },
-    { title: "Every Day Blue", url: "https://soundcloud.com/wait_cz/every-day-blue-album-wait-for-me-2014?auto_play=false" }, //TODO
-    { title: "Achiever", url: "https://soundcloud.com/wait-band-official/achiever" },
-    { title: "When You Sleep", url: "https://soundcloud.com/wait_cz/when-you-sleep-album-wait-for-me-2014?auto_play=false" } //TODO
+  const albums = [
+    {
+      title: "Wait for Me",
+      year: "2016",
+      url: "https://open.spotify.com/embed/album/36q0VGlGsqRDoe5TnwyP82?utm_source=generator",
+      cover: null,      
+    },
+    {
+      title: "No Sleep Till Woodstock",
+      year: "2019",
+      url: "https://open.spotify.com/embed/album/4avLi5xKlmwpkai2PUJsB1?utm_source=generator",
+      cover: null,      
+    },
+    {
+      title: "Jenom vedle sebe",
+      year: "2020",
+      url: "https://open.spotify.com/embed/album/6FYBYq1bd7HUIysnQ6BW1A?utm_source=generator",
+      cover: null,      
+    }
   ];
 
-  const album2Tracks = [
-    { title: "Life Game", url: "https://soundcloud.com/wait-band-official/life-game" },
-    { title: "Losing Sleep", url: "https://soundcloud.com/wait-band-official/losing-sleep" },
-    { title: "Subway Train", url: "https://soundcloud.com/wait-band-official/subway-train" },
-    { title: "Maybe Not", url: "https://soundcloud.com/wait-band-official/maybe-not" },
-    { title: "Probuzení", url: "https://soundcloud.com/wait-band-official/probuzeni-awakening" },
-    { title: "Freaks", url: "https://soundcloud.com/wait-band-official/freaks" },
-    { title: "Daydream", url: "https://soundcloud.com/wait-band-official/daydream" },
-    { title: "Careless Dreaming", url: "https://soundcloud.com/wait-band-official/careless-dreaming" },
-    { title: "February 29th", url: "https://soundcloud.com/wait-band-official/february-29th" },
-    { title: "Not The Only One", url: "https://soundcloud.com/wait-band-official/not-the-only-one-v2-24" }
-  ];
-
-  const album3Tracks = [
-    { title: "Scházíš", url: "https://soundcloud.com/wait-band-official/sch-z" },
-    { title: "Nekonečnej Seriál", url: "https://soundcloud.com/wait-band-official/nekone-nej-seri-l" },
-    { title: "Úplně Na Dně", url: "https://soundcloud.com/wait-band-official/pln-na-dn" },
-    { title: "Ve Jménu Znamení", url: "https://soundcloud.com/wait-band-official/ve-jmenu-znameni" },
-    { title: "Zkusíme Zastavit Svět", url: "https://soundcloud.com/wait-band-official/zkus-me-zastavit-sv-t" },
-    { title: "Single", url: "https://soundcloud.com/wait-band-official/single" }
-  ];
-  */ 
-
-  const spotifyAlbums = [
-    "https://open.spotify.com/embed/album/36q0VGlGsqRDoe5TnwyP82?utm_source=generator",
-    "https://open.spotify.com/embed/album/4avLi5xKlmwpkai2PUJsB1?utm_source=generator",
-    "https://open.spotify.com/embed/album/6FYBYq1bd7HUIysnQ6BW1A?utm_source=generator",
-  ];
-  
   return (
-        <>          
-          <HeadingWithLine
-            height={905}
-            offsetTop="110px"
-            position="left"
-            delay={0.4}
-            duration={1}
-            ease="easeOut"    
-            label="Alba"
-          />         
+    <>  
+      <SideAccentLine targetId="alb-section"/>
 
-          <div
-            className="relative w-full min-h-screen bg-fixed bg-cover bg-center bg-no-repeat pb-5"
-            style={{
-              backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.7), rgba(20, 20, 20, 0.8)), url(${texture.src})`,
-            }}
+      <div
+        className="relative w-full bg-fixed bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(20, 20, 20, 0.85)), url(${texture.src})`,
+        }}
+      >  
+        <section id="alb-section" className="relative h-auto flex flex-col items-center gap-8 pt-[110px]">          
+
+          {/* Titulek */}
+          <TitleWithLines title="Alba" delay={0.3} />
+
+          <motion.div
+            initial={{ opacity: 0, y: 30, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ delay: 0.6, duration: 1, ease: "easeOut" }}
+            className="flex flex-col items-center gap-8 w-full"
           >
-            <section className="relative min-h-screen flex flex-col items-center gap-8 pt-[105px] pb-12 py-10">            
-              <div className="relative text-center z-20">
-                <h2 className="text-4xl sm:text-5xl font-montserrat font-bold text-white">
-                  Přehled alb
-                </h2>
-                <div className="mt-4 mx-auto w-28 h-1 bg-gradient-to-r from-[#ff6a00] to-[#ee0979] rounded-full"></div>
-              </div>
-              <p className="text-gray-400 text-center text-lg max-w-3xl z-10 leading-6">
-                Ukázky skladeb v níže uvedených albech jsou časově omezeny. 
-                Pro plný poslech se prosím přihlaste do svého účtu na Spotify.
-              </p>              
+            <p className="text-gray-400 mb-6 text-center text-lg max-w-3xl z-10 leading-6">
+            Ukázky skladeb v níže uvedených albech jsou časově omezeny. Pro plný poslech se prosím přihlaste do svého účtu na Spotify.
+            </p>
 
-              <div className="flex flex-wrap justify-center gap-8">
-                {spotifyAlbums.map((url, index) => (
-                  <SpotifyEmbed key={index} url={url} />
-                ))}
-              </div>
-            </section>
-          </div>                     
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-4 z-10 max-w-6xl w-full mx-auto justify-items-center">
+              {albums.map((album, index) => (
+                <AlbumCard key={index} {...album} />
+              ))}
+            </div>
 
-          {/*
-          <section className="relative min-h-screen flex items-center justify-center p-20 px-4 sm:px-8 lg:px-16">
-            <div
-              className="absolute inset-0 bg-fixed bg-cover bg-center bg-no-repeat"
-              style={{ backgroundImage: `url(${texture.src})`, width: "100%", height: "100%"}}
-            ></div>              
-
-            <div className="relative z-20 flex flex-wrap justify-center items-start gap-8 mt-8 sm:mt-0">            
-              <div className="flex flex-col items-center mt-[5px] sm:mt-[25px] md:mt-[40px] lg:mt-[75px]">
-                <div className="w-[350px] h-[350px] sm:w-[350px] sm:h-[350px] md:w-[285px] md:h-[285px] relative">
-                  <Image
-                    src={album2}
-                    alt="Album1"
-                    layout="fill"
-                    objectFit="cover"
-                    className="rounded-tr-md rounded-tl-md"
-                  />
-                </div>                
-                
-                <div className="w-[350px] h-[470px] sm:w-[350px] md:w-[285px] relative bg-white bg-opacity-10 rounded-br-md rounded-bl-md mt-0">
-                  {album1Tracks.map((track, index) => (
-                    <Link key={index} href={track.url} target="_blank">
-                      <div className="text-center flex items-center justify-between w-full h-[45px] text-lg top-[20px] mb-[10px] text-white font-normal border-[1px] px-[15px] border-white hover:border-bg-blue-600 hover:border-[2px] hover:cursor-pointer group relative">
-                        <span className="mx-2 text-white font-semibold">{track.title}</span>
-                        <div className="absolute h-[41px] w-[40px] transform -skew-x-12 origin-top-left bg-transparent group-hover:bg-blue-600 right-0 z-10"></div>
-                        <div className="absolute h-[41px] w-[40px] transform bg-transparent group-hover:bg-blue-600 right-0 z-10"></div>
-                        <FaPlayCircle className="bg-transparent group-hover:text-white mr-[-2px] group-hover:scale-125 group-hover:mr-[-3px] z-20"/>
-                      </div>
-                    </Link>
-                  ))}
-                </div>                
-              </div>
-
-              <div className="flex flex-col items-center mt-[25px] xl:mt-[40px] lg:mt-[40px] md:mt-[40px]">
-                <div className="w-[350px] h-[350px] xl:h-[350px] xl:w-[350px] md:h-[285px] md:w-[285px] sm:w-[350px] sm:h-[350px] relative">
-                  <Image
-                    src={album3}
-                    alt="Album2"
-                    layout="fill"
-                    objectFit="cover"
-                    className="rounded-tr-md rounded-tl-md"
-                  />
-                </div>                
-
-                <div className="w-[350px] h-[580px] xl:w-[350px] md:w-[285px] sm:w-[350px] bg-white bg-opacity-10 rounded-br-md rounded-bl-md mt-0">
-                  {album2Tracks.map((track, index) => (
-                    <Link key={index} href={track.url} target="_blank">
-                      <div className="text-center flex items-center justify-between w-full h-[45px] text-lg top-[20px] mb-[10px] text-white font-normal border-[1px] px-[15px] border-white hover:border-bg-blue-600 hover:border-[2px] hover:cursor-pointer group relative">
-                        <span className="mx-2 text-white font-semibold">{track.title}</span>
-                        <div className="absolute h-[41px] w-[40px] transform -skew-x-12 origin-top-left bg-transparent group-hover:bg-blue-600 right-0 z-10"></div>
-                        <div className="absolute h-[41px] w-[40px] transform bg-transparent group-hover:bg-blue-600 right-0 z-10"></div>
-                        <FaPlayCircle className="bg-transparent group-hover:text-white mr-[-2px] group-hover:scale-125 group-hover:mr-[-3px] z-20"/>
-                      </div>
-                    </Link>
-                  ))}
-                </div>                
-              </div>
-
-              <div className="flex flex-col items-center mt-[25px] sm:mt-[25px] md:mt-[25px] lg:mt-[75px] xl:mt-[75px]">
-                <div className="h-[350px] w-[350px] sm:w-[350px] sm:h-[350px] md:h-[350px] md:w-[350px] lg:h-[285px] lg:w-[285px] xl:h-[285px] xl:w-[285px] relative">
-                  <Image
-                    src={album1}
-                    alt="Album3"
-                    layout="fill"
-                    objectFit="cover"
-                    className="rounded-tr-md rounded-tl-md"
-                  />
-                </div>                
-
-                <div className="w-[350px] md:w-[350px] sm:w-[350px] lg:w-[285px] xl:w-[285px] h-[360px] bg-white bg-opacity-10 mt-0">
-                  {album3Tracks.map((track, index) => (
-                    <Link key={index} href={track.url} target="_blank">
-                      <div className="text-center flex items-center justify-between w-full h-[45px] text-lg top-[20px] mb-[10px] text-white font-normal border-[1px] px-[15px] border-white hover:border-bg-blue-600 hover:border-[2px] hover:cursor-pointer group relative">
-                        <span className="mx-2 text-white font-semibold">{track.title}</span>
-                        <div className="absolute h-[41px] w-[40px] transform -skew-x-12 origin-top-left bg-transparent group-hover:bg-blue-600 right-0 z-10"></div>
-                        <div className="absolute h-[41px] w-[40px] transform bg-transparent group-hover:bg-blue-600 right-0 z-10"></div>
-                        <FaPlayCircle className="bg-transparent group-hover:text-white mr-[-2px] group-hover:scale-125 group-hover:mr-[-3px] z-20"/>
-                      </div>
-                    </Link>
-                  ))}
-                </div>                
-              </div>
-            </div>            
-          </section>  */}
-        </>
-    );
+            <div className="flex justify-center h-[50px] mb-1">
+              <Link href="https://open.spotify.com/artist/37DvIv1TkBrTOz16Kk75YI" target="_blank">
+                <button
+                  className="w-[300px] h-[50px] uppercase tracking-wide bg-transparent text-gray-100 rounded-lg font-semibold text-[14px]
+                  transition-all duration-500 ease-in-out transform 
+                  hover:scale-105 hover:shadow-[0_0_12px_rgba(238,9,121,0.4)]
+                  hover:bg-gradient-to-r hover:from-[#ff6a00] hover:to-[#ee0979] 
+                  hover:bg-clip-text hover:text-transparent border-[2px]"
+                  style={{
+                    borderImageSlice: 1,
+                    borderImageSource: "linear-gradient(to right, #ff6a00, #ee0979)",
+                    transition: "all 0.5s ease-in-out",
+                  }}
+                >
+                  Přejít na Spotify
+                </button>
+              </Link>
+            </div>
+          </motion.div>          
+        </section>
+      </div>
+    </>
+  );
 }

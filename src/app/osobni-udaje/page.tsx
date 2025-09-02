@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Osobní údaje - Wait",
+    title: "Osobní údaje | Wait",
     description: "PrivacyPolicy page by create next app",  
 }
 

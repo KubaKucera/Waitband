@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Geist';
+  src: url('/assets/fonts/Geist-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -39,5 +46,62 @@ body {
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes gradientLiquid {
+  0% { background-position: 0% 50%; }
+  25% { background-position: 50% 0%; }
+  50% { background-position: 100% 50%; }
+  75% { background-position: 50% 100%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient-liquid {
+  background-size: 500% 500%;
+  animation: gradientLiquid 13s ease-in-out infinite;
+}
+
+.side-accent-line {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;          /* jistota přes celou výšku viewportu */
+  width: 6px;             /* tloušťka čáry */
+  z-index: 60;            /* výš než obsah */
+  pointer-events: none;   /* ať na to nejdou kliky */
+}
+
+.side-accent-inner {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #ff6a00, #ee0979, #ff6a00);
+  background-size: 100% 300%;
+  animation: gradientFlow 13s ease-in-out infinite; /* pomalejší, smooth */  
+  box-shadow: 0 0 12px rgba(238, 9, 121, 0.4);
+}
+
+@keyframes gradientFlow {
+  0%   { background-position: 0%   0%; }
+  50%  { background-position: 0% 100%; }
+  100% { background-position: 0%   0%; }
+}
+
+.animate-shimmer {
+  animation: shimmer 2.5s linear infinite;
+}
+
+@media (max-width: 640px) { /* sm a menší */
+  .no-fixed-bg {
+    background-attachment: scroll !important;
   }
 }

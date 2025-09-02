@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import texture from "../../../public/assets/textures/texture.jpg";
 import { motion } from "framer-motion";
-import HeadingWithLine from "@/components/headingWithLine/HeadingWithLine";
+import SideAccentLine from "@/components/sideAccentLine/SideAccentLine";
 
 export default function ContactPage() {
   const [nameInput, setNameInput] = useState('');
@@ -18,7 +18,7 @@ export default function ContactPage() {
   const formRef = useRef<HTMLFormElement | null>(null);
 
   useEffect(() => {
-    document.title = "Kontakt - Wait";
+    document.title = "Kontakt | Wait";
   }, []);
 
   const validateForm = () => {
@@ -63,77 +63,107 @@ export default function ContactPage() {
   };
 
   return (
-    <>      
-      <HeadingWithLine
-        height={610}
-        offsetTop="110px"
-        position="left"
-        delay={0.4}
-        duration={1}
-        ease="easeOut"    
-        label="Kontakt"
-      /> 
-
-
+    <>    
+      <SideAccentLine targetId="contact-section"/>
+      
       <div
-        className="relative w-full h-auto bg-fixed bg-cover bg-center bg-no-repeat pb-5"
+        className="relative w-full h-auto bg-fixed bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.7), rgba(20, 20, 20, 0.8)), url(${texture.src})`,
+          backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(20, 20, 20, 0.85)), url(${texture.src})`,
         }}
       > 
-        <div className="h-auto flex justify-center items-center pt-[120px] pb-10 px-8 bg-fixed bg-cover bg-center bg-no-repeat">
+        <div id="contact-section" className="h-auto flex justify-center items-center pt-[120px] px-8 bg-fixed bg-cover bg-center bg-no-repeat">
           {/*<Image src={rightArrow} alt="Arrow Right" className="hidden xl:block absolute left-[-150px] top-[160px] rotate-15 opacity-50 w-[265px] monitor:w-[330px]" />
           <Image src={leftArrow} alt="Arrow Left" className="hidden xl:block absolute right-[-150px] top-[425px] opacity-50 w-[265px] monitor:w-[330px]" /> */}
 
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
-            className="w-full max-w-4xl p-8 bg-white/90 backdrop-blur-md border border-gray-300 rounded-xl shadow-lg"
+          <motion.div
+            initial={{ opacity: 0, y: 30, scale: 0.98 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ delay: 0.6, duration: 1, ease: "easeOut" }}
+            className="w-full max-w-4xl p-8 backdrop-blur-md border-2 border-gray-300 text-white rounded-xl shadow-lg"
           >
-            <h1 className="text-3xl font-bold text-gray-800 uppercase text-center mb-6">Kontakt</h1>
-            <p className="text-lg text-gray-700 text-center mb-4">V případě zájmu nás kontaktujte pomocí vyplnění a odeslání formuláře.</p>
+            <h1 className="text-3xl font-bold text-white uppercase text-center mb-6">Kontakt</h1>
+            <p className="text-lg text-gray-400 text-center mb-4">V případě zájmu nás kontaktujte pomocí vyplnění a odeslání formuláře.</p>
             <p className="text-sm text-center mb-6">
-              <Link href="/osobni-udaje" target="_blank" className="text-blue-600 hover:underline font-semibold">
-                Zásady ochrany osobních údajů
+              <Link href="/osobni-udaje" target="_blank" className="text-blue-400 hover:underline font-semibold">
+                Zásady ochrany soukromí
               </Link>
             </p>
 
             <form ref={formRef} onSubmit={handleFormSubmit} className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700">Jméno *</label>
-                  <input type="text" className="w-full rounded-lg border border-gray-300 px-4 py-2 shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500" value={nameInput} onChange={(e) => setNameInput(e.target.value)} required />
-                  {formErrors.name && <p className="text-sm text-red-600">{formErrors.name}</p>}
+                  <label className="block text-sm font-medium text-gray-300 mb-1">Jméno *</label>
+                  <input
+                    type="text"
+                    className="w-full rounded-lg border-2 border-gray-500/90 bg-transparent px-4 py-2 text-white placeholder-gray-400 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition"
+                    value={nameInput}
+                    onChange={(e) => setNameInput(e.target.value)}
+                    placeholder="Vaše jméno"
+                    required
+                  />
+                  {formErrors.name && <p className="text-sm text-red-500 mt-1">{formErrors.name}</p>}
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700">Email *</label>
-                  <input type="email" className="w-full rounded-lg border border-gray-300 px-4 py-2 shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500" value={emailInput} onChange={(e) => setEmailInput(e.target.value)} required />
-                  {formErrors.email && <p className="text-sm text-red-600">{formErrors.email}</p>}
+                  <label className="block text-sm font-medium text-gray-300 mb-1">Email *</label>
+                  <input
+                    type="email"
+                    className="w-full rounded-lg border-2 border-gray-500/90 bg-transparent px-4 py-2 text-white placeholder-gray-400 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition"
+                    value={emailInput}
+                    onChange={(e) => setEmailInput(e.target.value)}
+                    placeholder="Váš email"
+                    required
+                  />
+                  {formErrors.email && <p className="text-sm text-red-500 mt-1">{formErrors.email}</p>}
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700">Zpráva *</label>
-                <textarea className="w-full rounded-lg border border-gray-300 px-4 py-2 shadow-sm resize-none focus:outline-none focus:ring-1 focus:ring-blue-500" rows={5} value={messageInput} onChange={(e) => setMessageInput(e.target.value)} required />
-                {formErrors.message && <p className="text-sm text-red-600">{formErrors.message}</p>}
+                <label className="block text-sm font-medium text-gray-300 mb-1">Zpráva *</label>
+                <textarea
+                  rows={5}
+                  className="w-full rounded-lg border-2 border-gray-500/90 bg-transparent px-4 py-2 text-white placeholder-gray-400 resize-none focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition"
+                  value={messageInput}
+                  onChange={(e) => setMessageInput(e.target.value)}
+                  placeholder="Vaše zpráva"
+                  required
+                />
+                {formErrors.message && <p className="text-sm text-red-500 mt-1">{formErrors.message}</p>}
               </div>
 
               <div>
-                <ReCAPTCHA sitekey="6LenF4wqAAAAAPPCUeBknjgKqRFoFa5S6oFcLTEJ" ref={recaptchaRef} onChange={(value) => setRecaptchaValue(value)} />
-                {formErrors.recaptcha && <p className="text-sm text-red-600">{formErrors.recaptcha}</p>}
+                <ReCAPTCHA
+                  sitekey="6LenF4wqAAAAAPPCUeBknjgKqRFoFa5S6oFcLTEJ"
+                  ref={recaptchaRef}
+                  onChange={(value) => setRecaptchaValue(value)}
+                />
+                {formErrors.recaptcha && <p className="text-sm text-red-500 mt-1">{formErrors.recaptcha}</p>}
               </div>
 
-              <div className="flex flex-col space-y-2 text-sm text-gray-700">
-                <label className="flex items-center"><input type="checkbox" className="mr-2" /> Beru na vědomí, že tento formulář slouží k seriózním a relevantním dotazům.</label>
-                <label className="flex items-center"><input type="checkbox" className="mr-2" /> Souhlasím se zpracováním osobních údajů</label>
+              <div className="flex flex-col space-y-2 text-sm text-gray-300">
+                <label className="flex items-center gap-2">
+                  <input type="checkbox" className="h-4 w-4 rounded border-gray-500/90 bg-transparent focus:ring-blue-400" />
+                  Beru na vědomí, že tento formulář slouží k seriózním a relevantním dotazům.
+                </label>
+                <label className="flex items-center gap-2">
+                  <input type="checkbox" className="h-4 w-4 rounded border-gray-500/90 bg-transparent focus:ring-blue-400" />
+                  Souhlasím se zpracováním osobních údajů
+                </label>
               </div>
 
-              <button type="submit" disabled={loading} className="mt-4 w-full md:w-48 mx-auto bg-blue-600 text-white font-semibold py-2 rounded-lg hover:bg-blue-700 transition-transform duration-300 hover:scale-105">
+              {/* Kontaktní osoby */}
+              <div className="space-y-2 text-sm text-gray-300 pt-4">
+                <p><span className="font-bold">Technické dotazy:</span> Ivan Kučera, tel. 724 644 082, e-mail: <Link href="mailto:iv.kucera@email.cz" className="text-blue-400 hover:underline">iv.kucera@email.cz</Link></p>
+                <p><span className="font-bold">Rezervace:</span> Pavel Herynk, tel. 737 272 833, e-mail: <Link href="mailto:p.herynk@me.com" className="text-blue-400 hover:underline">p.herynk@me.com</Link></p>
+                <p><span className="font-bold">Zvuk:</span> František Novák, e-mail: <Link href="mailto:novak.frantisek@atlas.cz" className="text-blue-400 hover:underline">novak.frantisek@atlas.cz</Link></p>
+              </div>
+
+              <button type="submit" disabled={loading} className="mt-4 w-full md:w-48 mx-auto bg-blue-500 text-white font-semibold py-2 rounded-lg hover:bg-blue-600 hover:scale-105 transition-transform duration-300 ease-out">
                 {loading ? "Odesílání..." : "Odeslat"}
               </button>
             </form>
-          </motion.div>
+          </motion.div>          
         </div>
       </div>
     </>
