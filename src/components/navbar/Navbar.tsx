@@ -1,5 +1,6 @@
 "use client";
 
+import { Variants } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -22,11 +23,11 @@ const navLinks = [
 ];
 
 // Animace menu a položek
-const menuVariants = {
+const menuVariants: Variants = {
   hidden: { opacity: 0, y: "-100%" },
   visible: {
     opacity: 1,
-    y: 0,
+    y: "0%",
     transition: {
       when: "beforeChildren",
       staggerChildren: 0.06,
@@ -35,10 +36,14 @@ const menuVariants = {
       ease: "easeInOut",
     },
   },
-  exit: { opacity: 0, y: "-100%", transition: { duration: 0.3 } },
+  exit: {
+    opacity: 0,
+    y: "-100%",
+    transition: { duration: 0.3, ease: "easeInOut" },
+  },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 70 } },
 };
