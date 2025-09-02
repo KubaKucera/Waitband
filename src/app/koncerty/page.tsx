@@ -48,7 +48,8 @@ export default function ConsertsPage() {
                 const [city, place] = locationRaw.split(", ");
 
                 return (
-                  <div                   
+                  <div
+                    key={index} // ✅ pridali sme key
                     className="flex flex-col items-center w-full mx-auto bg-gradient-to-r from-white/5 via-white/10 to-white/5 backdrop-blur-lg border border-white/20 rounded-3xl px-8 py-10 shadow-xl hover:shadow-2xl hover:scale-[1.03] transition-all duration-300"
                   >
                     {/* Datum a čas */}
