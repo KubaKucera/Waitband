@@ -53,12 +53,14 @@ export default function Newsletter() {
         backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(20, 20, 20, 0.85)), url(${texture.src})`,
       }}
     >
-      <div className="w-full px-10 md:px-10 mx-auto flex flex-col items-center text-white pb-20 pt-24 overflow-hidden z-20">
+      <div className="w-full px-6 md:px-10 mx-auto flex flex-col items-center text-white pb-20 pt-24 overflow-hidden z-20">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="font-montserrat text-[44px] font-semibold mb-2">
+          <h2 className="font-montserrat text-[36px] sm:text-[44px] font-semibold mb-2">
             Zaregistrujte se
           </h2>
-          <p className="text-gray-300 text-lg mb-5">Přihlášení k odběru novinek</p>
+          <p className="text-gray-300 text-base sm:text-lg mb-5">
+            Přihlášení k odběru novinek
+          </p>
 
           <form
             onSubmit={handleSubmit}
@@ -72,7 +74,7 @@ export default function Newsletter() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="w-[400px] sm:w-[400px] md:w-[450px] px-4 py-3 rounded-md border border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-pink-500 transition"
+              className="w-full max-w-[450px] px-4 py-3 rounded-md border border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-pink-500 transition"
             />
 
             {/* Honeypot: Neviditelný select */}
@@ -88,7 +90,7 @@ export default function Newsletter() {
               <option value="fajn">Fajn</option>
               <option value="super">Super</option>
               <option value="mohlo by to být lepší">Mohlo by to být lepší</option>
-            </select>            
+            </select>
 
             <p className="text-sm md:text-base text-gray-300 text-center mb-2 leading-relaxed">
               Přečetl(a) jsem si a rozumím&nbsp;
@@ -122,7 +124,7 @@ export default function Newsletter() {
             <div className="flex w-full justify-center items-center">
               <button
                 type="submit"
-                className="flex justify-center items-center w-[70%] py-3 bg-rose-600 hover:bg-rose-700 hover:scale-105 text-white font-semibold rounded-md transition-transform duration-300 ease-in-out"
+                className="flex justify-center items-center w-full max-w-[300px] py-3 bg-rose-600 hover:bg-rose-700 hover:scale-105 text-white font-semibold rounded-md transition-transform duration-300 ease-in-out"
               >
                 Odebírat
               </button>

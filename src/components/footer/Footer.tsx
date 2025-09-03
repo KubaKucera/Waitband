@@ -76,7 +76,7 @@ export default function FooterWithNewsletter() {
   );
 
   return (
-    <footer className="bg-white text-gray-800 relative z-40 select-none px-6 py-12 md:px-16">
+    <footer className="bg-white text-gray-800 relative z-40 select-none px-6 py-12 md:px-16 overflow-hidden">
       {/* Footer content */}
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 items-center text-center md:text-left">
         {/* Logo & text */}
@@ -88,7 +88,7 @@ export default function FooterWithNewsletter() {
         </div>
 
         {/* Sociální ikony – centrované */}
-        <div className="h-full flex items-center justify-center lg:mt-[-35px]">
+        <div className="h-full flex items-center justify-center lg:translate-y-[-20px]">
           {renderSocialLinks()}
         </div>
 

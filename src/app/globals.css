@@ -11,6 +11,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 :root {
@@ -68,7 +69,7 @@ body {
 
 .animate-gradient-liquid {
   background-size: 500% 500%;
-  animation: gradientLiquid 13s ease-in-out infinite;
+  animation: gradientLiquid 10s ease-in-out infinite;
 }
 
 .side-accent-line {

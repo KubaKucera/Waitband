@@ -256,7 +256,7 @@ export default function Home() {
                       borderImageSource: "linear-gradient(to right, #ff6a00, #ee0979)",
                     }}
                   >
-                    Více videí
+                    Další videa
                   </button>
                 </Link>
               </div>
