@@ -100,35 +100,37 @@ export default function BandPage() {
           >
             {/* Členové kapely */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-10 w-full max-w-7xl px-4">
-              {members.map((member, index) => (
-                <div
-                  key={index}
-                  className="group relative w-full h-[440px] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 cursor-pointer"
-                >
-                  {/* Pulzující kruh v levém horním rohu */}
-                  <motion.div
-                    className="absolute top-4 left-4 w-6 h-6 bg-white rounded-full opacity-70"
-                    animate={{ scale: [1, 1.4, 1], opacity: [0.7, 0.3, 0.7] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
-                  />
+              {members.map((member, index) => {
+                // Rozdělení jména na dvě části (první slovo a zbytek)
+                //const [firstName, ...lastNameParts] = member.name.split(" ");
+                //const lastName = lastNameParts.join(" ");
 
-                  {/* Obrázek člena */}
-                  <div className="relative w-full h-full">
-                    <Image
-                      src={member.img}
-                      alt={member.name}
-                      fill
-                      className="object-cover transform transition-transform duration-500 group-hover:scale-105"
-                    />
-                  </div>
+                return (
+                  <div
+                    key={index}
+                    className="group relative w-full h-[440px] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
+                  >
+                    {/* Obrázek člena */}
+                    <div className="relative w-full h-full">
+                      <Image
+                        src={member.img}
+                        alt={member.name}
+                        fill
+                        className="object-cover transform transition-transform duration-500 group-hover:scale-105"
+                      />
 
-                  {/* Info panel */}
-                  <div className="absolute bottom-0 w-full h-[110px] bg-black/40 backdrop-blur-md border-t border-white/20 p-5 flex flex-col items-center justify-center text-center opacity-0 translate-y-6 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
-                    <span className="text-white font-semibold text-lg uppercase tracking-wide">{member.name}</span>
-                    <span className="text-orange-400 text-md mt-2">{member.role}</span>
+                      {/* Panel s jménem přes celou šířku dole */}
+                      <div className="absolute bottom-0 left-0 right-0">
+                        <div className="w-full flex justify-center items-center bg-gradient-to-r from-white/10 via-white/5 to-white/10 backdrop-blur-md border-t border-white/20 shadow-lg h-24 px-4 text-center transition-all duration-500 group-hover:scale-[1.01]">
+                          <span className="block text-white font-semibold text-lg sm:text-xl md:text-xl uppercase tracking-wide drop-shadow-lg">
+                            {member.name}
+                          </span>                          
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
 
             <div className="mt-8 mb-8">
@@ -137,7 +139,7 @@ export default function BandPage() {
               </h2>
             </div>
 
-            <div className="w-full sm:w-[85%] md:w-[90%] lg:w-[67%] mx-auto flex flex-col md:cursor-pointer">
+            <div className="w-full sm:w-[85%] md:w-[90%] lg:w-[67%] mx-auto flex flex-col">
               {/* Obrázek */}
               <div
                 className="relative no-fixed-bg w-full h-[300px] sm:h-[300px] md:h-[600px] monitor:h-[100vh] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-500"
@@ -148,29 +150,18 @@ export default function BandPage() {
                   backgroundRepeat: "no-repeat",
                   backgroundAttachment: "fixed",
                 }}
-              >
-                {/* Overlay pouze na větších obrazovkách */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileHover={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, ease: "easeOut" }}
-                  className="hidden sm:flex absolute bottom-0 w-full h-full bg-black/70 backdrop-blur-md p-6 md:p-10 flex-col justify-center items-center text-center overflow-y-auto"
-                >
-                  {/* Stejný obsah textu */}
-                  <Content />
-                </motion.div>
-              </div>
+              />
 
-              {/* Text pod obrázkem na mobilech */}
+              {/* Text vždy pod obrázkem */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
                 viewport={{ once: true }}
-                className="block sm:hidden mt-4 bg-black/70 backdrop-blur-md p-4 rounded-xl shadow-lg text-center"
+                className="mt-4 bg-black/70 backdrop-blur-md p-4 md:p-8 rounded-xl shadow-lg text-center"
               >
                 <Content />
-              </motion.div>
+              </motion.div>              
             </div>
           </motion.div>
         </section>
