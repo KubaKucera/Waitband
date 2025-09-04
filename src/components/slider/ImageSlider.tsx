@@ -72,10 +72,10 @@ export default function ImageSlider() {
 
   return (
     <div className="relative z-40 overflow-x-hidden bg-black">
-      <div className="relative w-screen h-[50vh] sm:h-[70vh] md:h-[80vh] lg:h-[110vh] monitor:h-[100vh] overflow-hidden">
+      <div className="relative w-screen h-[45vh] sm:h-[70vh] md:h-[80vh] lg:h-[110vh] monitor:h-[100vh] overflow-hidden">
         <Slider {...settings}>
           {images.map((img, index) => (
-            <div key={index} className="relative mt-16 sm:mt-16 md:mt-0 w-screen h-[50vh] sm:h-[70vh] md:h-[80vh] lg:h-[110vh] monitor:h-[100vh]">
+            <div key={index} className="relative mt-16 sm:mt-16 md:mt-0 w-screen h-[45vh] sm:h-[70vh] md:h-[80vh] lg:h-[110vh] monitor:h-[100vh]">
               <Image
                 src={img.src}
                 alt={img.alt}
