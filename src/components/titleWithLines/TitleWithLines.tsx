@@ -70,10 +70,7 @@ const TitleWithLines: FC<TitleWithLinesProps> = ({
 
         {/* Nadpis */}
         <motion.h2
-          className="text-5xl uppercase font-montserrat font-extrabold text-transparent bg-clip-text text-center animate-gradient-liquid"
-          style={{
-            backgroundImage: `linear-gradient(-45deg, ${fromColor}, ${toColor}, #ff0080, #ff6a00)`,
-          }}
+          className="text-5xl uppercase font-montserrat font-extrabold text-transparent bg-clip-text text-center animate-gradient-liquid"          
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: delay + 0.3, duration: 0.8, ease: "easeOut" }}

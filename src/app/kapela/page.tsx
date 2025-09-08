@@ -121,7 +121,7 @@ export default function BandPage() {
 
                       {/* Panel s jménem přes celou šířku dole */}
                       <div className="absolute bottom-0 left-0 right-0">
-                        <div className="w-full flex justify-center items-center bg-gradient-to-r from-white/10 via-white/5 to-white/10 backdrop-blur-md border-t border-white/20 shadow-lg h-24 px-4 text-center transition-all duration-500 group-hover:scale-[1.01]">
+                        <div className="w-full flex justify-center items-center bg-gradient-to-r from-black/20 via-black/10 to-black/20 backdrop-blur-md border-t border-black/10 shadow-lg h-24 px-4 text-center transition-all duration-500 group-hover:scale-[1.01]">
                           <span className="block text-white font-semibold text-lg sm:text-xl md:text-xl uppercase tracking-wide drop-shadow-lg">
                             {member.name}
                           </span>                          

@@ -60,16 +60,38 @@ body {
 }
 
 @keyframes gradientLiquid {
-  0% { background-position: 0% 50%; }
-  25% { background-position: 50% 0%; }
-  50% { background-position: 100% 50%; }
-  75% { background-position: 50% 100%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
 }
 
-.animate-gradient-liquid {
-  background-size: 500% 500%;
-  animation: gradientLiquid 10s ease-in-out infinite;
+.animate-gradient-liquid {  
+  background: linear-gradient(
+    90deg,
+    #ff6a00 0%,
+    #ee0979 40%,   /* růžová začíná brzy */
+    #ee0979 60%,   /* růžová zůstává delší */
+    #ff6a00 100%   /* zpět do oranžové */
+  );
+  background-size: 500% 500%; /* víc prostoru pro posun */
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: gradientLiquid 10s ease-in-out infinite alternate;
+}
+
+.rebel-name {
+  background: linear-gradient(90deg, #ee0979, #ff6a00);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 0 0 6px rgba(238,9,121,0.5), 0 0 10px rgba(255,106,0,0.4);
 }
 
 .side-accent-line {
