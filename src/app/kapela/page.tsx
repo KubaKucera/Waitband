@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import ivanImage from "../../../public/assets/images/band/ivan.jpg";
 import pavelImage from "../../../public/assets/images/band/pavel.jpg";
 import martinaImage from "../../../public/assets/images/band/martina.jpg";
-import marekImage from "../../../public/assets/images/band/marek.jpg";
+import marekImage from "../../../public/assets/images/band/marek.jpeg";
 import texture from "../../../public/assets/textures/texture.jpg";
 import band from "../../../public/assets/images/band/band.jpg";
 
@@ -142,7 +142,7 @@ export default function BandPage() {
             <div className="w-full sm:w-[85%] md:w-[90%] lg:w-[67%] mx-auto flex flex-col">
               {/* Obrázek */}
               <div
-                className="relative no-fixed-bg w-full h-[300px] sm:h-[300px] md:h-[600px] monitor:h-[100vh] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-500"
+                className="relative no-fixed-bg w-[100%] h-[300px] sm:h-[300px] md:h-[600px] monitor:h-[100vh] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-500"
                 style={{
                   backgroundImage: `url(${band.src})`,
                   backgroundSize: "contain",

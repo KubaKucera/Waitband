@@ -114,10 +114,10 @@ export default function Home() {
 
       {/* Hero se sliderem */}
       <motion.div
-        initial={{ opacity: 0, y: 30, scale: 0.98 }}
-        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
         viewport={{ once: true, amount: 0.2 }}
-        transition={{ delay: 0.6, duration: 1, ease: "easeOut" }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
         className="flex flex-col items-center gap-6 w-full"
       >
         <ImageSlider />
@@ -131,15 +131,17 @@ export default function Home() {
       >
         <SideAccentLineHome targetId="uvod-section" />
 
-        <motion.div
-          initial={{ opacity: 0, y: 30, scale: 0.98 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ delay: 0.6, duration: 1, ease: "easeOut" }}
-          className="w-full"
-        >
-          <section id="uvod-section" className="relative flex flex-col items-center px-4 pt-[50px]">
-            <TitleWithLines title="Úvod Wait" />
+        <section id="uvod-section" className="relative flex flex-col items-center px-4 pt-[50px]">
+          {/* Nadpis bez animace */}
+          <TitleWithLines title="Úvod Wait" />
 
+          {/* Motion obaluje vše pod nadpisem */}
+          <motion.div
+            initial={{ opacity: 0, y: 30, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ delay: 0.6, duration: 1, ease: "easeOut" }}
+            className="w-full flex flex-col items-center"
+          >
             {/* Novinky */}
             <section id="novinky-section" className="relative flex flex-col items-center w-full max-w-6xl mt-12">
               <SectionTitle title="Novinky" />
@@ -261,8 +263,8 @@ export default function Home() {
                 </Link>
               </div>
             </section>
-          </section>
-        </motion.div>        
+          </motion.div>
+        </section>        
       </div>
 
       {/* Modal news */}
