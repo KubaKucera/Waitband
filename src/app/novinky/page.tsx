@@ -49,23 +49,27 @@ export default function NewsPage() {
     };
   }, [active]);
 
+  // 🔽 Filtrování + řazení od nejnovějšího (nejvyšší id)
   const filteredNews = useMemo(() => {
-    return newsData.filter((item) => {
-      const searchMatch =
-        item.title.toLowerCase().includes(search.toLowerCase()) ||
-        item.content.toLowerCase().includes(search.toLowerCase());
+    return newsData
+      .filter((item) => {
+        const searchMatch =
+          item.title.toLowerCase().includes(search.toLowerCase()) ||
+          item.content.toLowerCase().includes(search.toLowerCase());
 
-      const yearMatch = filterYear ? item.date.includes(filterYear) : true;
-      const monthMatch = filterMonth ? item.date.toLowerCase().includes(filterMonth.toLowerCase()) : true;
-      const categoryMatch = filterCategory ? item.category === filterCategory : true;
+        const yearMatch = filterYear ? item.date.includes(filterYear) : true;
+        const monthMatch = filterMonth ? item.date.toLowerCase().includes(filterMonth.toLowerCase()) : true;
+        const categoryMatch = filterCategory ? item.category === filterCategory : true;
 
-      return searchMatch && yearMatch && monthMatch && categoryMatch;
-    });
+        return searchMatch && yearMatch && monthMatch && categoryMatch;
+      })
+      .sort((a, b) => b.id - a.id); // nejnovější nahoře
   }, [search, filterYear, filterMonth, filterCategory]);
 
-  // ⬇️ Hlavní článek a další příspěvky už bereme přímo z newsData
-  const mainArticle = newsData[0];
-  const otherArticles = newsData.slice(0);
+  // 🔽 Hlavní článek a další příspěvky bereme vždy z celé databáze
+  const sortedNews = [...newsData].sort((a, b) => b.id - a.id);
+  const mainArticle = sortedNews[0] || null;
+  const otherArticles = sortedNews.slice(1);
 
   const categories = Array.from(new Set(newsData.map((n) => n.category)));
 
@@ -83,10 +87,9 @@ export default function NewsPage() {
           id="news-section"
           className="relative min-h-screen flex flex-col items-center gap-6 pt-[110px] px-4"
         >
-          {/* Title – bez animace */}
+          {/* Title */}
           <TitleWithLines title="Novinky" delay={0.3} />
 
-          {/* Obalíme všechny ostatní prvky */}
           <motion.div
             initial={{ opacity: 0, y: 30, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -156,9 +159,7 @@ export default function NewsPage() {
                   >
                     Filtr
                     <Filter
-                      className={`w-5 h-5 ml-1 ${
-                        showFilter ? "fill-current" : ""
-                      }`}
+                      className={`w-5 h-5 ml-1 ${showFilter ? "fill-current" : ""}`}
                     />
                   </button>
                 </div>
@@ -248,7 +249,7 @@ export default function NewsPage() {
                 Další příspěvky
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {otherArticles.slice(1, 4).map((item) => (
+                {otherArticles.slice(0, 3).map((item) => (
                   <motion.div
                     key={item.id}
                     onClick={() => setActive(item)}

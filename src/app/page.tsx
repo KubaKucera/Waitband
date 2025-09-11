@@ -73,7 +73,7 @@ export default function Home() {
       <h2 className="text-white text-3xl sm:text-3xl md:text-4xl font-bold tracking-wide whitespace-nowrap uppercase">
         {title}
       </h2>
-      <div className="flex-1 h-[2px] bg-white ml-6 w-[800px]"></div>
+      <div className="flex-1 h-[2px] bg-white ml-6 w-[800px] rounded-tr rounded-br"></div>
     </div>
   );
 

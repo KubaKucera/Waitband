@@ -11,7 +11,7 @@ export interface NewsItem {
 
 export const newsData: NewsItem[] = [
   {
-    id: 1,
+    id: 11,
     title: "Autokemp Sečská přehrada",
     date: "18. července 2025",
     image: "/assets/images/news/sec.jpg",
@@ -23,7 +23,7 @@ export const newsData: NewsItem[] = [
     category: "Koncert",
   },
   {
-    id: 2,
+    id: 10,
     title: "Merch WAIT je na cestě",
     date: "16. června 2025",
     image: "/assets/images/news/merch.jpg",
@@ -34,9 +34,9 @@ export const newsData: NewsItem[] = [
       "„James“ – klasika. \n"+
       "„Kid“ – outlaw. \n\n"+      
       "➡️ Dámská edice: \n"+
-      "„Kat“ – nepřehlédnutelná. \n\n"+
+      "„Kat“ – nepřehlédnutelná. \n\n"+      
       "👇 Napište nám do komentářů – „James“, „Kid“ nebo „Kat“ – a dejte vědět, jestli by vás zajímala limitovaná předobjednávka. \n"+
-      "(Bude to poctivá bavlna, sítotisk, a střih, který fakt sedí – žádný reklamní hadr.) \n\n"+
+      "(Bude to poctivá bavlna, sítotisk, a střih, který fakt sedí – žádný reklamní hadr.) \n\n"+      
       "Born to Rock. Forced to Work. \n"+
       "Ale tričko si vyberte sami. 😎 \n"+
       "Díky, že jste s náma! 🖤",
@@ -44,7 +44,7 @@ export const newsData: NewsItem[] = [
     category: "Merch",
   },
   {
-    id: 3,
+    id: 9,
     title: "Východočeské divadlo Pardubice",
     date: "26. března 2025",
     image: "/assets/images/news/divadlo.jpg",
@@ -58,7 +58,7 @@ export const newsData: NewsItem[] = [
     category: "Koncert",
   },
   {
-    id: 4,
+    id: 8,
     title: "Hard Rock Cafe Praha",
     date: "18. ledna 2025",
     image: "/assets/images/news/cafePraha.jpg",
@@ -75,7 +75,7 @@ export const newsData: NewsItem[] = [
     category: "Koncert",
   },
   {
-    id: 5,
+    id: 7,
     title: "Krásné vánoční svátky 🎄🎅 všem, a hlavně pohodu & klídek. 😎",
     date: "23. prosince 2024",
     image: "/assets/images/news/prani.jpg",
@@ -105,12 +105,12 @@ export const newsData: NewsItem[] = [
       "Pro WAIT natočil videoklipy Modelka, Hate You a Horoskop. \n\n"+
       "Byl to moc fajn kluk, profík a nikdy nezkazil žádnou legraci. Měli jsme Djamina moc rádi a bude nám chybět. \n\n"+
       "Mnoho sil rodině a blízkým. 😢 \n\n"+
-      "Jedna z věcí, kterou pro nás Djamin udělal je zde:",
+      "Jedna z věcí, kterou pro nás Djamina udělal je zde:",
     link: "https://www.youtube.com/watch?v=8Tupra8tJiY",
     category: "Info",
   },
   {
-    id: 7,
+    id: 5,
     title: "Pamatujete skvělý 📺 pořad “Noc s Andělem”?",
     date: "30. listopadu 2024",
     image: "/assets/images/news/andel.jpeg",
@@ -122,18 +122,17 @@ export const newsData: NewsItem[] = [
     category: "Info",
   },
   {
-    id: 8,
+    id: 4,
     title: "My u Miloš Knor, to bylo prostě fajn",
     date: "28. listopadu 2024",
     image: "/assets/images/news/knor.jpg",
     excerpt: "My u Miloše Knora, to bylo prostě fajn",
-    content:
-      "💪🏻🍀🙏😎",
+    content: "💪🏻🍀🙏😎",
     link: "https://www.youtube.com/watch?v=w4Xn_DzsC6o",
     category: "Koncert",
   },
   {
-    id: 9,
+    id: 3,
     title: "WAIT v ateliéru Klose",
     date: "23. listopadu 2024",
     image: "/assets/images/news/klose.jpg",
@@ -152,7 +151,7 @@ export const newsData: NewsItem[] = [
     category: "Koncert",
   },
   {
-    id: 10,
+    id: 2,
     title: "Už se to blíží 😻",
     date: "17. listopadu 2024",
     image: "/assets/images/news/blizi.jpg",
@@ -169,7 +168,7 @@ export const newsData: NewsItem[] = [
     category: "Info",
   },
   {
-    id: 11,
+    id: 1,
     title: "Areál Černá Voda",
     date: "10. srpna 2024",
     image: "/assets/images/news/areal.jpg",

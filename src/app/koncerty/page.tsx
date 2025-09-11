@@ -16,6 +16,15 @@ const concertData = [
   "6.9.2025, 20:00 – Hrad Pecka"
 ];
 
+const SectionTitle = ({ title }: { title: string }) => (
+  <div className="flex items-center w-full max-w-3xl mx-auto px-6">
+    <h2 className="text-white text-3xl sm:text-3xl md:text-4xl font-bold tracking-wide whitespace-nowrap uppercase">
+      {title}
+    </h2>
+    <div className="flex-1 h-[2px] bg-white ml-6 w-full rounded-tr rounded-br"></div>
+  </div>
+);
+
 export default function ConsertsPage() {
   useEffect(() => {
     document.title = "Koncerty | Wait";
@@ -33,7 +42,7 @@ export default function ConsertsPage() {
       >
         <section id="concert-section" className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden gap-8 pt-[110px]">
           {/* Titulek */}
-          <TitleWithLines title="Koncerty 2025" delay={0.3} />
+          <TitleWithLines title="Koncerty" delay={0.3} />          
 
           <motion.div
             initial={{ opacity: 0, y: 30, scale: 0.98 }}
@@ -41,6 +50,7 @@ export default function ConsertsPage() {
             transition={{ delay: 0.6, duration: 1, ease: "easeOut" }}
             className="flex flex-col items-center gap-8 w-full"
           >
+            <SectionTitle title="Rok 2025" />
             {/* Seznam koncertů */}
             <div className="w-full max-w-3xl z-10 flex flex-col gap-10 px-4 sm:px-6 md:px-0">
               {concertData.map((text, index) => {

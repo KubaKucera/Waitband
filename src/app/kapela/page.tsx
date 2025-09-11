@@ -139,10 +139,10 @@ export default function BandPage() {
               </h2>
             </div>
 
-            <div className="w-full sm:w-[85%] md:w-[90%] lg:w-[67%] mx-auto flex flex-col">
+            <div className="w-full sm:w-[85%] md:w-[90%] lg:w-[67%] mx-auto flex flex-col mt-[-50px] sm:mt-[50px] md:mt-0">
               {/* Obrázek */}
               <div
-                className="relative no-fixed-bg w-[100%] h-[300px] sm:h-[300px] md:h-[600px] monitor:h-[100vh] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-500"
+                className="relative no-fixed-bg w-[100%] h-[300px] sm:h-[300px] md:h-[600px] monitor:h-[70vh] rounded-xl sm:mt-0 overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-500"
                 style={{
                   backgroundImage: `url(${band.src})`,
                   backgroundSize: "contain",
