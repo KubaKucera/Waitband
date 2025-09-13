@@ -25,14 +25,14 @@ import image18 from "../../../public/assets/images/photos/image17.jpg";
 import image19 from "../../../public/assets/images/photos/image19.jpeg";
 import image20 from "../../../public/assets/images/photos/image20.jpeg";
 import image21 from "../../../public/assets/images/photos/image21.jpeg";
-import image22 from "../../../public/assets/images/photos/image22.jpeg";
 import image24 from "../../../public/assets/images/photos/image24.jpg";
 import image25 from "../../../public/assets/images/photos/image25.jpg";
+import image26 from "../../../public/assets/images/photos/image26.jpg";
 
 import texture from "../../../public/assets/textures/texture.jpg";
 import TitleWithLines from "@/components/titleWithLines/TitleWithLines";
 import { motion, AnimatePresence } from "framer-motion";
-import VerticalScrollIndicator from "@/components/sideAccentLine/SideAccentLine";
+import SideAccentLine from "@/components/sideAccentLine/SideAccentLine";
 
 import {
   Maximize2,
@@ -46,10 +46,10 @@ import {
 } from "lucide-react";
 
 const images = [
-  image25, image24, image1, image2, image3, image4, image5, image6, image7,
+  image26, image25, image24, image1, image2, image3, image4, image5, image6, image7,
   image8, image9, image10, image11, image12, image13,
   image14, image15, image16, image17, image18, image19,
-  image20, image21, image22
+  image20, image21
 ];
 
 function LoadingDots() {
@@ -129,7 +129,7 @@ export default function PhotosPage() {
 
   return (
     <>      
-      <VerticalScrollIndicator targetId="photo-section"/>
+      <SideAccentLine targetId="photo-section"/>
 
       <div
         className="relative w-full min-h-screen bg-fixed bg-cover bg-center bg-no-repeat"

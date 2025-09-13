@@ -18,7 +18,7 @@ const concertData = [
 
 const SectionTitle = ({ title }: { title: string }) => (
   <div className="flex items-center w-full max-w-3xl mx-auto px-6">
-    <h2 className="text-white text-3xl sm:text-3xl md:text-4xl font-bold tracking-wide whitespace-nowrap uppercase">
+    <h2 className="text-white text-3xl sm:text-3xl md:text-4xl font-bold font-montserrat tracking-wide whitespace-nowrap uppercase">
       {title}
     </h2>
     <div className="flex-1 h-[2px] bg-white ml-6 w-full rounded-tr rounded-br"></div>
@@ -50,7 +50,7 @@ export default function ConsertsPage() {
             transition={{ delay: 0.6, duration: 1, ease: "easeOut" }}
             className="flex flex-col items-center gap-8 w-full"
           >
-            <SectionTitle title="Rok 2025" />
+            <SectionTitle title="2025" />
             {/* Seznam koncertů */}
             <div className="w-full max-w-3xl z-10 flex flex-col gap-10 px-4 sm:px-6 md:px-0">
               {concertData.map((text, index) => {
