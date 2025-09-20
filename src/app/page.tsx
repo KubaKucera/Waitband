@@ -131,9 +131,11 @@ export default function Home() {
       >
         <SideAccentLineHome targetId="uvod-section" />
 
-        <section id="uvod-section" className="relative flex flex-col items-center px-4 pt-[50px]">
+        <section id="uvod-section" className="relative flex flex-col items-center px-4 pt-0 sm:pt-[30px] md:pt-[50px]">
           {/* Nadpis bez animace */}
-          <TitleWithLines title="Úvod Wait" />
+          <div className="relative w-full justify-center items-center hidden md:flex">
+            <TitleWithLines title="Úvod Wait" />
+          </div>          
 
           {/* Motion obaluje vše pod nadpisem */}
           <motion.div

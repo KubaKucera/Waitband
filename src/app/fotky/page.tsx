@@ -172,9 +172,12 @@ export default function PhotosPage() {
                 <button
                   disabled={loading}
                   onClick={handleShowMore}
-                  className={`w-full uppercase max-w-[1010px] h-[50px] tracking-wide z-20 ml-14 mr-14 md:ml-20 md:mr-20 lg:ml-0 lg:mr-0 sm:ml-28 sm:mr-28 border-gray-400 border-[2px] text-gray-200 font-semibold text-[14px] transition-all duration-500 ease-in-out transform hover:border-gray-100 hover:text-white ${
+                  className={`w-full uppercase max-w-[1010px] h-[50px] tracking-wide z-20 ml-14 mr-14 md:ml-20 md:mr-20 lg:ml-0 lg:mr-0 sm:ml-28 sm:mr-28 border-gray-400 border-[2px] text-gray-200 font-semibold text-[14px] hover:scale-105 transition-all duration-500 ease-in-out transform hover:border-gray-100 hover:text-white ${
                     loading ? "opacity-50 cursor-not-allowed" : ""
                   }`}
+                  style={{
+                    transition: "all 0.5s ease-in-out",
+                  }}
                 >
                   {loading ? <LoadingDots /> : "Zobrazit více fotek"}
                 </button>
