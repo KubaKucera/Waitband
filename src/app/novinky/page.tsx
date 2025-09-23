@@ -157,7 +157,7 @@ export default function NewsPage() {
                       showFilter ? "text-white" : ""
                     }`}
                   >
-                    Filtr
+                    Filtrovat
                     <Filter
                       className={`w-5 h-5 ml-1 ${showFilter ? "fill-current" : ""}`}
                     />
@@ -294,7 +294,7 @@ export default function NewsPage() {
             onClick={() => setActive(null)}
           >
             <button
-              className="absolute top-4 right-4 text-white hover:text-gray-300 transition z-20"
+              className="absolute top-5 right-5 text-white hover:text-gray-300 transition z-20"
               onClick={() => setActive(null)}
             >
               <X className="w-8 h-8" />
@@ -307,7 +307,7 @@ export default function NewsPage() {
               className="relative bg-neutral-900 text-white max-w-3xl w-full rounded-2xl shadow-2xl overflow-hidden"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="relative h-80 monitor:h-96 w-full">
+              <div className="relative h-64 sm:h-64 md:h-80 monitor:h-96 w-full">
                 <Image
                   src={active.image}
                   alt={active.title}

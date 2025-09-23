@@ -214,11 +214,15 @@ export default function PhotosPage() {
                 >
                   {/* Controls */}
                   <div className="absolute top-4 right-4 flex gap-3 z-50">                    
-                    <button onClick={() => setZoom((z) => Math.min(z + 0.5, 3))} className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition">
-                      <ZoomIn className="text-white w-6 h-6" />
-                    </button>
-                    <button onClick={() => setZoom((z) => Math.max(z - 0.5, 1))} className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition">
-                      <ZoomOut className="text-white w-6 h-6" />
+                    <button
+                      onClick={() => setZoom((z) => (z === 1 ? 2 : 1))}
+                      className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition"
+                    >
+                      {zoom === 1 ? (
+                        <ZoomIn className="text-white w-6 h-6" />
+                      ) : (
+                        <ZoomOut className="text-white w-6 h-6" />
+                      )}
                     </button>
                     <button onClick={toggleFullscreen} className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition">
                       {isFullscreen ? (

@@ -35,7 +35,7 @@ export default function AnnouncementModal() {
             </button>
 
             <motion.div
-                className="relative bg-gradient-to-b from-gray-50 via-gray-100 to-gray-200 text-white rounded-xl shadow-2xl max-w-lg monitor:max-w-2xl w-full mx-8 overflow-hidden"
+                className="relative bg-gradient-to-b from-gray-50 via-gray-100 to-gray-200 text-white rounded-2xl shadow-2xl max-w-lg monitor:max-w-2xl w-full mx-8 overflow-hidden"
                 initial={{ y: -40, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 exit={{ y: 20, opacity: 0 }}
