@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import texture from "../../../public/assets/textures/texture.jpg";
@@ -13,6 +14,132 @@ const months = [
   "Leden","Únor","Březen","Duben","Květen","Červen",
   "Červenec","Srpen","Září","Říjen","Listopad","Prosinec"
 ];
+
+interface AsideProps {
+  showFilter: boolean;
+  setShowFilter: (v: boolean) => void;
+  filterYear: string;
+  setFilterYear: (s: string) => void;
+  filterMonth: string;
+  setFilterMonth: (s: string) => void;
+  filterCategory: string;
+  setFilterCategory: (s: string) => void;
+  categories: string[];
+  filteredNews: NewsItem[];
+  setActive: (n: NewsItem | null) => void;
+  wrapperClassName?: string;
+}
+
+function AsideContent({
+  showFilter,
+  setShowFilter,
+  filterYear,
+  setFilterYear,
+  filterMonth,
+  setFilterMonth,
+  filterCategory,
+  setFilterCategory,
+  categories,
+  filteredNews,
+  setActive,
+  wrapperClassName = ""
+}: AsideProps) {
+  return (
+    <aside className={`${wrapperClassName} rounded-xl p-2 flex flex-col`}>
+      <div className="flex items-center justify-between mb-3">
+        <h3 className="text-white text-xl font-semibold">Všechny příspěvky</h3>
+        <button
+          onClick={() => setShowFilter(!showFilter)}
+          className={`text-gray-300 hover:text-white transition flex items-center ${
+            showFilter ? "text-white" : ""
+          }`}
+        >
+          Filtr
+          <Filter
+            className={`w-5 h-5 ml-1 ${showFilter ? "fill-current" : ""}`}
+          />
+        </button>
+      </div>
+
+      {/* Filtr */}
+      {showFilter && (
+        <div className="mb-4 p-3 bg-white/5 rounded-lg text-sm text-white space-y-3">
+          {/* Rok */}
+          <div>
+            <label className="block mb-1">Rok:</label>
+            <select
+              value={filterYear}
+              onChange={(e) => setFilterYear(e.target.value)}
+              className="w-full bg-black/30 rounded px-2 py-1"
+            >
+              <option value="">Všechny</option>
+              <option value="2025">2025</option>
+              <option value="2024">2024</option>
+            </select>
+          </div>
+          {/* Měsíc */}
+          <div>
+            <label className="block mb-1">Měsíc:</label>
+            <select
+              value={filterMonth}
+              onChange={(e) => setFilterMonth(e.target.value)}
+              className="w-full bg-black/30 rounded px-2 py-1"
+            >
+              <option value="">Všechny</option>
+              {months.map((m) => (
+                <option key={m} value={m}>
+                  {m}
+                </option>
+              ))}
+            </select>
+          </div>
+          {/* Kategorie */}
+          <div>
+            <label className="block mb-1">Kategorie:</label>
+            <select
+              value={filterCategory}
+              onChange={(e) => setFilterCategory(e.target.value)}
+              className="w-full bg-black/30 rounded px-2 py-1"
+            >
+              <option value="">Všechny</option>
+              {categories.map((c) => (
+                <option key={c} value={c}>
+                  {c}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+      )}
+
+      {/* Výpis příspěvků */}
+      <div className="flex-1 overflow-y-auto flex flex-col gap-4">
+        {filteredNews.length > 0 ? (
+          filteredNews.map((item) => (
+            <motion.div
+              key={item.id}
+              onClick={() => setActive(item)}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="cursor-pointer p-3 rounded-lg bg-white/5 hover:bg-white/10 text-gray-200 transition"
+            >
+              <span className="inline-block border-neonPink border-2 text-white px-2 py-0.5 rounded-full text-xs font-semibold mb-1">
+                {item.category}
+              </span>
+              <p className="text-xs text-gray-400">{item.date}</p>
+              <p className="text-sm font-medium">{item.title}</p>
+            </motion.div>
+          ))
+        ) : (
+          <p className="text-gray-400 text-sm text-center mt-10">
+            Odpovídající příspěvek nebyl nalezen...
+          </p>
+        )}
+      </div>
+    </aside>
+  );
+}
 
 export default function NewsPage() {
   const [active, setActive] = useState<NewsItem | null>(null);
@@ -117,7 +244,7 @@ export default function NewsPage() {
               )}
             </div>
 
-            {/* Main + sidebar */}
+            {/* Main + sidebar (desktop only) */}
             <div className="w-full max-w-6xl flex flex-col lg:flex-row gap-8">
               {/* Hlavní článek */}
               {mainArticle && (
@@ -147,104 +274,27 @@ export default function NewsPage() {
                 </motion.div>
               )}
 
-              {/* Sidebar */}
-              <aside className="lg:w-80 h-[500px] rounded-xl p-2 flex flex-col">
-                <div className="flex items-center justify-between mb-3">
-                  <h4 className="text-white font-semibold">Všechny příspěvky</h4>
-                  <button
-                    onClick={() => setShowFilter(!showFilter)}
-                    className={`text-gray-300 hover:text-white transition flex items-center ${
-                      showFilter ? "text-white" : ""
-                    }`}
-                  >
-                    Filtrovat
-                    <Filter
-                      className={`w-5 h-5 ml-1 ${showFilter ? "fill-current" : ""}`}
-                    />
-                  </button>
-                </div>
-
-                {/* Filtr */}
-                {showFilter && (
-                  <div className="mb-4 p-3 bg-white/5 rounded-lg text-sm text-white space-y-3">
-                    {/* Rok */}
-                    <div>
-                      <label className="block mb-1">Rok:</label>
-                      <select
-                        value={filterYear}
-                        onChange={(e) => setFilterYear(e.target.value)}
-                        className="w-full bg-black/30 rounded px-2 py-1"
-                      >
-                        <option value="">Všechny</option>
-                        <option value="2025">2025</option>
-                        <option value="2024">2024</option>
-                      </select>
-                    </div>
-                    {/* Měsíc */}
-                    <div>
-                      <label className="block mb-1">Měsíc:</label>
-                      <select
-                        value={filterMonth}
-                        onChange={(e) => setFilterMonth(e.target.value)}
-                        className="w-full bg-black/30 rounded px-2 py-1"
-                      >
-                        <option value="">Všechny</option>
-                        {months.map((m) => (
-                          <option key={m} value={m}>
-                            {m}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                    {/* Kategorie */}
-                    <div>
-                      <label className="block mb-1">Kategorie:</label>
-                      <select
-                        value={filterCategory}
-                        onChange={(e) => setFilterCategory(e.target.value)}
-                        className="w-full bg-black/30 rounded px-2 py-1"
-                      >
-                        <option value="">Všechny</option>
-                        {categories.map((c) => (
-                          <option key={c} value={c}>
-                            {c}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                  </div>
-                )}
-
-                {/* Výpis příspěvků */}
-                <div className="flex-1 overflow-y-auto flex flex-col gap-4">
-                  {filteredNews.length > 0 ? (
-                    filteredNews.map((item) => (
-                      <motion.div
-                        key={item.id}
-                        onClick={() => setActive(item)}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, ease: "easeOut" }}
-                        className="cursor-pointer p-3 rounded-lg bg-white/5 hover:bg-white/10 text-gray-200 transition"
-                      >
-                        <span className="inline-block border-neonPink border-2 text-white px-2 py-0.5 rounded-full text-xs font-semibold mb-1">
-                          {item.category}
-                        </span>
-                        <p className="text-xs text-gray-400">{item.date}</p>
-                        <p className="text-sm font-medium">{item.title}</p>
-                      </motion.div>
-                    ))
-                  ) : (
-                    <p className="text-gray-400 text-sm text-center mt-10">
-                      Odpovídající příspěvek nebyl nalezen...
-                    </p>
-                  )}
-                </div>
-              </aside>
+              {/* Sidebar for desktop (hidden on mobile) */}
+              <div className="hidden lg:block lg:w-80">
+                <AsideContent
+                  showFilter={showFilter}
+                  setShowFilter={setShowFilter}
+                  filterYear={filterYear}
+                  setFilterYear={setFilterYear}
+                  filterMonth={filterMonth}
+                  setFilterMonth={setFilterMonth}
+                  filterCategory={filterCategory}
+                  setFilterCategory={setFilterCategory}
+                  categories={categories}
+                  filteredNews={filteredNews}
+                  setActive={setActive}
+                  wrapperClassName={"h-[500px]"}
+                />
+              </div>
             </div>
 
             {/* Grid dalších článků */}
-            <div className="w-full max-w-6xl mt-9">
+            <div className="w-full max-w-6xl mt-0 sm:mt-0 md:mt-4">
               <h3 className="text-white text-xl font-semibold mb-6">
                 Další příspěvky
               </h3>
@@ -276,6 +326,24 @@ export default function NewsPage() {
                     </div>
                   </motion.div>
                 ))}
+              </div>
+
+              {/* Mobile aside: zobrazit až pod gridem */}
+              <div className="block lg:hidden mt-11 sm:mt-11 md:mt-6">
+                <AsideContent
+                  showFilter={showFilter}
+                  setShowFilter={setShowFilter}
+                  filterYear={filterYear}
+                  setFilterYear={setFilterYear}
+                  filterMonth={filterMonth}
+                  setFilterMonth={setFilterMonth}
+                  filterCategory={filterCategory}
+                  setFilterCategory={setFilterCategory}
+                  categories={categories}
+                  filteredNews={filteredNews}
+                  setActive={setActive}
+                  wrapperClassName={"w-full"}
+                />
               </div>
             </div>
           </motion.div>

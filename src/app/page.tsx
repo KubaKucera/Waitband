@@ -158,7 +158,7 @@ export default function Home() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, ease: "easeOut" }}
                   >
-                    <div className="relative h-72 sm:h-72 md:h-56 w-full">
+                    <div className="relative h-56 w-full overflow-hidden">
                       <Image
                         src={item.image}
                         alt={item.title}
