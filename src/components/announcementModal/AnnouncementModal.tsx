@@ -48,11 +48,11 @@ export default function AnnouncementModal() {
 
                 {/* Obsah */}
                 <div className="p-6 text-center">
-                    <h2 className="text-3xl font-extrabold font-montserrat mb-3 text-black bg-clip-text">
+                    <h2 className="text-2xl sm:text-2xl md:text-3xl font-extrabold font-montserrat mb-3 text-black bg-clip-text">
                         Novinky od kapely 🎶
                     </h2>
 
-                    <p className="text-black text-base leading-relaxed mb-4 w-full monitor:pl-24 monitor:pr-24">
+                    <p className="text-black text-md leading-relaxed mb-4 w-full monitor:pl-24 monitor:pr-24">
                         Práce na singlu
                         (skladby <em>„Závidím“</em> a <em>„The Fly“</em>), ve{" "}
                         <Link 

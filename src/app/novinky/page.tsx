@@ -28,6 +28,9 @@ interface AsideProps {
   filteredNews: NewsItem[];
   setActive: (n: NewsItem | null) => void;
   wrapperClassName?: string;
+  // nově: search a setter pro mobilní vyhledávání
+  search: string;
+  setSearch: (s: string) => void;
 }
 
 function AsideContent({
@@ -42,23 +45,54 @@ function AsideContent({
   categories,
   filteredNews,
   setActive,
-  wrapperClassName = ""
+  wrapperClassName = "",
+  search,
+  setSearch,
 }: AsideProps) {
   return (
     <aside className={`${wrapperClassName} rounded-xl p-2 flex flex-col`}>
-      <div className="flex items-center justify-between mb-3">
+      {/* Header: název + filtr v jedné linii */}
+      <div className="flex items-center justify-between mb-0 sm:mb-0 md:mb-4">
         <h3 className="text-white text-xl font-semibold">Všechny příspěvky</h3>
-        <button
-          onClick={() => setShowFilter(!showFilter)}
-          className={`text-gray-300 hover:text-white transition flex items-center ${
-            showFilter ? "text-white" : ""
-          }`}
-        >
-          Filtr
-          <Filter
-            className={`w-5 h-5 ml-1 ${showFilter ? "fill-current" : ""}`}
+        <div className="flex items-center gap-3">
+          <button
+            onClick={() => setShowFilter(!showFilter)}
+            className={`text-gray-300 hover:text-white transition flex items-center ${
+              showFilter ? "text-white" : ""
+            }`}
+          >
+            Filtr
+            <Filter
+              className={`w-5 h-5 ml-1 ${showFilter ? "fill-current" : ""}`}
+            />
+          </button>
+        </div>
+      </div>
+
+      {/* Mobilní search: POD headerem (viditelné pouze na mobilu) */}
+      <div className="block lg:hidden w-full mt-4 mb-6">
+        <label htmlFor="mobile-search" className="sr-only">Vyhledat příspěvek</label>
+        <div className="relative">
+          <input
+            id="mobile-search"
+            type="text"
+            placeholder="Vyhledat příspěvek..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="w-full rounded-full px-4 py-2 pl-10 bg-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-neonPink"
           />
-        </button>
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4" />
+          {search && (
+            <button
+              type="button"
+              onClick={() => setSearch("")}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white"
+              aria-label="Vymazat hledání"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          )}
+        </div>
       </div>
 
       {/* Filtr */}
@@ -223,8 +257,8 @@ export default function NewsPage() {
             transition={{ delay: 0.6, duration: 1, ease: "easeOut" }}
             className="flex flex-col items-center gap-8 w-full"
           >
-            {/* Search */}
-            <div className="relative w-full max-w-3xl mb-6">
+            {/* Search - DESKTOP only (skryté na mobilu) */}
+            <div className="relative w-full max-w-3xl mb-6 hidden lg:block">
               <input
                 type="text"
                 placeholder="Vyhledat příspěvek..."
@@ -289,6 +323,8 @@ export default function NewsPage() {
                   filteredNews={filteredNews}
                   setActive={setActive}
                   wrapperClassName={"h-[500px]"}
+                  search={search}
+                  setSearch={setSearch}
                 />
               </div>
             </div>
@@ -343,6 +379,8 @@ export default function NewsPage() {
                   filteredNews={filteredNews}
                   setActive={setActive}
                   wrapperClassName={"w-full"}
+                  search={search}
+                  setSearch={setSearch}
                 />
               </div>
             </div>

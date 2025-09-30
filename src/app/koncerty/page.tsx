@@ -79,7 +79,7 @@ export default function ConsertsPage() {
                 );
               })}
               
-              <div className="relative w-full flex justify-center mt-6 px-4 sm:px-6 md:px-0">
+              <div className="relative w-full flex justify-center mt-6 md:px-0">
                 <div className="relative flex h-[235px] w-full max-w-3xl flex-col items-center justify-center rounded-3xl overflow-hidden">
                   <Image
                     src={consertsImage}

@@ -74,7 +74,7 @@ export default function Newsletter() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="w-full max-w-[450px] px-4 py-3 rounded-md border border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-pink-500 transition"
+              className="w-full max-w-[450px] px-4 py-3 rounded-md border border-gray-300 text-gray-900 focus:ring-1 focus:ring-blue-400 transition"
             />
 
             {/* Honeypot: Neviditelný select */}
