@@ -33,7 +33,7 @@ const TitleWithLines: FC<TitleWithLinesProps> = ({
     >
       {/* ==== MOBIL ==== */}
       <motion.div
-        className="block sm:hidden w-28 h-1 rounded-full mb-2"
+        className="block sm:hidden w-[100vw] h-1 rounded-full mb-2"
         style={{ ...leftLineGradient, transformOrigin: "right" }}
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
@@ -50,7 +50,7 @@ const TitleWithLines: FC<TitleWithLinesProps> = ({
       </motion.h2>
 
       <motion.div
-        className="block sm:hidden w-28 h-1 rounded-full mt-2"
+        className="block sm:hidden w-[100vw] h-1 rounded-full mt-2"
         style={{ ...rightLineGradient, transformOrigin: "left" }}
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
