@@ -86,21 +86,21 @@ export default function Navbar() {
     >
       <div className="flex items-center justify-between px-6 lg:px-40 monitor:px-80 h-full">
         {/* Logo */}
-        <Link
-          href="/"
-          onClick={() => setMenuOpen(false)}
-          className="z-50 cursor-pointer hover:opacity-80 transition-opacity duration-200"
+        <motion.div
+          className="z-50 cursor-pointer"
+          initial={{ opacity: 1 }}
+          animate={{ opacity: menuOpen ? 0 : 1 }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
         >
-          <Image
-            src={menuOpen ? title : scrolled ? blackTitle : title}
-            alt="WAIT"
-            className="w-32 sm:w-32 md:w-44 h-auto transition-transform duration-500"
-            style={{
-              transform: `scale(${titleScale})`,
-              transformOrigin: "left center",
-            }}
-          />
-        </Link>
+          <Link href="/" onClick={() => setMenuOpen(false)}>
+            <Image
+              src={scrolled ? blackTitle : title}
+              alt="WAIT"
+              className="w-32 sm:w-32 md:w-44 h-auto transition-transform duration-500"
+              style={{ transform: `scale(${titleScale})`, transformOrigin: "left center" }}
+            />
+          </Link>
+        </motion.div>
 
         {/* Desktop Links */}
         <div className="hidden lg:flex gap-7 items-center text-[17px] relative">
@@ -116,20 +116,14 @@ export default function Navbar() {
                 <span
                   className={`transition-colors duration-300 ${
                     active
-                      ? "text-neonPink" // aktivní → neon pink
+                      ? "text-neonPink"
                       : scrolled
-                      ? "text-gray-900 group-hover:text-neonPink" // scrolled → černá, hover růžová
-                      : "text-lightGray group-hover:text-neonPink" // top → světle šedá, hover růžová
+                      ? "text-gray-900 group-hover:text-neonPink"
+                      : "text-lightGray group-hover:text-neonPink"
                   }`}
                 >
                   {name}
                 </span>
-                {/*
-                <span
-                  className={`absolute left-1/2 -bottom-1 h-[3px] bg-neonPink rounded-full transform -translate-x-1/2 transition-all duration-300
-                    ${active ? "w-6" : "w-0"}`}
-                />
-                */}
               </Link>
             );
           })}
