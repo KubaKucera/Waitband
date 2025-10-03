@@ -124,7 +124,7 @@ export default function Newsletter() {
             <div className="flex w-full justify-center items-center">
               <button
                 type="submit"
-                className="flex justify-center items-center w-full max-w-[300px] py-3 bg-rose-600 hover:bg-rose-700 hover:scale-105 text-white font-semibold rounded-md transition-transform duration-300 ease-in-out"
+                className="flex justify-center items-center w-full max-w-[300px] py-3 bg-rose-600 hover:bg-rose-700 hover:scale-105 text-white font-semibold rounded-xl transition-transform duration-300 ease-in-out"
               >
                 Odebírat
               </button>

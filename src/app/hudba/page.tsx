@@ -119,19 +119,14 @@ export default function MusicPage() {
             </div>
 
             {/* Tlačítko alba */}
-            <div className="flex justify-center h-[50px] mb-1 mt-4">
+            <div className="flex justify-center mt-5 mb-4">
               <Link href="/alba">
                 <button
-                  className="w-[300px] h-[50px] uppercase tracking-wide bg-transparent text-gray-100 rounded-lg font-semibold text-[14px]
-                  transition-all duration-500 ease-in-out transform 
-                  hover:scale-105 hover:shadow-[0_0_12px_rgba(238,9,121,0.4)]
-                  hover:bg-gradient-to-r hover:from-[#ff6a00] hover:to-[#ee0979] 
-                  hover:bg-clip-text hover:text-transparent border-[2px]"
-                  style={{
-                    borderImageSlice: 1,
-                    borderImageSource: "linear-gradient(to right, #ff6a00, #ee0979)",
-                    transition: "all 0.5s ease-in-out",
-                  }}
+                  className="relative w-[300px] h-[55px] uppercase tracking-[0.12em] rounded-full font-semibold text-[15px]
+                  text-white transition-all duration-400 ease-out 
+                  bg-transparent border-[2px] border-transparent
+                  [background:linear-gradient(#0a0a0a,#0a0a0a)_padding-box,linear-gradient(90deg,#ff6a00,#ee0979)_border-box]
+                  hover:scale-105 hover:shadow-[0_0_18px_rgba(238,9,121,0.4)]"
                 >
                   Přejít na Alba
                 </button>

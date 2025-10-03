@@ -172,31 +172,25 @@ export default function PhotosPage() {
                 <button
                   disabled={loading}
                   onClick={handleShowMore}
-                  className={`w-full uppercase max-w-[1010px] h-[50px] tracking-wide z-20 ml-14 mr-14 md:ml-20 md:mr-20 lg:ml-0 lg:mr-0 sm:ml-28 sm:mr-28 border-gray-400 border-[2px] text-gray-200 font-semibold text-[14px] hover:scale-105 transition-all duration-500 ease-in-out transform hover:border-gray-100 hover:text-white ${
+                  className={`className="relative w-[300px] sm:w-[300px] md:w-[50vw] h-[55px] uppercase tracking-[0.12em] rounded-full font-semibold text-[15px]
+                  text-white transition-all duration-400 ease-out border-gray-200 border-[2px]
+                  hover:scale-105 hover:shadow-white hover:border-white ${
                     loading ? "opacity-50 cursor-not-allowed" : ""
-                  }`}
-                  style={{
-                    transition: "all 0.5s ease-in-out",
-                  }}
+                  }`}                  
                 >
                   {loading ? <LoadingDots /> : "Zobrazit více fotek"}
                 </button>
               </div>
             )}
 
-            <div className={`flex justify-center h-[50px] mb-1 ${showMore ? "mt-[15px]" : "mt-0"}`}>
+            <div className={`flex justify-center h-[50px] mb-4 ${showMore ? "mt-[15px]" : "mt-0"}`}>
               <Link href="https://www.instagram.com/wait_band_official/" target="_blank">
                 <button
-                  className="w-[300px] h-[50px] uppercase tracking-wide bg-transparent text-gray-100 rounded-lg font-semibold text-[14px]
-                  transition-all duration-500 ease-in-out transform 
-                  hover:scale-105 hover:shadow-[0_0_12px_rgba(238,9,121,0.4)]
-                  hover:bg-gradient-to-r hover:from-[#ff6a00] hover:to-[#ee0979] 
-                  hover:bg-clip-text hover:text-transparent border-[2px]"
-                  style={{
-                    borderImageSlice: 1,
-                    borderImageSource: "linear-gradient(to right, #ff6a00, #ee0979)",
-                    transition: "all 0.5s ease-in-out",
-                  }}
+                  className="relative w-[300px] h-[55px] uppercase tracking-[0.12em] rounded-full font-semibold text-[15px]
+                  text-white transition-all duration-400 ease-out 
+                  bg-transparent border-[2px] border-transparent
+                  [background:linear-gradient(#0a0a0a,#0a0a0a)_padding-box,linear-gradient(90deg,#ff6a00,#ee0979)_border-box]
+                  hover:scale-105 hover:shadow-[0_0_18px_rgba(238,9,121,0.4)]"
                 >
                   Přejít na Instagram
                 </button>
