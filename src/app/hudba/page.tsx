@@ -106,7 +106,7 @@ export default function MusicPage() {
                 <div
                   key={index}
                   onClick={() => openModal(index)}
-                  className="relative group cursor-pointer w-full aspect-square overflow-hidden shadow-md"
+                  className="relative group cursor-pointer w-full aspect-square overflow-hidden rounded-xl shadow-md"
                 >
                   <Image
                     src={image}

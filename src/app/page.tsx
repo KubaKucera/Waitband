@@ -205,7 +205,7 @@ export default function Home() {
                 {[image1, image2, image3].map((img, index) => (
                   <div
                     key={index}
-                    className="relative group cursor-pointer w-full aspect-square overflow-hidden shadow-lg"
+                    className="relative group cursor-pointer w-full aspect-square overflow-hidden rounded-xl shadow-lg"
                     onClick={() => openModal(index)}
                   >
                     <Image
