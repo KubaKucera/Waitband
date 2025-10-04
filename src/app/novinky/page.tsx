@@ -430,11 +430,19 @@ export default function NewsPage() {
             onClick={() => setActive(null)}
           >
             <button
-              className="absolute top-[65px] right-5 bg-black/60 sm:top-[65px] sm:right-5 border-2 border-white/70 rounded-md sm:border-2 sm:rounded-md md:border-0 md:rounded-none md:top-5 md:right-5 text-white hover:text-gray-300 transition z-20"
+              className="absolute hidden lg:flex right-5 top-5 text-white hover:text-gray-300 transition z-20"
               onClick={() => setActive(null)}
             >
-              <X className="w-16 h-8 sm:w-16 sm:h-8 md:w-8 md:h-8" />
+              <X className="w-8 h-8" />
             </button>
+
+            <button
+              className="absolute sm:flex flex lg:hidden top-4 right-3 p-2 rounded-full bg-black/60 text-white hover:text-gray-300 transition z-20"
+              onClick={() => setActive(null)}
+            >
+              <X className="w-8 h-8" />
+            </button>
+
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: isLargeScreen ? 1.25 : 1, opacity: 1 }}
