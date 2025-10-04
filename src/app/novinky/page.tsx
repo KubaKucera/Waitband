@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import texture from "../../../public/assets/textures/texture.jpg";
 import Image from "next/image";
 import TitleWithLines from "@/components/titleWithLines/TitleWithLines";
-import { X, ExternalLink, Search, Filter } from "lucide-react";
+import { X, ExternalLink, Search, Filter, RefreshCw } from "lucide-react";
 import SideAccentLine from "@/components/sideAccentLine/SideAccentLine";
 import { newsData, NewsItem } from "../../data/newsData";
 
@@ -49,6 +49,16 @@ function AsideContent({
   search,
   setSearch,
 }: AsideProps) {
+
+  const resetFilters = () => {
+    setFilterYear("");
+    setFilterMonth("");
+    setFilterCategory("");    
+    setSearch("");
+  };
+
+  const hasActiveFilters = filterYear !== "" || filterMonth !== "" || filterCategory !== "";
+
   return (
     <aside className={`${wrapperClassName} rounded-xl p-2 flex flex-col`}>
       {/* Header: název + filtr v jedné linii */}
@@ -65,9 +75,9 @@ function AsideContent({
             <Filter
               className={`w-5 h-5 ml-1 ${showFilter ? "fill-current" : ""}`}
             />
-          </button>
+          </button>          
         </div>
-      </div>
+      </div>      
 
       {/* Mobilní search: POD headerem (viditelné pouze na mobilu) */}
       <div className="block lg:hidden w-full mt-4 mb-6">
@@ -98,6 +108,26 @@ function AsideContent({
       {/* Filtr */}
       {showFilter && (
         <div className="mb-4 p-3 bg-white/5 rounded-lg text-sm text-white space-y-3">
+          <div className="flex items-center justify-between">
+            <p className="text-xs text-gray-300 m-0">Nastavení filtru</p>
+            <div className="flex gap-2">
+              {hasActiveFilters && (   // 👈 Podmínka
+                <button
+                  onClick={resetFilters}
+                  className="flex items-center gap-2 text-sm px-3 py-1 bg-white/10 rounded hover:bg-white/20 transition"
+                >
+                  <RefreshCw className="w-4 h-4" />
+                  Reset
+                </button>
+              )}
+              <button
+                onClick={() => setShowFilter(false)}
+                className="text-sm px-3 py-1 bg-transparent border border-white/10 rounded hover:bg-white/5 transition"
+              >
+                Zavřít
+              </button>
+            </div>
+          </div>
           {/* Rok */}
           <div>
             <label className="block mb-1">Rok:</label>
@@ -400,10 +430,10 @@ export default function NewsPage() {
             onClick={() => setActive(null)}
           >
             <button
-              className="absolute top-5 right-5 text-white hover:text-gray-300 transition z-20"
+              className="absolute top-[65px] right-5 bg-black/60 sm:top-[65px] sm:right-5 border-2 border-white/70 rounded-md sm:border-2 sm:rounded-md md:border-0 md:rounded-none md:top-5 md:right-5 text-white hover:text-gray-300 transition z-20"
               onClick={() => setActive(null)}
             >
-              <X className="w-8 h-8" />
+              <X className="w-16 h-8 sm:w-16 sm:h-8 md:w-8 md:h-8" />
             </button>
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}

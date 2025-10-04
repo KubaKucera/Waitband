@@ -74,7 +74,7 @@ export default function ConsertsPage() {
                     </div>
 
                     {/* Dekorativní gradient linka */}
-                    <div className="mt-6 h-1 w-20 mx-auto rounded-full bg-gradient-to-r bg-white/90 group-hover:w-32 transition-all duration-300"></div>
+                    <div className="mt-6 h-1 w-20 mx-auto rounded-full bg-gradient-to-r bg-white group-hover:w-32 transition-all duration-300"></div>
                   </div>
                 );
               })}
