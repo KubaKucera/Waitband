@@ -169,7 +169,9 @@ export default function Navbar() {
             animate="visible"
             exit="exit"
             variants={menuVariants}
-            className="fixed inset-0 w-screen h-screen bg-black flex flex-col items-center justify-center space-y-7 font-semibold z-40"
+            className="fixed inset-0 w-screen h-[100dvh] bg-black flex flex-col items-center justify-center space-y-7 font-semibold z-60"
+            // pokud chceš fallback pro starší prohlížeče, přidej i inline styl:
+            // style={{ minHeight: "100dvh", height: "100dvh" }}
           >
             {navLinks.map(({ name, href, key }) => (
               <motion.div key={key} variants={itemVariants}>
