@@ -4,7 +4,7 @@ import { Variants } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import title from "../../../public/assets/images/navbar/waitTitle.png";
@@ -79,7 +79,7 @@ export default function Navbar() {
         scrolled && !menuOpen
           ? "bg-white/90 border-gray-200 text-black"
           : !scrolled && !menuOpen
-          ? "bg-black/80 border-gray-700 text-navbarWhite"
+          ? "bg-black/80 border-gray-600 text-navbarWhite"
           : "bg-black text-white border-transparent"
       }`}
       style={{ height: "77px" }}
@@ -96,7 +96,7 @@ export default function Navbar() {
             <Image
               src={scrolled ? blackTitle : title}
               alt="WAIT"
-              className="w-32 sm:w-32 md:w-44 h-auto transition-transform duration-500"
+              className="w-28 sm:w-28 md:w-36 h-auto transition-transform duration-500"
               style={{ transform: `scale(${titleScale})`, transformOrigin: "left center" }}
             />
           </Link>
@@ -133,7 +133,7 @@ export default function Navbar() {
         <div className="lg:hidden z-50">
           <button
             onClick={toggleMenu}
-            className={`cursor-pointer mt-1 ${
+            className={`cursor-pointer mt-1 transition-colors duration-300 ${
               menuOpen
                 ? "text-white"
                 : scrolled
@@ -142,7 +142,21 @@ export default function Navbar() {
             }`}
             aria-label={menuOpen ? "Zavřít menu" : "Otevřít menu"}
           >
-            {menuOpen ? <FaTimes size={28} /> : <FaBars size={28} />}
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.div
+                key={menuOpen ? "x-icon" : "menu-icon"}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{ duration: 0.25, ease: "easeOut" }}
+              >
+                {menuOpen ? (
+                  <X size={36} strokeWidth={1.4} />
+                ) : (
+                  <Menu size={36} strokeWidth={1.4} />
+                )}
+              </motion.div>
+            </AnimatePresence>
           </button>
         </div>
       </div>
@@ -162,7 +176,7 @@ export default function Navbar() {
                 <Link
                   href={href}
                   onClick={() => setMenuOpen(false)}
-                  className={`uppercase font-semibold text-[25px] ${
+                  className={`uppercase font-semibold text-[27px] ${
                     isActive(href)
                       ? "text-neonPink"
                       : "text-lightGray hover:text-neonPink"

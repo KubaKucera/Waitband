@@ -276,7 +276,7 @@ export default function Home() {
                   </button>
                   
                   <button
-                    className="absolute sm:flex flex lg:hidden top-4 right-3 p-2 rounded-full bg-black/60 text-white hover:text-gray-300 transition z-20"
+                    className="absolute sm:flex flex lg:hidden top-4 right-3 p-2 rounded-full bg-black/70 text-white hover:text-gray-300 transition z-20"
                     onClick={() => setActive(null)}
                   >
                     <X className="w-8 h-8" />
