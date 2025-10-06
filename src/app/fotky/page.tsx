@@ -152,7 +152,7 @@ export default function PhotosPage() {
                 {images.slice(0, showMore ? images.length : 9).map((image, index) => (
                   <div
                     key={index}
-                    className="relative w-[370px] h-[370px] md:w-[320px] md:h-[320px] overflow-hidden rounded-xl shadow-lg cursor-pointer"
+                    className="relative w-[345px] h-[345px] sm:w-[345px] sm:h-[345px] md:w-[320px] md:h-[320px] overflow-hidden rounded-xl shadow-lg cursor-pointer"
                     onClick={() => setSelectedIndex(index)}
                   >
                     <Image
