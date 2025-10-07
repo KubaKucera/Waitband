@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+import { FaBars, FaTimes } from "react-icons/fa";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import title from "../../../public/assets/images/navbar/waitTitle.png";
@@ -96,8 +97,8 @@ export default function Navbar() {
             <Image
               src={scrolled ? blackTitle : title}
               alt="WAIT"
-              className="w-28 sm:w-28 md:w-36 h-auto transition-transform duration-500"
-              style={{ transform: `scale(${titleScale})`, transformOrigin: "left center" }}
+              className="w-24 sm:w-24 md:w-32 h-auto hover:brightness-90 transition-transform duration-500"
+              style={{ /*transform: `scale(${titleScale})`*/ transformOrigin: "left center" }}
             />
           </Link>
         </motion.div>
@@ -151,9 +152,9 @@ export default function Navbar() {
                 transition={{ duration: 0.25, ease: "easeOut" }}
               >
                 {menuOpen ? (
-                  <X size={36} strokeWidth={1.4} />
+                  <FaTimes size={28} strokeWidth={1.4} />
                 ) : (
-                  <Menu size={36} strokeWidth={1.4} />
+                  <FaBars size={28} strokeWidth={1.4} />
                 )}
               </motion.div>
             </AnimatePresence>

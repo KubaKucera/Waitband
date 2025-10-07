@@ -13,7 +13,7 @@ import { ExternalLink, X } from "lucide-react";
 import Link from "next/link";
 import image1 from "../../public/assets/images/music/february29th.jpg";
 import image2 from "../../public/assets/images/music/carelessDreaming.jpg";
-import image3 from "../../public/assets/images/music/losingSleep.jpg";
+import image3 from "../../public/assets/images/music/losingSleep2.jpg";
 import appleMusic from "../../public/assets/icons/appleMusic.svg";
 import spotify from "../../public/assets/icons/spotify.svg";
 import soundcloud from "../../public/assets/icons/soundcloud.svg";
