@@ -131,10 +131,10 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Burger */}
-        <div className="lg:hidden z-50">
+        <div className="lg:hidden z-50 flex items-center">
           <button
             onClick={toggleMenu}
-            className={`cursor-pointer mt-1 transition-colors duration-300 ${
+            className={`flex items-center gap-2 cursor-pointer mt-1 transition-colors duration-300 ${
               menuOpen
                 ? "text-white"
                 : scrolled
@@ -152,12 +152,20 @@ export default function Navbar() {
                 transition={{ duration: 0.25, ease: "easeOut" }}
               >
                 {menuOpen ? (
-                  <FaTimes size={28} strokeWidth={1.4} />
+                  <FaTimes size={26} strokeWidth={1.4} />
                 ) : (
-                  <FaBars size={28} strokeWidth={1.4} />
+                  <FaBars size={26} strokeWidth={1.4} />
                 )}
               </motion.div>
             </AnimatePresence>
+
+            {/* Text vedle ikony */}
+            <motion.span
+              key={menuOpen ? "close-text" : "menu-text"}              
+              className="text-lg uppercase font-medium"
+            >
+              {menuOpen ? "Menu" : "Menu"}
+            </motion.span>
           </button>
         </div>
       </div>
