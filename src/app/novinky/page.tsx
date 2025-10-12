@@ -460,7 +460,7 @@ export default function NewsPage() {
             {/* --- Mobile close button: docked to top-right of hero image, rectangular --- */}
             <button
             onClick={() => setActive(null)}
-            className="absolute top-2 right-2 lg:hidden flex items-center justify-center px-3 py-2 rounded-lg bg-black/70 text-white hover:text-gray-300 transition shadow-md z-20"
+            className="absolute top-2 right-2 lg:hidden flex items-center justify-center px-2 py-2 rounded-full bg-black/70 text-white hover:text-gray-300 transition shadow-md z-20"
             aria-label="Zavřít článek"
             >
             <X className="w-6 h-6" />
