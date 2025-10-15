@@ -207,9 +207,9 @@ export default function MusicPage() {
                     initial={{ y: 10, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.15 + i * 0.05, duration: 0.25 }}
-                    className="flex items-center justify-between bg-gray-100 px-4 py-3 rounded-lg shadow hover:bg-gray-200 transition-all"
+                    className="flex items-center justify-between bg-gray-100 px-4 h-[55px] rounded-lg shadow hover:bg-gray-200 transition-all"
                   >
-                    <Image src={icon} alt={label} width={80} />
+                    <Image src={icon} alt={label} width={100} />
                     <span className="text-black font-medium">Přehrát</span>
                   </motion.a>
                 ) : null

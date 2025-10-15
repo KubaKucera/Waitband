@@ -33,7 +33,7 @@ const TitleWithLines: FC<TitleWithLinesProps> = ({
     >
       {/* ==== MOBIL ==== */}
       <motion.div
-        className="block sm:hidden w-[100vw] h-1 rounded-full mb-2"
+        className="block sm:hidden w-[100vw] h-1 rounded-full mb-2 animate-pulse"
         style={{ ...leftLineGradient, transformOrigin: "right" }}
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
@@ -50,7 +50,7 @@ const TitleWithLines: FC<TitleWithLinesProps> = ({
       </motion.h2>
 
       <motion.div
-        className="block sm:hidden w-[100vw] h-1 rounded-full mt-2"
+        className="block sm:hidden w-[100vw] h-1 rounded-full mt-2 animate-pulse"
         style={{ ...rightLineGradient, transformOrigin: "left" }}
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
@@ -61,7 +61,7 @@ const TitleWithLines: FC<TitleWithLinesProps> = ({
       <div className="hidden sm:flex items-center justify-center w-full">
         {/* Levá čára */}
         <motion.div
-          className="w-32 h-1 rounded-full mr-4"
+          className="w-32 h-1 rounded-full mr-4 animate-pulse"
           style={{ ...leftLineGradient, transformOrigin: "right" }}
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
@@ -81,7 +81,7 @@ const TitleWithLines: FC<TitleWithLinesProps> = ({
 
         {/* Pravá čára */}
         <motion.div
-          className="w-32 h-1 rounded-full ml-4"
+          className="w-32 h-1 rounded-full ml-4 animate-pulse"
           style={{ ...rightLineGradient, transformOrigin: "left" }}
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
