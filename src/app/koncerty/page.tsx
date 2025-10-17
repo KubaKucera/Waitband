@@ -40,7 +40,7 @@ export default function ConsertsPage() {
           backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(20, 20, 20, 0.85)), url(${texture.src})`,
         }}
       >
-        <section id="concert-section" className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden gap-8 pt-[110px]">
+        <section id="concert-section" className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden gap-8 pt-[115px]">
           {/* Titulek */}
           <TitleWithLines title="Koncerty" delay={0.3} />          
 

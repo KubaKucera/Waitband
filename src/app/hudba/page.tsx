@@ -90,7 +90,7 @@ export default function MusicPage() {
           backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(20, 20, 20, 0.85)), url(${texture.src})`,
         }}
       >        
-        <section id="music-section" className="relative min-h-screen flex flex-col items-center px-4 gap-8 pt-[110px]">
+        <section id="music-section" className="relative min-h-screen flex flex-col items-center px-4 gap-8 pt-[115px]">
           
           <TitleWithLines title="Hudba" delay={0.3} />  
 
@@ -114,6 +114,23 @@ export default function MusicPage() {
                     fill
                     className="object-cover transition-transform duration-300 group-hover:scale-105"
                   />
+
+                  {/* Motion overlay */}
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                    className="absolute h-full inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center"
+                  >
+                    <motion.span
+                      initial={{ y: 10, opacity: 0 }}
+                      whileHover={{ y: 0, opacity: 1 }}
+                      transition={{ duration: 0.3 }}
+                      className="text-white h-[100%] w-[100%] flex items-center justify-center text-xl text-center font-semibold uppercase tracking-wide"
+                    >
+                      Poslechnout
+                    </motion.span>
+                  </motion.div>
                 </div>
               ))}
             </div>

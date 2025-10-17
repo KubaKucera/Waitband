@@ -137,7 +137,7 @@ export default function PhotosPage() {
           backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(20, 20, 20, 0.85)), url(${texture.src})`,
         }}
       >
-        <section id="photo-section" className="relative min-h-screen flex flex-col items-center px-4 gap-8 pt-[110px]">
+        <section id="photo-section" className="relative min-h-screen flex flex-col items-center px-4 gap-8 pt-[115px]">
           {/* Titulek */}
           <TitleWithLines title="Fotogalerie" delay={0.3} />      
           
@@ -147,12 +147,12 @@ export default function PhotosPage() {
             transition={{ delay: 0.6, duration: 1, ease: "easeOut" }}
             className="flex flex-col items-center gap-8 w-full"
           >
-            <div className="container mx-auto px-4 flex justify-center">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 place-items-center">
+            <div className="flex flex-col items-center gap-8 w-full">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-6xl px-2">
                 {images.slice(0, showMore ? images.length : 9).map((image, index) => (
                   <div
                     key={index}
-                    className="relative w-[345px] h-[345px] sm:w-[345px] sm:h-[345px] md:w-[320px] md:h-[320px] overflow-hidden rounded-xl shadow-lg cursor-pointer"
+                    className="relative group cursor-pointer w-full aspect-square overflow-hidden rounded-xl shadow-md"
                     onClick={() => setSelectedIndex(index)}
                   >
                     <Image
@@ -160,9 +160,26 @@ export default function PhotosPage() {
                       alt={`Photo ${index + 1}`}
                       fill
                       objectFit="cover"
-                      className="transition-transform duration-300 transform hover:scale-105"
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
                     />
-                  </div>
+
+                    {/* Motion overlay */}
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      whileHover={{ opacity: 1 }}
+                      transition={{ duration: 0.3 }}
+                      className="absolute h-full inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center"
+                    >
+                      <motion.span
+                        initial={{ y: 10, opacity: 0 }}
+                        whileHover={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 0.3 }}
+                        className="text-white h-[100%] w-[100%] flex items-center justify-center text-xl text-center font-semibold uppercase tracking-wide"
+                      >
+                        Zobrazit galerii
+                      </motion.span>
+                    </motion.div>
+                  </div>                  
                 ))}
               </div>
             </div>
@@ -172,7 +189,7 @@ export default function PhotosPage() {
                 <button
                   disabled={loading}
                   onClick={handleShowMore}
-                  className={`className="relative w-[300px] sm:w-[300px] md:w-[50vw] h-[55px] uppercase tracking-[0.12em] rounded-full font-semibold text-[15px]
+                  className={`className="relative w-[75vw] sm:w-[75vw] md:w-[40vw] h-[55px] uppercase tracking-[0.12em] rounded-full font-semibold text-[15px]
                   text-white transition-all duration-400 ease-out border-gray-200 border-[2px]
                   hover:scale-105 hover:shadow-white hover:border-white ${
                     loading ? "opacity-50 cursor-not-allowed" : ""

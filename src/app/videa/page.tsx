@@ -111,7 +111,7 @@ export default function VideosPage(){
           backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(20, 20, 20, 0.85)), url(${texture.src})`,
         }}
       > 
-        <section id="video-section" className="relative min-h-screen flex flex-col items-center px-4 gap-8 pt-[110px]">          
+        <section id="video-section" className="relative min-h-screen flex flex-col items-center px-4 gap-8 pt-[115px]">          
           {/* Titulek */}
           <TitleWithLines title="Videa YT" delay={0.3} />
 

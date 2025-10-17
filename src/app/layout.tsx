@@ -3,7 +3,6 @@ import "./globals.css";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 
-import PageTransition from "@/components/transition/PageTransition";
 import Navbar from "@/components/navbar/Navbar";
 import CustomCookieConsent from "@/components/cookie/CookieConsent";
 import ScrollToTopButton from "@/components/scrollToTopButton/ScrollToTopButton";

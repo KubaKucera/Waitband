@@ -29,7 +29,7 @@ export default function AnnouncementModal() {
             {/* ❌ Zavírací tlačítko – v pravém horním rohu celé obrazovky */}
             <button
                 onClick={() => setOpen(false)}
-                className="fixed top-5 right-5 text-gray-300 hover:text-white transition z-[10000]"
+                className="fixed top-[22px] right-5 text-gray-300 hover:text-white transition z-[10000]"
             >
                 <X size={32} />
             </button>

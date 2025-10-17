@@ -276,7 +276,7 @@ export default function NewsPage() {
       >
         <section
           id="news-section"
-          className="relative min-h-screen flex flex-col items-center gap-6 pt-[110px] px-4"
+          className="relative min-h-screen flex flex-col items-center gap-6 pt-[115px] px-4"
         >
           {/* Title */}
           <TitleWithLines title="Novinky" delay={0.3} />

@@ -201,15 +201,32 @@ export default function Home() {
                 {[image1, image2, image3].map((img, index) => (
                   <div
                     key={index}
-                    className="relative group cursor-pointer w-full aspect-square overflow-hidden rounded-xl shadow-lg"
                     onClick={() => openModal(index)}
+                    className="relative group cursor-pointer w-full aspect-square overflow-hidden rounded-xl shadow-md"
                   >
                     <Image
                       src={img}
-                      alt={`Song ${index + 1}`}
+                      alt={`Photo ${index + 1}`}
                       fill
                       className="object-cover transition-transform duration-300 group-hover:scale-105"
                     />
+                  
+                    {/* Motion overlay */}
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      whileHover={{ opacity: 1 }}
+                      transition={{ duration: 0.3 }}
+                      className="absolute h-full inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center"
+                    >
+                      <motion.span
+                        initial={{ y: 10, opacity: 0 }}
+                        whileHover={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 0.3 }}
+                        className="text-white h-[100%] w-[100%] flex items-center justify-center text-xl text-center font-semibold uppercase tracking-wide"
+                      >
+                        Poslechnout
+                      </motion.span>
+                    </motion.div>
                   </div>
                 ))}
               </div>
