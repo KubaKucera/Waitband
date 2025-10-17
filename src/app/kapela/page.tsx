@@ -178,11 +178,9 @@ export default function BandPage() {
               <div
                 className="relative rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-500"
               >
-                <div className="relative no-fixed-bg w-full h-[50vh] sm:h-[36vh] md:h-[48vh] lg:h-[70vh] monitor:h-[55vh]"
+                <div className="relative no-fixed-bg w-full h-[36vh] sm:h-[36vh] md:h-[48vh] lg:h-[70vh] monitor:h-[55vh]"
                   style={{ backgroundImage: `url('${band2.src}')`, backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat: "no-repeat", backgroundAttachment: "fixed", }}
-                >                  
-                  <div className="absolute inset-0 bg-black/10" />
-                </div>
+                ></div>
               </div>
             </div>
           </motion.div>
