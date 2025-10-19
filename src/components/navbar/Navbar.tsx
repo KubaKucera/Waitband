@@ -3,7 +3,7 @@
 import { Variants } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
@@ -44,15 +44,24 @@ const menuVariants: Variants = {
 };
 
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 70 } },
+  hidden: { opacity: 0, y: 20, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      type: "spring",
+      stiffness: 70,
+      damping: 12,
+    },
+  },
 };
 
 export default function Navbar() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [titleScale, setTitleScale] = useState(1);
+  const firstLinkRef = useRef<HTMLAnchorElement | null>(null);
 
   const toggleMenu = () => setMenuOpen((prev) => !prev);
 
@@ -60,12 +69,20 @@ export default function Navbar() {
     const handleScroll = () => {
       const scrollY = window.scrollY;
       setScrolled(scrollY > 50);
-      setTitleScale(scrollY > 50 ? 0.85 : 1);
+      //setTitleScale(scrollY > 50 ? 0.85 : 1);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMenuOpen(false);
+    };
+    if (menuOpen) window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [menuOpen]);
 
   useEffect(() => {
     document.body.classList.toggle("overflow-hidden", menuOpen);
@@ -133,6 +150,8 @@ export default function Navbar() {
         <div className="lg:hidden z-50 flex items-center">
           <button
             onClick={toggleMenu}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"  
             className={`flex items-center gap-2 cursor-pointer mt-1 transition-colors duration-300 ${
               menuOpen
                 ? "text-white"
@@ -173,6 +192,7 @@ export default function Navbar() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
+            id="mobile-menu"
             initial="hidden"
             animate="visible"
             exit="exit"
@@ -181,15 +201,20 @@ export default function Navbar() {
             // pokud chceš fallback pro starší prohlížeče, přidej i inline styl:
             // style={{ minHeight: "100dvh", height: "100dvh" }}
           >
-            {navLinks.map(({ name, href, key }) => (
-              <motion.div key={key} variants={itemVariants}>
+            {navLinks.map(({ name, href, key }, index) => (
+              <motion.div 
+                key={key} 
+                variants={itemVariants}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.99 }}
+                transition={{ type: "spring", stiffness: 200, damping: 18 }}
+              >
                 <Link
                   href={href}
+                  ref={index === 0 ? firstLinkRef : undefined}
                   onClick={() => setMenuOpen(false)}
                   className={`uppercase font-semibold text-[27px] ${
-                    isActive(href)
-                      ? "text-neonPink"
-                      : "text-lightGray hover:text-neonPink"
+                    isActive(href) ? "text-neonPink" : "text-lightGray hover:text-neonPink"
                   }`}
                 >
                   {name}
