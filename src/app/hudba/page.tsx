@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 import image1 from "../../../public/assets/images/music/february29th.jpg";
 import image2 from "../../../public/assets/images/music/carelessDreaming.jpg";
-import image3 from "../../../public/assets/images/music/losingSleep2.jpg";
+import image3 from "../../../public/assets/images/music/losingSleep.jpg";
 import image4 from "../../../public/assets/images/music/daydream.jpg";
 import image5 from "../../../public/assets/images/music/followMeToHell.jpg";
 import image6 from "../../../public/assets/images/music/subwayTrain.jpg";

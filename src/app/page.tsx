@@ -13,7 +13,7 @@ import { ExternalLink, X } from "lucide-react";
 import Link from "next/link";
 import image1 from "../../public/assets/images/music/february29th.jpg";
 import image2 from "../../public/assets/images/music/carelessDreaming.jpg";
-import image3 from "../../public/assets/images/music/losingSleep2.jpg";
+import image3 from "../../public/assets/images/music/losingSleep.jpg";
 import appleMusic from "../../public/assets/icons/appleMusic.svg";
 import spotify from "../../public/assets/icons/spotify.svg";
 import soundcloud from "../../public/assets/icons/soundcloud.svg";
@@ -133,7 +133,7 @@ export default function Home() {
 
         <section id="uvod-section" className="relative flex flex-col items-center px-4 pt-0 sm:pt-[30px] md:pt-[50px]">
           {/* Nadpis bez animace */}
-          <div className="relative w-full justify-center items-center">
+          <div className="relative w-full justify-center items-center mt-6 sm:mt-6 md:mt-0">
             <TitleWithLines title="Úvod Wait" />
           </div>          
 
