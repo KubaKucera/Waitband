@@ -88,10 +88,32 @@ export default function ConsertsPage() {
                     priority
                   />
                   {/* Overlay + backdrop blur */}
-                  <div className="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
-                  <h2 className="absolute text-[30px] sm:text-[40px] text-center font-montserrat text-white z-10 px-4">
-                    Těšíme se na vás!
-                  </h2>
+                  <div className="absolute inset-0 bg-black/40 backdrop-blur-sm z-5"></div>
+
+                  {/* Wrapper pro text + SVG (z-10 aby bylo nad overlayem) */}
+                  <div className="absolute z-10 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center px-4">
+                    <h2 className="text-[30px] sm:text-[40px] font-montserrat text-white whitespace-nowrap">
+                      Těšíme se na vás!
+                    </h2>
+
+                    {/* SVG podtržení: umístěné přímo v boxu pod textem */}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 600 36"
+                      className="w-[100%] h-7 mt-[-7px] max-w-[560px] mx-auto pointer-events-none"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M6 18c80 28 180 -18 300 6 80 18 140 8 288 -10"
+                        stroke="#FFD166"
+                        strokeWidth="8"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        fill="none"
+                        style={{ filter: "drop-shadow(0 4px 6px rgba(0,0,0,0.35))" }}
+                      />
+                    </svg>
+                  </div>
                 </div>
               </div>
             </div>
