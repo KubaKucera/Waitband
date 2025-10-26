@@ -50,7 +50,7 @@ export default function ConsertsPage() {
             transition={{ delay: 0.6, duration: 1, ease: "easeOut" }}
             className="flex flex-col items-center gap-8 w-full"
           >
-            <SectionTitle title="2025" />
+            {/*<SectionTitle title="2025" />*/}
             {/* Seznam koncertů */}
             <div className="w-full max-w-3xl z-10 flex flex-col gap-10 px-4 sm:px-6 md:px-0">
               {concertData.map((text, index) => {
