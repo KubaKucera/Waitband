@@ -116,7 +116,7 @@ export default function FooterWithNewsletter() {
             Technický rider
           </Link>
           <p className="mt-4 text-center md:text-right">
-            &copy; 2024 WAIT – Všechna práva vyhrazena.
+            &copy; 2025 WAIT – Všechna práva vyhrazena.
           </p>
         </div>
 
