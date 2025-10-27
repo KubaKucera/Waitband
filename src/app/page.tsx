@@ -133,7 +133,7 @@ export default function Home() {
 
         <section id="uvod-section" className="relative flex flex-col items-center px-4 pt-0 sm:pt-[30px] md:pt-[50px]">
           {/* Nadpis bez animace */}
-          <div className="relative w-full justify-center items-center mt-6 sm:mt-6 md:mt-0">
+          <div className="relative w-full justify-center items-center mt-9 sm:mt-9 md:mt-0">
             <TitleWithLines title="Úvod Wait" />
           </div>          
 
