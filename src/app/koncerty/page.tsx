@@ -100,7 +100,7 @@ export default function ConsertsPage() {
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 600 36"
-                      className="w-[100%] h-7 mt-[-7px] max-w-[560px] mx-auto pointer-events-none"
+                      className="w-[100%] h-7 mt-[-10px] max-w-[560px] mx-auto pointer-events-none"
                       aria-hidden="true"
                     >
                       <path
