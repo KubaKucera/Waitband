@@ -58,17 +58,17 @@ const Content = () => (
         </span>
       </div>
       <div>
-        <strong className="text-orange-400">Pavel Herynk</strong> – kytary, texty<br />
-        <span className="text-gray-200 text-sm">
-          Předchozí skupiny: Beautiful Losers, Wild Palms, Anachronic
-        </span>
-      </div>
-      <div>
         <strong className="text-orange-400">Marek Kopecký</strong> – bicí<br />
         <span className="text-gray-200 text-sm">
           Předchozí skupiny: Monantes
         </span>
       </div>
+      <div>
+        <strong className="text-orange-400">Pavel Herynk</strong> – kytary, texty<br />
+        <span className="text-gray-200 text-sm">
+          Předchozí skupiny: Beautiful Losers, Wild Palms, Anachronic
+        </span>
+      </div>      
     </motion.div>
   </div>
 );
