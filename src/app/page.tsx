@@ -333,7 +333,7 @@ export default function Home() {
                   animate={{ scale: isLargeScreen ? 1.1 : 1, opacity: 1 }}
                   exit={{ scale: 0.9, opacity: 0 }}
                   transition={{ duration: 0.4, ease: "easeOut" }}
-                  className="relative bg-neutral-900 text-white max-w-3xl w-full rounded-2xl shadow-2xl overflow-hidden"
+                  className="relative bg-neutral-900 text-white max-w-2xl w-full rounded-2xl shadow-2xl overflow-hidden"
                   onClick={(e) => e.stopPropagation()}
                   >
                   {/* --- HERO image section --- */}
