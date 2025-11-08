@@ -441,7 +441,7 @@ export default function NewsPage() {
             {/* --- Modal content --- */}
             <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: isLargeScreen ? 1.25 : 1, opacity: 1 }}
+            animate={{ scale: isLargeScreen ? 1.15 : 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
             className="relative bg-neutral-900 text-white max-w-2xl w-full rounded-2xl shadow-2xl overflow-hidden"
