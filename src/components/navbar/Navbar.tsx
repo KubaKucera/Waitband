@@ -151,7 +151,7 @@ export default function Navbar() {
           <button
             onClick={toggleMenu}
             aria-expanded={menuOpen}
-            aria-controls="mobile-menu"  
+            aria-controls="mobile-menu"
             className={`flex items-center gap-2 cursor-pointer mt-1 transition-colors duration-300 ${
               menuOpen
                 ? "text-white"
@@ -161,6 +161,10 @@ export default function Navbar() {
             }`}
             aria-label={menuOpen ? "Zavřít menu" : "Otevřít menu"}
           >
+            {/* Text MENU vlevo */}
+            <span className="text-lg uppercase font-medium">Menu</span>
+
+            {/* Ikona vpravo */}
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={menuOpen ? "x-icon" : "menu-icon"}
@@ -170,20 +174,12 @@ export default function Navbar() {
                 transition={{ duration: 0.25, ease: "easeOut" }}
               >
                 {menuOpen ? (
-                  <FaTimes size={26} strokeWidth={1.4} />
+                  <FaTimes size={24} strokeWidth={1.4} />
                 ) : (
-                  <FaBars size={26} strokeWidth={1.4} />
+                  <FaBars size={24} strokeWidth={1.4} />
                 )}
               </motion.div>
             </AnimatePresence>
-
-            {/* Text vedle ikony */}
-            <motion.span
-              key={menuOpen ? "close-text" : "menu-text"}              
-              className="text-lg uppercase font-medium"
-            >
-              {menuOpen ? "Menu" : "Menu"}
-            </motion.span>
           </button>
         </div>
       </div>
