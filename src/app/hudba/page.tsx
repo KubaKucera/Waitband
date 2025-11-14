@@ -4,15 +4,15 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-import image1 from "../../../public/assets/images/music/february29th.jpg";
-import image2 from "../../../public/assets/images/music/carelessDreaming.jpg";
-import image3 from "../../../public/assets/images/music/losingSleep.jpg";
-import image4 from "../../../public/assets/images/music/daydream.jpg";
-import image5 from "../../../public/assets/images/music/followMeToHell.jpg";
-import image6 from "../../../public/assets/images/music/subwayTrain.jpg";
-import image7 from "../../../public/assets/images/music/hateYou.jpg";
-import image8 from "../../../public/assets/images/music/horoscop.jpg";
-import image9 from "../../../public/assets/images/music/achiever.jpg";
+import february from "../../../public/assets/images/music/february29th.jpg";
+import losing from "../../../public/assets/images/music/losingSleep.jpg";
+import careless from "../../../public/assets/images/music/carelessDreaming.jpg";
+import subway from "../../../public/assets/images/music/subwayTrain.jpg";
+import daydream from "../../../public/assets/images/music/daydream.jpg";
+import follow from "../../../public/assets/images/music/followMeToHell.jpg";
+import horoscop from "../../../public/assets/images/music/horoscop.jpg";
+import hate from "../../../public/assets/images/music/hateYou.jpg";
+import achiever from "../../../public/assets/images/music/achiever.jpg";
 import texture from "../../../public/assets/textures/texture.jpg";
 import appleMusic from "../../../public/assets/icons/appleMusic.svg";
 import spotify from "../../../public/assets/icons/spotify.svg";
@@ -21,41 +21,41 @@ import TitleWithLines from "@/components/titleWithLines/TitleWithLines";
 import { motion } from "framer-motion";
 import SideAccentLine from "@/components/sideAccentLine/SideAccentLine";
 
-const images = [image1, image2, image3, image4, image5, image6, image7, image8, image9];
+const images = [february, losing, careless, subway, daydream, follow, horoscop, hate, achiever];
 
 const soundcloudSongs = [
   { title: "February 29th", url: "https://soundcloud.com/wait-band-official/february-29th" },
-  { title: "Careless Dreaming", url: "https://soundcloud.com/wait-band-official/careless-dreaming" },
   { title: "Losing Sleep", url: "https://soundcloud.com/wait-band-official/losing-sleep" },
-  { title: "Daydream", url: "https://soundcloud.com/wait-band-official/daydream" },
-  { title: "Follow Me To Hell", url: "https://soundcloud.com/wait-band-official/follow-me-to-hell" },  
+  { title: "Careless Dreaming", url: "https://soundcloud.com/wait-band-official/careless-dreaming" },
   { title: "Subway Train", url: "https://soundcloud.com/wait-band-official/subway-train" },
+  { title: "Daydream", url: "https://soundcloud.com/wait-band-official/daydream" },
+  { title: "Follow Me To Hell", url: "https://soundcloud.com/wait-band-official/follow-me-to-hell" },
+  { title: "Horoskop", url: "https://soundcloud.com/wait-band-official/horoskop-horoscope" },
   { title: "Hate You", url: "https://soundcloud.com/wait-band-official/hate-you" },
-  { title: "Horoskop", url: "https://soundcloud.com/wait-band-official/horoskop-horoscope" },  
   { title: "Achiever", url: "https://soundcloud.com/wait-band-official/achiever" },
 ];
 
 const appleMusicSongs = [
   { title: "February 29th", url: "https://music.apple.com/gh/album/february-29th/1479578756?i=1479579086" },
-  { title: "Careless Dreaming", url: "https://music.apple.com/gh/album/careless-dreaming/1479578756?i=1479578960" },
   { title: "Losing Sleep", url: "https://music.apple.com/gh/album/losing-sleep/1479578756?i=1479578767" },
+  { title: "Careless Dreaming", url: "https://music.apple.com/gh/album/careless-dreaming/1479578756?i=1479578960" },
+  { title: "Subway Train", url: "https://music.apple.com/gh/album/subway-train/1479578756?i=1479578770" },
   { title: "Daydream", url: "https://music.apple.com/gh/album/daydream/1479578756?i=1479578955" },
   { title: "Follow Me To Hell", url: "https://music.apple.com/gh/album/follow-me-to-hell/1122535403?i=1122535560" },
-  { title: "Subway Train", url: "https://music.apple.com/gh/album/subway-train/1479578756?i=1479578770" },
-  { title: "Hate You", url: "https://music.apple.com/gh/album/hate-you/1122535403?i=1122535559" },
   { title: "Horoskop", url: "" },
+  { title: "Hate You", url: "https://music.apple.com/gh/album/hate-you/1122535403?i=1122535559" },
   { title: "Achiever", url: "https://music.apple.com/gh/album/achiever/1122535403?i=1122535815" },
 ];
 
 const spotifyMusicSongs = [
   { title: "February 29th", url: "https://open.spotify.com/track/4hy5ZgeVleEN4LxzX4DVUi" },
-  { title: "Careless Dreaming", url: "https://open.spotify.com/track/6TuqwEvhvUhmbyfYX96cIL" },  
   { title: "Losing Sleep", url: "https://open.spotify.com/track/56Cp5nf8gnYEGjQAigUciX" },
+  { title: "Careless Dreaming", url: "https://open.spotify.com/track/6TuqwEvhvUhmbyfYX96cIL" },
+  { title: "Subway Train", url: "https://open.spotify.com/track/2Grjcg1SoCU7vWsqoCX9Qr" },
   { title: "Daydream", url: "https://open.spotify.com/track/3mQLGi3hzXECZ2CsocLDMt" },
   { title: "Follow Me To Hell", url: "https://open.spotify.com/track/6hEF1OxQBlMdwhDo8Q18CF" },
-  { title: "Subway Train", url: "https://open.spotify.com/track/2Grjcg1SoCU7vWsqoCX9Qr" },
+  { title: "Horoskop", url: "" },
   { title: "Hate You", url: "https://open.spotify.com/track/2rrTaT2f8xdzNWYgFyuJzf" },
-  { title: "Horoskop", url: "" },  
   { title: "Achiever", url: "https://open.spotify.com/track/2P5boFog1gp3RZR5qZNpVT" },
 ];
 

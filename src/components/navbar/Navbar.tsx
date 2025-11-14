@@ -101,7 +101,7 @@ export default function Navbar() {
       }`}
       style={{ height: "77px" }}
     >
-      <div className="flex items-center justify-between px-4 lg:px-40 monitor:px-80 h-full">
+      <div className="flex items-center justify-between px-4 lg:px-40 monitor:px-96 h-full">
         {/* Logo */}
         <motion.div
           className="z-50 cursor-pointer"
@@ -113,7 +113,7 @@ export default function Navbar() {
             <Image
               src={scrolled ? blackTitle : title}
               alt="WAIT"
-              className="w-24 sm:w-24 md:w-32 h-auto hover:brightness-90 transition-transform duration-500"
+              className="w-[87px] sm:w-[87px] md:w-[100px] h-auto hover:brightness-90 transition-transform duration-500"
               style={{ /*transform: `scale(${titleScale})`*/ transformOrigin: "left center" }}
             />
           </Link>
