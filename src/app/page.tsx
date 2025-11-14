@@ -12,8 +12,8 @@ import Image from "next/image";
 import { ExternalLink, X } from "lucide-react";
 import Link from "next/link";
 import image1 from "../../public/assets/images/music/february29th.jpg";
-import image2 from "../../public/assets/images/music/carelessDreaming.jpg";
-import image3 from "../../public/assets/images/music/losingSleep.jpg";
+import image2 from "../../public/assets/images/music/losingSleep.jpg";
+import image3 from "../../public/assets/images/music/carelessDreaming.jpg";
 import appleMusic from "../../public/assets/icons/appleMusic.svg";
 import spotify from "../../public/assets/icons/spotify.svg";
 import soundcloud from "../../public/assets/icons/soundcloud.svg";
@@ -23,8 +23,8 @@ const images = [image1, image2, image3];
 
 const soundcloudSongs = [
   { title: "February 29th", url: "https://soundcloud.com/wait-band-official/february-29th" },
-  { title: "Careless Dreaming", url: "https://soundcloud.com/wait-band-official/careless-dreaming" },
   { title: "Losing Sleep", url: "https://soundcloud.com/wait-band-official/losing-sleep" },
+  { title: "Careless Dreaming", url: "https://soundcloud.com/wait-band-official/careless-dreaming" },
   { title: "Daydream", url: "https://soundcloud.com/wait-band-official/daydream" },
   { title: "Follow Me To Hell", url: "https://soundcloud.com/wait-band-official/follow-me-to-hell" },  
   { title: "Subway Train", url: "https://soundcloud.com/wait-band-official/subway-train" },
@@ -35,8 +35,8 @@ const soundcloudSongs = [
 
 const appleMusicSongs = [
   { title: "February 29th", url: "https://music.apple.com/gh/album/february-29th/1479578756?i=1479579086" },
-  { title: "Careless Dreaming", url: "https://music.apple.com/gh/album/careless-dreaming/1479578756?i=1479578960" },
   { title: "Losing Sleep", url: "https://music.apple.com/gh/album/losing-sleep/1479578756?i=1479578767" },
+  { title: "Careless Dreaming", url: "https://music.apple.com/gh/album/careless-dreaming/1479578756?i=1479578960" },
   { title: "Daydream", url: "https://music.apple.com/gh/album/daydream/1479578756?i=1479578955" },
   { title: "Follow Me To Hell", url: "https://music.apple.com/gh/album/follow-me-to-hell/1122535403?i=1122535560" },
   { title: "Subway Train", url: "https://music.apple.com/gh/album/subway-train/1479578756?i=1479578770" },
@@ -47,8 +47,8 @@ const appleMusicSongs = [
 
 const spotifyMusicSongs = [
   { title: "February 29th", url: "https://open.spotify.com/track/4hy5ZgeVleEN4LxzX4DVUi" },
-  { title: "Careless Dreaming", url: "https://open.spotify.com/track/6TuqwEvhvUhmbyfYX96cIL" },  
   { title: "Losing Sleep", url: "https://open.spotify.com/track/56Cp5nf8gnYEGjQAigUciX" },
+  { title: "Careless Dreaming", url: "https://open.spotify.com/track/6TuqwEvhvUhmbyfYX96cIL" },   
   { title: "Daydream", url: "https://open.spotify.com/track/3mQLGi3hzXECZ2CsocLDMt" },
   { title: "Follow Me To Hell", url: "https://open.spotify.com/track/6hEF1OxQBlMdwhDo8Q18CF" },
   { title: "Subway Train", url: "https://open.spotify.com/track/2Grjcg1SoCU7vWsqoCX9Qr" },
