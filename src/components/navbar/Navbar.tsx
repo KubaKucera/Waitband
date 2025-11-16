@@ -101,7 +101,7 @@ export default function Navbar() {
       }`}
       style={{ height: "77px" }}
     >
-      <div className="flex items-center justify-between px-4 lg:px-40 monitor:px-96 h-full">
+      <div className="flex items-center justify-between px-4 lg:px-48 monitor:px-96 h-full">
         {/* Logo */}
         <motion.div
           className="z-50 cursor-pointer"
