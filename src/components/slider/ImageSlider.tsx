@@ -3,11 +3,11 @@
 import Image from "next/image";
 import Slider from "react-slick";
 
-import image1 from "../../../public/assets/images/slider/slides/image2.jpeg";
-import image2 from "../../../public/assets/images/slider/slides/image3.jpg";
-import image3 from "../../../public/assets/images/slider/slides/image1.jpeg";
-import image4 from "../../../public/assets/images/slider/slides/image10.jpg";
-import image5 from "../../../public/assets/images/slider/slides/image9.jpeg";
+import image1 from "../../../public/assets/images/slider/slides/image1.jpeg";
+import image2 from "../../../public/assets/images/slider/slides/image7.jpg";
+import image3 from "../../../public/assets/images/slider/slides/image3.jpg";
+import image4 from "../../../public/assets/images/slider/slides/image9.jpeg";
+import image5 from "../../../public/assets/images/slider/slides/image11.jpeg";
 
 function PrevArrow({ onClick }: { onClick?: () => void }) {
   return (
@@ -45,9 +45,9 @@ function NextArrow({ onClick }: { onClick?: () => void }) {
 
 export default function ImageSlider() {
   const images = [
-    { src: image3, alt: "Slide 1" },
+    { src: image1, alt: "Slide 1" },
     { src: image2, alt: "Slide 2" },
-    { src: image1, alt: "Slide 3" },
+    { src: image3, alt: "Slide 3" },
     { src: image4, alt: "Slide 4" },
     { src: image5, alt: "Slide 5" },
   ];
@@ -74,12 +74,12 @@ export default function ImageSlider() {
     <div className="relative z-40 overflow-x-hidden bg-black">
       {/* wrapper pro vertikální odsazení */}
       <div className="mt-16 sm:mt-16 md:mt-0">
-        <div className="relative w-screen h-[40vh] sm:h-[70vh] md:h-[80vh] lg:h-[110vh] monitor:h-[100vh] overflow-hidden">
+        <div className="relative w-screen h-[40vh] sm:h-[70vh] md:h-[80vh] lg:h-[120vh] monitor:h-[100vh] overflow-hidden">
           <Slider {...settings}>
             {images.map((img, index) => (
               <div
                 key={index}
-                className="relative w-screen h-[40vh] sm:h-[70vh] md:h-[80vh] lg:h-[110vh] monitor:h-[100vh]"
+                className="relative w-screen h-[40vh] sm:h-[70vh] md:h-[80vh] lg:h-[120vh] monitor:h-[100vh]"
               >
                 <Image
                   src={img.src}

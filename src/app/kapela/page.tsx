@@ -4,8 +4,8 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 
-import ivanImage from "../../../public/assets/images/band/ivan.jpg";
-import pavelImage from "../../../public/assets/images/band/pavel.jpg";
+import ivanImage from "../../../public/assets/images/band/ivan.jpeg";
+import pavelImage from "../../../public/assets/images/band/pavel.jpeg";
 import martinaImage from "../../../public/assets/images/band/martina.jpg";
 import marekImage from "../../../public/assets/images/band/marek.jpeg";
 import texture from "../../../public/assets/textures/texture.jpg";
