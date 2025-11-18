@@ -145,10 +145,10 @@ export default function Home() {
             className="w-full flex flex-col items-center"
           >
             {/* Novinky */}
-            <section id="novinky-section" className="relative flex flex-col items-center w-full max-w-6xl mt-12">
+            <section id="novinky-section" className="relative flex flex-col items-center w-full max-w-6xl monitor:max-w-7xl mt-12">
               <SectionTitle title="Novinky" />
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-11 w-full">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 monitor:gap-10 mt-11 w-full">
                 {newsData.slice(0, 3).map((item) => (
                   <motion.div
                     key={item.id}
@@ -163,10 +163,10 @@ export default function Home() {
                         src={item.image}
                         alt={item.title}
                         fill
-                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                        className="object-cover monitor:object-top transition-transform duration-700 group-hover:scale-105"
                       />
                     </div>
-                    <div className="p-5 text-white">
+                    <div className="p-5 monitor:p-6 space-y-1.5 monitor:space-y-2 text-white">
                       <span className="inline-block border-neonPink border-2 px-2 py-0.5 rounded-full text-xs font-semibold mb-1">
                         {item.category}
                       </span>
@@ -205,10 +205,10 @@ export default function Home() {
             </section>
 
             {/* Hudba */}
-            <section id="hudba-section" className="relative flex flex-col items-center w-full max-w-6xl mt-12">
+            <section id="hudba-section" className="relative flex flex-col items-center w-full max-w-6xl monitor:max-w-7xl mt-12">
               <SectionTitle title="Hudba" />
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-11 w-full px-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 monitor:gap-10 mt-11 w-full px-2">
                 {[image1, image2, image3].map((img, index) => (
                   <div
                     key={index}
@@ -269,10 +269,10 @@ export default function Home() {
             </section>
 
             {/* Videa */}
-            <section id="videa-section" className="relative flex flex-col items-center w-full max-w-6xl mt-12">
+            <section id="videa-section" className="relative flex flex-col items-center w-full max-w-6xl monitor:max-w-7xl mt-12">
               <SectionTitle title="Videa" />
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-11 w-full px-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 monitor:gap-10 mt-11 w-full px-2">
                 <LiteYouTubeEmbed videoId="w4Xn_DzsC6o" title="WAIT - Losing Sleep (Live)" />
                 <LiteYouTubeEmbed videoId="M_ugx3HzqME" title="WAIT - Horoskop (Official Music Video)" />
                 <LiteYouTubeEmbed videoId="8Tupra8tJiY" title="WAIT - Modelka (Official Music Video)" />

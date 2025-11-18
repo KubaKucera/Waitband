@@ -148,7 +148,7 @@ export default function PhotosPage() {
             className="flex flex-col items-center gap-8 w-full"
           >
             <div className="flex flex-col items-center gap-8 w-full">
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-6xl px-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-7 monitor:gap-9 w-full max-w-6xl monitor:max-w-7xl px-2">
                 {images.slice(0, showMore ? images.length : 9).map((image, index) => (
                   <div
                     key={index}

@@ -21,15 +21,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en" className="h-full overflow-x-hidden">
       <body className="min-h-screen flex flex-col overflow-x-hidden">
         <CustomCookieConsent />
         <Navbar />
-        <ScrollToTopButton />        
+        <ScrollToTopButton />
         {children}
         <Newsletter />
         <Footer />

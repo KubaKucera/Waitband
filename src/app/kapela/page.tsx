@@ -17,22 +17,14 @@ import SideAccentLine from "@/components/sideAccentLine/SideAccentLine";
 
 const Content = () => (
   <div className="text-center max-w-4xl mx-auto text-white px-4">
-    <motion.h3
-      initial={{ opacity: 0, y: 8 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.15, duration: 0.45 }}
+    <motion.h3      
       className="text-orange-400 uppercase font-bold mb-3"
       style={{ fontSize: "clamp(1.05rem, 2.2vw, 2.25rem)" }}
     >
       O nás
     </motion.h3>
 
-    <motion.p
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.25, duration: 0.45 }}
+    <motion.p      
       className="mb-4 leading-relaxed"
       style={{ fontSize: "clamp(0.95rem, 1.6vw, 1.125rem)", color: "rgba(255,255,255,0.95)" }}
     >
@@ -40,11 +32,7 @@ const Content = () => (
       Současnou sestavu tvoří Ivan Kučera, Martina Panchártková, Marek Kopecký a Pavel Herynk.
     </motion.p>
 
-    <motion.div
-      initial={{ opacity: 0, y: 6 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.35, duration: 0.45 }}
+    <motion.div      
       className="space-y-3 leading-relaxed"
       style={{ fontSize: "clamp(0.9rem, 1.4vw, 1.1rem)", color: "rgba(235,235,235,0.95)" }}
     >
@@ -106,7 +94,7 @@ export default function BandPage() {
             className="flex flex-col items-center gap-8 w-full"
           >
             {/* Členové kapely (responsive grid) */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-10 w-full max-w-7xl px-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-8 monitor:gap-10 w-full max-w-7xl px-4">
               {members.map((member, index) => (
                 <div
                   key={index}
@@ -159,15 +147,7 @@ export default function BandPage() {
 
                   {/* Content centered inside image */}
                   <div className="absolute inset-0 flex items-center justify-center p-6 sm:p-10">
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, margin: "-100px" }}
-                      transition={{ duration: 0.6, ease: "easeOut" }}
-                      className="w-full"
-                    >
-                      <Content />
-                    </motion.div>
+                    <Content />
                   </div>
                 </div>
               </div>

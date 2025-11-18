@@ -186,7 +186,7 @@ function AsideContent({
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease: "easeOut" }}
-              className="cursor-pointer p-3 rounded-lg bg-white/5 hover:bg-white/10 text-gray-200 transition"
+              className="cursor-pointer p-3 space-y-1 rounded-lg bg-white/5 hover:bg-white/10 text-gray-200 transition"
             >
               <span className="inline-block border-neonPink border-2 text-white px-2 py-0.5 rounded-full text-xs font-semibold mb-1">
                 {item.category}
@@ -288,7 +288,7 @@ export default function NewsPage() {
             className="flex flex-col items-center gap-8 w-full"
           >
             {/* Search - DESKTOP only (skryté na mobilu) */}
-            <div className="relative w-full max-w-3xl mb-6 hidden lg:block">
+            <div className="relative w-full max-w-3xl monitor:max-w-4xl mb-6 hidden lg:block">
               <input
                 type="text"
                 placeholder="Vyhledat příspěvek..."
@@ -309,7 +309,7 @@ export default function NewsPage() {
             </div>
 
             {/* Main + sidebar (desktop only) */}
-            <div className="w-full max-w-6xl flex flex-col lg:flex-row gap-8">
+            <div className="w-full max-w-6xl monitor:max-w-7xl flex flex-col lg:flex-row gap-8">
               {/* Hlavní článek */}
               {mainArticle && (
                 <motion.div
@@ -324,10 +324,10 @@ export default function NewsPage() {
                     alt={mainArticle.title}
                     width={800}
                     height={500}
-                    className="object-cover w-full h-[500px] rounded-3xl transform group-hover:scale-105 transition-transform duration-700"
+                    className="object-cover w-full h-[500px] monitor:h-[600px] rounded-3xl transform group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-                  <div className="absolute bottom-6 left-6 right-6 text-white space-y-1">
+                  <div className="absolute bottom-6 left-6 right-6 text-white space-y-2">
                     <span className="inline-block border-neonPink border-2 text-white px-3 py-1 rounded-full text-xs font-semibold mb-1">
                       {mainArticle.category}
                     </span>
@@ -352,7 +352,7 @@ export default function NewsPage() {
                   categories={categories}
                   filteredNews={filteredNews}
                   setActive={setActive}
-                  wrapperClassName={"h-[500px]"}
+                  wrapperClassName={"h-[500px] monitor:h-[600px]"}
                   search={search}
                   setSearch={setSearch}
                 />
@@ -360,11 +360,11 @@ export default function NewsPage() {
             </div>
 
             {/* Grid dalších článků */}
-            <div className="w-full max-w-6xl mt-0 sm:mt-0 md:mt-4">
+            <div className="w-full max-w-6xl monitor:max-w-7xl mt-0 sm:mt-0 md:mt-4">
               <h3 className="text-white text-xl font-semibold mb-6">
                 Další příspěvky
               </h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 monitor:gap-10">
                 {otherArticles.slice(0, 3).map((item) => (
                   <motion.div
                     key={item.id}
@@ -379,10 +379,10 @@ export default function NewsPage() {
                         src={item.image}
                         alt={item.title}
                         fill
-                        className="object-cover transform group-hover:scale-105 transition-transform duration-700"
+                        className="object-cover monitor:object-top transform group-hover:scale-105 transition-transform duration-700"
                       />
                     </div>
-                    <div className="p-5 text-white">
+                    <div className="p-5 monitor:p-6 space-y-1.5 monitor:space-y-2 text-white">
                       <span className="inline-block border-neonPink border-2 text-white px-2 py-0.5 rounded-full text-xs font-semibold mb-1">
                         {item.category}
                       </span>

@@ -72,7 +72,7 @@ export default function ContactPage() {
           backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(20, 20, 20, 0.85)), url(${texture.src})`,
         }}
       > 
-        <div id="contact-section" className="h-auto flex justify-center items-center pt-[120px] px-8 bg-fixed bg-cover bg-center bg-no-repeat">
+        <div id="contact-section" className="h-auto flex justify-center items-center pt-[130px] px-8 bg-fixed bg-cover bg-center bg-no-repeat">
           {/*<Image src={rightArrow} alt="Arrow Right" className="hidden xl:block absolute left-[-150px] top-[160px] rotate-15 opacity-50 w-[265px] monitor:w-[330px]" />
           <Image src={leftArrow} alt="Arrow Left" className="hidden xl:block absolute right-[-150px] top-[425px] opacity-50 w-[265px] monitor:w-[330px]" /> */}
 

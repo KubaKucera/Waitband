@@ -28,7 +28,7 @@ const AlbumCard = ({
         src={cover}
         alt={title}
         width={400}
-        height={300}
+        height={400}
         className="rounded-md shadow-lg"
       />
     )}
@@ -39,10 +39,9 @@ const AlbumCard = ({
       src={url}
       width="100%"
       height="400"
+      className="rounded-md shadow-lg w-full h-[400px] monitor:h-[450px]"
       frameBorder="0"
       allow="encrypted-media"
-      className="rounded-md shadow-lg w-full"
-      title={`Spotify - ${title}`}
       allowFullScreen
     ></iframe>
     {links && (
@@ -118,7 +117,7 @@ export default function AlbumsPage() {
             Ukázky skladeb v níže uvedených albech jsou časově omezeny. Pro plný poslech se prosím přihlaste do svého účtu na Spotify.
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-4 z-10 max-w-6xl w-full mx-auto justify-items-center">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 monitor:gap-9 mb-4 z-10 max-w-6xl monitor:max-w-7xl w-full mx-auto justify-items-center">
               {albums.map((album, index) => (
                 <AlbumCard key={index} {...album} />
               ))}

@@ -15,7 +15,7 @@ export const newsData: NewsItem[] = [
     title: "Autokemp Sečská přehrada",
     date: "18. července 2025",
     image: "/assets/images/news/sec.jpg",
-    excerpt: "Přesně to, co máme rádi. Malý letní stage, výhled na vodu, pivko na dosah, lidi, co přišli za hudbou. A atmosféra, která se nedá naplánovat – jen zažít.",
+    excerpt: "Přesně to, co máme rádi. Malý letní stage, výhled na vodu, pivko na dosah, lidi, co přišli za hudbou...",
     content:
       "Přesně to, co máme rádi. Malý letní stage, výhled na vodu, pivko na dosah, lidi, co přišli za hudbou. A atmosféra, která se nedá naplánovat – jen zažít.\n\n" +
       "DASI bar v autokempu Seč se včera proměnil v rockovej klub. Martina naplno, Ivan jak motorová pila, a my ostatní jsme si to dali, jak nejlíp umíme. Díky @všichni, kdo přišli, zpívali, stáli vepředu i vzadu.",      
