@@ -8,6 +8,7 @@ import Link from "next/link";
 export default function AnnouncementModal() {
   const [open, setOpen] = useState(false);
   const [isLargeScreen, setIsLargeScreen] = useState(false);
+  const [active, setActive] = useState("");  
 
   useEffect(() => {
     const checkScreen = () => setIsLargeScreen(window.innerWidth >= 1600);
@@ -23,6 +24,21 @@ export default function AnnouncementModal() {
       sessionStorage.setItem("announcement_seen", "true");
     }
   }, []);
+
+  useEffect(() => {
+    if (active) {
+      document.documentElement.style.overflow = "hidden";
+      document.body.style.overflow = "hidden";
+    } else {
+      document.documentElement.style.overflow = "auto";
+      document.body.style.overflow = "auto";
+    }
+  
+    return () => {
+      document.documentElement.style.overflow = "auto";
+      document.body.style.overflow = "auto";
+    };
+  }, [active]);
 
   return (
     <AnimatePresence>

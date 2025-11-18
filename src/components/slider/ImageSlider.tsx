@@ -74,12 +74,12 @@ export default function ImageSlider() {
     <div className="relative z-40 overflow-x-hidden bg-black">
       {/* wrapper pro vertikální odsazení */}
       <div className="mt-16 sm:mt-16 md:mt-0">
-        <div className="relative w-screen h-[40vh] sm:h-[70vh] md:h-[80vh] lg:h-[120vh] monitor:h-[100vh] overflow-hidden">
+        <div className="relative w-screen h-[40vh] sm:h-[70vh] md:h-[80vh] lg:h-[120vh] xl:h-[120vh] monitor:h-[110vh] overflow-hidden">
           <Slider {...settings}>
             {images.map((img, index) => (
               <div
                 key={index}
-                className="relative w-screen h-[40vh] sm:h-[70vh] md:h-[80vh] lg:h-[120vh] monitor:h-[100vh]"
+                className="relative w-screen h-[40vh] sm:h-[70vh] md:h-[80vh] lg:h-[120vh] xl:h-[120vh] monitor:h-[110vh]"
               >
                 <Image
                   src={img.src}
