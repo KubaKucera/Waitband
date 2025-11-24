@@ -40,7 +40,7 @@ export default function ConsertsPage() {
           backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(20, 20, 20, 0.85)), url(${texture.src})`,
         }}
       >
-        <section id="concert-section" className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden gap-8 pt-[115px]">
+        <section id="concert-section" className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden gap-8 pt-[110px]">
           {/* Titulek */}
           <TitleWithLines title="Koncerty" delay={0.3} />          
 
@@ -48,7 +48,7 @@ export default function ConsertsPage() {
             initial={{ opacity: 0, y: 30, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ delay: 0.6, duration: 1, ease: "easeOut" }}
-            className="flex flex-col items-center gap-8 w-full"
+            className="flex flex-col items-center gap-8 mt-6 w-full"
           >
             {/*<SectionTitle title="2025" />*/}
             {/* Seznam koncertů */}

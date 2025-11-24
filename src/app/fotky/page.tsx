@@ -137,7 +137,7 @@ export default function PhotosPage() {
           backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(20, 20, 20, 0.85)), url(${texture.src})`,
         }}
       >
-        <section id="photo-section" className="relative min-h-screen flex flex-col items-center px-4 gap-8 pt-[115px]">
+        <section id="photo-section" className="relative min-h-screen flex flex-col items-center px-4 gap-8 pt-[110px]">
           {/* Titulek */}
           <TitleWithLines title="Fotogalerie" delay={0.3} />      
           
@@ -145,7 +145,7 @@ export default function PhotosPage() {
             initial={{ opacity: 0, y: 30, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ delay: 0.6, duration: 1, ease: "easeOut" }}
-            className="flex flex-col items-center gap-8 w-full"
+            className="flex flex-col items-center gap-8 mt-6 w-full"
           >
             <div className="flex flex-col items-center gap-8 w-full">
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-7 monitor:gap-9 w-full max-w-6xl monitor:max-w-7xl px-2">
@@ -200,7 +200,7 @@ export default function PhotosPage() {
               </div>
             )}
 
-            <div className={`flex justify-center h-[50px] mb-4 ${showMore ? "mt-[15px]" : "mt-0"}`}>
+            <div className={`flex justify-center h-[50px] mb-3 ${showMore ? "mt-[15px]" : "mt-0"}`}>
               <Link href="https://www.instagram.com/wait_band_official/" target="_blank">
                 <button
                   className="group relative px-20 h-[55px] uppercase tracking-[0.12em] rounded-full font-semibold text-[15px]

@@ -66,12 +66,7 @@ export default function Navbar() {
   const toggleMenu = () => setMenuOpen((prev) => !prev);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      setScrolled(scrollY > 50);
-      //setTitleScale(scrollY > 50 ? 0.85 : 1);
-    };
-
+    const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -92,16 +87,16 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 border-b backdrop-blur-md transition-colors duration-500 font-[Geist] ${
+      className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-md transition-all duration-500 font-geist ${
         scrolled && !menuOpen
-          ? "bg-white/90 border-gray-200 text-black"
+          ? "bg-white/80 text-black"
           : !scrolled && !menuOpen
-          ? "bg-black/80 border-gray-600 text-navbarWhite"
-          : "bg-black text-white border-transparent"
+          ? "bg-black/70 text-navbarWhite"
+          : "bg-black/80 text-white"
       }`}
       style={{ height: "77px" }}
     >
-      <div className="flex items-center justify-between px-4 lg:px-48 monitor:px-96 h-full">
+      <div className="relative flex items-center justify-between px-4 lg:px-44 monitor:px-96 h-full">
         {/* Logo */}
         <motion.div
           className="z-50 cursor-pointer"
@@ -113,8 +108,8 @@ export default function Navbar() {
             <Image
               src={scrolled ? blackTitle : title}
               alt="WAIT"
-              className="w-[87px] sm:w-[87px] md:w-[100px] h-auto hover:brightness-90 transition-transform duration-500"
-              style={{ /*transform: `scale(${titleScale})`*/ transformOrigin: "left center" }}
+              className="w-[80px] sm:w-[80px] md:w-[95px] h-auto hover:brightness-90 transition-transform duration-500"
+              style={{ transformOrigin: "left center" }}
             />
           </Link>
         </motion.div>
@@ -133,9 +128,11 @@ export default function Navbar() {
                 <span
                   className={`transition-colors duration-300 ${
                     active
-                      ? "text-neonPink"
+                      ? scrolled 
+                          ? "text-neonPinkDark"
+                          : "text-neonPink"
                       : scrolled
-                      ? "text-gray-900 group-hover:text-neonPink"
+                      ? "text-gray-900 group-hover:text-neonPinkDark"
                       : "text-lightGray group-hover:text-neonPink"
                   }`}
                 >
@@ -161,10 +158,7 @@ export default function Navbar() {
             }`}
             aria-label={menuOpen ? "Zavřít menu" : "Otevřít menu"}
           >
-            {/* Text MENU vlevo */}
             <span className="text-lg uppercase font-medium">Menu</span>
-
-            {/* Ikona vpravo */}
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={menuOpen ? "x-icon" : "menu-icon"}
@@ -173,16 +167,19 @@ export default function Navbar() {
                 exit={{ opacity: 0, scale: 0.8 }}
                 transition={{ duration: 0.25, ease: "easeOut" }}
               >
-                {menuOpen ? (
-                  <FaTimes size={24} strokeWidth={1.4} />
-                ) : (
-                  <FaBars size={24} strokeWidth={1.4} />
-                )}
+                {menuOpen ? <FaTimes size={24} strokeWidth={1.4} /> : <FaBars size={24} strokeWidth={1.4} />}
               </motion.div>
             </AnimatePresence>
           </button>
         </div>
       </div>
+
+      {/* Floating Shadow / Bottom Glow */}
+      {!scrolled && !menuOpen && (
+        <div className="absolute bottom-0 left-0 w-full h-[2px] pointer-events-none overflow-hidden">
+          <div className="w-full h-full rounded-t-xl bg-white/25 backdrop-blur-sm"></div>
+        </div>
+      )}
 
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
@@ -194,12 +191,10 @@ export default function Navbar() {
             exit="exit"
             variants={menuVariants}
             className="fixed inset-0 w-screen h-[100dvh] bg-black flex flex-col items-center justify-center space-y-7 font-semibold z-60"
-            // pokud chceš fallback pro starší prohlížeče, přidej i inline styl:
-            // style={{ minHeight: "100dvh", height: "100dvh" }}
           >
             {navLinks.map(({ name, href, key }, index) => (
-              <motion.div 
-                key={key} 
+              <motion.div
+                key={key}
                 variants={itemVariants}
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.99 }}

@@ -111,7 +111,7 @@ export default function VideosPage(){
           backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(20, 20, 20, 0.85)), url(${texture.src})`,
         }}
       > 
-        <section id="video-section" className="relative min-h-screen flex flex-col items-center px-4 gap-8 pt-[115px]">          
+        <section id="video-section" className="relative min-h-screen flex flex-col items-center px-4 gap-8 pt-[110px]">          
           {/* Titulek */}
           <TitleWithLines title="Videa YT" delay={0.3} />
 
@@ -120,7 +120,7 @@ export default function VideosPage(){
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ delay: 0.6, duration: 1, ease: "easeOut" }}
-            className="flex flex-col items-center gap-8 w-full"
+            className="flex flex-col items-center gap-8 mt-6 w-full"
           >
             {/* Hlavní video - zvětšení výšky */}
             <div className="w-full max-w-[820px] h-auto mb-5 z-30 flex flex-col items-center px-4">
@@ -171,7 +171,7 @@ export default function VideosPage(){
               ))}
             </div>  
 
-            <div className="flex justify-center mb-4 h-[50px]">
+            <div className="flex justify-center mb-3 h-[50px]">
               <Link href="https://www.youtube.com/@waitbandofficial/videos" target="_blank">
                 <button
                   className="group relative px-20 h-[55px] uppercase tracking-[0.12em] rounded-full font-semibold text-[15px]

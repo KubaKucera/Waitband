@@ -72,7 +72,7 @@ export default function ContactPage() {
           backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(20, 20, 20, 0.85)), url(${texture.src})`,
         }}
       > 
-        <div id="contact-section" className="h-auto flex justify-center items-center pt-[130px] px-8 bg-fixed bg-cover bg-center bg-no-repeat">
+        <div id="contact-section" className="h-auto flex justify-center items-center pt-[125px] px-8 bg-fixed bg-cover bg-center bg-no-repeat">
           {/*<Image src={rightArrow} alt="Arrow Right" className="hidden xl:block absolute left-[-150px] top-[160px] rotate-15 opacity-50 w-[265px] monitor:w-[330px]" />
           <Image src={leftArrow} alt="Arrow Left" className="hidden xl:block absolute right-[-150px] top-[425px] opacity-50 w-[265px] monitor:w-[330px]" /> */}
 
@@ -81,7 +81,7 @@ export default function ContactPage() {
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ delay: 0.6, duration: 1, ease: "easeOut" }}
-            className="w-full max-w-4xl p-8 backdrop-blur-md border-2 border-gray-300 text-white rounded-xl shadow-lg"
+            className="w-full max-w-4xl p-8 backdrop-blur-md border-2 border-white/70 text-white rounded-xl shadow-lg"
           >
             <h1 className="text-3xl font-bold text-white uppercase text-center mb-6">Kontakt</h1>
             <p className="text-lg text-gray-400 text-center mb-4">V případě zájmu nás kontaktujte pomocí vyplnění a odeslání formuláře.</p>

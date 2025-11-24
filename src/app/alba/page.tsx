@@ -102,7 +102,7 @@ export default function AlbumsPage() {
           backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(20, 20, 20, 0.85)), url(${texture.src})`,
         }}
       >  
-        <section id="alb-section" className="relative h-auto flex flex-col items-center gap-8 pt-[115px]">          
+        <section id="alb-section" className="relative h-auto flex flex-col items-center gap-8 pt-[110px]">          
 
           {/* Titulek */}
           <TitleWithLines title="Alba" delay={0.3} />
@@ -111,7 +111,7 @@ export default function AlbumsPage() {
             initial={{ opacity: 0, y: 30, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ delay: 0.6, duration: 1, ease: "easeOut" }}
-            className="flex flex-col items-center gap-8 w-full"
+            className="flex flex-col items-center gap-8 mt-6 w-full"
           >
             <p className="text-gray-400 mb-6 text-center text-lg max-w-3xl z-10 leading-6">
             Ukázky skladeb v níže uvedených albech jsou časově omezeny. Pro plný poslech se prosím přihlaste do svého účtu na Spotify.
@@ -123,7 +123,7 @@ export default function AlbumsPage() {
               ))}
             </div>
 
-            <div className="flex justify-center h-[50px] mb-4">
+            <div className="flex justify-center h-[50px] mb-3">
               <Link href="https://open.spotify.com/artist/37DvIv1TkBrTOz16Kk75YI" target="_blank">
                 <button
                   className="group relative px-20 h-[55px] uppercase tracking-[0.12em] rounded-full font-semibold text-[15px]

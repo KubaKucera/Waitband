@@ -26,7 +26,7 @@ const TitleWithLines: FC<TitleWithLinesProps> = ({
 
   return (
     <motion.div
-      className="flex flex-col items-center z-20 mb-6"
+      className="flex flex-col items-center z-20"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}

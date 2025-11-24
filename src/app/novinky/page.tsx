@@ -276,7 +276,7 @@ export default function NewsPage() {
       >
         <section
           id="news-section"
-          className="relative min-h-screen flex flex-col items-center gap-6 pt-[115px] px-4"
+          className="relative min-h-screen flex flex-col items-center gap-6 pt-[110px] px-4"
         >
           {/* Title */}
           <TitleWithLines title="Novinky" delay={0.3} />
@@ -285,7 +285,7 @@ export default function NewsPage() {
             initial={{ opacity: 0, y: 30, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ delay: 0.6, duration: 1, ease: "easeOut" }}
-            className="flex flex-col items-center gap-8 w-full"
+            className="flex flex-col items-center gap-8 mt-6 w-full"
           >
             {/* Search - DESKTOP only (skryté na mobilu) */}
             <div className="relative w-full max-w-3xl monitor:max-w-4xl mb-6 hidden lg:block">
@@ -420,81 +420,71 @@ export default function NewsPage() {
 
       {/* Modal */}
       <AnimatePresence>
-        {active && (
-          <motion.div
-            key="modal"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
-            onClick={() => setActive(null)}
-            >
-            {/* --- Close button (desktop) --- */}
-            <button
-            className="absolute hidden lg:flex right-5 top-5 text-white hover:text-gray-300 transition z-20"
-            onClick={() => setActive(null)}
-            >
-            <X className="w-8 h-8" />
-            </button>
-
-
-            {/* --- Modal content --- */}
-            <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: isLargeScreen ? 1.15 : 1, opacity: 1 }}
-            exit={{ scale: 0.9, opacity: 0 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
-            className="relative bg-neutral-900 text-white max-w-2xl w-full rounded-2xl shadow-2xl overflow-hidden"
-            onClick={(e) => e.stopPropagation()}
-            >
-            {/* --- HERO image section --- */}
-            <div className="relative h-64 sm:h-64 md:h-80 monitor:h-96 w-full">
-            <Image
-            src={active.image}
-            alt={active.title}
-            fill
-            className="object-cover object-top"
-            />
-
-
-            {/* --- Mobile close button: docked to top-right of hero image, rectangular --- */}
-            <button
-            onClick={() => setActive(null)}
-            className="absolute top-2 right-2 lg:hidden flex items-center justify-center px-2 py-2 rounded-full bg-black/70 text-white hover:text-gray-300 transition shadow-md z-20"
-            aria-label="Zavřít článek"
-            >
-            <X className="w-6 h-6" />
-            </button>
-            </div>
-
-
-            {/* --- CONTENT section --- */}
-            <div className="bg-neutral-800 p-6 max-h-[240px] monitor:max-h-[270px] overflow-y-auto space-y-4">
-            <span className="inline-block border-neonPink border-2 text-white px-2 py-0.5 rounded-full text-xs font-semibold mb-2">
-            {active.category}
-            </span>
-
-
-            <p className="text-sm text-gray-400">{active.date}</p>
-            <h2 className="text-2xl font-bold">{active.title}</h2>
-
-
-            <p className="text-gray-200 whitespace-pre-wrap">{active.content}</p>
-
-
-            {active.link && (
-            <a
-            href={active.link}
-            target="_blank"
-            className="inline-flex items-center gap-2 text-sm mt-3 text-neonPink hover:underline"
-            >
-            Více zde <ExternalLink className="w-4 h-4" />
-            </a>
-            )}
-            </div>
-            </motion.div>
-          </motion.div>
-        )}
+              {active && (
+                <motion.div
+                  key="modal"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
+                  onClick={() => setActive(null)}
+                >
+                  {/* --- Close button (desktop) --- */}
+                  <button
+                    className="absolute hidden lg:flex right-5 top-5 text-white hover:text-gray-300 transition z-20"
+                    onClick={() => setActive(null)}
+                  >
+                    <X className="w-8 h-8" />
+                  </button>
+      
+                  {/* --- Modal content --- */}
+                  <motion.div
+                    initial={{ scale: 0.9, opacity: 0 }}
+                    animate={{ scale: isLargeScreen ? 1.15 : 1, opacity: 1 }}
+                    exit={{ scale: 0.9, opacity: 0 }}
+                    transition={{ duration: 0.4, ease: "easeOut" }}
+                    className="relative bg-neutral-900 text-white max-w-2xl w-full rounded-2xl shadow-2xl overflow-hidden"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    {/* HERO image section */}
+                    <div className="relative h-64 sm:h-64 md:h-80 monitor:h-96 w-full">
+                      <Image
+                        src={active.image}
+                        alt={active.title}
+                        fill
+                        className="object-cover object-top"
+                      />
+                      {/* Mobile close button */}
+                      <button
+                        onClick={() => setActive(null)}
+                        className="absolute top-2 right-2 lg:hidden flex items-center justify-center px-2 py-2 rounded-full bg-black/70 text-white hover:text-gray-300 transition shadow-md z-20"
+                        aria-label="Zavřít článek"
+                      >
+                        <X className="w-6 h-6" />
+                      </button>
+                    </div>
+      
+                    {/* CONTENT section */}
+                    <div className="bg-neutral-800 p-6 max-h-[270px] overflow-y-auto space-y-4">
+                      <span className="inline-block border-neonPink border-2 text-white px-2 py-0.5 rounded-full text-xs font-semibold">
+                        {active.category}
+                      </span>
+                      <p className="text-sm text-gray-400">{active.date}</p>
+                      <h2 className="text-2xl font-bold">{active.title}</h2>
+                      <p className="text-gray-200 whitespace-pre-wrap">{active.content}</p>
+                      {active.link && (
+                        <a
+                          href={active.link}
+                          target="_blank"
+                          className="inline-flex items-center gap-2 text-sm mt-3 text-neonPink hover:underline"
+                        >
+                          Více zde <ExternalLink className="w-4 h-4" />
+                        </a>
+                      )}
+                    </div>
+                  </motion.div>
+                </motion.div>
+              )}
       </AnimatePresence>
     </>
   );

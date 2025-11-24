@@ -18,6 +18,7 @@ import appleMusic from "../../public/assets/icons/appleMusic.svg";
 import spotify from "../../public/assets/icons/spotify.svg";
 import soundcloud from "../../public/assets/icons/soundcloud.svg";
 import LiteYouTubeEmbed from "@/components/liteYtEmbed/LiteYouTubeEmbed";
+import SectionTitle from "@/components/sectionTitle/SectionTitle";
 
 const images = [image1, image2, image3];
 
@@ -66,16 +67,7 @@ export default function Home() {
     checkScreen();
     window.addEventListener("resize", checkScreen);
     return () => window.removeEventListener("resize", checkScreen);
-  }, []);
-   
-  const SectionTitle = ({ title }: { title: string }) => (
-    <div className="flex items-center w-full max-w-5xl mx-auto px-6">
-      <h2 className="text-white text-3xl sm:text-3xl md:text-4xl font-bold font-montserrat tracking-wide whitespace-nowrap uppercase">
-        {title}
-      </h2>
-      <div className="flex-1 h-[2px] bg-white ml-6 w-[800px] rounded-tr rounded-br"></div>
-    </div>
-  );
+  }, []); 
 
   const [modalData, setModalData] = useState<{ image: any; title: string; index: number } | null>(null);
   
@@ -131,13 +123,11 @@ export default function Home() {
       >
         <SideAccentLineHome targetId="uvod-section" />
 
-        <section id="uvod-section" className="relative flex flex-col items-center px-4 pt-0 sm:pt-[30px] md:pt-[50px]">
-          {/* Nadpis bez animace */}
+        <section id="uvod-section" className="relative flex flex-col items-center px-4 sm:px-4 md:px-0 pt-0 sm:pt-[30px] md:pt-[50px]">
           <div className="relative w-full justify-center items-center mt-9 sm:mt-9 md:mt-0">
             <TitleWithLines title="Úvod Wait" />
           </div>          
 
-          {/* Motion obaluje vše pod nadpisem */}
           <motion.div
             initial={{ opacity: 0, y: 30, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -145,29 +135,33 @@ export default function Home() {
             className="w-full flex flex-col items-center"
           >
             {/* Novinky */}
-            <section id="novinky-section" className="relative flex flex-col items-center w-full max-w-6xl monitor:max-w-7xl mt-12">
+            <section id="novinky-section" className="relative flex flex-col items-center w-full max-w-6xl monitor:max-w-7xl mt-16">
               <SectionTitle title="Novinky" />
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 monitor:gap-10 mt-11 w-full">
                 {newsData.slice(0, 3).map((item) => (
                   <motion.div
                     key={item.id}
-                    className="relative group cursor-pointer rounded-xl bg-white/5 hover:bg-white/10 overflow-hidden shadow-lg transition"
                     onClick={() => setActive(item)}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, ease: "easeOut" }}
+                    className="
+                      relative group cursor-pointer rounded-xl 
+                      bg-white/5 hover:bg-white/10 
+                      overflow-hidden shadow-lg transition
+                    "
                   >
                     <div className="relative h-56 w-full overflow-hidden">
                       <Image
                         src={item.image}
                         alt={item.title}
                         fill
-                        className="object-cover monitor:object-top transition-transform duration-700 group-hover:scale-105"
+                        className="object-cover monitor:object-top transform group-hover:scale-105 transition-transform duration-700"
                       />
                     </div>
                     <div className="p-5 monitor:p-6 space-y-1.5 monitor:space-y-2 text-white">
-                      <span className="inline-block border-neonPink border-2 px-2 py-0.5 rounded-full text-xs font-semibold mb-1">
+                      <span className="inline-block border-neonPink border-2 text-white px-2 py-0.5 rounded-full text-xs font-semibold mb-1">
                         {item.category}
                       </span>
                       <p className="text-xs text-gray-400">{item.date}</p>
@@ -178,11 +172,11 @@ export default function Home() {
                 ))}
               </div>
 
-              <div className="flex justify-center mt-11 mb-12">
+              <div className="flex justify-center mt-11">
                 <Link href="/novinky">
                   <button
                     className="group relative w-[320px] h-[55px] uppercase tracking-[0.12em] rounded-full font-semibold text-[15px]
-                  text-white transition-all duration-400 ease-out 
+                    text-white transition-all duration-400 ease-out 
                     bg-transparent border-[2px] border-transparent
                     [background:linear-gradient(#0a0a0a,#0a0a0a)_padding-box,linear-gradient(90deg,#ff6a00,#ee0979)_border-box]
                     hover:scale-105 hover:shadow-[0_0_18px_rgba(238,9,121,0.4)]"
@@ -205,10 +199,10 @@ export default function Home() {
             </section>
 
             {/* Hudba */}
-            <section id="hudba-section" className="relative flex flex-col items-center w-full max-w-6xl monitor:max-w-7xl mt-12">
+            <section id="hudba-section" className="relative flex flex-col items-center w-full max-w-6xl monitor:max-w-7xl mt-16">
               <SectionTitle title="Hudba" />
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 monitor:gap-10 mt-11 w-full px-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 monitor:gap-10 mt-11 w-full">
                 {[image1, image2, image3].map((img, index) => (
                   <div
                     key={index}
@@ -221,8 +215,6 @@ export default function Home() {
                       fill
                       className="object-cover transition-transform duration-300 group-hover:scale-105"
                     />
-                  
-                    {/* Motion overlay */}
                     <motion.div
                       initial={{ opacity: 0 }}
                       whileHover={{ opacity: 1 }}
@@ -242,15 +234,9 @@ export default function Home() {
                 ))}
               </div>
 
-              <div className="flex justify-center mt-11 mb-12">
+              <div className="flex justify-center mt-11">
                 <Link href="/hudba">
-                  <button
-                    className="group relative w-[320px] h-[55px] uppercase tracking-[0.12em] rounded-full font-semibold text-[15px]
-                  text-white transition-all duration-400 ease-out 
-                    bg-transparent border-[2px] border-transparent
-                    [background:linear-gradient(#0a0a0a,#0a0a0a)_padding-box,linear-gradient(90deg,#ff6a00,#ee0979)_border-box]
-                    hover:scale-105 hover:shadow-[0_0_18px_rgba(238,9,121,0.4)]"
-                  >
+                  <button className="group relative w-[320px] h-[55px] uppercase tracking-[0.12em] rounded-full font-semibold text-[15px] text-white transition-all duration-400 ease-out bg-transparent border-[2px] border-transparent [background:linear-gradient(#0a0a0a,#0a0a0a)_padding-box,linear-gradient(90deg,#ff6a00,#ee0979)_border-box] hover:scale-105 hover:shadow-[0_0_18px_rgba(238,9,121,0.4)]">
                     Poslechnout více
                     {/* SVG šipka absolutně vpravo */}
                     <svg
@@ -269,24 +255,18 @@ export default function Home() {
             </section>
 
             {/* Videa */}
-            <section id="videa-section" className="relative flex flex-col items-center w-full max-w-6xl monitor:max-w-7xl mt-12">
+            <section id="videa-section" className="relative flex flex-col items-center w-full max-w-6xl monitor:max-w-7xl mt-16">
               <SectionTitle title="Videa" />
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 monitor:gap-10 mt-11 w-full px-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 monitor:gap-10 mt-11 w-full">
                 <LiteYouTubeEmbed videoId="w4Xn_DzsC6o" title="WAIT - Losing Sleep (Live)" />
                 <LiteYouTubeEmbed videoId="M_ugx3HzqME" title="WAIT - Horoskop (Official Music Video)" />
                 <LiteYouTubeEmbed videoId="8Tupra8tJiY" title="WAIT - Modelka (Official Music Video)" />
               </div>
 
-              <div className="flex justify-center mt-11 mb-4">
+              <div className="flex justify-center mt-11 mb-3">
                 <Link href="/videa">
-                  <button
-                    className="group relative w-[320px] h-[55px] uppercase tracking-[0.12em] rounded-full font-semibold text-[15px]
-                  text-white transition-all duration-400 ease-out 
-                    bg-transparent border-[2px] border-transparent
-                    [background:linear-gradient(#0a0a0a,#0a0a0a)_padding-box,linear-gradient(90deg,#ff6a00,#ee0979)_border-box]
-                    hover:scale-105 hover:shadow-[0_0_18px_rgba(238,9,121,0.4)]"
-                  >
+                  <button className="group relative w-[320px] h-[55px] uppercase tracking-[0.12em] rounded-full font-semibold text-[15px] text-white transition-all duration-400 ease-out bg-transparent border-[2px] border-transparent [background:linear-gradient(#0a0a0a,#0a0a0a)_padding-box,linear-gradient(90deg,#ff6a00,#ee0979)_border-box] hover:scale-105 hover:shadow-[0_0_18px_rgba(238,9,121,0.4)]">
                     Další videa
                     {/* SVG šipka absolutně vpravo */}
                     <svg
@@ -309,81 +289,71 @@ export default function Home() {
 
       {/* Modal news */}
       <AnimatePresence>
-              {active && (
-                <motion.div
-                  key="modal"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
-                  onClick={() => setActive(null)}
-                  >
-                  {/* --- Close button (desktop) --- */}
-                  <button
-                  className="absolute hidden lg:flex right-5 top-5 text-white hover:text-gray-300 transition z-20"
-                  onClick={() => setActive(null)}
-                  >
-                  <X className="w-8 h-8" />
-                  </button>
-      
-      
-                  {/* --- Modal content --- */}
-                  <motion.div
-                  initial={{ scale: 0.9, opacity: 0 }}
-                  animate={{ scale: isLargeScreen ? 1.15 : 1, opacity: 1 }}
-                  exit={{ scale: 0.9, opacity: 0 }}
-                  transition={{ duration: 0.4, ease: "easeOut" }}
-                  className="relative bg-neutral-900 text-white max-w-2xl w-full rounded-2xl shadow-2xl overflow-hidden"
-                  onClick={(e) => e.stopPropagation()}
-                  >
-                  {/* --- HERO image section --- */}
-                  <div className="relative h-64 sm:h-64 md:h-80 monitor:h-96 w-full">
-                  <Image
+        {active && (
+          <motion.div
+            key="modal"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
+            onClick={() => setActive(null)}
+          >
+            {/* --- Close button (desktop) --- */}
+            <button
+              className="absolute hidden lg:flex right-5 top-5 text-white hover:text-gray-300 transition z-20"
+              onClick={() => setActive(null)}
+            >
+              <X className="w-8 h-8" />
+            </button>
+
+            {/* --- Modal content --- */}
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: isLargeScreen ? 1.15 : 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              className="relative bg-neutral-900 text-white max-w-2xl w-full rounded-2xl shadow-2xl overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* HERO image section */}
+              <div className="relative h-64 sm:h-64 md:h-80 monitor:h-96 w-full">
+                <Image
                   src={active.image}
                   alt={active.title}
                   fill
                   className="object-cover object-top"
-                  />
-      
-      
-                  {/* --- Mobile close button: docked to top-right of hero image, rectangular --- */}
-                  <button
+                />
+                {/* Mobile close button */}
+                <button
                   onClick={() => setActive(null)}
                   className="absolute top-2 right-2 lg:hidden flex items-center justify-center px-2 py-2 rounded-full bg-black/70 text-white hover:text-gray-300 transition shadow-md z-20"
                   aria-label="Zavřít článek"
-                  >
+                >
                   <X className="w-6 h-6" />
-                  </button>
-                  </div>
-      
-      
-                  {/* --- CONTENT section --- */}
-                  <div className="bg-neutral-800 p-6 max-h-[240px] monitor:max-h-[270px] overflow-y-auto space-y-4">
-                  <span className="inline-block border-neonPink border-2 text-white px-2 py-0.5 rounded-full text-xs font-semibold mb-2">
+                </button>
+              </div>
+
+              {/* CONTENT section */}
+              <div className="bg-neutral-800 p-6 max-h-[270px] overflow-y-auto space-y-4">
+                <span className="inline-block border-neonPink border-2 text-white px-2 py-0.5 rounded-full text-xs font-semibold">
                   {active.category}
-                  </span>
-      
-      
-                  <p className="text-sm text-gray-400">{active.date}</p>
-                  <h2 className="text-2xl font-bold">{active.title}</h2>
-      
-      
-                  <p className="text-gray-200 whitespace-pre-wrap">{active.content}</p>
-      
-      
-                  {active.link && (
+                </span>
+                <p className="text-sm text-gray-400">{active.date}</p>
+                <h2 className="text-2xl font-bold">{active.title}</h2>
+                <p className="text-gray-200 whitespace-pre-wrap">{active.content}</p>
+                {active.link && (
                   <a
-                  href={active.link}
-                  target="_blank"
-                  className="inline-flex items-center gap-2 text-sm mt-3 text-neonPink hover:underline"
+                    href={active.link}
+                    target="_blank"
+                    className="inline-flex items-center gap-2 text-sm mt-3 text-neonPink hover:underline"
                   >
-                  Více zde <ExternalLink className="w-4 h-4" />
+                    Více zde <ExternalLink className="w-4 h-4" />
                   </a>
-                  )}
-                  </div>
-                  </motion.div>
-                </motion.div>
-              )}
+                )}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
       </AnimatePresence>
 
       {/* MODAL hudba */}

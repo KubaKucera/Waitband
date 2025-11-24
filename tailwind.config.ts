@@ -52,6 +52,7 @@ const config: Config = {
         azure: "#89c4ff",
         lightGray: "#D3D3D3",
         neonPink: "#FF2478",
+        neonPinkDark: "#D42062",
         coralRed: "#dd3333",
         textGray: "#666666",
         buttonBlue: "#2a52be",
