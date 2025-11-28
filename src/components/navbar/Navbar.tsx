@@ -22,7 +22,6 @@ const navLinks = [
   { name: "Kontakt", href: "/kontakt", key: "kontakt" },
 ];
 
-// Animace menu a položek
 const menuVariants: Variants = {
   hidden: { opacity: 0, y: "-100%" },
   visible: {
@@ -96,7 +95,7 @@ export default function Navbar() {
       }`}
       style={{ height: "77px" }}
     >
-      <div className="relative flex items-center justify-between px-4 lg:px-44 monitor:px-96 h-full">
+      <div className="relative flex items-center justify-between px-4 lg:px-44 monitor:px-80 h-full">
         {/* Logo */}
         <motion.div
           className="z-50 cursor-pointer"

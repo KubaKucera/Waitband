@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import texture from "../../../public/assets/textures/texture.jpg";
 import { motion } from "framer-motion";
+import { FileText } from "lucide-react";
 import SideAccentLine from "@/components/sideAccentLine/SideAccentLine";
 
 export default function ContactPage() {
@@ -73,15 +74,12 @@ export default function ContactPage() {
         }}
       > 
         <div id="contact-section" className="h-auto flex justify-center items-center pt-[125px] px-8 bg-fixed bg-cover bg-center bg-no-repeat">
-          {/*<Image src={rightArrow} alt="Arrow Right" className="hidden xl:block absolute left-[-150px] top-[160px] rotate-15 opacity-50 w-[265px] monitor:w-[330px]" />
-          <Image src={leftArrow} alt="Arrow Left" className="hidden xl:block absolute right-[-150px] top-[425px] opacity-50 w-[265px] monitor:w-[330px]" /> */}
-
           <motion.div
             initial={{ opacity: 0, y: 30, scale: 0.98 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ delay: 0.6, duration: 1, ease: "easeOut" }}
-            className="w-full max-w-4xl p-8 backdrop-blur-md border-2 border-white/70 text-white rounded-xl shadow-lg"
+            className="w-full max-w-4xl p-8 backdrop-blur-md border-2 border-white/65 text-white rounded-xl shadow-lg"
           >
             <h1 className="text-3xl font-bold text-white uppercase text-center mb-6">Kontakt</h1>
             <p className="text-lg text-gray-400 text-center mb-4">V případě zájmu nás kontaktujte pomocí vyplnění a odeslání formuláře.</p>
@@ -152,7 +150,6 @@ export default function ContactPage() {
                 </label>
               </div>
 
-              {/* Kontaktní osoby */}
               <div className="space-y-2 text-sm text-gray-300 pt-4">
                 <p><span className="font-bold">Technické dotazy:</span> Ivan Kučera, tel. 724 644 082, e-mail: <Link href="mailto:iv.kucera@email.cz" className="text-blue-400 hover:underline">iv.kucera@email.cz</Link></p>
                 <p><span className="font-bold">Rezervace:</span> Pavel Herynk, tel. 737 272 833, e-mail: <Link href="mailto:p.herynk@me.com" className="text-blue-400 hover:underline">p.herynk@me.com</Link></p>
@@ -165,6 +162,25 @@ export default function ContactPage() {
             </form>
           </motion.div>          
         </div>
+        
+        <motion.div
+          initial={{ opacity: 0, y: 30, scale: 0.98 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ delay: 0.6, duration: 1, ease: "easeOut" }}
+          className="w-full"
+        >
+          {/* Rider Box */}
+          <div className="w-full flex justify-center items-center py-10 px-8">
+            <div className="w-full max-w-4xl flex flex-col items-center justify-center gap-3 bg-white/10 backdrop-blur-md border border-white/30 px-6 py-4 rounded-xl shadow-lg text-white">
+              <FileText className="w-10 h-10" />
+              <p className="text-lg font-semibold">Technický rider ke stažení zde...</p>
+              <a href="/assets/files/waitRider.pdf" target="_blank" className="text-blue-400 hover:underline font-medium text-sm">
+                Stáhnout PDF
+              </a>
+            </div>
+          </div>
+        </motion.div>        
       </div>
     </>
   );
