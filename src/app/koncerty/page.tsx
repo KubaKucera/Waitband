@@ -79,7 +79,7 @@ export default function ConsertsPage() {
                 );
               })}
               
-              <div className="relative w-full flex justify-center mt-6 md:px-0">
+              <div className="relative w-full flex justify-center mt-4 md:px-0">
                 <div className="relative flex h-[195px] sm:h-[195px] md:h-[235px] w-full max-w-3xl flex-col items-center justify-center rounded-3xl overflow-hidden">
                   <Image
                     src={consertsImage}
@@ -100,7 +100,7 @@ export default function ConsertsPage() {
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 600 36"
-                      className="w-[100%] h-7 mt-[-10px] max-w-[560px] mx-auto pointer-events-none"
+                      className="w-[100%] h-7 mt-[-13px] max-w-[560px] mx-auto pointer-events-none"
                       aria-hidden="true"
                     >
                       <path
