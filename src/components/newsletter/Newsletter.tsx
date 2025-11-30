@@ -70,7 +70,7 @@ export default function Newsletter() {
             <input
               type="email"
               aria-label="Zadejte svůj email"
-              placeholder="Zadejte svůj email"
+              placeholder="Zadejte svůj e-mail"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required

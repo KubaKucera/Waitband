@@ -60,7 +60,7 @@ export default function ConsertsPage() {
                 return (
                   <div
                     key={index} // ✅ pridali sme key
-                    className="flex flex-col items-center w-full mx-auto bg-gradient-to-r from-white/5 via-white/10 to-white/5 backdrop-blur-lg border border-white/20 rounded-3xl px-8 py-10 shadow-xl hover:shadow-2xl hover:scale-[1.03] transition-all duration-300"
+                    className="flex flex-col items-center w-full mx-auto bg-gradient-to-r from-white/5 via-white/10 to-white/5 backdrop-blur-lg border border-white/20 rounded-2xl px-8 py-10 shadow-xl hover:shadow-2xl hover:scale-[1.03] transition-all duration-300"
                   >
                     {/* Datum a čas */}
                     <div className="text-center mb-4">
@@ -80,7 +80,7 @@ export default function ConsertsPage() {
               })}
               
               <div className="relative w-full flex justify-center mt-4 md:px-0">
-                <div className="relative flex h-[195px] sm:h-[195px] md:h-[235px] w-full max-w-3xl flex-col items-center justify-center rounded-3xl overflow-hidden">
+                <div className="relative flex h-[195px] sm:h-[195px] md:h-[235px] w-full max-w-3xl flex-col items-center justify-center rounded-2xl overflow-hidden">
                   <Image
                     src={consertsImage}
                     alt="Conserts Image"

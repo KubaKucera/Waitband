@@ -23,35 +23,51 @@ const navLinks = [
 ];
 
 const menuVariants: Variants = {
-  hidden: { opacity: 0, y: "-100%" },
+  hidden: { 
+    opacity: 0, 
+    y: "-8%", 
+    filter: "blur(4px)" 
+  },
   visible: {
     opacity: 1,
     y: "0%",
+    filter: "blur(0px)",
     transition: {
+      type: "spring",
+      stiffness: 60,
+      damping: 12,
+      mass: 0.8,
       when: "beforeChildren",
-      staggerChildren: 0.06,
-      delayChildren: 0.2,
-      duration: 0.4,
-      ease: "easeInOut",
+      staggerChildren: 0.07,
+      delayChildren: 0.15,
     },
   },
   exit: {
     opacity: 0,
-    y: "-100%",
-    transition: { duration: 0.3, ease: "easeInOut" },
+    y: "-8%",
+    filter: "blur(4px)",
+    transition: {
+      duration: 0.35,
+      ease: [0.4, 0, 0.2, 1],
+    },
   },
 };
 
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 20, scale: 0.95 },
+  hidden: { 
+    opacity: 0, 
+    y: 12, 
+    scale: 0.97,
+    filter: "blur(2px)" 
+  },
   visible: {
     opacity: 1,
     y: 0,
     scale: 1,
+    filter: "blur(0px)",
     transition: {
-      type: "spring",
-      stiffness: 70,
-      damping: 12,
+      duration: 0.45,
+      ease: [0.22, 0.61, 0.36, 1],
     },
   },
 };
@@ -161,10 +177,10 @@ export default function Navbar() {
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={menuOpen ? "x-icon" : "menu-icon"}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ duration: 0.25, ease: "easeOut" }}
+                initial={{ opacity: 0, rotate: -10, scale: 0.9 }}
+                animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                exit={{ opacity: 0, rotate: 10, scale: 0.9 }}
+                transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
               >
                 {menuOpen ? <FaTimes size={24} strokeWidth={1.4} /> : <FaBars size={24} strokeWidth={1.4} />}
               </motion.div>
@@ -195,8 +211,8 @@ export default function Navbar() {
               <motion.div
                 key={key}
                 variants={itemVariants}
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.99 }}
+                whileHover={{ scale: 1.025, opacity: 0.9 }}
+                whileTap={{ scale: 0.985 }}
                 transition={{ type: "spring", stiffness: 200, damping: 18 }}
               >
                 <Link

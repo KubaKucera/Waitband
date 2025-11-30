@@ -4,6 +4,7 @@ import TitleWithLines from "@/components/titleWithLines/TitleWithLines";
 import texture from "../../../public/assets/textures/texture.jpg";
 import Image from "next/image";
 import Link from "next/link";
+import { Info } from "lucide-react";
 import { useEffect } from "react";
 import { FaSpotify, FaApple, FaYoutube } from "react-icons/fa";
 import { motion } from "framer-motion";
@@ -111,10 +112,15 @@ export default function AlbumsPage() {
             initial={{ opacity: 0, y: 30, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ delay: 0.6, duration: 1, ease: "easeOut" }}
-            className="flex flex-col items-center gap-8 mt-6 w-full"
+            className="flex flex-col items-center gap-8 mt-4 w-full"
           >
-            <p className="text-gray-400 mb-6 text-center text-lg max-w-3xl z-10 leading-6">
-            Ukázky skladeb v níže uvedených albech jsou časově omezeny. Pro plný poslech se prosím přihlaste do svého účtu na Spotify.
+            <p className="text-gray-400 mb-4 text-lg max-w-3xl z-10 flex items-start justify-center gap-2 text-center">
+              <Info className="w-5 h-5 text-gray-400 flex-shrink-0 mt-[3px]" />
+
+              <span className="text-center leading-7">
+                Ukázky skladeb v níže uvedených albech jsou časově omezeny. Pro plný poslech se
+                prosím přihlaste do svého účtu na Spotify.
+              </span>
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 monitor:gap-9 mb-4 z-10 max-w-6xl monitor:max-w-7xl w-full mx-auto justify-items-center">

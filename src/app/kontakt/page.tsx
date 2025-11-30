@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import texture from "../../../public/assets/textures/texture.jpg";
 import { motion } from "framer-motion";
-import { FileText } from "lucide-react";
+import { FileDown } from "lucide-react";
 import SideAccentLine from "@/components/sideAccentLine/SideAccentLine";
 
 export default function ContactPage() {
@@ -131,7 +131,7 @@ export default function ContactPage() {
                 {formErrors.message && <p className="text-sm text-red-500 mt-1">{formErrors.message}</p>}
               </div>
 
-              <div>
+              <div className="ml-[-20px] sm:ml-[-20px] md:ml-0">
                 <ReCAPTCHA
                   sitekey="6LenF4wqAAAAAPPCUeBknjgKqRFoFa5S6oFcLTEJ"
                   ref={recaptchaRef}
@@ -166,22 +166,29 @@ export default function ContactPage() {
         
         <motion.div
           initial={{ opacity: 0, y: 30, scale: 0.98 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ delay: 0.3, duration: 0.3, ease: "easeOut" }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ delay: 0.6, duration: 1, ease: "easeOut" }}
           className="w-full"
         >
-          {/* Rider Box */}
           <div className="w-full flex justify-center items-center pt-10 px-8">
             <div className="w-full max-w-4xl flex flex-col items-center justify-center gap-3 bg-white/10 backdrop-blur-md border border-white/30 px-6 py-4 rounded-xl shadow-lg text-white">
-              <FileText className="w-10 h-10" />
-              <p className="text-lg font-bold">Technický rider <span className="font-normal">ke stažení zde...</span></p>
-              <a href="/assets/files/waitRider.pdf" target="_blank" className="text-blue-400 hover:underline font-medium text-sm">
+              
+              <FileDown className="w-10 h-10" />
+
+              <p className="text-lg font-bold">
+                Technický rider <span className="font-normal">ke stažení zde...</span>
+              </p>
+
+              <a
+                href="/assets/files/waitRider.pdf"
+                target="_blank"
+                className="text-blue-400 hover:underline font-medium text-sm"
+              >
                 Stáhnout PDF
               </a>
             </div>
           </div>
-        </motion.div>        
+        </motion.div>       
       </div>
     </>
   );
