@@ -114,7 +114,7 @@ export default function AlbumsPage() {
             transition={{ delay: 0.6, duration: 1, ease: "easeOut" }}
             className="flex flex-col items-center gap-8 mt-4 w-full"
           >
-            <p className="text-gray-400 mb-4 text-lg max-w-3xl z-10 flex items-start justify-center gap-2 text-center">
+            <p className="text-gray-400 mb-4 text-lg max-w-3xl z-10 flex items-start justify-center gap-2 text-center px-9">
               <Info className="w-5 h-5 text-gray-400 flex-shrink-0 mt-[3px]" />
 
               <span className="text-center leading-7">
