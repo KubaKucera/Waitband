@@ -115,7 +115,7 @@ export default function AlbumsPage() {
             className="flex flex-col items-center gap-8 mt-4 w-full"
           >
             <p className="text-gray-400 mb-4 text-lg max-w-3xl z-10 flex items-start justify-center gap-2 text-center px-4 sm:px-4 md:px-0">
-              <Info className="w-5 h-5 text-gray-400 md:flex-shrink-0 mt-[3px] scale-200 sm:scale-200 md:scale-100" />
+              <Info className="w-5 h-5 text-gray-400 flex-shrink-0 mt-[3px] md:flex hidden" />
 
               <span className="text-center leading-7">
                 Ukázky skladeb v níže uvedených albech jsou časově omezeny. Pro plný poslech se
