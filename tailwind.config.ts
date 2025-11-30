@@ -35,6 +35,7 @@ const config: Config = {
       },
       scale: {
         '115': '1.15',
+        '200': '2'
       },
       rotate: {
         '15': '15deg',
