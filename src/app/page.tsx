@@ -175,7 +175,7 @@ export default function Home() {
               <div className="flex justify-center mt-11">
                 <Link href="/novinky">
                   <button
-                    className="group relative w-[320px] h-[55px] uppercase tracking-[0.12em] rounded-full font-semibold text-[15px]
+                    className="group relative w-[320px] h-[55px] text-base tracking-[0.12em] rounded-full font-semibold text-[15px]
                     text-white transition-all duration-400 ease-out 
                     bg-transparent border-[2px] border-transparent
                     [background:linear-gradient(#0a0a0a,#0a0a0a)_padding-box,linear-gradient(90deg,#ff6a00,#ee0979)_border-box]
@@ -236,7 +236,7 @@ export default function Home() {
 
               <div className="flex justify-center mt-11">
                 <Link href="/hudba">
-                  <button className="group relative w-[320px] h-[55px] uppercase tracking-[0.12em] rounded-full font-semibold text-[15px] text-white transition-all duration-400 ease-out bg-transparent border-[2px] border-transparent [background:linear-gradient(#0a0a0a,#0a0a0a)_padding-box,linear-gradient(90deg,#ff6a00,#ee0979)_border-box] hover:scale-105 hover:shadow-[0_0_18px_rgba(238,9,121,0.4)]">
+                  <button className="group relative w-[320px] h-[55px] text-base tracking-[0.12em] rounded-full font-semibold text-[15px] text-white transition-all duration-400 ease-out bg-transparent border-[2px] border-transparent [background:linear-gradient(#0a0a0a,#0a0a0a)_padding-box,linear-gradient(90deg,#ff6a00,#ee0979)_border-box] hover:scale-105 hover:shadow-[0_0_18px_rgba(238,9,121,0.4)]">
                     Poslechnout více
                     {/* SVG šipka absolutně vpravo */}
                     <svg
@@ -266,7 +266,7 @@ export default function Home() {
 
               <div className="flex justify-center mt-11 mb-3">
                 <Link href="/videa">
-                  <button className="group relative w-[320px] h-[55px] uppercase tracking-[0.12em] rounded-full font-semibold text-[15px] text-white transition-all duration-400 ease-out bg-transparent border-[2px] border-transparent [background:linear-gradient(#0a0a0a,#0a0a0a)_padding-box,linear-gradient(90deg,#ff6a00,#ee0979)_border-box] hover:scale-105 hover:shadow-[0_0_18px_rgba(238,9,121,0.4)]">
+                  <button className="group relative w-[320px] h-[55px] text-base tracking-[0.12em] rounded-full font-semibold text-[15px] text-white transition-all duration-400 ease-out bg-transparent border-[2px] border-transparent [background:linear-gradient(#0a0a0a,#0a0a0a)_padding-box,linear-gradient(90deg,#ff6a00,#ee0979)_border-box] hover:scale-105 hover:shadow-[0_0_18px_rgba(238,9,121,0.4)]">
                     Další videa
                     {/* SVG šipka absolutně vpravo */}
                     <svg

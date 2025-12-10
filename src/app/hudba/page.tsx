@@ -139,7 +139,7 @@ export default function MusicPage() {
             <div className="flex justify-center mt-5 mb-3">
               <Link href="/alba">
                 <button
-                  className="group relative px-20 h-[55px] uppercase tracking-[0.12em] rounded-full font-semibold text-[15px]
+                  className="group relative px-20 h-[55px] tracking-[0.12em] text-base rounded-full font-semibold text-[15px]
                   text-white transition-all duration-400 ease-out 
                   bg-transparent border-[2px] border-transparent
                   [background:linear-gradient(#0a0a0a,#0a0a0a)_padding-box,linear-gradient(90deg,#ff6a00,#ee0979)_border-box]

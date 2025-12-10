@@ -105,7 +105,7 @@ export default function AnnouncementModal() {
               <button
                 onClick={() => setOpen(false)}
                 className="mt-2 px-8 py-3 rounded-full bg-rose-600 
-                  text-white font-bold uppercase tracking-wide shadow-lg 
+                  text-white font-semibold uppercase tracking-wide shadow-lg 
                   hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300"
               >
                 Těšíme se! 🚀

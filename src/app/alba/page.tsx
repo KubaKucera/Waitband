@@ -132,7 +132,7 @@ export default function AlbumsPage() {
             <div className="flex justify-center h-[50px] mb-3">
               <Link href="https://open.spotify.com/artist/37DvIv1TkBrTOz16Kk75YI" target="_blank">
                 <button
-                  className="group relative px-20 h-[55px] uppercase tracking-[0.12em] rounded-full font-semibold text-[15px]
+                  className="group relative px-20 h-[55px] tracking-[0.12em] text-base rounded-full font-semibold text-[15px]
                   text-white transition-all duration-400 ease-out 
                   bg-transparent border-[2px] border-transparent
                   [background:linear-gradient(#0a0a0a,#0a0a0a)_padding-box,linear-gradient(90deg,#ff6a00,#ee0979)_border-box]

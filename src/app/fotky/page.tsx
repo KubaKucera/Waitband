@@ -174,7 +174,7 @@ export default function PhotosPage() {
                         initial={{ y: 10, opacity: 0 }}
                         whileHover={{ y: 0, opacity: 1 }}
                         transition={{ duration: 0.3 }}
-                        className="text-white h-[100%] w-[100%] flex items-center justify-center text-xl text-center font-semibold uppercase tracking-wide"
+                        className="text-white h-[100%] w-[100%] flex items-center justify-center text-xl text-center font-semibold tracking-wide"
                       >
                         Zobrazit galerii
                       </motion.span>
@@ -189,7 +189,7 @@ export default function PhotosPage() {
                 <button
                   disabled={loading}
                   onClick={handleShowMore}
-                  className={`className="relative w-[75vw] sm:w-[75vw] md:w-[40vw] h-[55px] uppercase tracking-[0.12em] rounded-full font-semibold text-[15px]
+                  className={`className="relative w-[75vw] sm:w-[75vw] md:w-[40vw] h-[55px] text-base tracking-[0.12em] rounded-full font-semibold text-[15px]
                   text-white transition-all duration-400 ease-out border-gray-200 border-[2px]
                   hover:scale-105 hover:shadow-white hover:border-white ${
                     loading ? "opacity-50 cursor-not-allowed" : ""
@@ -203,7 +203,7 @@ export default function PhotosPage() {
             <div className={`flex justify-center h-[50px] mb-3 ${showMore ? "mt-[15px]" : "mt-0"}`}>
               <Link href="https://www.instagram.com/wait_band_official/" target="_blank">
                 <button
-                  className="group relative px-20 h-[55px] uppercase tracking-[0.12em] rounded-full font-semibold text-[15px]
+                  className="group relative px-20 h-[55px] text-base tracking-[0.12em] rounded-full font-semibold text-[15px]
                   text-white transition-all duration-400 ease-out 
                   bg-transparent border-[2px] border-transparent
                   [background:linear-gradient(#0a0a0a,#0a0a0a)_padding-box,linear-gradient(90deg,#ff6a00,#ee0979)_border-box]

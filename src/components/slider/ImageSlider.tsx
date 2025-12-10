@@ -4,7 +4,7 @@ import Image from "next/image";
 import Slider from "react-slick";
 
 import image1 from "../../../public/assets/images/slider/slides/image1.jpeg";
-import image2 from "../../../public/assets/images/slider/slides/image7.jpg";
+import image2 from "../../../public/assets/images/slider/slides/image10.jpg";
 import image3 from "../../../public/assets/images/slider/slides/image3.jpg";
 import image4 from "../../../public/assets/images/slider/slides/image9.jpeg";
 import image5 from "../../../public/assets/images/slider/slides/image11.jpeg";
