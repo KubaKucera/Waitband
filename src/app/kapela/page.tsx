@@ -111,7 +111,7 @@ export default function BandPage() {
                   <div className="absolute bottom-0 left-0 right-0">
                     <div className="w-full flex justify-center items-center bg-gradient-to-r from-black/18 via-black/8 to-black/18 backdrop-blur-md border-t border-black/10 shadow-lg h-20 sm:h-24 px-4 text-center transition-all duration-500 group-hover:scale-[1.01]">
                       <span
-                        className="block text-white font-semibold text-sm sm:text-lg uppercase tracking-wide drop-shadow-lg"
+                        className="block text-white font-semibold text-sm sm:text-lg tracking-wide drop-shadow-lg"
                         style={{ fontSize: "clamp(0.95rem, 1.6vw, 1.05rem)" }}
                       >
                         {member.name}
