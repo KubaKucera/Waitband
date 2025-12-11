@@ -130,7 +130,7 @@ export default function Navbar() {
         </motion.div>
 
         {/* Desktop Links */}
-        <div className="hidden lg:flex gap-7 items-center text-[17px] relative">
+        <div className="hidden lg:flex gap-7 sm:gap-7 md:gap-[26px] items-center text-[17px] relative">
           {navLinks.map(({ name, href, key }) => {
             const active = isActive(href);
             return (
