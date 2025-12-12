@@ -74,7 +74,7 @@ export default function ContactPage() {
           backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(20, 20, 20, 0.85)), url(${texture.src})`,
         }}
       > 
-        <div className="h-auto flex justify-center items-center pt-[125px] px-8 bg-fixed bg-cover bg-center bg-no-repeat">
+        <div className="h-auto flex justify-center items-center pt-[133px] px-8 bg-fixed bg-cover bg-center bg-no-repeat">
           <motion.div
             initial={{ opacity: 0, y: 30, scale: 0.98 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}

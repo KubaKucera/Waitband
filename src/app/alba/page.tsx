@@ -103,7 +103,7 @@ export default function AlbumsPage() {
           backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(20, 20, 20, 0.85)), url(${texture.src})`,
         }}
       >  
-        <section id="alb-section" className="relative h-auto flex flex-col items-center gap-8 pt-[110px]">          
+        <section id="alb-section" className="relative h-auto flex flex-col items-center gap-8 pt-[118px]">          
 
           {/* Titulek */}
           <TitleWithLines title="Alba" delay={0.3} />

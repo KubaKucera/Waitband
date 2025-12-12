@@ -109,7 +109,7 @@ export default function Navbar() {
           ? "bg-black/70 text-navbarWhite"
           : "bg-black/80 text-white"
       }`}
-      style={{ height: "77px" }}
+      style={{ height: "85px" }}
     >
       <div className="relative flex items-center justify-between px-4 lg:px-44 monitor:px-80 h-full">
         {/* Logo */}
@@ -130,7 +130,7 @@ export default function Navbar() {
         </motion.div>
 
         {/* Desktop Links */}
-        <div className="hidden lg:flex gap-7 sm:gap-7 md:gap-[26px] items-center text-[17px] relative">
+        <div className="hidden lg:flex gap-7 sm:gap-7 md:gap-[26px] monitor:gap-7 items-center text-[17px] relative">
           {navLinks.map(({ name, href, key }) => {
             const active = isActive(href);
             return (

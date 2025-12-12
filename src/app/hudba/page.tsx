@@ -90,7 +90,7 @@ export default function MusicPage() {
           backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(20, 20, 20, 0.85)), url(${texture.src})`,
         }}
       >        
-        <section id="music-section" className="relative min-h-screen flex flex-col items-center px-4 sm:px-4 md:px-0 gap-8 pt-[110px]">
+        <section id="music-section" className="relative min-h-screen flex flex-col items-center px-4 sm:px-4 md:px-0 gap-8 pt-[118px]">
           
           <TitleWithLines title="Hudba" delay={0.3} />  
 

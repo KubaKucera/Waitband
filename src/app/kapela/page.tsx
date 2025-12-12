@@ -83,7 +83,7 @@ export default function BandPage() {
           backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(20, 20, 20, 0.85)), url(${texture.src})`,
         }}
       >
-        <section id="band-section" className="relative min-h-screen flex flex-col items-center gap-8 pt-[110px] px-4">
+        <section id="band-section" className="relative min-h-screen flex flex-col items-center gap-8 pt-[118px] px-4">
           {/* Titulek */}
           <TitleWithLines title="Členové kapely" delay={0.3} />
 
