@@ -175,11 +175,15 @@ export default function Home() {
               <div className="flex justify-center mt-11">
                 <Link href="/novinky">
                   <button
-                    className="group relative w-[320px] h-[55px] text-base tracking-[0.12em] rounded-full font-semibold text-[15px]
-                    text-white transition-all duration-400 ease-out 
+                    className="group relative w-[320px] h-[55px]
+                    text-[15px] font-semibold tracking-[0.12em]
+                    rounded-full text-white                    
+                    transition-all duration-300 ease-[cubic-bezier(.4,0,.2,1)]
                     bg-transparent border-[2px] border-transparent
                     [background:linear-gradient(#0a0a0a,#0a0a0a)_padding-box,linear-gradient(90deg,#ff6a00,#ee0979)_border-box]
-                    hover:scale-105 hover:shadow-[0_0_18px_rgba(238,9,121,0.4)]"
+                    hover:scale-105 hover:shadow-[0_0_18px_rgba(238,9,121,0.4)]
+                    focus-visible:outline-none
+                    focus-visible:shadow-[0_0_0_3px_rgba(238,9,121,0.35)]"
                   >
                     Zobrazit vše
                     {/* SVG šipka absolutně vpravo */}
@@ -225,7 +229,7 @@ export default function Home() {
                         initial={{ y: 10, opacity: 0 }}
                         whileHover={{ y: 0, opacity: 1 }}
                         transition={{ duration: 0.3 }}
-                        className="text-white h-[100%] w-[100%] flex items-center justify-center text-xl text-center font-semibold uppercase tracking-wide"
+                        className="text-white h-[100%] w-[100%] flex items-center justify-center font-semibold uppercase tracking-widest text-md"
                       >
                         Poslechnout
                       </motion.span>
@@ -236,7 +240,16 @@ export default function Home() {
 
               <div className="flex justify-center mt-11">
                 <Link href="/hudba">
-                  <button className="group relative w-[320px] h-[55px] text-base tracking-[0.12em] rounded-full font-semibold text-[15px] text-white transition-all duration-400 ease-out bg-transparent border-[2px] border-transparent [background:linear-gradient(#0a0a0a,#0a0a0a)_padding-box,linear-gradient(90deg,#ff6a00,#ee0979)_border-box] hover:scale-105 hover:shadow-[0_0_18px_rgba(238,9,121,0.4)]">
+                  <button className="group relative w-[320px] h-[55px]
+                    text-[15px] font-semibold tracking-[0.12em]
+                    rounded-full text-white                    
+                    transition-all duration-300 ease-[cubic-bezier(.4,0,.2,1)]
+                    bg-transparent border-[2px] border-transparent
+                    [background:linear-gradient(#0a0a0a,#0a0a0a)_padding-box,linear-gradient(90deg,#ff6a00,#ee0979)_border-box]
+                    hover:scale-105 hover:shadow-[0_0_18px_rgba(238,9,121,0.4)]
+                    focus-visible:outline-none
+                    focus-visible:shadow-[0_0_0_3px_rgba(238,9,121,0.35)]">
+                      
                     Poslechnout více
                     {/* SVG šipka absolutně vpravo */}
                     <svg
@@ -266,7 +279,16 @@ export default function Home() {
 
               <div className="flex justify-center mt-11 mb-3">
                 <Link href="/videa">
-                  <button className="group relative w-[320px] h-[55px] text-base tracking-[0.12em] rounded-full font-semibold text-[15px] text-white transition-all duration-400 ease-out bg-transparent border-[2px] border-transparent [background:linear-gradient(#0a0a0a,#0a0a0a)_padding-box,linear-gradient(90deg,#ff6a00,#ee0979)_border-box] hover:scale-105 hover:shadow-[0_0_18px_rgba(238,9,121,0.4)]">
+                  <button className="group relative w-[320px] h-[55px]
+                    text-[15px] font-semibold tracking-[0.12em]
+                    rounded-full text-white                    
+                    transition-all duration-300 ease-[cubic-bezier(.4,0,.2,1)]
+                    bg-transparent border-[2px] border-transparent
+                    [background:linear-gradient(#0a0a0a,#0a0a0a)_padding-box,linear-gradient(90deg,#ff6a00,#ee0979)_border-box]
+                    hover:scale-105 hover:shadow-[0_0_18px_rgba(238,9,121,0.4)]
+                    focus-visible:outline-none
+                    focus-visible:shadow-[0_0_0_3px_rgba(238,9,121,0.35)]">
+                    
                     Další videa
                     {/* SVG šipka absolutně vpravo */}
                     <svg

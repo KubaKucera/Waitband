@@ -23,7 +23,7 @@ const SectionTitle = ({ title }: SectionTitleProps) => {
       ref={ref}
       className="flex items-center w-full max-w-5xl mx-auto px-6"
     >
-        <h2 className="text-white text-3xl sm:text-3xl md:text-4xl font-bold font-montserrat tracking-wide uppercase whitespace-nowrap">
+        <h2 className="text-white text-2xl sm:text-2xl md:text-3xl font-bold font-montserrat tracking-wide uppercase whitespace-nowrap">
             {title}
         </h2>
 

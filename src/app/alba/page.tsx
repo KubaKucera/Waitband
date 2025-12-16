@@ -132,11 +132,15 @@ export default function AlbumsPage() {
             <div className="flex justify-center h-[50px] mb-3">
               <Link href="https://open.spotify.com/artist/37DvIv1TkBrTOz16Kk75YI" target="_blank">
                 <button
-                  className="group relative px-20 h-[55px] tracking-[0.12em] text-base rounded-full font-semibold text-[15px]
-                  text-white transition-all duration-400 ease-out 
-                  bg-transparent border-[2px] border-transparent
-                  [background:linear-gradient(#0a0a0a,#0a0a0a)_padding-box,linear-gradient(90deg,#ff6a00,#ee0979)_border-box]
-                  hover:scale-105 hover:shadow-[0_0_18px_rgba(238,9,121,0.4)]"
+                  className="group relative w-[320px] h-[55px]
+                    text-[15px] font-semibold tracking-[0.12em]
+                    rounded-full text-white                    
+                    transition-all duration-300 ease-[cubic-bezier(.4,0,.2,1)]
+                    bg-transparent border-[2px] border-transparent
+                    [background:linear-gradient(#0a0a0a,#0a0a0a)_padding-box,linear-gradient(90deg,#ff6a00,#ee0979)_border-box]
+                    hover:scale-105 hover:shadow-[0_0_18px_rgba(238,9,121,0.4)]
+                    focus-visible:outline-none
+                    focus-visible:shadow-[0_0_0_3px_rgba(238,9,121,0.35)]"
                 >
                   Přejít na Spotify
                   {/* SVG šipka absolutně vpravo */}

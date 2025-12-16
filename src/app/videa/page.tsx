@@ -174,11 +174,15 @@ export default function VideosPage(){
             <div className="flex justify-center mb-3 h-[50px]">
               <Link href="https://www.youtube.com/@waitbandofficial/videos" target="_blank">
                 <button
-                  className="group relative px-20 h-[55px] text-base tracking-[0.12em] rounded-full font-semibold text-[15px]
-                  text-white transition-all duration-400 ease-out 
+                  className="group relative w-[320px] h-[55px]
+                  text-[15px] font-semibold tracking-[0.12em]
+                  rounded-full text-white                    
+                  transition-all duration-300 ease-[cubic-bezier(.4,0,.2,1)]
                   bg-transparent border-[2px] border-transparent
                   [background:linear-gradient(#0a0a0a,#0a0a0a)_padding-box,linear-gradient(90deg,#ff6a00,#ee0979)_border-box]
-                  hover:scale-105 hover:shadow-[0_0_18px_rgba(238,9,121,0.4)]"
+                  hover:scale-105 hover:shadow-[0_0_18px_rgba(238,9,121,0.4)]
+                  focus-visible:outline-none
+                  focus-visible:shadow-[0_0_0_3px_rgba(238,9,121,0.35)]"
                 >
                   Všechna videa
                   {/* SVG šipka absolutně vpravo */}
