@@ -189,9 +189,15 @@ export default function PhotosPage() {
                 <button
                   disabled={loading}
                   onClick={handleShowMore}
-                  className={`className="relative w-[75vw] sm:w-[75vw] md:w-[40vw] h-[55px] text-base tracking-[0.12em] rounded-full font-semibold text-[15px]
-                  text-white transition-all duration-400 ease-out border-gray-300 border-[2px]
-                  hover:scale-105 hover:shadow-white hover:border-white ${
+                  
+                  className={`"group relative w-[75vw] sm:w-[75vw] md:w-[40vw] h-[55px]
+                    text-[15px] font-semibold tracking-[0.12em]
+                    rounded-full text-white                    
+                    transition-all duration-300 ease-[cubic-bezier(.4,0,.2,1)]
+                    bg-transparent border-gray-300 border-[2px]
+                    hover:scale-105 hover:shadow-white hover:border-white                    
+                    focus-visible:outline-none
+                    focus-visible:shadow-[0_0_0_3px_rgba(238,9,121,0.35)]" ${
                     loading ? "opacity-50 cursor-not-allowed" : ""
                   }`}                  
                 >
