@@ -125,7 +125,7 @@ export default function Home() {
 
         <section id="uvod-section" className="relative flex flex-col items-center px-4 sm:px-4 md:px-0 pt-0 sm:pt-[30px] md:pt-[50px]">
           <div className="relative w-full justify-center items-center mt-9 sm:mt-9 md:mt-0">
-            <TitleWithLines title="Úvod Wait" />
+            <TitleWithLines title="Kapela WAIT" />
           </div>          
 
           <motion.div

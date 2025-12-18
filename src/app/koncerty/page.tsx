@@ -49,8 +49,7 @@ export default function ConsertsPage() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ delay: 0.6, duration: 1, ease: "easeOut" }}
             className="flex flex-col items-center gap-8 mt-6 w-full"
-          >
-            {/*<SectionTitle title="2025" />*/}
+          >            
             {/* Seznam koncertů */}
             <div className="w-full max-w-3xl z-10 flex flex-col gap-10 px-4 sm:px-6 md:px-0">
               {concertData.map((text, index) => {
@@ -105,7 +104,7 @@ export default function ConsertsPage() {
                     >
                       <path
                         d="M6 18c80 28 180 -18 300 6 80 18 140 8 288 -10"
-                        stroke="#FFD166"
+                        stroke="#FB923C"
                         strokeWidth="8"
                         strokeLinecap="round"
                         strokeLinejoin="round"

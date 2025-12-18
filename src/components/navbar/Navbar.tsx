@@ -116,12 +116,12 @@ export default function Navbar() {
         <motion.div
           className="z-50 cursor-pointer"
           initial={{ opacity: 1 }}
-          animate={{ opacity: menuOpen ? 0 : 1 }}
+          /*animate={{ opacity: menuOpen ? 0 : 1 }}*/
           transition={{ duration: 0.3, ease: "easeInOut" }}
         >
           <Link href="/" onClick={() => setMenuOpen(false)}>
             <Image
-              src={scrolled ? blackTitle : title}
+              src={menuOpen || !scrolled ? title : blackTitle}
               alt="WAIT"
               className="w-[80px] sm:w-[80px] md:w-[95px] h-auto hover:brightness-90 transition-transform duration-500"
               style={{ transformOrigin: "left center" }}
