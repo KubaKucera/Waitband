@@ -85,7 +85,7 @@ export default function AnnouncementModal() {
               </h2>
 
               <p className="text-black text-md leading-relaxed mb-4 w-full monitor:pl-24 monitor:pr-24">
-                Práce na singlu (skladby <em>„Závidím“</em> a{" "}
+                Práce na singlu (cover skladby <em>„Stayin’ Alive“</em> a{" "}
                 <em>„The Fly“</em>), ve{" "}
                 <Link
                   href="https://www.facebook.com/whitechickenstudio"
