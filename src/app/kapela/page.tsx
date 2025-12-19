@@ -165,7 +165,7 @@ export default function BandPage() {
               </div>
             </div>
 
-            <div className="flex justify-center mt-2 mb-3">
+            <div className="flex justify-center mt-2 sm:mt-2 md:mt-4 mb-3">
               <Link href="/">
                 <button
                   className="group relative w-[320px] h-[55px]

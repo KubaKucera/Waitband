@@ -185,7 +185,7 @@ export default function PhotosPage() {
             </div>
 
             {!showMore && (
-              <div className="relative flex justify-center w-full">
+              <div className="relative flex justify-center w-full mt-1">
                 <button
                   disabled={loading}
                   onClick={handleShowMore}

@@ -136,7 +136,7 @@ export default function MusicPage() {
             </div>
 
             {/* Tlačítko alba */}
-            <div className="flex justify-center mt-5 mb-3">
+            <div className="flex justify-center mt-4 mb-3">
               <Link href="/alba">
                 <button
                   className="group relative w-[320px] h-[55px]

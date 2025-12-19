@@ -24,36 +24,50 @@ const navLinks = [
 ];
 
 export const menuVariants: Variants = {
-  hidden: { opacity: 0, y: -110, filter: "blur(6px)" },
+  hidden: {
+    opacity: 0,
+    y: -60,
+    filter: "blur(4px)",
+  },
   visible: {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
     transition: {
       type: "spring",
-      stiffness: 55,
-      damping: 14,
-      mass: 0.9,
+      stiffness: 90,     // ⚡ rychlejší reakce
+      damping: 18,       // 🎯 kontrola bez gumovosti
+      mass: 0.7,         // lehčí, svižnější
       when: "beforeChildren",
-      staggerChildren: 0.06,
-      delayChildren: 0.12,
+      staggerChildren: 0.04, // 🚀 méně zdlouhavé
+      delayChildren: 0.06,
     },
   },
   exit: {
     opacity: 0,
-    y: -90,
-    filter: "blur(6px)",
-    transition: { duration: 0.3, ease: [0.4, 0, 0.2, 1] },
+    y: -40,
+    filter: "blur(4px)",
+    transition: {
+      duration: 0.22,
+      ease: [0.4, 0, 0.2, 1],
+    },
   },
 };
 
 export const itemVariants: Variants = {
-  hidden: { opacity: 0, scale: 0.94, filter: "blur(3px)" },
+  hidden: {
+    opacity: 0,
+    scale: 0.94,
+    filter: "blur(3px)",
+  },
   visible: {
     opacity: 1,
     scale: 1,
     filter: "blur(0px)",
-    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
+    transition: {
+      duration: 0.4,
+      ease: [0.22, 1, 0.36, 1],
+    },
   },
 };
 
