@@ -399,7 +399,7 @@ export default function NewsPage() {
 
                     {/* TEXT */}
                     <div className="p-4 sm:p-5 monitor:p-6 text-white flex flex-col flex-[2]">
-                      <div className="space-y-3.5 sm:space-y-3.5 md:space-y-1.5 monitor:space-y-2">
+                      <div className="space-y-1.5 monitor:space-y-2">
                         <span className="inline-block border-neonPink border-2 px-2 py-0.5 rounded-full text-xs font-semibold mb-1">
                           {item.category}
                         </span>
@@ -476,7 +476,7 @@ export default function NewsPage() {
                     onClick={(e) => e.stopPropagation()}
                   >
                     {/* HERO image section */}
-                    <div className="relative h-64 sm:h-64 md:h-80 monitor:h-96 w-full">
+                    <div className="relative h-[300px] sm:h-[300px] md:h-80 monitor:h-96 w-full">
                       <Image
                         src={active.image}
                         alt={active.title}

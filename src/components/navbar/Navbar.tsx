@@ -35,11 +35,11 @@ export const menuVariants: Variants = {
     filter: "blur(0px)",
     transition: {
       type: "spring",
-      stiffness: 90,     // ⚡ rychlejší reakce
-      damping: 18,       // 🎯 kontrola bez gumovosti
-      mass: 0.7,         // lehčí, svižnější
+      stiffness: 90,
+      damping: 18,
+      mass: 0.7,
       when: "beforeChildren",
-      staggerChildren: 0.04, // 🚀 méně zdlouhavé
+      staggerChildren: 0.04,
       delayChildren: 0.06,
     },
   },

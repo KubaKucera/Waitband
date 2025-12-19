@@ -33,7 +33,7 @@ const TitleWithLines: FC<TitleWithLinesProps> = ({
     >
       {/* ==== MOBIL ==== */}
       <motion.div
-        className="block sm:hidden w-[100vw] h-1 rounded-full mb-2 animate-pulse"
+        className="block sm:hidden w-[90vw] max-w-[400px] h-1 rounded-full mb-2 animate-pulse"
         style={{ ...leftLineGradient, transformOrigin: "right" }}
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
@@ -42,15 +42,15 @@ const TitleWithLines: FC<TitleWithLinesProps> = ({
 
       <motion.h2
         className="text-3xl uppercase font-montserrat font-extrabold text-transparent bg-clip-text text-center block sm:hidden animate-gradient-liquid"
-        initial={{ opacity: 0 }}          // odstraněno y posunutí
-        animate={{ opacity: 1 }}          // jen fade
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
         transition={{ delay: delay + 0.3, duration: 0.8, ease: "easeOut" }}
       >
         {title}
       </motion.h2>
 
       <motion.div
-        className="block sm:hidden w-[100vw] h-1 rounded-full mt-2 animate-pulse"
+        className="block sm:hidden w-[70vw] max-w-[350px] h-1 rounded-full mt-2 animate-pulse"
         style={{ ...rightLineGradient, transformOrigin: "left" }}
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
