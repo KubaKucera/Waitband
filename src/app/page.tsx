@@ -19,6 +19,7 @@ import spotify from "../../public/assets/icons/spotify.svg";
 import soundcloud from "../../public/assets/icons/soundcloud.svg";
 import LiteYouTubeEmbed from "@/components/liteYtEmbed/LiteYouTubeEmbed";
 import SectionTitle from "@/components/sectionTitle/SectionTitle";
+import { ArrowRight } from "lucide-react";
 
 const images = [image1, image2, image3];
 
@@ -135,49 +136,71 @@ export default function Home() {
             className="w-full flex flex-col items-center"
           >
             {/* Novinky */}
-            <section id="novinky-section" className="relative flex flex-col items-center w-full max-w-6xl monitor:max-w-7xl mt-16">
+            <section
+              id="novinky-section"
+              className="relative flex flex-col items-center w-full max-w-6xl monitor:max-w-7xl mt-16"
+            >
               <SectionTitle title="Novinky" />
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 monitor:gap-10 mt-11 w-full">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 monitor:gap-10 mt-8 w-full">
                 {newsData.slice(0, 3).map((item) => (
                   <motion.div
                     key={item.id}
                     onClick={() => setActive(item)}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, ease: "easeOut" }}
+                    transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                     className="
-                      relative group cursor-pointer rounded-xl 
-                      bg-white/5 hover:bg-white/10 
+                      relative group cursor-pointer rounded-xl
+                      bg-white/5 hover:bg-white/10
                       overflow-hidden shadow-lg transition
+                      flex flex-col aspect-[4/5]
                     "
                   >
-                    <div className="relative h-56 w-full overflow-hidden">
+                    {/* IMAGE – větší část */}
+                    <div className="relative w-full flex-[3] overflow-hidden">
                       <Image
                         src={item.image}
                         alt={item.title}
                         fill
-                        className="object-cover monitor:object-top transform group-hover:scale-105 transition-transform duration-700"
+                        className="object-cover monitor:object-top transition-transform duration-700 group-hover:scale-105"
                       />
                     </div>
-                    <div className="p-5 monitor:p-6 space-y-1.5 monitor:space-y-2 text-white">
-                      <span className="inline-block border-neonPink border-2 text-white px-2 py-0.5 rounded-full text-xs font-semibold mb-1">
-                        {item.category}
-                      </span>
-                      <p className="text-xs text-gray-400">{item.date}</p>
-                      <h3 className="text-xl font-semibold mt-1">{item.title}</h3>
-                      <p className="text-sm text-gray-300 mt-2">{item.excerpt}</p>
+
+                    {/* TEXT */}
+                    <div className="p-4 sm:p-5 monitor:p-6 text-white flex flex-col flex-[2]">
+                      <div className="space-y-3.5 sm:space-y-3.5 md:space-y-1.5 monitor:space-y-2">
+                        <span className="inline-block border-neonPink border-2 px-2 py-0.5 rounded-full text-xs font-semibold mb-1">
+                          {item.category}
+                        </span>
+
+                        <p className="text-xs text-gray-400">{item.date}</p>
+                        <h3 className="text-lg sm:text-xl font-semibold mt-1">{item.title}</h3>
+                        <p className="text-sm text-gray-300 mt-1 sm:mt-2 line-clamp-3">
+                          {item.excerpt}
+                        </p>
+                      </div>
+
+                      {/* CTA */}
+                      <div className="mt-auto flex items-center justify-start gap-1 sm:gap-2 text-neonPink text-sm font-semibold opacity-70 group-hover:opacity-100 transition-all duration-300">
+                        <span className="tracking-wide">Přečíst více</span>
+                        <ArrowRight
+                          size={18}
+                          className="transition-transform duration-300 group-hover:translate-x-1.5"
+                        />
+                      </div>
                     </div>
                   </motion.div>
                 ))}
               </div>
 
+              {/* BUTTON */}
               <div className="flex justify-center mt-11">
                 <Link href="/novinky">
                   <button
                     className="group relative w-[320px] h-[55px]
                     text-[15px] font-semibold tracking-[0.12em]
-                    rounded-full text-white                    
+                    rounded-full text-white
                     transition-all duration-300 ease-[cubic-bezier(.4,0,.2,1)]
                     bg-transparent border-[2px] border-transparent
                     [background:linear-gradient(#0a0a0a,#0a0a0a)_padding-box,linear-gradient(90deg,#ff6a00,#ee0979)_border-box]
@@ -186,17 +209,16 @@ export default function Home() {
                     focus-visible:shadow-[0_0_0_3px_rgba(238,9,121,0.35)]"
                   >
                     Zobrazit vše
-                    {/* SVG šipka absolutně vpravo */}
-                    <svg
-                      className="absolute right-5 top-1/2 transform -translate-y-1/2 w-6 h-6 text-white transition-all duration-300 opacity-0 group-hover:translate-x-1 group-hover:opacity-100"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m0 0l-6-6m6 6l-6 6"></path>
-                    </svg>
+
+                    <ArrowRight
+                      size={22}
+                      className="
+                        absolute right-5 top-1/2 -translate-y-1/2
+                        opacity-0 group-hover:opacity-100
+                        group-hover:translate-x-1
+                        transition-all duration-300
+                      "
+                    />
                   </button>
                 </Link>
               </div>

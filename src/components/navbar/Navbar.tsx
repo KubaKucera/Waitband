@@ -57,16 +57,18 @@ export const menuVariants: Variants = {
 export const itemVariants: Variants = {
   hidden: {
     opacity: 0,
-    scale: 0.94,
-    filter: "blur(3px)",
+    scale: 0.92,
+    filter: "blur(4px)",
   },
   visible: {
     opacity: 1,
     scale: 1,
     filter: "blur(0px)",
     transition: {
-      duration: 0.4,
-      ease: [0.22, 1, 0.36, 1],
+      type: "spring",
+      stiffness: 120,
+      damping: 22,
+      mass: 0.9,
     },
   },
 };

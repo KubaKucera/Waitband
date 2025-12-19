@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import texture from "../../../public/assets/textures/texture.jpg";
 import Image from "next/image";
 import TitleWithLines from "@/components/titleWithLines/TitleWithLines";
-import { X, ExternalLink, Search, Filter, RefreshCw } from "lucide-react";
+import { X, ExternalLink, Search, Filter, RefreshCw, ArrowRight } from "lucide-react";
 import SideAccentLine from "@/components/sideAccentLine/SideAccentLine";
 import { newsData, NewsItem } from "../../data/newsData";
 
@@ -326,7 +326,11 @@ export default function NewsPage() {
                     height={500}
                     className="object-cover w-full h-[500px] monitor:h-[600px] rounded-3xl transform group-hover:scale-105 transition-transform duration-700"
                   />
+
+                  {/* Gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+
+                  {/* Text panel */}
                   <div className="absolute bottom-6 left-6 right-6 text-white space-y-2">
                     <span className="inline-block border-neonPink border-2 text-white px-3 py-1 rounded-full text-xs font-semibold mb-1">
                       {mainArticle.category}
@@ -334,6 +338,15 @@ export default function NewsPage() {
                     <p className="text-sm text-gray-300">{mainArticle.date}</p>
                     <h2 className="text-3xl font-bold">{mainArticle.title}</h2>
                     <p className="mt-2 text-gray-200">{mainArticle.excerpt}</p>
+
+                    {/* CTA */}
+                    <div className="mt-auto flex items-center justify-start gap-1 sm:gap-2 text-neonPink text-sm font-semibold opacity-70 group-hover:opacity-100 transition-all duration-300">
+                      <span className="tracking-wide">Přečíst více</span>
+                      <ArrowRight
+                        size={18}
+                        className="transition-transform duration-300 group-hover:translate-x-1.5"
+                      />
+                    </div>
                   </div>
                 </motion.div>
               )}
@@ -364,7 +377,7 @@ export default function NewsPage() {
               <h3 className="text-white text-xl font-semibold mb-6">
                 Další příspěvky
               </h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 monitor:gap-10">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 monitor:gap-10">
                 {otherArticles.slice(0, 3).map((item) => (
                   <motion.div
                     key={item.id}
@@ -372,9 +385,10 @@ export default function NewsPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, ease: "easeOut" }}
-                    className="relative group cursor-pointer rounded-xl bg-white/5 hover:bg-white/10 overflow-hidden shadow-lg transition"
+                    className="relative group cursor-pointer rounded-xl bg-white/5 hover:bg-white/10 overflow-hidden shadow-lg transition flex flex-col aspect-[4/5]"
                   >
-                    <div className="relative h-56 w-full overflow-hidden">
+                    {/* IMAGE */}
+                    <div className="relative w-full flex-[3] overflow-hidden">
                       <Image
                         src={item.image}
                         alt={item.title}
@@ -382,13 +396,28 @@ export default function NewsPage() {
                         className="object-cover monitor:object-top transform group-hover:scale-105 transition-transform duration-700"
                       />
                     </div>
-                    <div className="p-5 monitor:p-6 space-y-1.5 monitor:space-y-2 text-white">
-                      <span className="inline-block border-neonPink border-2 text-white px-2 py-0.5 rounded-full text-xs font-semibold mb-1">
-                        {item.category}
-                      </span>
-                      <p className="text-xs text-gray-400">{item.date}</p>
-                      <h3 className="text-xl font-semibold mt-1">{item.title}</h3>
-                      <p className="text-sm text-gray-300 mt-2">{item.excerpt}</p>
+
+                    {/* TEXT */}
+                    <div className="p-4 sm:p-5 monitor:p-6 text-white flex flex-col flex-[2]">
+                      <div className="space-y-3.5 sm:space-y-3.5 md:space-y-1.5 monitor:space-y-2">
+                        <span className="inline-block border-neonPink border-2 px-2 py-0.5 rounded-full text-xs font-semibold mb-1">
+                          {item.category}
+                        </span>
+                        <p className="text-xs text-gray-400">{item.date}</p>
+                        <h3 className="text-lg sm:text-xl font-semibold mt-1">{item.title}</h3>
+                        <p className="text-sm text-gray-300 mt-1 sm:mt-2 line-clamp-3">
+                          {item.excerpt}
+                        </p>
+                      </div>
+
+                      {/* CTA */}
+                      <div className="mt-auto flex items-center justify-start gap-1 sm:gap-2 text-neonPink text-sm font-semibold opacity-70 group-hover:opacity-100 transition-all duration-300">
+                        <span className="tracking-wide">Přečíst více</span>
+                        <ArrowRight
+                          size={18}
+                          className="transition-transform duration-300 group-hover:translate-x-1.5"
+                        />
+                      </div>
                     </div>
                   </motion.div>
                 ))}
