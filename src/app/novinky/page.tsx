@@ -377,7 +377,7 @@ export default function NewsPage() {
               <h3 className="text-white text-xl font-semibold mb-6">
                 Další příspěvky
               </h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 monitor:gap-10">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 monitor:gap-10">
                 {otherArticles.slice(0, 3).map((item) => (
                   <motion.div
                     key={item.id}
