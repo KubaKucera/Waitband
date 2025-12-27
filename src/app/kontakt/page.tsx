@@ -80,7 +80,7 @@ export default function ContactPage() {
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ delay: 0.6, duration: 1, ease: "easeOut" }}
-            className="w-full max-w-4xl p-8 backdrop-blur-md border-2 border-white/65 text-white rounded-xl shadow-lg"
+            className="w-full max-w-4xl p-8 backdrop-blur-md border-2 border-white/60 text-white rounded-xl shadow-lg"
           >
             <h1 className="text-3xl font-bold text-white uppercase text-center mb-6">Kontakt</h1>
             <p className="text-lg text-gray-400 text-center mb-4">V případě zájmu nás kontaktujte pomocí vyplnění a odeslání formuláře.</p>

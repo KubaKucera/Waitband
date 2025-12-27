@@ -43,12 +43,6 @@ export default function FooterWithNewsletter() {
           bg: "bg-youtubeRed",
         },
         {
-          icon: <FaSoundcloud />,
-          href: "https://soundcloud.com/wait-band-official",
-          label: "SoundCloud",
-          bg: "bg-soundcloudOrange",
-        },
-        {
           icon: <FaSpotify />,
           href: "https://open.spotify.com/artist/37DvIv1TkBrTOz16Kk75YI",
           label: "Spotify",
@@ -60,6 +54,12 @@ export default function FooterWithNewsletter() {
           label: "Apple Music",
           bg: "bg-appleMusicSalmon",
         },
+        {
+          icon: <FaSoundcloud />,
+          href: "https://soundcloud.com/wait-band-official",
+          label: "SoundCloud",
+          bg: "bg-soundcloudOrange",
+        }        
       ].map(({ icon, href, label, bg }, i) => (
         <Link
           key={i}
@@ -97,21 +97,21 @@ export default function FooterWithNewsletter() {
           <Link
             href="/osobni-udaje"
             target="_blank"
-            className="hover:text-blue-500 underline"
+            className="hover:text-blue-500 hover:underline"
           >
             Soukromí & Používání Cookies
           </Link>
           <Link
             href="/podminky-a-pravidla"
             target="_blank"
-            className="hover:text-blue-500 underline"
+            className="hover:text-blue-500 hover:underline"
           >
             Podmínky a pravidla
           </Link>
           <Link
             href="/assets/files/waitRider.pdf"
             target="_blank"
-            className="hover:text-blue-500 underline"
+            className="hover:text-blue-500 hover:underline"
           >
             Technický rider
           </Link>

@@ -16,15 +16,6 @@ const concertData = [
   "6.9.2025, 20:00 – Hrad Pecka"
 ];
 
-const SectionTitle = ({ title }: { title: string }) => (
-  <div className="flex items-center w-full max-w-3xl mx-auto px-6">
-    <h2 className="text-white text-3xl sm:text-3xl md:text-4xl font-bold font-montserrat tracking-wide whitespace-nowrap uppercase">
-      {title}
-    </h2>
-    <div className="flex-1 h-[2px] bg-white ml-6 w-full rounded-tr rounded-br"></div>
-  </div>
-);
-
 export default function ConsertsPage() {
   useEffect(() => {
     document.title = "Koncerty | Wait";
