@@ -226,9 +226,18 @@ export default function Navbar() {
                 background:
                   "radial-gradient(circle at top, rgba(255,255,255,0.06), transparent 60%), rgba(0,0,0,1)",
               }}
+              transition={{
+                opacity: { duration: 0.5, ease: [0.22, 1, 0.36, 1] }, // plynulejší fade
+                y: { duration: 0.45, ease: [0.22, 1, 0.36, 1] },
+              }}
             >
               {navLinks.map(({ name, href, key }, i) => (
-                <motion.div key={key} variants={itemVariants} whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
+                <motion.div
+                  key={key}
+                  variants={itemVariants}
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.98 }}
+                >
                   <Link
                     href={href}
                     ref={i === 0 ? firstLinkRef : undefined}
