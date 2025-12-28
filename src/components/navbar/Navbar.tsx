@@ -136,7 +136,7 @@ export default function Navbar() {
 
           {/* DESKTOP MENU */}
           <motion.div
-            className="hidden lg:flex gap-7 items-center text-[17px] relative"
+            className="hidden lg:flex gap-6 items-center text-[17px] relative"
           >
             {navLinks.map(({ name, href, key }, i) => {
               const active = isActive(href);
@@ -221,7 +221,7 @@ export default function Navbar() {
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="fixed inset-0 h-[100dvh] flex flex-col items-center justify-center space-y-7 z-40"
+              className="fixed inset-0 h-[100dvh] flex flex-col items-center justify-center space-y-5 z-40"
               style={{
                 background:
                   "radial-gradient(circle at top, rgba(255,255,255,0.06), transparent 60%), rgba(0,0,0,1)",
@@ -242,7 +242,7 @@ export default function Navbar() {
                     href={href}
                     ref={i === 0 ? firstLinkRef : undefined}
                     onClick={() => setMenuOpen(false)}
-                    className={`uppercase text-[27px] font-semibold transition-colors ${
+                    className={`uppercase text-3xl font-semibold transition-colors ${
                       isActive(href) ? "text-neonPink" : "text-lightGray hover:text-neonPink"
                     }`}
                   >
