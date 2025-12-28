@@ -194,7 +194,7 @@ export default function PhotosPage() {
                   className={`"group relative w-[75vw] sm:w-[75vw] md:w-[40vw] h-[55px]
                     text-[15px] font-semibold tracking-[0.12em]
                     rounded-full text-white                    
-                    transition-all duration-300 ease-[cubic-bezier(.4,0,.2,1)]
+                    transition-all duration-300 ease-out
                     bg-transparent border-gray-300 border-[2px]
                     hover:scale-105 hover:shadow-white hover:border-white                    
                     focus-visible:outline-none
