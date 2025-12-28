@@ -7,6 +7,7 @@ import Link from "next/link";
 import TitleWithLines from "@/components/titleWithLines/TitleWithLines";
 import { motion } from "framer-motion";
 import SideAccentLine from "@/components/sideAccentLine/SideAccentLine";
+import { ArrowRight } from "lucide-react";
 
 function PlayIcon({ size = 32, color = '#fff', className = '' }) {
   return (
@@ -175,27 +176,22 @@ export default function VideosPage(){
               <Link href="https://www.youtube.com/@waitbandofficial/videos" target="_blank">
                 <button
                   className="group relative w-[320px] h-[55px]
-                  text-[15px] font-semibold tracking-[0.12em]
-                  rounded-full text-white                    
-                  transition-all duration-300 ease-[cubic-bezier(.4,0,.2,1)]
-                  bg-transparent border-[2px] border-transparent
-                  [background:linear-gradient(#0a0a0a,#0a0a0a)_padding-box,linear-gradient(90deg,#ff6a00,#ee0979)_border-box]
-                  hover:scale-105 hover:shadow-[0_0_18px_rgba(238,9,121,0.4)]
-                  focus-visible:outline-none
-                  focus-visible:shadow-[0_0_0_3px_rgba(238,9,121,0.35)]"
+                    text-[15px] font-semibold tracking-[0.12em]
+                    rounded-full text-white                    
+                    transition-all duration-300 ease-out
+                    bg-transparent border-[2px] border-transparent
+                    [background:linear-gradient(#0a0a0a,#0a0a0a)_padding-box,linear-gradient(90deg,#ff6a00,#ee0979)_border-box]
+                    hover:scale-105 hover:shadow-[0_0_18px_rgba(238,9,121,0.4)]
+                    focus-visible:outline-none
+                    focus-visible:shadow-[0_0_0_3px_rgba(238,9,121,0.35)]"
                 >
                   Všechna videa
-                  {/* SVG šipka absolutně vpravo */}
-                  <svg
-                    className="absolute right-5 top-1/2 transform -translate-y-1/2 w-6 h-6 text-white transition-all duration-300 opacity-0 group-hover:translate-x-1 group-hover:opacity-100"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m0 0l-6-6m6 6l-6 6"></path>
-                  </svg>
+                  <ArrowRight
+                    size={22}
+                    className="
+                      absolute right-5 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 ease-out
+                    "
+                  />
                 </button>
               </Link>
             </div>

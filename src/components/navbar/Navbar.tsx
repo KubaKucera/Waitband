@@ -3,10 +3,10 @@
 import { Variants, motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { useEffect, useRef, useState, useLayoutEffect } from "react";
+import { HiMenu, HiX } from "react-icons/hi";
+import { List, X } from "phosphor-react";
 import { usePathname } from "next/navigation";
-import { useLayoutEffect } from "react";
 
 import title from "../../../public/assets/images/navbar/waitTitle.png";
 import blackTitle from "../../../public/assets/images/home/waitLogoBlack.png";
@@ -23,52 +23,43 @@ const navLinks = [
   { name: "Kontakt", href: "/kontakt", key: "kontakt" },
 ];
 
-export const menuVariants: Variants = {
+const menuVariants: Variants = {
   hidden: {
     opacity: 0,
-    y: -60,
-    filter: "blur(4px)",
+    scale: 1.02,
   },
   visible: {
     opacity: 1,
-    y: 0,
-    filter: "blur(0px)",
+    scale: 1,
     transition: {
-      type: "spring",
-      stiffness: 90,
-      damping: 18,
-      mass: 0.7,
+      duration: 0.45,
+      ease: [0.22, 1, 0.36, 1],
       when: "beforeChildren",
-      staggerChildren: 0.04,
-      delayChildren: 0.06,
+      staggerChildren: 0.08,
+      delayChildren: 0.12,
     },
   },
   exit: {
     opacity: 0,
-    y: -40,
-    filter: "blur(4px)",
+    scale: 1.02,
     transition: {
-      duration: 0.22,
+      duration: 0.35,
       ease: [0.4, 0, 0.2, 1],
     },
   },
 };
 
-export const itemVariants: Variants = {
+const itemVariants: Variants = {
   hidden: {
     opacity: 0,
-    scale: 0.92,
-    filter: "blur(4px)",
+    y: 8,
   },
   visible: {
     opacity: 1,
-    scale: 1,
-    filter: "blur(0px)",
+    y: 0,
     transition: {
-      type: "spring",
-      stiffness: 120,
-      damping: 22,
-      mass: 0.9,
+      duration: 0.4,
+      ease: [0.22, 1, 0.36, 1],
     },
   },
 };
@@ -77,8 +68,8 @@ export default function Navbar() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const firstLinkRef = useRef<HTMLAnchorElement | null>(null);
-  const activeIndex = navLinks.findIndex(l => l.href === pathname);
+
+  const activeIndex = navLinks.findIndex((l) => l.href === pathname);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [underlineReady, setUnderlineReady] = useState(false);
 
@@ -108,20 +99,12 @@ export default function Navbar() {
 
   return (
     <>
-      {/* PAGE DEPTH EFFECT */}
-      <motion.div
-        animate={{ scale: menuOpen ? 0.98 : 1, filter: menuOpen ? "blur(2px)" : "blur(0px)" }}
-        transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-      />
-
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-md transition-all duration-500 font-geist ${
-          scrolled && !menuOpen
+        className={`fixed top-0 left-0 right-0 backdrop-blur-md transition-all duration-500 z-50 font-geist ${scrolled && !menuOpen
             ? "bg-white/80 text-black"
             : !scrolled && !menuOpen
-            ? "bg-black/70 text-navbarWhite"
-            : "bg-black/85 text-white"
-        }`}
+              ? "bg-black/70 text-navbarWhite"
+              : "bg-black/85 text-white"}`}
         style={{ height: "85px" }}
       >
         <div className="relative flex items-center justify-between px-4 lg:px-44 monitor:px-80 h-full">
@@ -130,36 +113,31 @@ export default function Navbar() {
             <Image
               src={menuOpen || !scrolled ? title : blackTitle}
               alt="WAIT"
-              className="w-[80px] md:w-[95px] h-auto transition-opacity duration-300"
-            />
+              className="w-[80px] md:w-[95px] h-auto transition-opacity duration-300" />
           </Link>
 
           {/* DESKTOP MENU */}
-          <motion.div
-            className="hidden lg:flex gap-6 items-center text-[17px] relative"
-          >
+          <div className="hidden lg:flex gap-6 items-center text-[17px] relative">
             {navLinks.map(({ name, href, key }, i) => {
               const active = isActive(href);
 
               return (
                 <div
                   key={key}
-                  ref={(el) => {
+                  ref={(el: HTMLDivElement | null) => {
                     itemRefs.current[i] = el;
-                  }}
+                  } }
                   className="relative"
                 >
                   <Link href={href} className="uppercase font-bold group">
                     <span
-                      className={`transition-colors duration-300 ${
-                        active
+                      className={`transition-colors duration-300 ${active
                           ? scrolled
                             ? "text-neonPinkDark"
                             : "text-neonPink"
                           : scrolled
-                          ? "text-gray-900 group-hover:text-neonPinkDark"
-                          : "text-lightGray group-hover:text-neonPink"
-                      }`}
+                            ? "text-gray-900 group-hover:text-neonPinkDark"
+                            : "text-lightGray group-hover:text-neonPink"}`}
                     >
                       {name}
                     </span>
@@ -168,13 +146,10 @@ export default function Navbar() {
               );
             })}
 
-            {/* SINGLE UNDERLINE */}
             {underlineReady && activeIndex !== -1 && (
               <motion.div
-                className={`absolute h-[2px] rounded-full bottom-0 ${
-                  scrolled ? "bg-neonPinkDark" : "bg-neonPink"
-                }`}
-                initial={false}   // ⬅️ KRITICKÉ
+                className={`absolute h-[2px] rounded-full bottom-0 ${scrolled ? "bg-neonPinkDark" : "bg-neonPink"}`}
+                initial={false}
                 animate={{
                   x: itemRefs.current[activeIndex]?.offsetLeft ?? 0,
                   width: itemRefs.current[activeIndex]?.offsetWidth ?? 0,
@@ -183,21 +158,17 @@ export default function Navbar() {
                   type: "spring",
                   stiffness: 500,
                   damping: 40,
-                }}
-              />
+                }} />
             )}
-          </motion.div>
+          </div>
 
           {/* MOBILE TOGGLE */}
           <button
             onClick={() => setMenuOpen((p) => !p)}
             aria-expanded={menuOpen}
             aria-label="Menu"
-            className={`lg:hidden z-50 flex items-center gap-2 mt-1 transition-colors ${
-              menuOpen ? "text-white" : scrolled ? "text-black" : "text-navbarWhite"
-            }`}
+            className={`lg:hidden z-50 flex items-center gap-2 mt-1 transition-colors ${menuOpen ? "text-white" : scrolled ? "text-black" : "text-navbarWhite"}`}
           >
-            <span className="text-lg uppercase font-medium">Menu</span>
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={menuOpen ? "close" : "open"}
@@ -206,54 +177,53 @@ export default function Navbar() {
                 exit={{ opacity: 0, rotate: 10, scale: 0.9 }}
                 transition={{ duration: 0.25 }}
               >
-                {menuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+                {menuOpen ? (
+                  <X size={32} weight="bold" />
+                ) : (
+                  <List size={32} weight="bold" />
+                )}
               </motion.div>
             </AnimatePresence>
           </button>
         </div>
-
-        {/* MOBILE MENU */}
-        <AnimatePresence>
-          {menuOpen && (
-            <motion.div
-              id="mobile-menu"
-              variants={menuVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              className="fixed inset-0 h-[100dvh] flex flex-col items-center justify-center space-y-5 z-40"
-              style={{
-                background:
-                  "radial-gradient(circle at top, rgba(255,255,255,0.06), transparent 60%), rgba(0,0,0,1)",
-              }}
-              transition={{
-                opacity: { duration: 0.5, ease: [0.22, 1, 0.36, 1] }, // plynulejší fade
-                y: { duration: 0.45, ease: [0.22, 1, 0.36, 1] },
-              }}
-            >
-              {navLinks.map(({ name, href, key }, i) => (
-                <motion.div
-                  key={key}
-                  variants={itemVariants}
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <Link
-                    href={href}
-                    ref={i === 0 ? firstLinkRef : undefined}
-                    onClick={() => setMenuOpen(false)}
-                    className={`uppercase text-3xl font-semibold transition-colors ${
-                      isActive(href) ? "text-neonPink" : "text-lightGray hover:text-neonPink"
-                    }`}
-                  >
-                    {name}
-                  </Link>
-                </motion.div>
-              ))}
-            </motion.div>
-          )}
-        </AnimatePresence>
       </nav>
+      
+      {/* MOBILE MENU – MUSÍ BÝT MIMO NAV */}
+      <AnimatePresence mode="wait">
+        {menuOpen && (
+          <motion.div
+            variants={menuVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            className="fixed inset-0 z-[49] flex flex-col items-center justify-center space-y-6"
+            style={{
+              backgroundColor: "rgba(0,0,0,0.96)",
+            }}
+          >
+            {navLinks.map(({ name, href, key }) => (
+              <motion.div
+                key={key}
+                variants={itemVariants}
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.97 }}
+              >
+                <Link
+                  href={href}
+                  onClick={() => setMenuOpen(false)}
+                  className={`uppercase text-3xl font-semibold transition-colors ${
+                    isActive(href)
+                      ? "text-neonPink"
+                      : "text-lightGray hover:text-neonPink"
+                  }`}
+                >
+                  {name}
+                </Link>
+              </motion.div>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

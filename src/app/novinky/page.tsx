@@ -324,7 +324,7 @@ export default function NewsPage() {
                     alt={mainArticle.title}
                     width={800}
                     height={500}
-                    className="object-cover w-full h-[500px] monitor:h-[600px] rounded-3xl transform group-hover:scale-105 transition-transform duration-700"
+                    className="object-cover w-full h-[500px] monitor:h-[600px] rounded-3xl group-hover:scale-105 transition-transform duration-300 ease-out will-change-transform transform-gpu"
                   />
 
                   {/* Gradient overlay */}
@@ -344,7 +344,7 @@ export default function NewsPage() {
                       <span className="tracking-wide">Přečíst více</span>
                       <ArrowRight
                         size={18}
-                        className="transition-transform duration-300 group-hover:translate-x-1.5"
+                        className="transition-transform duration-300 ease-out group-hover:translate-x-1.5"
                       />
                     </div>
                   </div>
@@ -393,7 +393,7 @@ export default function NewsPage() {
                         src={item.image}
                         alt={item.title}
                         fill
-                        className="object-cover monitor:object-top transform group-hover:scale-105 transition-transform duration-700"
+                        className="object-cover monitor:object-top transition-transform duration-300 ease-out group-hover:scale-105 will-change-transform transform-gpu"
                       />
                     </div>
 
