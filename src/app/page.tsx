@@ -124,7 +124,7 @@ export default function Home() {
       >
         <SideAccentLineHome targetId="uvod-section" />
 
-        <section id="uvod-section" className="relative flex flex-col items-center px-4 sm:px-4 md:px-0 pt-0 sm:pt-[30px] md:pt-[50px]">
+        <section id="uvod-section" className="relative flex flex-col items-center px-6 sm:px-6 md:px-6 pt-0 sm:pt-[30px] md:pt-[50px]">
           <div className="relative w-full justify-center items-center mt-9 sm:mt-9 md:mt-0">
             <TitleWithLines title="Kapela WAIT" />
           </div>          
@@ -326,7 +326,7 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center px-6 sm:px-6 md:px-6 lg:px-0"
             onClick={() => setActive(null)}
           >
             {/* --- Close button (desktop) --- */}
@@ -394,7 +394,7 @@ export default function Home() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.25 }}
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-10 bg-black/50 backdrop-blur-sm monitor:scale-125"
+          className="fixed inset-0 z-50 flex items-center justify-center px-6 sm:px-6 md:px-6 lg:px-0 sm:p-10 bg-black/50 backdrop-blur-sm monitor:scale-125"
           onClick={closeModal}
         >
           <motion.div

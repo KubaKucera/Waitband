@@ -31,7 +31,7 @@ export default function ConsertsPage() {
           backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(20, 20, 20, 0.85)), url(${texture.src})`,
         }}
       >
-        <section id="concert-section" className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden gap-8 pt-[118px]">
+        <section id="concert-section" className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6 sm:px-6 md:px-6 lg:px-0 gap-8 pt-[118px]">
           {/* Titulek */}
           <TitleWithLines title="Koncerty" delay={0.3} />          
 
@@ -42,7 +42,7 @@ export default function ConsertsPage() {
             className="flex flex-col items-center gap-8 mt-6 w-full"
           >            
             {/* Seznam koncertů */}
-            <div className="w-full max-w-3xl z-10 flex flex-col gap-10 px-4 sm:px-6 md:px-0">
+            <div className="w-full max-w-3xl z-10 flex flex-col gap-10">
               {concertData.map((text, index) => {
                 const [dateTime, locationRaw] = text.split(" – ");
                 const [city, place] = locationRaw.split(", ");

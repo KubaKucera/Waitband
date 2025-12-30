@@ -60,7 +60,7 @@ function AsideContent({
   const hasActiveFilters = filterYear !== "" || filterMonth !== "" || filterCategory !== "";
 
   return (
-    <aside className={`${wrapperClassName} rounded-xl p-2 flex flex-col`}>
+    <aside className={`${wrapperClassName} rounded-xl flex flex-col`}>
       {/* Header: název + filtr v jedné linii */}
       <div className="flex items-center justify-between mb-0 sm:mb-0 md:mb-4">
         <h3 className="text-white text-xl font-semibold">Všechny příspěvky</h3>
@@ -276,7 +276,7 @@ export default function NewsPage() {
       >
         <section
           id="news-section"
-          className="relative min-h-screen flex flex-col items-center gap-6 pt-[118px] px-4"
+          className="relative min-h-screen flex flex-col items-center gap-6 pt-[118px] px-6 sm:px-6 md:px-6 lg:px-0"
         >
           {/* Title */}
           <TitleWithLines title="Novinky" delay={0.3} />
@@ -455,7 +455,7 @@ export default function NewsPage() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
+                  className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center px-6 sm:px-6 md:px-6 lg:px-0"
                   onClick={() => setActive(null)}
                 >
                   {/* --- Close button (desktop) --- */}

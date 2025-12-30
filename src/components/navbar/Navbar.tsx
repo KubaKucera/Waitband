@@ -107,7 +107,7 @@ export default function Navbar() {
               : "bg-black/85 text-white"}`}
         style={{ height: "85px" }}
       >
-        <div className="relative flex items-center justify-between px-4 lg:px-44 monitor:px-80 h-full">
+        <div className="relative flex items-center justify-between px-5 sm:px-5 lg:px-44 monitor:px-80 h-full">
           {/* LOGO */}
           <Link href="/" onClick={() => setMenuOpen(false)} className="z-50">
             <Image

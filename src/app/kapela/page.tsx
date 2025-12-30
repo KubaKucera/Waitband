@@ -85,7 +85,7 @@ export default function BandPage() {
           backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(20, 20, 20, 0.85)), url(${texture.src})`,
         }}
       >
-        <section id="band-section" className="relative min-h-screen flex flex-col items-center gap-8 pt-[118px] px-4">
+        <section id="band-section" className="relative min-h-screen flex flex-col items-center gap-8 pt-[118px] px-6 sm:px-6 md:px-6 lg:px-0">
           {/* Titulek */}
           <TitleWithLines title="Členové kapely" delay={0.3} />
 
@@ -96,7 +96,7 @@ export default function BandPage() {
             className="flex flex-col items-center gap-8 mt-6 w-full"
           >
             {/* Členové kapely (responsive grid) */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-8 monitor:gap-10 w-full max-w-7xl px-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-8 monitor:gap-10 w-full max-w-7xl">
               {members.map((member, index) => (
                 <div
                   key={index}

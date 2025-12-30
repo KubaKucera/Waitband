@@ -91,7 +91,7 @@ export default function MusicPage() {
           backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(20, 20, 20, 0.85)), url(${texture.src})`,
         }}
       >        
-        <section id="music-section" className="relative min-h-screen flex flex-col items-center px-4 sm:px-4 md:px-0 gap-8 pt-[118px]">
+        <section id="music-section" className="relative min-h-screen flex flex-col items-center px-6 sm:px-6 md:px-6 lg:px-0 gap-8 pt-[118px]">
           
           <TitleWithLines title="Hudba" delay={0.3} />  
 
@@ -102,7 +102,7 @@ export default function MusicPage() {
             className="flex flex-col items-center gap-8 mt-6 w-full"
           >
             {/* Grid skladeb */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-7 monitor:gap-9 w-full max-w-6xl monitor:max-w-7xl px-2 sm:px-2 md:px-0">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-7 monitor:gap-9 w-full max-w-6xl monitor:max-w-7xl">
               {images.map((image, index) => (
                 <div
                   key={index}
@@ -171,7 +171,7 @@ export default function MusicPage() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.25 }}
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-10 bg-black/50 backdrop-blur-sm monitor:scale-125"
+          className="fixed inset-0 z-50 flex items-center justify-center px-6 sm:px-6 md:px-6 lg:px-0 sm:p-10 bg-black/50 backdrop-blur-sm monitor:scale-125"
           onClick={closeModal}
         >
           <motion.div

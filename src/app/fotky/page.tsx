@@ -138,7 +138,7 @@ export default function PhotosPage() {
           backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(20, 20, 20, 0.85)), url(${texture.src})`,
         }}
       >
-        <section id="photo-section" className="relative min-h-screen flex flex-col items-center px-4 gap-8 pt-[118px]">
+        <section id="photo-section" className="relative min-h-screen flex flex-col items-center px-6 sm:px-6 md:px-6 lg:px-0 gap-8 pt-[118px]">
           {/* Titulek */}
           <TitleWithLines title="Fotogalerie" delay={0.3} />      
           
@@ -149,7 +149,7 @@ export default function PhotosPage() {
             className="flex flex-col items-center gap-8 mt-6 w-full"
           >
             <div className="flex flex-col items-center gap-8 w-full">
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-7 monitor:gap-9 w-full max-w-6xl monitor:max-w-7xl px-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-7 monitor:gap-9 w-full max-w-6xl monitor:max-w-7xl">
                 {images.slice(0, showMore ? images.length : 9).map((image, index) => (
                   <div
                     key={index}
