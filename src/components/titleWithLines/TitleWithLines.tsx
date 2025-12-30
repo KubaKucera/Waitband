@@ -26,14 +26,14 @@ const TitleWithLines: FC<TitleWithLinesProps> = ({
 
   return (
     <motion.div
-      className="flex flex-col items-center z-20"
+      className="flex flex-col items-center z-20 px-6 sm:px-6 md:px-6 lg:px-0"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
     >
       {/* ==== MOBIL ==== */}
       <motion.div
-        className="block sm:hidden w-[90vw] max-w-[400px] h-1 rounded-full mb-2 animate-pulse"
+        className="block sm:hidden w-[86vw] max-w-[400px] h-1 rounded-full mb-2 animate-pulse"
         style={{ ...leftLineGradient, transformOrigin: "right" }}
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}

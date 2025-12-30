@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 import SideAccentLine from "@/components/sideAccentLine/SideAccentLine";
 import { ArrowRight } from "lucide-react";
 
-function PlayIcon({ size = 32, color = '#fff', className = '' }) {
+function PlayIcon({ size = 32, color = "#fff", className = "" }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17,185 +17,157 @@ function PlayIcon({ size = 32, color = '#fff', className = '' }) {
       height={size}
       viewBox="0 0 32 32"
       fill={color}
-      aria-label="Play"      
-      className={className}>
-      <path d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13zM12 9l12 7-12 7z" ></path>
+      aria-label="Play"
+      className={className}
+    >
+      <path d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13zM12 9l12 7-12 7z" />
     </svg>
-  )
+  );
 }
 
 const videos = [
-  {
-    id: "w4Xn_DzsC6o",
-    title: "WAIT - Losing Sleep (Live - Show Miloše Knora)",
-  },
-  {
-    id: "M_ugx3HzqME",
-    title: "WAIT - Horoskop (Official Music Video)",
-  },
-  {
-    id: "8Tupra8tJiY",
-    title: "WAIT - Modelka (Official Music Video)",    
-  },      
-  {
-    id: "OkWHNAsE0Zg",
-    title: "WAIT - Nekonečnej Seriál (Live @ Erpet Prague)",
-  }, 
-  {
-    id: "jmPkHuh_qK8",
-    title: "WAIT - Achiever (Live - Show Miloše Knora) ",
-  },
-  {
-    id: "OUStNRHRgjE",
-    title: "WAIT - Hate you (Official Music Video)",
-  },
+  { id: "w4Xn_DzsC6o", title: "WAIT - Losing Sleep (Live - Show Miloše Knora)" },
+  { id: "M_ugx3HzqME", title: "WAIT - Horoskop (Official Music Video)" },
+  { id: "8Tupra8tJiY", title: "WAIT - Modelka (Official Music Video)" },
+  { id: "OkWHNAsE0Zg", title: "WAIT - Nekonečnej Seriál (Live @ Erpet Prague)" },
+  { id: "jmPkHuh_qK8", title: "WAIT - Achiever (Live - Show Miloše Knora)" },
+  { id: "OUStNRHRgjE", title: "WAIT - Hate you (Official Music Video)" },
   {
     id: "Sk-D8LmeEgA",
-    title: "WAIT - Single (feat. Kristýna Štromajerová - Official Music Video)",    
+    title: "WAIT - Single (feat. Kristýna Štromajerová)",
   },
-  {
-    id: "2dtwW_3dxGM",
-    title: "WAIT - Perfect Liar (Official Music Video)",
-  },
-  {
-    id: "Q-8a308aqLc",
-    title: "WAIT - Every Day Blue (Live - Show Miloše Knora)",
-  },
-  {
-    id: "iuyv0jPlWZg",
-    title: "WAIT - My Guide (Official Music Video)",
-  },
-  {
-    id: "yCNaLnsRCR8",
-    title: "WAIT - When You Sleep (Official Lyric Video) ",
-  },
-  {
-    id: "TXSluBOjNoU",
-    title: "WAIT - Live to Party (Showcase Video)",
-  },
-]
+  { id: "2dtwW_3dxGM", title: "WAIT - Perfect Liar" },
+  { id: "Q-8a308aqLc", title: "WAIT - Every Day Blue (Live)" },
+  { id: "iuyv0jPlWZg", title: "WAIT - My Guide" },
+  { id: "yCNaLnsRCR8", title: "WAIT - When You Sleep (Lyric Video)" },
+  { id: "TXSluBOjNoU", title: "WAIT - Live to Party" },
+];
 
-export default function VideosPage(){  
-  const [selectedVideo, setSelectedVideo] = useState(videos[0].id);
-  const [selectedTitle, setSelectedTitle] = useState(videos[0].title);
-  const [currentPlayingVideoId, setCurrentPlayingVideoId] = useState<string>(videos[0].id);
+export default function VideosPage() {
+  const [currentVideo, setCurrentVideo] = useState(videos[0]);
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
 
   useEffect(() => {
     document.title = "Videa | Wait";
-  }, []);  
+  }, []);
 
-  const handleVideoClick = (id: string, title: string) => {
-    if (id === currentPlayingVideoId) return;
+  const handleVideoClick = (video: typeof videos[number]) => {
+    if (video.id === currentVideo.id) return;
 
-    setSelectedVideo(id);
-    setSelectedTitle(title);
-    setCurrentPlayingVideoId(id);
-    
+    setCurrentVideo(video);
+
     if (iframeRef.current) {
       iframeRef.current.src = "";
       setTimeout(() => {
-        iframeRef.current!.src = `https://www.youtube.com/embed/${id}?autoplay=1`; 
+        iframeRef.current!.src = `https://www.youtube.com/embed/${video.id}?autoplay=1`;
       }, 100);
     }
 
     window.scrollTo({ top: 0, behavior: "smooth" });
-  };   
+  };
 
   return (
-    <>     
-      <SideAccentLine targetId="video-section"/>
+    <>
+      <SideAccentLine targetId="video-section" />
 
       <div
-        className="relative w-full min-h-screen bg-fixed bg-cover bg-center bg-no-repeat"
+        className="relative w-full min-h-screen bg-fixed bg-cover bg-center"
         style={{
-          backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(20, 20, 20, 0.85)), url(${texture.src})`,
+          backgroundImage: `linear-gradient(to bottom right, rgba(0,0,0,0.8), rgba(20,20,20,0.85)), url(${texture.src})`,
         }}
-      > 
-        <section id="video-section" className="relative min-h-screen flex flex-col items-center px-6 sm:px-6 md:px-6 lg:px-0 gap-8 pt-[118px]">          
-          {/* Titulek */}
+      >
+        <section
+          id="video-section"
+          className="min-h-screen flex flex-col items-center gap-8 pt-[118px]"
+        >
           <TitleWithLines title="Videa YT" delay={0.3} />
 
           <motion.div
-            initial={{ opacity: 0, y: 30, scale: 0.98 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ delay: 0.6, duration: 1, ease: "easeOut" }}
-            className="flex flex-col items-center gap-8 mt-6 w-full"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+            className="w-full flex flex-col items-center px-6 lg:px-0 mt-6"
           >
-            {/* Hlavní video - zvětšení výšky */}
-            <div className="w-full max-w-[820px] h-auto mb-5 z-30 flex flex-col items-center">
-              <iframe
-                ref={iframeRef}
-                id="mainVideo"
-                key={selectedVideo}
-                width="100%"
-                height="450px"
-                src={`https://www.youtube.com/embed/${selectedVideo}`}  // Initially blank to prevent autoplay
-                title={selectedTitle}
-                frameBorder="0"
-                allow="autoplay"
-                allowFullScreen     
-                className="h-[230px] w-[400px] sm:h-[250px] sm:w-[450px] md:h-[440px] md:w-[790px] px-1"       
-            ></iframe>
-              <h2 className="text-white text-2xl sm:text-2xl md:text-4xl font-normal mt-4 text-left w-full px-2">{selectedTitle}</h2>
+            {/* HLAVNÍ VIDEO */}
+            <div className="w-full max-w-[820px] z-30 mb-14">
+              <div className="relative w-full aspect-video rounded-lg overflow-hidden">
+                <iframe
+                  ref={iframeRef}
+                  src={`https://www.youtube.com/embed/${currentVideo.id}`}
+                  title={currentVideo.title}
+                  allow="autoplay; encrypted-media"
+                  allowFullScreen
+                  className="absolute inset-0 w-full h-full"
+                />
+              </div>
+
+              <h2 className="text-white text-xl sm:text-2xl md:text-4xl mt-4 px-2">
+                {currentVideo.title}
+              </h2>
             </div>
 
-            {/* Grid s videi */}
-            <div className="grid grid-cols-2 gap-5 sm:grid-cols-2 lg:grid-cols-3 max-w-[820px] z-30 mb-5 px-4">
+            {/* GRID VIDEÍ */}
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-[820px] mb-7">
               {videos.map((video) => (
-                <div key={video.id} className="relative flex flex-col items-center group"> {/* Přidání group na každý prvek */}
-                  <div className="relative flex items-center justify-center">
+                <div key={video.id} className="group">
+                  <div className="relative aspect-video overflow-hidden rounded-md">
                     <Image
                       src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`}
                       alt={video.title}
-                      width={300}
-                      height={180}                  
-                      className={`cursor-pointer h-[150px] w-[220px] sm:h-[150px] sm:w-[220px] md:h-[180px] md:w-[300px] transition-colors duration-300 border-transparent ${
-                        video.id === currentPlayingVideoId ? "opacity-50 cursor-not-allowed" : "" // Změníme vzhled a znepřístupníme kliknutí, pokud se video přehrává
+                      fill
+                      className={`object-cover cursor-pointer transition-opacity ${
+                        video.id === currentVideo.id
+                          ? "opacity-50 cursor-not-allowed"
+                          : "hover:opacity-80"
                       }`}
-                      onClick={() => handleVideoClick(video.id, video.title)}
+                      onClick={() => handleVideoClick(video)}
                     />
+
                     <div
-                      className="absolute flex items-center justify-center w-full h-full cursor-pointer"
-                      onClick={() => handleVideoClick(video.id, video.title)}
+                      onClick={() => handleVideoClick(video)}
+                      className="absolute inset-0 flex items-center justify-center"
                     >
-                      {video.id === currentPlayingVideoId ? (
-                        <span className="text-white text-[20px] font-normal">Spuštěno...</span> // Zobrazí text "Přehrává se"
+                      {video.id === currentVideo.id ? (
+                        <span className="text-white text-lg">
+                          Spuštěno…
+                        </span>
                       ) : (
-                        <PlayIcon size={32} color="#fff" />
+                        <PlayIcon />
                       )}
                     </div>
                   </div>
-                  <p className="text-white sm:text-sm text-sm md:text-lg mt-2 w-full text-left left-0 break-words">{video.title}</p>
+
+                  <p className="text-white text-sm md:text-base mt-2">
+                    {video.title}
+                  </p>
                 </div>
               ))}
-            </div>  
-
-            <div className="flex justify-center mb-3 h-[50px]">
-              <Link href="https://www.youtube.com/@waitbandofficial/videos" target="_blank">
-                <button
-                  className="group relative w-[320px] h-[55px]
-                    text-[15px] font-semibold tracking-[0.12em]
-                    rounded-full text-white                    
-                    transition-all duration-300 ease-out
-                    bg-transparent border-[2px] border-transparent
-                    [background:linear-gradient(#0a0a0a,#0a0a0a)_padding-box,linear-gradient(90deg,#ff6a00,#ee0979)_border-box]
-                    hover:scale-105 hover:shadow-[0_0_18px_rgba(238,9,121,0.4)]
-                    focus-visible:outline-none
-                    focus-visible:shadow-[0_0_0_3px_rgba(238,9,121,0.35)]"
-                >
-                  Všechna videa
-                  <ArrowRight
-                    size={22}
-                    className="
-                      absolute right-5 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 ease-out
-                    "
-                  />
-                </button>
-              </Link>
             </div>
-          </motion.div>          
+
+            {/* BUTTON */}
+            <Link
+              href="https://www.youtube.com/@waitbandofficial/videos"
+              target="_blank"
+              className="mt-4 mb-3"
+            >
+              <button
+                className="group relative w-[320px] h-[55px]
+                  text-[15px] font-semibold tracking-[0.12em]
+                  rounded-full text-white
+                  bg-transparent border-[2px] border-transparent
+                  [background:linear-gradient(#0a0a0a,#0a0a0a)_padding-box,linear-gradient(90deg,#ff6a00,#ee0979)_border-box]
+                  hover:scale-105 hover:shadow-[0_0_18px_rgba(238,9,121,0.4)]
+                  transition-all duration-300"
+              >
+                Všechna videa
+                <ArrowRight
+                  size={22}
+                  className="absolute right-5 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition"
+                />
+              </button>
+            </Link>
+          </motion.div>
         </section>
       </div>
     </>

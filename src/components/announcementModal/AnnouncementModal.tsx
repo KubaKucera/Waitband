@@ -64,7 +64,7 @@ export default function AnnouncementModal() {
         >
           <button
             onClick={() => setOpen(false)}
-            className="fixed top-[22px] right-5 text-gray-300 hover:text-white transition z-[10000]"
+            className="fixed top-[26px] right-5 text-gray-300 hover:text-white transition z-[10000]"
           >
             <X size={32} />
           </button>

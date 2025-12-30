@@ -63,7 +63,7 @@ function AsideContent({
     <aside className={`${wrapperClassName} rounded-xl flex flex-col`}>
       {/* Header: název + filtr v jedné linii */}
       <div className="flex items-center justify-between mb-0 sm:mb-0 md:mb-4">
-        <h3 className="text-white text-xl font-semibold">Všechny příspěvky</h3>
+        <h3 className="text-white text-lg font-semibold">Všechny příspěvky</h3>
         <div className="flex items-center gap-3">
           <button
             onClick={() => setShowFilter(!showFilter)}
@@ -276,7 +276,7 @@ export default function NewsPage() {
       >
         <section
           id="news-section"
-          className="relative min-h-screen flex flex-col items-center gap-6 pt-[118px] px-6 sm:px-6 md:px-6 lg:px-0"
+          className="relative min-h-screen flex flex-col items-center gap-8 pt-[118px] px-6 sm:px-6 md:px-6 lg:px-0"
         >
           {/* Title */}
           <TitleWithLines title="Novinky" delay={0.3} />
@@ -374,7 +374,7 @@ export default function NewsPage() {
 
             {/* Grid dalších článků */}
             <div className="w-full max-w-6xl monitor:max-w-7xl mt-0 sm:mt-0 md:mt-4">
-              <h3 className="text-white text-xl font-semibold mb-6">
+              <h3 className="text-white text-lg font-semibold mb-6">
                 Další příspěvky
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 monitor:gap-10">
