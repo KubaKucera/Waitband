@@ -54,12 +54,12 @@ export default function ConsertsPage() {
                   >
                     {/* Datum a čas */}
                     <div className="text-center mb-4">
-                      <span className="text-3xl sm:text-4xl font-extrabold text-white drop-shadow-lg">{dateTime}</span>
+                      <span className="text-[26px] sm:text-3xl md:text-4xl font-extrabold text-white drop-shadow-lg">{dateTime}</span>
                     </div>
 
                     {/* Místo konání */}
-                    <div className="flex items-center justify-center gap-4 text-xl sm:text-2xl text-white/80">
-                      <FaMapMarkerAlt className="text-orange-400 text-2xl" />
+                    <div className="flex items-center justify-center gap-4 text-base sm:text-xl md:text-2xl text-white/80">
+                      <FaMapMarkerAlt className="text-orange-400 text-lg sm:text-xl md:text-2xl" />
                       <span className="text-orange-400">{place ? `${city}, ${place}` : city}</span>
                     </div>
 

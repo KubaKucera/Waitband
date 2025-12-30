@@ -90,7 +90,7 @@ export default function VideosPage() {
             className="w-full flex flex-col items-center px-6 lg:px-0 mt-6"
           >
             {/* HLAVNÍ VIDEO */}
-            <div className="w-full max-w-[820px] z-30 mb-14">
+            <div className="w-full max-w-[820px] z-30 mb-9 md:mb-14">
               <div className="relative w-full aspect-video rounded-lg overflow-hidden">
                 <iframe
                   ref={iframeRef}
