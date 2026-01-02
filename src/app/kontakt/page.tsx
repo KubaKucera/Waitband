@@ -131,7 +131,7 @@ export default function ContactPage() {
                 {formErrors.message && <p className="text-sm text-red-500 mt-1">{formErrors.message}</p>}
               </div>
 
-              <div className="ml-[-20px] sm:ml-[-20px] md:ml-0">
+              <div className="ml-[-10px] sm:ml-[-10px] md:ml-0">
                 <ReCAPTCHA
                   sitekey="6LenF4wqAAAAAPPCUeBknjgKqRFoFa5S6oFcLTEJ"
                   ref={recaptchaRef}
