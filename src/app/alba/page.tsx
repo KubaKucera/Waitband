@@ -124,7 +124,7 @@ export default function AlbumsPage() {
               </span>
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 monitor:gap-9 mb-4 z-10 max-w-6xl monitor:max-w-7xl w-full mx-auto justify-items-center">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 sm:gap-10 md:gap-8 monitor:gap-9 mb-4 z-10 max-w-6xl monitor:max-w-7xl w-full mx-auto justify-items-center">
               {albums.map((album, index) => (
                 <AlbumCard key={index} {...album} />
               ))}

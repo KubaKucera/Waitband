@@ -100,7 +100,7 @@ export default function BandPage() {
               {members.map((member, index) => (
                 <div
                   key={index}
-                  className="group relative w-full h-[440px] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
+                  className="group relative w-full h-[470px] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
                 >
                   <Image
                     src={member.img}

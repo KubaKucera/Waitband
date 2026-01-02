@@ -58,7 +58,7 @@ export default function ConsertsPage() {
                     </div>
 
                     {/* Místo konání */}
-                    <div className="flex items-center justify-center gap-4 text-base sm:text-xl md:text-2xl text-white/80">
+                    <div className="flex items-center justify-center text-nowrap gap-4 text-lg sm:text-xl md:text-2xl text-white/80">
                       <FaMapMarkerAlt className="text-orange-400 text-lg sm:text-xl md:text-2xl" />
                       <span className="text-orange-400">{place ? `${city}, ${place}` : city}</span>
                     </div>

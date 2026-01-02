@@ -394,7 +394,7 @@ export default function Home() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.25 }}
-          className="fixed inset-0 z-50 flex items-center justify-center px-6 sm:px-6 md:px-6 lg:px-0 sm:p-10 bg-black/50 backdrop-blur-sm monitor:scale-125"
+          className="fixed inset-0 z-50 flex items-center justify-center px-6 sm:px-6 md:px-6 lg:px-0 sm:p-10 bg-black/50 backdrop-blur-sm monitor:scale-115"
           onClick={closeModal}
         >
           <motion.div

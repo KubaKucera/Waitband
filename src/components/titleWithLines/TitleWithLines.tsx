@@ -33,7 +33,7 @@ const TitleWithLines: FC<TitleWithLinesProps> = ({
     >
       {/* ==== MOBIL ==== */}
       <motion.div
-        className="block sm:hidden w-[86vw] max-w-[400px] h-1 rounded-full mb-2 animate-pulse"
+        className="block sm:hidden w-[88vw] sm:w-[90vw] max-w-[400px] h-1 rounded-full mb-2 animate-pulse"
         style={{ ...leftLineGradient, transformOrigin: "right" }}
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}

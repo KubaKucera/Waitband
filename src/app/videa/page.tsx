@@ -126,7 +126,7 @@ export default function VideosPage() {
 
                     <div
                       onClick={() => handleVideoClick(video)}
-                      className="absolute inset-0 flex items-center justify-center"
+                      className="absolute inset-0 flex items-center justify-center cursor-pointer"
                     >
                       {video.id === currentVideo.id ? (
                         <span className="text-white text-lg">
