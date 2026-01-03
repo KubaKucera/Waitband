@@ -29,8 +29,8 @@ const config: Config = {
         'custom': '23px 3px 6px rgba(0, 0, 0, 0.33)',        
       },
       screens: {
-        monitor: '1920px',
-        xs: '320px',
+        monitor: "1920px",
+        xs: "360px",
         'custom-md-lg': { min: '768px', max: '1023px' },
       },
       scale: {

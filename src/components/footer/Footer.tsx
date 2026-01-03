@@ -22,7 +22,7 @@ export default function FooterWithNewsletter() {
   };
 
   const renderSocialLinks = () => (
-    <div className="flex justify-center flex-wrap lg:flex-nowrap gap-4 lg:gap-6 w-full max-w-2xl mx-auto">
+    <div className="flex justify-center flex-wrap lg:flex-nowrap gap-3 sm:gap-4 md:gap-6 w-full max-w-2xl mx-auto">
       {[
         {
           icon: <FaInstagram />,
@@ -59,7 +59,7 @@ export default function FooterWithNewsletter() {
           href: "https://soundcloud.com/wait-band-official",
           label: "SoundCloud",
           bg: "bg-soundcloudOrange",
-        }        
+        },
       ].map(({ icon, href, label, bg }, i) => (
         <Link
           key={i}
@@ -67,7 +67,18 @@ export default function FooterWithNewsletter() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={label}
-          className={`${bg} text-white text-[22px] md:text-[26px] p-3 rounded-full hover:scale-110 transition shadow-md`}
+          className={`
+            ${bg}
+            aspect-square flex items-center justify-center
+            text-white text-[20px] md:text-[26px]
+            p-3
+            rounded-xl
+            shadow-md
+            transition-transform duration-300 ease-in-out
+            hover:-translate-y-1 hover:scale-110
+            focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black/20
+            max-w-[60px] max-h-[60px] sm:max-w-[70px] sm:max-h-[70px] md:max-w-[80px] md:max-h-[80px]
+          `}
         >
           {icon}
         </Link>
