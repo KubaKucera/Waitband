@@ -100,13 +100,13 @@ export default function BandPage() {
               {members.map((member, index) => (
                 <div
                   key={index}
-                  className="group relative w-full h-[470px] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
+                  className="group relative w-full h-[470px] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-transform duration-300 ease-out will-change-transform transform-gpu"
                 >
                   <Image
                     src={member.img}
                     alt={member.name}
                     fill
-                    className="object-cover transform transition-transform duration-500 group-hover:scale-105"
+                    className="object-cover group-hover:scale-105 transition-transform duration-300 ease-out will-change-transform transform-gpu"
                   />
 
                   {/* name bar */}
@@ -156,37 +156,37 @@ export default function BandPage() {
             </div>
 
             {/* Druhý obrázek - dekor, responsivní velikost */}
-            <div className="w-full sm:w-[90%] md:w-[88%] lg:w-[72%] monitor:w-[66%] mx-auto mt-4">
-              <div
-                className="relative rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-500"
-              >
-                <div className="relative no-fixed-bg w-full h-[36vh] sm:h-[36vh] md:h-[48vh] lg:h-[70vh] monitor:h-[63vh]"
-                  style={{ backgroundImage: `url('${band2.src}')`, backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat: "no-repeat", backgroundAttachment: "fixed", }}
-                ></div>
-              </div>
+            <div className="relative w-full sm:w-[90%] md:w-[88%] lg:w-[72%] monitor:w-[66%] mx-auto mt-4 rounded-xl overflow-hidden shadow-lg">
+              <div className="w-full h-[36vh] sm:h-[36vh] md:h-[48vh] lg:h-[70vh] monitor:h-[63vh] band2-bg"
+                  style={{ backgroundImage: `url('${band2.src}')` }} />
             </div>
 
             <div className="flex justify-center mt-2 sm:mt-2 md:mt-4 mb-3">
-              <Link href="/">
-                <button
-                  className="group relative w-[320px] h-[55px]
-                    text-[15px] font-semibold tracking-[0.12em]
-                    rounded-full text-white                    
+              <Link
+                href="/"
+                className="group relative inline-flex items-center justify-center
+                  w-[320px] h-[55px]
+                  text-[15px] font-semibold tracking-[0.12em]
+                  rounded-full text-white
+                  transition-transform duration-300 ease-out will-change-transform transform-gpu
+                  bg-transparent border-[2px] border-transparent
+                  [background:linear-gradient(#0a0a0a,#0a0a0a)_padding-box,linear-gradient(90deg,#ff6a00,#ee0979)_border-box]
+                  hover:scale-105 hover:shadow-[0_0_18px_rgba(238,9,121,0.4)]
+                  focus-visible:outline-none
+                  focus-visible:shadow-[0_0_0_3px_rgba(238,9,121,0.35)]
+                  active:scale-[0.98]"
+              >
+                Zpět na úvod
+
+                <ArrowRight
+                  size={22}
+                  className="
+                    absolute right-5 top-1/2 -translate-y-1/2
+                    opacity-0 group-hover:opacity-100
+                    group-hover:translate-x-1
                     transition-all duration-300 ease-out
-                    bg-transparent border-[2px] border-transparent
-                    [background:linear-gradient(#0a0a0a,#0a0a0a)_padding-box,linear-gradient(90deg,#ff6a00,#ee0979)_border-box]
-                    hover:scale-105 hover:shadow-[0_0_18px_rgba(238,9,121,0.4)]
-                    focus-visible:outline-none
-                    focus-visible:shadow-[0_0_0_3px_rgba(238,9,121,0.35)]"
-                >
-                  Zpět na úvod
-                  <ArrowRight
-                    size={22}
-                    className="
-                      absolute right-5 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 ease-out
-                    "
-                  />
-                </button>
+                  "
+                />
               </Link>
             </div>
           </motion.div>

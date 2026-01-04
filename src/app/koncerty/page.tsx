@@ -50,7 +50,7 @@ export default function ConsertsPage() {
                 return (
                   <div
                     key={index} // ✅ pridali sme key
-                    className="flex flex-col items-center w-full mx-auto bg-gradient-to-r from-white/5 via-white/10 to-white/5 backdrop-blur-lg border border-white/20 rounded-2xl px-8 py-10 shadow-xl hover:shadow-2xl hover:scale-[1.03] transition-all duration-300"
+                    className="flex flex-col items-center w-full mx-auto bg-gradient-to-r from-white/5 via-white/10 to-white/5 backdrop-blur-lg border border-white/20 rounded-2xl px-8 py-10 shadow-xl hover:shadow-2xl hover:scale-[1.03] transition-transform duration-300 ease-out will-change-transform transform-gpu"
                   >
                     {/* Datum a čas */}
                     <div className="text-center mb-4">
@@ -64,7 +64,7 @@ export default function ConsertsPage() {
                     </div>
 
                     {/* Dekorativní gradient linka */}
-                    <div className="mt-6 h-1 w-20 mx-auto rounded-full bg-gradient-to-r bg-white group-hover:w-32 transition-all duration-300"></div>
+                    <div className="mt-6 h-1 w-20 mx-auto rounded-full bg-white group-hover:w-32 transition-all duration-300"></div>
                   </div>
                 );
               })}

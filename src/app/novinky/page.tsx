@@ -27,8 +27,7 @@ interface AsideProps {
   categories: string[];
   filteredNews: NewsItem[];
   setActive: (n: NewsItem | null) => void;
-  wrapperClassName?: string;
-  // nově: search a setter pro mobilní vyhledávání
+  wrapperClassName?: string;  
   search: string;
   setSearch: (s: string) => void;
 }

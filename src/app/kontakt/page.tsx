@@ -157,7 +157,7 @@ export default function ContactPage() {
                 <p><span className="font-bold">Zvuk:</span> František Novák, e-mail: <Link href="mailto:novak.frantisek@atlas.cz" className="text-blue-400 hover:underline">novak.frantisek@atlas.cz</Link></p>
               </div>
 
-              <button type="submit" disabled={loading} className="mt-4 w-full md:w-48 mx-auto bg-blue-500 text-white font-semibold py-2 rounded-xl hover:bg-blue-600 hover:scale-105 transition-transform duration-300 ease-out">
+              <button type="submit" disabled={loading} className="mt-4 w-full md:w-48 mx-auto bg-[#2563EB] text-white font-semibold py-2 rounded-xl hover:bg-[#1E40AF] hover:scale-105 transition-transform duration-300 ease-out will-change-transform transform-gpu">
                 {loading ? "Odesílání..." : "Odeslat"}
               </button>
             </form>

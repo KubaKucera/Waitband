@@ -70,16 +70,16 @@ export default function AnnouncementModal() {
           </button>
 
           <motion.div
-            className="relative bg-gradient-to-b from-gray-50 via-gray-100 to-gray-200 text-white rounded-2xl shadow-2xl max-w-lg monitor:max-w-2xl w-full mx-8 overflow-hidden"
+            className="relative bg-gradient-to-b from-gray-50 via-gray-100 to-gray-200 text-white rounded-2xl shadow-2xl max-w-lg monitor:max-w-3xl w-full mx-8 overflow-hidden"
             initial={{ y: -40, opacity: 0 }}
             animate={{ y: 0, scale: isLargeScreen ? 1.05 : 1, opacity: 1 }}
             exit={{ y: 20, opacity: 0 }}
             transition={{ type: "spring", stiffness: 120, damping: 20 }}
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="relative h-48 md:h-56 monitor:h-80 bg-[url('/assets/images/home/announcement.jpg')] bg-cover"></div>
+            <div className="relative h-48 md:h-56 monitor:h-96 bg-[url('/assets/images/home/announcement.jpg')] bg-cover"></div>
 
-            <div className="p-6 text-center">
+            <div className="p-6 monitor:p-11 text-center">
               <h2 className="text-2xl sm:text-2xl md:text-3xl font-extrabold font-montserrat mb-3 text-black">
                 Novinky od kapely 🎶
               </h2>
@@ -106,7 +106,7 @@ export default function AnnouncementModal() {
                 onClick={() => setOpen(false)}
                 className="mt-2 px-8 py-3 rounded-full bg-rose-600 
                   text-white font-semibold uppercase tracking-wide shadow-lg 
-                  hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300"
+                  hover:shadow-xl hover:scale-105 active:scale-95 transition-transform duration-300 ease-out will-change-transform transform-gpu"
               >
                 Těšíme se! 🚀
               </button>

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 export default function PrivacyPolicyPage(){
     return (
         <> 
-            <section className="relative min-h-screen w-full pt-[118px] px-6 sm:px-6 md:px-6 lg:px-0 text-black">
+            <section className="relative min-h-screen w-full pt-[118px] pb-14 px-6 sm:px-6 md:px-6 lg:px-6 text-black">
                 <h1 className="text-2xl font-bold">Zásady ochrany osobních údajů</h1>
                 <p>Poslední aktualizace: 23. listopadu 2024</p>
                 <p>Tato Zásada ochrany osobních údajů popisuje naše zásady a postupy při shromažďování, používání a zpřístupňování Vašich údajů, když používáte Službu, a informuje Vás o Vašich právech na ochranu soukromí a o tom, jak Vás zákon chrání.</p>

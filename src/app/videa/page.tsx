@@ -149,23 +149,29 @@ export default function VideosPage() {
             <Link
               href="https://www.youtube.com/@waitbandofficial/videos"
               target="_blank"
-              className="mt-4 mb-3"
+              className="mt-4 mb-3 group relative inline-flex items-center justify-center
+                w-[320px] h-[55px]
+                text-[15px] font-semibold tracking-[0.12em]
+                rounded-full text-white
+                transition-transform duration-300 ease-out will-change-transform transform-gpu
+                bg-transparent border-[2px] border-transparent
+                [background:linear-gradient(#0a0a0a,#0a0a0a)_padding-box,linear-gradient(90deg,#ff6a00,#ee0979)_border-box]
+                hover:scale-105 hover:shadow-[0_0_18px_rgba(238,9,121,0.4)]
+                focus-visible:outline-none
+                focus-visible:shadow-[0_0_0_3px_rgba(238,9,121,0.35)]
+                active:scale-[0.98]"
             >
-              <button
-                className="group relative w-[320px] h-[55px]
-                  text-[15px] font-semibold tracking-[0.12em]
-                  rounded-full text-white
-                  bg-transparent border-[2px] border-transparent
-                  [background:linear-gradient(#0a0a0a,#0a0a0a)_padding-box,linear-gradient(90deg,#ff6a00,#ee0979)_border-box]
-                  hover:scale-105 hover:shadow-[0_0_18px_rgba(238,9,121,0.4)]
-                  transition-all duration-300"
-              >
-                Všechna videa
-                <ArrowRight
-                  size={22}
-                  className="absolute right-5 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition"
-                />
-              </button>
+              Všechna videa
+
+              <ArrowRight
+                size={22}
+                className="
+                  absolute right-5 top-1/2 -translate-y-1/2
+                  opacity-0 group-hover:opacity-100
+                  group-hover:translate-x-1
+                  transition
+                "
+              />
             </Link>
           </motion.div>
         </section>
