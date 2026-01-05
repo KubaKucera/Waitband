@@ -7,10 +7,9 @@ import Link from "next/link";
 
 export default function AnnouncementModal() {
   const [open, setOpen] = useState(false);
-  const [isLargeScreen, setIsLargeScreen] = useState(false);
   const scrollYRef = useRef<number>(0);
 
-  // Jednou za session → kontrola sessionStorage
+  // Jednou za session
   useEffect(() => {
     const seen = sessionStorage.getItem("announcement_seen");
     if (!seen) {
@@ -19,35 +18,28 @@ export default function AnnouncementModal() {
     }
   }, []);
 
-  // Monitor resize detection
+  // ESC zavření
   useEffect(() => {
-    const checkScreen = () => setIsLargeScreen(window.innerWidth >= 1600);
-    checkScreen();
-    window.addEventListener("resize", checkScreen);
-    return () => window.removeEventListener("resize", checkScreen);
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
   }, []);
 
-  // Lock scroll při otevřeném modalu
+  // Lock scroll
   useEffect(() => {
     if (open) {
-      // uložíme aktuální scrollY
       scrollYRef.current = window.scrollY;
       document.body.style.position = "fixed";
       document.body.style.top = `-${scrollYRef.current}px`;
-      document.body.style.left = "0";
-      document.body.style.right = "0";
       document.body.style.width = "100%";
       document.documentElement.style.overflow = "hidden";
     } else {
-      // obnovíme scroll
       document.body.style.position = "";
       document.body.style.top = "";
-      document.body.style.left = "";
-      document.body.style.right = "";
       document.body.style.width = "";
       document.documentElement.style.overflow = "";
-
-      // vrátíme scroll na původní pozici
       window.scrollTo(0, scrollYRef.current);
     }
   }, [open]);
@@ -56,57 +48,91 @@ export default function AnnouncementModal() {
     <AnimatePresence>
       {open && (
         <motion.div
-          className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-[9999]"
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70 backdrop-blur-sm px-6 sm:px-6 md:px-6 lg:px-0 monitor:scale-115"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={() => setOpen(false)}
         >
+          {/* Close button */}
           <button
             onClick={() => setOpen(false)}
-            className="fixed top-[26px] right-5 text-gray-300 hover:text-white transition z-[10000]"
+            className="fixed top-6 right-6 z-[10000] text-gray-300 hover:text-white transition"
           >
             <X size={32} />
           </button>
 
+          {/* Modal */}
           <motion.div
-            className="relative bg-gradient-to-b from-gray-50 via-gray-100 to-gray-200 text-white rounded-2xl shadow-2xl max-w-lg monitor:max-w-3xl w-full mx-8 overflow-hidden"
+            className="
+              relative
+              w-full
+              max-w-lg
+              sm:max-w-xl
+              lg:max-w-2xl
+              rounded-2xl
+              bg-gradient-to-b from-gray-50 via-gray-100 to-gray-200
+              shadow-2xl
+              overflow-hidden
+              text-center              
+            "
             initial={{ y: -40, opacity: 0 }}
-            animate={{ y: 0, scale: isLargeScreen ? 1.05 : 1, opacity: 1 }}
+            animate={{ y: 0, opacity: 1 }}
             exit={{ y: 20, opacity: 0 }}
-            transition={{ type: "spring", stiffness: 120, damping: 20 }}
+            transition={{ type: 'spring', stiffness: 120, damping: 20 }}
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="relative h-48 md:h-56 monitor:h-96 bg-[url('/assets/images/home/announcement.jpg')] bg-cover"></div>
+            {/* Image */}
+            <div className="h-48 sm:h-56 lg:h-72 bg-[url('/assets/images/home/announcement.jpg')] bg-cover bg-center" />
 
-            <div className="p-6 monitor:p-11 text-center">
-              <h2 className="text-2xl sm:text-2xl md:text-3xl font-extrabold font-montserrat mb-3 text-black">
+            {/* Content */}
+            <div className="p-5 sm:p-6 md:p-8 lg:p-10">
+              <h2 className="mb-4 text-2xl sm:text-3xl lg:text-4xl font-extrabold font-montserrat text-black">
                 Novinky od kapely 🎶
               </h2>
 
-              <p className="text-black text-md leading-relaxed mb-4 w-full monitor:pl-24 monitor:pr-24">
-                Práce na singlu (cover skladby <em>„Stayin’ Alive“</em> a{" "}
-                <em>„The Fly“</em>), ve{" "}
+              <p className="mx-auto max-w-prose text-sm sm:text-base leading-relaxed text-black mb-4">
+                Práce na singlu
+                <br />
+                (cover skladby <em>„Stayin’ Alive“</em> a <em>„The Fly“</em>),
+                <br />
+                ve{" "}
                 <Link
                   href="https://www.facebook.com/whitechickenstudio"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="cursor-pointer hover:text-blue-600 hover:underline"
+                  className="font-semibold hover:text-blue-600 hover:underline"
                 >
-                  <span className="font-semibold">
-                    Whitechickenstudiu Daniela Škráška
-                  </span>
+                  Whitechickenstudiu Daniela Škráška
                 </Link>
                 .
               </p>
 
-              <p className="text-xs text-gray-700 mb-6">(autorská tvorba: IK/IK)</p>
+              <p className="mb-6 text-xs text-gray-600 italic">
+                autorská tvorba: IK / IK
+              </p>
 
               <button
                 onClick={() => setOpen(false)}
-                className="mt-2 px-8 py-3 rounded-full bg-rose-600 
-                  text-white font-semibold uppercase tracking-wide shadow-lg 
-                  hover:shadow-xl hover:scale-105 active:scale-95 transition-transform duration-300 ease-out will-change-transform transform-gpu"
+                className="
+                  inline-flex
+                  items-center
+                  justify-center
+                  rounded-full
+                  bg-rose-600
+                  px-8
+                  py-3
+                  text-sm
+                  font-semibold
+                  uppercase
+                  tracking-wide
+                  text-white
+                  shadow-lg
+                  transition-transform duration-300 ease-out will-change-transform transform-gpu
+                  hover:scale-105
+                  hover:shadow-xl
+                  active:scale-95
+                "
               >
                 Těšíme se! 🚀
               </button>
