@@ -275,7 +275,7 @@ export default function NewsPage() {
       >
         <section
           id="news-section"
-          className="relative min-h-screen flex flex-col items-center gap-8 pt-[118px] px-6 sm:px-6 md:px-6 lg:px-0"
+          className="relative min-h-screen flex flex-col items-center gap-8 pt-[118px] px-6 sm:px-6 md:px-6 lg:px-6"
         >
           {/* Title */}
           <TitleWithLines title="Novinky" delay={0.3} />
@@ -307,7 +307,7 @@ export default function NewsPage() {
               )}
             </div>
 
-            {/* Main + sidebar (desktop only) */}
+            {/* Main + sidebar (desktop only) */}            
             <div className="w-full max-w-6xl monitor:max-w-7xl flex flex-col lg:flex-row gap-8">
               {/* Hlavní článek */}
               {mainArticle && (
@@ -318,31 +318,43 @@ export default function NewsPage() {
                   transition={{ duration: 0.6, ease: "easeOut" }}
                   className="relative cursor-pointer flex-1 rounded-3xl overflow-hidden shadow-xl group mb-5 lg:mb-0"
                 >
-                  <Image
-                    src={mainArticle.image}
-                    alt={mainArticle.title}
-                    width={800}
-                    height={500}
-                    className="object-cover w-full h-[500px] monitor:h-[600px] rounded-3xl group-hover:scale-105 transition-transform duration-300 ease-out will-change-transform transform-gpu"
-                  />
+                  {/* Obrázek s responsivním poměrem */}
+                  <div className="relative w-full h-[400px] sm:aspect-[3/2] md:h-[600px] lg:h-[500px] monitor:h-[600px] overflow-hidden rounded-3xl">
+                    <Image
+                      src={mainArticle.image}
+                      alt={mainArticle.title}
+                      fill
+                      className="object-cover w-full h-full transition-transform duration-300 ease-out group-hover:scale-105"
+                    />
+                  </div>
 
-                  {/* Gradient overlay */}
+                  {/* Gradient overlay pro čitelnost */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
 
-                  {/* Text panel */}
-                  <div className="absolute bottom-6 left-6 right-6 text-white space-y-2">
-                    <span className="inline-block border-neonPink border-2 text-white px-3 py-1 rounded-full text-xs font-semibold mb-1">
+                  {/* Text panel – spodní overlay */}
+                  <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 text-white space-y-1 sm:space-y-2">
+                    <span className="inline-block border-neonPink border-2 text-white px-2 py-0.5 rounded-full text-xs font-semibold mb-1">
                       {mainArticle.category}
                     </span>
-                    <p className="text-sm text-gray-300">{mainArticle.date}</p>
-                    <h2 className="text-3xl font-bold">{mainArticle.title}</h2>
-                    <p className="mt-2 text-gray-200">{mainArticle.excerpt}</p>
+
+                    {/* Datum – menší na mobilu */}
+                    <p className="text-xs sm:text-sm text-gray-300">{mainArticle.date}</p>
+
+                    {/* Titulek */}
+                    <h2 className="text-xl sm:text-3xl font-bold leading-snug">
+                      {mainArticle.title}
+                    </h2>
+
+                    {/* Excerpt – jen pár řádků na mobilu */}
+                    <p className="mt-1 sm:mt-2 text-gray-200 text-sm line-clamp-3 sm:line-clamp-4">
+                      {mainArticle.excerpt}
+                    </p>
 
                     {/* CTA */}
-                    <div className="mt-auto flex items-center justify-start gap-1 sm:gap-2 text-neonPink text-sm font-semibold opacity-70 group-hover:opacity-100 transition-all duration-300">
+                    <div className="mt-2 flex items-center gap-1 sm:gap-2 text-neonPink text-sm font-semibold opacity-80 group-hover:opacity-100 transition-all duration-300">
                       <span className="tracking-wide">Přečíst více</span>
                       <ArrowRight
-                        size={18}
+                        size={16}
                         className="transition-transform duration-300 ease-out group-hover:translate-x-1.5"
                       />
                     </div>

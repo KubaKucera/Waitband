@@ -3,8 +3,7 @@
 import { Variants, motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState, useLayoutEffect } from "react";
-import { HiMenu, HiX } from "react-icons/hi";
+import { useEffect, useRef, useState, useLayoutEffect, useCallback } from "react";
 import { List, X } from "phosphor-react";
 import { usePathname } from "next/navigation";
 
@@ -24,10 +23,7 @@ const navLinks = [
 ];
 
 const menuVariants: Variants = {
-  hidden: {
-    opacity: 0,
-    scale: 1.02,
-  },
+  hidden: { opacity: 0, scale: 1.02 },
   visible: {
     opacity: 1,
     scale: 1,
@@ -42,25 +38,16 @@ const menuVariants: Variants = {
   exit: {
     opacity: 0,
     scale: 1.02,
-    transition: {
-      duration: 0.35,
-      ease: [0.4, 0, 0.2, 1],
-    },
+    transition: { duration: 0.35, ease: [0.4, 0, 0.2, 1] },
   },
 };
 
 const itemVariants: Variants = {
-  hidden: {
-    opacity: 0,
-    y: 8,
-  },
+  hidden: { opacity: 0, y: 8 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: {
-      duration: 0.4,
-      ease: [0.22, 1, 0.36, 1],
-    },
+    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
   },
 };
 
@@ -70,23 +57,33 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   const activeIndex = navLinks.findIndex((l) => l.href === pathname);
-  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const itemRefs = useRef<Array<HTMLDivElement | null>>([]);
   const [underlineReady, setUnderlineReady] = useState(false);
 
   const isActive = (href: string) => pathname === href;
 
+  const setItemRef = useCallback(
+    (index: number) => (el: HTMLDivElement | null) => {
+      itemRefs.current[index] = el;
+    },
+    []
+  );
+
+  /* scroll */
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  /* ESC */
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setMenuOpen(false);
     if (menuOpen) window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [menuOpen]);
 
+  /* lock body */
   useEffect(() => {
     document.body.classList.toggle("overflow-hidden", menuOpen);
   }, [menuOpen]);
@@ -99,21 +96,43 @@ export default function Navbar() {
 
   return (
     <>
+      {/* NAVBAR */}
       <nav
-        className={`fixed top-0 left-0 right-0 backdrop-blur-md transition-all duration-500 z-50 font-geist ${scrolled && !menuOpen
-            ? "bg-white/80 text-black"
-            : !scrolled && !menuOpen
+        className={`
+          fixed top-0 left-0 right-0 z-50
+          h-[85px]
+          box-border
+          font-geist
+          backdrop-blur-md
+          transition-all duration-500
+          ${
+            !scrolled && !menuOpen
               ? "bg-black/70 text-navbarWhite"
-              : "bg-black/85 text-white"}`}
-        style={{ height: "85px" }}
+              : scrolled && !menuOpen
+                ? "bg-white/80 text-black"
+                : "bg-black/85 text-white"
+          }
+        `}
       >
-        <div className="relative flex items-center justify-between px-5 sm:px-5 lg:px-44 monitor:px-80 h-full">
+        {/* GLASS BORDER */}
+        <div
+          className={`
+            pointer-events-none
+            absolute bottom-0 left-0 right-0
+            h-px
+            transition-opacity duration-300
+            ${!scrolled && !menuOpen ? "bg-white/20 opacity-100" : "opacity-0"}
+          `}
+        />
+
+        <div className="relative flex h-full items-center justify-between px-5 lg:px-44 monitor:px-80">
           {/* LOGO */}
           <Link href="/" onClick={() => setMenuOpen(false)} className="z-50">
             <Image
               src={menuOpen || !scrolled ? title : blackTitle}
               alt="WAIT"
-              className="w-[80px] md:w-[95px] h-auto transition-opacity duration-300" />
+              className="w-[80px] md:w-[95px] h-auto transition-opacity duration-300"
+            />
           </Link>
 
           {/* DESKTOP MENU */}
@@ -124,20 +143,20 @@ export default function Navbar() {
               return (
                 <div
                   key={key}
-                  ref={(el: HTMLDivElement | null) => {
-                    itemRefs.current[i] = el;
-                  } }
+                  ref={setItemRef(i)}
                   className="relative"
                 >
                   <Link href={href} className="uppercase font-bold group">
                     <span
-                      className={`transition-colors duration-300 ${active
+                      className={`transition-colors duration-300 ${
+                        active
                           ? scrolled
                             ? "text-neonPinkDark"
                             : "text-neonPink"
                           : scrolled
                             ? "text-gray-900 group-hover:text-neonPinkDark"
-                            : "text-lightGray group-hover:text-neonPink"}`}
+                            : "text-lightGray group-hover:text-neonPink"
+                      }`}
                     >
                       {name}
                     </span>
@@ -146,9 +165,18 @@ export default function Navbar() {
               );
             })}
 
+            {/* UNDERLINE – pixel perfect */}
             {underlineReady && activeIndex !== -1 && (
               <motion.div
-                className={`absolute h-[2px] rounded-full bottom-0 ${scrolled ? "bg-neonPinkDark" : "bg-neonPink"}`}
+                className={`
+                  absolute bottom-0
+                  h-[2px]
+                  rounded-full
+                  will-change-transform
+                  transform-gpu
+                  ${scrolled ? "bg-neonPinkDark" : "bg-neonPink"}
+                `}
+                style={{ translateY: "0.5px" }}
                 initial={false}
                 animate={{
                   x: itemRefs.current[activeIndex]?.offsetLeft ?? 0,
@@ -158,7 +186,8 @@ export default function Navbar() {
                   type: "spring",
                   stiffness: 500,
                   damping: 40,
-                }} />
+                }}
+              />
             )}
           </div>
 
@@ -167,7 +196,9 @@ export default function Navbar() {
             onClick={() => setMenuOpen((p) => !p)}
             aria-expanded={menuOpen}
             aria-label="Menu"
-            className={`lg:hidden z-50 flex items-center gap-2 mt-1 transition-colors ${menuOpen ? "text-white" : scrolled ? "text-black" : "text-navbarWhite"}`}
+            className={`lg:hidden z-50 transition-colors ${
+              menuOpen ? "text-white" : scrolled ? "text-black" : "text-navbarWhite"
+            }`}
           >
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
@@ -177,18 +208,14 @@ export default function Navbar() {
                 exit={{ opacity: 0, rotate: 10, scale: 0.9 }}
                 transition={{ duration: 0.25 }}
               >
-                {menuOpen ? (
-                  <X size={32} weight="bold" />
-                ) : (
-                  <List size={32} weight="bold" />
-                )}
+                {menuOpen ? <X size={32} weight="bold" /> : <List size={32} weight="bold" />}
               </motion.div>
             </AnimatePresence>
           </button>
         </div>
       </nav>
-      
-      {/* MOBILE MENU – MUSÍ BÝT MIMO NAV */}
+
+      {/* MOBILE MENU */}
       <AnimatePresence mode="wait">
         {menuOpen && (
           <motion.div
@@ -197,17 +224,10 @@ export default function Navbar() {
             animate="visible"
             exit="exit"
             className="fixed inset-0 z-[49] flex flex-col items-center justify-center space-y-6"
-            style={{
-              backgroundColor: "rgba(0,0,0,0.96)",
-            }}
+            style={{ backgroundColor: "rgba(0,0,0,0.96)" }}
           >
             {navLinks.map(({ name, href, key }) => (
-              <motion.div
-                key={key}
-                variants={itemVariants}
-                whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.97 }}
-              >
+              <motion.div key={key} variants={itemVariants}>
                 <Link
                   href={href}
                   onClick={() => setMenuOpen(false)}
