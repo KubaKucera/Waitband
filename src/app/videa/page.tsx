@@ -109,40 +109,43 @@ export default function VideosPage() {
 
             {/* GRID VIDEÍ */}
             <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-[820px] mb-7">
-              {videos.map((video) => (
-                <div key={video.id} className="group">
-                  <div className="relative aspect-video overflow-hidden rounded-md">
-                    <Image
-                      src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`}
-                      alt={video.title}
-                      fill
-                      className={`object-cover cursor-pointer transition-opacity ${
-                        video.id === currentVideo.id
-                          ? "opacity-50 cursor-not-allowed"
-                          : "hover:opacity-80"
-                      }`}
-                      onClick={() => handleVideoClick(video)}
-                    />
+              {videos.map((video) => {
+                const isActive = video.id === currentVideo.id;
 
+                return (
+                  <div key={video.id} className="group">
                     <div
-                      onClick={() => handleVideoClick(video)}
-                      className="absolute inset-0 flex items-center justify-center cursor-pointer"
+                      className={`relative aspect-video overflow-hidden rounded-md transition
+                        ${isActive ? "cursor-not-allowed" : "cursor-pointer"}
+                      `}
+                      onClick={() => !isActive && handleVideoClick(video)}
                     >
-                      {video.id === currentVideo.id ? (
-                        <span className="text-white text-lg">
-                          Spuštěno…
-                        </span>
-                      ) : (
-                        <PlayIcon />
-                      )}
-                    </div>
-                  </div>
+                      <Image
+                        src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`}
+                        alt={video.title}
+                        fill
+                        className={`object-cover transition-opacity duration-300
+                          ${isActive ? "opacity-50" : "group-hover:opacity-80"}
+                        `}
+                      />
 
-                  <p className="text-white text-sm md:text-base mt-2">
-                    {video.title}
-                  </p>
-                </div>
-              ))}
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        {isActive ? (
+                          <span className="text-white text-sm md:text-base">
+                            Spuštěno…
+                          </span>
+                        ) : (
+                          <PlayIcon />
+                        )}
+                      </div>
+                    </div>
+
+                    <p className="text-white text-sm md:text-base mt-2">
+                      {video.title}
+                    </p>
+                  </div>
+                );
+              })}
             </div>
 
             {/* BUTTON */}

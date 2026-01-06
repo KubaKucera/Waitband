@@ -72,19 +72,19 @@ export default function Home() {
 
   const [modalData, setModalData] = useState<{ image: any; title: string; index: number } | null>(null);
   
-    const openModal = (index: number) => {
-      setModalData({
-        image: images[index],
-        title: soundcloudSongs[index].title,
-        index,
-      });
-      document.body.style.overflow = "hidden";
-    };
+  const openModal = (index: number) => {
+    setModalData({
+      image: images[index],
+      title: soundcloudSongs[index].title,
+      index,
+    });
+    document.body.style.overflow = "hidden";
+  };
   
-    const closeModal = () => {
-      setModalData(null);
-      document.body.style.overflow = "";
-    };
+  const closeModal = () => {
+    setModalData(null);
+    document.body.style.overflow = "";
+  };
 
   useEffect(() => {
     if (active) {

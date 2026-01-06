@@ -87,11 +87,11 @@ body {
   background: linear-gradient(
     90deg,
     #ff6a00 0%,
-    #ee0979 40%,   /* růžová začíná brzy */
-    #ee0979 60%,   /* růžová zůstává delší */
-    #ff6a00 100%   /* zpět do oranžové */
+    #ee0979 40%,
+    #ee0979 60%,
+    #ff6a00 100%
   );
-  background-size: 500% 500%; /* víc prostoru pro posun */
+  background-size: 500% 500%;
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -113,10 +113,10 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  height: 100vh;          /* jistota přes celou výšku viewportu */
-  width: 6px;             /* tloušťka čáry */
-  z-index: 60;            /* výš než obsah */
-  pointer-events: none;   /* ať na to nejdou kliky */
+  height: 100vh;
+  width: 6px;
+  z-index: 60;
+  pointer-events: none;
 }
 
 .side-accent-inner {
@@ -124,7 +124,7 @@ body {
   inset: 0;
   background: linear-gradient(180deg, #ff6a00, #ee0979, #ff6a00);
   background-size: 100% 300%;
-  animation: gradientFlow 13s ease-in-out infinite; /* pomalejší, smooth */  
+  animation: gradientFlow 13s ease-in-out infinite;
   box-shadow: 0 0 12px rgba(238, 9, 121, 0.4);
 }
 
