@@ -207,8 +207,9 @@ export default function Navbar() {
                 animate={{ opacity: 1, rotate: 0, scale: 1 }}
                 exit={{ opacity: 0, rotate: 10, scale: 0.9 }}
                 transition={{ duration: 0.25 }}
+                whileTap={{ scale: 0.95 }}
               >
-                {menuOpen ? <X size={32} weight="bold" /> : <List size={32} weight="bold" />}
+                {menuOpen ? <X size={31} weight="bold" /> : <List size={31} weight="bold" />}
               </motion.div>
             </AnimatePresence>
           </button>

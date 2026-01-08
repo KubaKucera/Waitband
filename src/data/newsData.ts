@@ -62,7 +62,7 @@ export const newsData: NewsItem[] = [
     title: "Hard Rock Cafe Praha",
     date: "18. ledna 2025",
     image: "/assets/images/news/cafePraha.jpg",
-    excerpt: "Včerejší Hard Rock Cafe Praha naprostá pecka",
+    excerpt: "Včerejší Hard Rock Cafe Praha naprostá pecka...",
     content:
       "Včerejší Hard Rock Cafe Praha naprostá pecka. \n\n"+
       "Děkujeme \n"+
