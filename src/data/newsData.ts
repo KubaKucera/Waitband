@@ -48,7 +48,7 @@ export const newsData: NewsItem[] = [
     title: "Východočeské divadlo Pardubice",
     date: "26. března 2025",
     image: "/assets/images/news/divadlo.jpg",
-    excerpt: "V sobotu hrajeme jako “midnight special” jednu krásnou akci ve Východočeském Divadle Pardubice",
+    excerpt: "V sobotu – jako “midnight special” jednu krásnou akci ve Východočeském Divadle Pardubice",
     content:
       "V sobotu hrajeme jako “midnight special” jednu krásnou akci ve Východočeském Divadle Pardubice (Velký výroční bál VČD) a napadlo nás oprášit jeden popový song “Modelka”. \n\n"+
       "Video k němu natočil / režíroval skvělý kytarista a “rejža” Djamin Kandoussi, kterému posíláme poděkování a velkou zdravici do nebeských výšin. \n\n"+
