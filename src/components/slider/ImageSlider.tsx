@@ -93,22 +93,22 @@ export default function ImageSlider() {
       className="
         relative w-full overflow-hidden bg-black
         pt-[64px] sm:pt-[72px] md:pt-[85px]
-        h-[50vh] sm:h-[65vh] md:h-[75vh] lg:h-screen
+        h-[35vh] sm:h-[50vh] md:h-[75vh] lg:h-screen 
       "
     >
       <Slider {...settings}>
         {images.map((img, index) => (
-          <div key={index} className="w-full h-full">
-            <div className="relative w-full h-full">
+          <div key={index} className="outline-none">            
+            <div className="relative w-full h-[35vh] sm:h-[50vh] md:h-[75vh] lg:h-screen">
               <Image
                 src={img}
                 alt={`Slide ${index + 1}`}
                 fill
-                className="object-cover"
+                className="object-contain"
                 sizes="100vw"
                 priority={index === 0}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent pointer-events-none" />
             </div>
           </div>
         ))}
