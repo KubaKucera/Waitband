@@ -78,14 +78,14 @@ export default function ImageSlider() {
   return (
     <section className="relative w-full overflow-hidden bg-black pt-[85px]">
       <Slider {...settings}>
-        {images.map((img, index) => (
-          <div key={index} className="outline-none">
-            <div className="relative w-full aspect-video sm:aspect-video md:h-[75vh] lg:h-[100vh]">
+        {images.map((img, index) => (          
+          <div key={index} className="outline-none leading-none block">            
+            <div className="relative w-full aspect-video sm:aspect-video md:h-[75vh] lg:h-[100vh] overflow-hidden">
               <Image
                 src={img}
                 alt={`Slide ${index}`}
-                fill
-                className="object-cover object-center"
+                fill                
+                className="object-cover object-center block"
                 priority={index === 0}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent pointer-events-none" />
@@ -93,6 +93,17 @@ export default function ImageSlider() {
           </div>
         ))}
       </Slider>
+
+      <style jsx global>{`
+        .slick-slide > div {
+          display: block !important;
+          line-height: 0 !important;
+        }
+        .slick-track {
+          display: flex !important;
+          align-items: center;
+        }
+      `}</style>
     </section>
   );
 }
