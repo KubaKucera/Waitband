@@ -17,11 +17,7 @@ function PrevArrow({ onClick }: { onClick?: () => void }) {
       type="button"
       aria-label="Předchozí"
       onClick={onClick}
-      className="
-        absolute left-0 top-0 h-full w-12 md:w-16
-        bg-black/40 flex items-center justify-center
-        z-30 hover:bg-black/70 transition
-      "
+      className="absolute left-0 top-0 h-full w-12 md:w-16 bg-black/40 flex items-center justify-center z-30 hover:bg-black/70 transition"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -42,11 +38,7 @@ function NextArrow({ onClick }: { onClick?: () => void }) {
       type="button"
       aria-label="Další"
       onClick={onClick}
-      className="
-        absolute right-0 top-0 h-full w-12 md:w-16
-        bg-black/40 flex items-center justify-center
-        z-30 hover:bg-black/70 transition
-      "
+      className="absolute right-0 top-0 h-full w-12 md:w-16 bg-black/40 flex items-center justify-center z-30 hover:bg-black/70 transition"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -67,8 +59,8 @@ export default function ImageSlider() {
   const settings = {
     dots: false,
     infinite: true,
-    fade: true,
-    speed: 1000,
+    speed: 1200,
+    cssEase: "ease-in-out",
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
@@ -80,19 +72,15 @@ export default function ImageSlider() {
     arrows: true,
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
+    fade: false, // klasický slide, fade lze použít místo smooth
   };
 
   return (
-    <section
-      className="
-        relative w-full overflow-hidden bg-black
-        pt-[64px] sm:pt-[72px] md:pt-[85px]
-      "
-    >
+    <section className="relative w-full overflow-hidden bg-black pt-[85px]">
       <Slider {...settings}>
         {images.map((img, index) => (
           <div key={index} className="outline-none">
-            <div className="relative w-full h-[40dvh] sm:h-[60dvh] md:h-[75vh] lg:h-screen">
+            <div className="relative w-full aspect-video sm:aspect-video md:h-[75vh] lg:h-[100vh]">
               <Image
                 src={img}
                 alt={`Slide ${index}`}
@@ -100,6 +88,7 @@ export default function ImageSlider() {
                 className="object-cover object-center"
                 priority={index === 0}
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent pointer-events-none" />
             </div>
           </div>
         ))}
