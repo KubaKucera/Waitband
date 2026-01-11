@@ -56,6 +56,7 @@ export default function AnnouncementModal() {
             bg-black/70
             backdrop-blur-sm
             px-6
+            monitor:scale-115
           "
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

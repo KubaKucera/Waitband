@@ -18,16 +18,14 @@ function PrevArrow({ onClick }: { onClick?: () => void }) {
       aria-label="Předchozí"
       onClick={onClick}
       className="
-        absolute left-0 top-0 h-full
-        w-12 sm:w-12 md:w-16
-        bg-black/40 sm:bg-black/50
-        flex items-center justify-center
+        absolute left-0 top-0 h-full w-12 md:w-16
+        bg-black/40 flex items-center justify-center
         z-30 hover:bg-black/70 transition
       "
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        className="w-6 h-6 sm:w-6 sm:h-6 md:w-8 md:h-8 text-white"
+        className="w-6 h-6 md:w-8 md:h-8 text-white"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
@@ -45,16 +43,14 @@ function NextArrow({ onClick }: { onClick?: () => void }) {
       aria-label="Další"
       onClick={onClick}
       className="
-        absolute right-0 top-0 h-full
-        w-12 sm:w-12 md:w-16
-        bg-black/40 sm:bg-black/50
-        flex items-center justify-center
+        absolute right-0 top-0 h-full w-12 md:w-16
+        bg-black/40 flex items-center justify-center
         z-30 hover:bg-black/70 transition
       "
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        className="w-6 h-6 sm:w-6 sm:h-6 md:w-8 md:h-8 text-white"
+        className="w-6 h-6 md:w-8 md:h-8 text-white"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
@@ -79,10 +75,8 @@ export default function ImageSlider() {
     autoplaySpeed: 5000,
     pauseOnHover: false,
     pauseOnFocus: false,
-    touchMove: true,
     swipe: true,
-    swipeToSlide: true,
-    cssEase: "cubic-bezier(0.4, 0, 0.2, 1)",
+    touchMove: true,
     arrows: true,
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
@@ -93,22 +87,19 @@ export default function ImageSlider() {
       className="
         relative w-full overflow-hidden bg-black
         pt-[64px] sm:pt-[72px] md:pt-[85px]
-        h-[35vh] sm:h-[50vh] md:h-[75vh] lg:h-screen 
       "
     >
       <Slider {...settings}>
         {images.map((img, index) => (
-          <div key={index} className="outline-none">            
-            <div className="relative w-full h-[35vh] sm:h-[50vh] md:h-[75vh] lg:h-screen">
+          <div key={index} className="outline-none">
+            <div className="relative w-full h-[40dvh] sm:h-[60dvh] md:h-[75vh] lg:h-screen">
               <Image
                 src={img}
-                alt={`Slide ${index + 1}`}
+                alt={`Slide ${index}`}
                 fill
-                className="object-contain"
-                sizes="100vw"
+                className="object-cover object-center"
                 priority={index === 0}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent pointer-events-none" />
             </div>
           </div>
         ))}
