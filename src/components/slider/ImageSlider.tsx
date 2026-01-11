@@ -2,25 +2,37 @@
 
 import Image from "next/image";
 import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-import image1 from "../../../public/assets/images/slider/slides/image1.jpeg";
+import image1 from "../../../public/assets/images/slider/slides/image11.jpeg";
 import image2 from "../../../public/assets/images/slider/slides/image10.jpg";
 import image3 from "../../../public/assets/images/slider/slides/image3.jpg";
 import image4 from "../../../public/assets/images/slider/slides/image9.jpeg";
-import image5 from "../../../public/assets/images/slider/slides/image11.jpeg";
+import image5 from "../../../public/assets/images/slider/slides/image1.jpeg";
 
 function PrevArrow({ onClick }: { onClick?: () => void }) {
   return (
     <button
       type="button"
-      className="absolute left-0 top-0 bottom-0 z-30 w-14 md:w-20 flex items-center justify-center
-                 bg-black/30 hover:bg-black/50 transition duration-300 ease-in-out"
-      onClick={onClick}
       aria-label="Předchozí"
+      onClick={onClick}
+      className="
+        absolute left-0 top-0 h-full
+        w-10 sm:w-12 md:w-16
+        bg-black/40 sm:bg-black/50
+        flex items-center justify-center
+        z-30 hover:bg-black/70 transition
+      "
     >
-      <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 md:w-10 md:h-10 text-white" fill="none"
-           viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-white"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
       </svg>
     </button>
   );
@@ -30,70 +42,86 @@ function NextArrow({ onClick }: { onClick?: () => void }) {
   return (
     <button
       type="button"
-      className="absolute right-0 top-0 bottom-0 z-30 w-14 md:w-20 flex items-center justify-center
-                 bg-black/30 hover:bg-black/50 transition duration-300 ease-in-out"
-      onClick={onClick}
       aria-label="Další"
+      onClick={onClick}
+      className="
+        absolute right-0 top-0 h-full
+        w-10 sm:w-12 md:w-16
+        bg-black/40 sm:bg-black/50
+        flex items-center justify-center
+        z-30 hover:bg-black/70 transition
+      "
     >
-      <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 md:w-10 md:h-10 text-white" fill="none"
-           viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-white"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
       </svg>
     </button>
   );
 }
 
 export default function ImageSlider() {
-  const images = [
-    { src: image1, alt: "Slide 1" },
-    { src: image2, alt: "Slide 2" },
-    { src: image3, alt: "Slide 3" },
-    { src: image4, alt: "Slide 4" },
-    { src: image5, alt: "Slide 5" },
-  ];
+  const images = [image1, image2, image3, image4, image5];
 
   const settings = {
     dots: false,
     infinite: true,
-    speed: 1000,
     fade: true,
-    cssEase: "ease-in-out",
+    speed: 1000,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 6000,
+    autoplaySpeed: 5000,
     pauseOnHover: false,
     pauseOnFocus: false,
-    waitForAnimate: false,
+    touchMove: true,
+    swipe: true,
+    swipeToSlide: true,
+    cssEase: "cubic-bezier(0.4, 0, 0.2, 1)",
     arrows: true,
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
   };
 
   return (
-    <div className="relative z-40 overflow-x-hidden bg-black">
-      {/* wrapper pro vertikální odsazení */}
-      <div className="mt-20 sm:mt-20 md:mt-0">
-        <div className="relative w-screen h-[40vh] sm:h-[70vh] md:h-[80vh] lg:h-[120vh] xl:h-[120vh] monitor:h-[110vh] overflow-hidden">
-          <Slider {...settings}>
-            {images.map((img, index) => (
-              <div
-                key={index}
-                className="relative w-screen h-[40vh] sm:h-[70vh] md:h-[80vh] lg:h-[120vh] xl:h-[120vh] monitor:h-[110vh]"
-              >
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  fill
-                  className="object-bottom sm:object-bottom md:object-cover"
-                  priority={index === 0}
-                  sizes="100vw"
-                />
-              </div>
-            ))}
-          </Slider>
-        </div>
-      </div>
-    </div>
+    <section
+      className="
+        relative w-full overflow-hidden bg-black
+        pt-[64px] sm:pt-[72px] md:pt-[85px]
+        h-[55vh] sm:h-[65vh] md:h-[75vh] lg:h-screen
+      "
+    >
+      <Slider {...settings}>
+        {images.map((img, index) => (
+          <div
+            key={index}
+            className="
+              relative w-full
+              h-[calc(55vh-64px)]
+              sm:h-[calc(65vh-72px)]
+              md:h-[calc(75vh-85px)]
+              lg:h-[calc(100vh-85px)]
+            "
+          >
+            <Image
+              src={img}
+              alt={`Slide ${index + 1}`}
+              fill
+              className="object-cover object-center"
+              sizes="100vw"
+              priority={index === 0}
+            />
+
+            {/* jemný moderní overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
+          </div>
+        ))}
+      </Slider>
+    </section>
   );
 }

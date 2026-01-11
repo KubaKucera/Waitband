@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 export default function TermsAndConditionsPage(){
     return (
         <>
-            <section className="h-auto w-full relative pt-[118px] pb-14 px-6 sm:px-6 md:px-6 lg:px-6 text-black">
+            <section className="h-auto w-full relative pt-[118px] pb-14 px-6 sm:px-6 md:px-6 lg:px-6 text-white">
                 <h1 className="text-2xl font-bold">Podmínky a pravidla</h1>
                 <p>Datum účinnosti: 23. listopadu 2024</p>
 

@@ -13,6 +13,7 @@
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  background: var(--background);
 }
 
 .no-scroll,
@@ -37,6 +38,7 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
 }
 
 .fixed-bg {
@@ -82,6 +84,32 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* -----------------------------------
+   SLICK SLIDER GLOBAL FIX (OPRAVENO)
+----------------------------------- */
+
+/* 1️⃣ Base slick fix - Nutné pro roztáhnutí slideru na výšku */
+.slick-slider,
+.slick-list,
+.slick-track {
+  height: 100%;
+}
+
+/* 2️⃣ Každý slide musí mít full height */
+.slick-slide {
+  height: 100%;
+  /* Odstraněno: opacity, absolute positioning - to způsobovalo neviditelnost */
+}
+
+/* 3️⃣ Vnitřní div uvnitř slick-slide (Next/Image fill) */
+.slick-slide > div {
+  height: 100%;
+}
+
+/* -----------------------------------
+   Konec fixu pro slider
+----------------------------------- */
 
 .animate-gradient-liquid {  
   background: linear-gradient(
