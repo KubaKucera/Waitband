@@ -19,7 +19,7 @@ function PrevArrow({ onClick }: { onClick?: () => void }) {
       onClick={onClick}
       className="
         absolute left-0 top-0 h-full
-        w-10 sm:w-12 md:w-16
+        w-12 sm:w-12 md:w-16
         bg-black/40 sm:bg-black/50
         flex items-center justify-center
         z-30 hover:bg-black/70 transition
@@ -27,7 +27,7 @@ function PrevArrow({ onClick }: { onClick?: () => void }) {
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-white"
+        className="w-6 h-6 sm:w-6 sm:h-6 md:w-8 md:h-8 text-white"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
@@ -46,7 +46,7 @@ function NextArrow({ onClick }: { onClick?: () => void }) {
       onClick={onClick}
       className="
         absolute right-0 top-0 h-full
-        w-10 sm:w-12 md:w-16
+        w-12 sm:w-12 md:w-16
         bg-black/40 sm:bg-black/50
         flex items-center justify-center
         z-30 hover:bg-black/70 transition
@@ -54,7 +54,7 @@ function NextArrow({ onClick }: { onClick?: () => void }) {
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-white"
+        className="w-6 h-6 sm:w-6 sm:h-6 md:w-8 md:h-8 text-white"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
@@ -93,32 +93,23 @@ export default function ImageSlider() {
       className="
         relative w-full overflow-hidden bg-black
         pt-[64px] sm:pt-[72px] md:pt-[85px]
-        h-[55vh] sm:h-[65vh] md:h-[75vh] lg:h-screen
+        h-[50vh] sm:h-[65vh] md:h-[75vh] lg:h-screen
       "
     >
       <Slider {...settings}>
         {images.map((img, index) => (
-          <div
-            key={index}
-            className="
-              relative w-full
-              h-[calc(55vh-64px)]
-              sm:h-[calc(65vh-72px)]
-              md:h-[calc(75vh-85px)]
-              lg:h-[calc(100vh-85px)]
-            "
-          >
-            <Image
-              src={img}
-              alt={`Slide ${index + 1}`}
-              fill
-              className="object-cover object-center"
-              sizes="100vw"
-              priority={index === 0}
-            />
-
-            {/* jemný moderní overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
+          <div key={index} className="w-full h-full">
+            <div className="relative w-full h-full">
+              <Image
+                src={img}
+                alt={`Slide ${index + 1}`}
+                fill
+                className="object-cover"
+                sizes="100vw"
+                priority={index === 0}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
+            </div>
           </div>
         ))}
       </Slider>
