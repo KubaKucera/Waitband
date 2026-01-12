@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 
-import ivanImage from "../../../public/assets/images/band/ivan.jpeg";
+import ivanImage from "../../../public/assets/images/band/ivan.jpg";
 import pavelImage from "../../../public/assets/images/band/pavel.jpeg";
 import martinaImage from "../../../public/assets/images/band/martina.jpg";
 import marekImage from "../../../public/assets/images/band/marek.jpeg";
@@ -108,12 +108,14 @@ export default function BandPage() {
                     className="object-cover group-hover:scale-105 transition-transform duration-300 ease-out will-change-transform transform-gpu"
                   />
 
-                  {/* name bar */}
-                  <div className="absolute bottom-0 left-0 right-0">
-                    <div className="w-full flex justify-center items-center bg-gradient-to-r from-black/18 via-black/8 to-black/18 backdrop-blur-md border-t border-black/10 shadow-lg h-20 sm:h-24 px-4 text-center transition-all duration-500 group-hover:scale-[1.01]">
+                  <div className="absolute bottom-0 left-0 right-0 h-24 flex justify-center items-center overflow-hidden">
+                    {/* Pozadí panelu */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black from-50% via-black/90 to-transparent" />
+                    
+                    {/* Text */}
+                    <div className="relative z-10 px-4 text-center transition-all duration-500 group-hover:scale-[1.01]">
                       <span
-                        className="block text-white font-medium text-sm sm:text-lg tracking-wide drop-shadow-lg"
-                        style={{ fontSize: "clamp(0.95rem, 1.6vw, 1.10rem)" }}
+                        className="block text-white font-semibold text-sm md:text-sm tracking-wide drop-shadow-lg mt-4 uppercase"                        
                       >
                         {member.name}
                       </span>
@@ -123,15 +125,8 @@ export default function BandPage() {
               ))}
             </div>
 
-            {/* Nadpis */}
-            <div className="mt-7 mb-7 px-2">
-              <h2 className="text-3xl sm:text-4xl lg:text-[44px] uppercase font-montserrat font-semibold text-center text-white">
-                Jsme Wait
-              </h2>
-            </div>
-
             {/* Hlavní obrázek s textem přes něj (responzivní výška) */}
-            <div className="relative w-full sm:w-[90%] md:w-[88%] lg:w-[72%] monitor:w-[66%] mx-auto">
+            <div className="relative w-full sm:w-[90%] md:w-[88%] lg:w-[72%] monitor:w-[66%] mx-auto mt-7 mb-7">
               <div className="relative rounded-xl overflow-hidden shadow-lg">
                 {/* Use <Image> fill for best responsiveness */}
                 <div className="relative w-full h-[70vh] sm:h-[56vh] md:h-[64vh] lg:h-[70vh] monitor:h-[55vh]">
@@ -154,8 +149,15 @@ export default function BandPage() {
               </div>
             </div>
 
+            {/* Nadpis */}
+            <div className="px-2">
+              <h2 className="text-3xl sm:text-4xl lg:text-[44px] uppercase font-montserrat font-semibold text-center text-white">
+                Jsme Wait
+              </h2>
+            </div>            
+
             {/* Druhý obrázek - dekor, responsivní velikost */}
-            <div className="relative w-full sm:w-[90%] md:w-[88%] lg:w-[72%] monitor:w-[66%] mx-auto mt-4 rounded-xl overflow-hidden shadow-lg">
+            <div className="relative w-full sm:w-[90%] md:w-[88%] lg:w-[72%] monitor:w-[66%] mx-auto mt-7 rounded-xl overflow-hidden shadow-lg">
               <div className="w-full h-[36vh] sm:h-[36vh] md:h-[48vh] lg:h-[70vh] monitor:h-[63vh] band2-bg"
                   style={{ backgroundImage: `url('${band2.src}')` }} />
             </div>
