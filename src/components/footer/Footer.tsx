@@ -107,7 +107,7 @@ export default function FooterWithNewsletter() {
           <Link
             href="/osobni-udaje"
             target="_blank"
-            className="footer-link"
+            className="footer-link text-nowrap"
           >
             Soukromí & Používání Cookies
           </Link>

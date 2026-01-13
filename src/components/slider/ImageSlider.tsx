@@ -57,7 +57,7 @@ export default function ImageSlider() {
   const images = [image1, image2, image3, image4, image5];
 
   const settings = {
-    dots: false,
+    dots: true,
     infinite: true,
     speed: 1200,
     cssEase: "ease-in-out",
@@ -72,7 +72,19 @@ export default function ImageSlider() {
     arrows: true,
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
-    fade: false, // klasický slide, fade lze použít místo smooth
+    fade: false,
+
+    appendDots: (dots: React.ReactNode) => (
+      <div className="md:hidden">
+        <div className="flex justify-center py-4 bg-black">
+          <ul className="flex gap-2">{dots}</ul>
+        </div>
+      </div>
+    ),
+
+    customPaging: () => (
+      <div className="w-6 h-1 rounded-full bg-white/40 transition-all duration-300" />
+    ),
   };
 
   return (
@@ -99,6 +111,39 @@ export default function ImageSlider() {
           display: block !important;
           line-height: 0 !important;
         }
+        .slick-track {
+          display: flex !important;
+          align-items: center;
+        }
+
+        .slick-dots {
+          position: static;
+          margin: 0;
+        }
+
+        .slick-dots li {
+          width: auto;
+          height: auto;
+          margin: 0;
+        }
+
+        .slick-dots li.slick-active div {
+          background-color: white !important;
+          width: 24px;
+        }
+
+        /* schovat dots na větších obrazovkách (pojistka) */
+        @media (min-width: 768px) {
+          .slick-dots {
+            display: none !important;
+          }
+        }
+
+        .slick-slide > div {
+          display: block !important;
+          line-height: 0 !important;
+        }
+
         .slick-track {
           display: flex !important;
           align-items: center;
