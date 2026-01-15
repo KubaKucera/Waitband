@@ -70,7 +70,7 @@ function AsideContent({
               showFilter ? "text-white" : ""
             }`}
           >
-            Filtr
+            Filtrovat
             <Filter
               className={`w-5 h-5 ml-1 ${showFilter ? "fill-current" : ""}`}
             />
@@ -187,7 +187,7 @@ function AsideContent({
               transition={{ duration: 0.5, ease: "easeOut" }}
               className="cursor-pointer p-3 space-y-1 rounded-lg bg-white/5 hover:bg-white/10 text-gray-200 transition"
             >
-              <span className="inline-block border-neonPink border-2 text-white px-2 py-0.5 rounded-full text-xs font-semibold mb-1">
+              <span className="inline-block border-neonPink border-2 text-white px-2 py-0.5 rounded-full text-xs font-medium mb-1">
                 {item.category}
               </span>
               <p className="text-xs text-gray-400">{item.date}</p>
@@ -324,7 +324,13 @@ export default function NewsPage() {
                       src={mainArticle.image}
                       alt={mainArticle.title}
                       fill
-                      className="object-cover w-full h-full transition-transform duration-300 ease-out group-hover:scale-105"
+                      className="
+                        object-cover object-top
+                        scale-[1.05]
+                        transition-transform duration-500 ease-out
+                        group-hover:-translate-y-3
+                        will-change-transform transform-gpu
+                      "
                     />
                   </div>
 
@@ -333,7 +339,7 @@ export default function NewsPage() {
 
                   {/* Text panel – spodní overlay */}
                   <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 text-white space-y-1 sm:space-y-2">
-                    <span className="inline-block border-neonPink border-2 text-white px-2 py-0.5 rounded-full text-xs font-semibold mb-1">
+                    <span className="inline-block border-neonPink border-2 text-white px-2 py-0.5 rounded-full text-xs font-medium mb-1">
                       {mainArticle.category}
                     </span>
 
@@ -351,10 +357,18 @@ export default function NewsPage() {
                     </p>
 
                     {/* CTA */}
-                    <div className="mt-2 flex items-center gap-1 sm:gap-2 text-neonPink text-sm font-semibold opacity-80 group-hover:opacity-100 transition-all duration-300">
-                      <span className="tracking-wide">Přečíst více</span>
+                    <div
+                      className="
+                        mt-auto pt-1
+                        flex items-center gap-2
+                        text-neonPink text-sm font-medium
+                        opacity-60 group-hover:opacity-100
+                        transition-all duration-300
+                      "
+                    >
+                      <span>Přečíst více</span>
                       <ArrowRight
-                        size={16}
+                        size={18}
                         className="transition-transform duration-300 ease-out group-hover:translate-x-1.5"
                       />
                     </div>
@@ -404,29 +418,44 @@ export default function NewsPage() {
                         src={item.image}
                         alt={item.title}
                         fill
-                        className="object-cover monitor:object-top transition-transform duration-300 ease-out group-hover:scale-105 will-change-transform transform-gpu"
+                        className="object-cover monitor:object-top transition-transform duration-300 ease-out
+                        group-hover:-translate-y-2 will-change-transform transform-gpu"
                       />
                     </div>
 
                     {/* TEXT */}
                     <div className="p-4 sm:p-5 monitor:p-6 text-white flex flex-col flex-[2]">
                       <div className="space-y-1.5 monitor:space-y-2">
-                        <span className="inline-block border-neonPink border-2 px-2 py-0.5 rounded-full text-xs font-semibold mb-1">
+                        <span className="inline-block border-neonPink border-2 px-2 py-0.5 rounded-full text-xs font-medium mb-1">
                           {item.category}
                         </span>
+
                         <p className="text-xs text-gray-400">{item.date}</p>
-                        <h3 className="text-lg sm:text-xl font-semibold mt-1">{item.title}</h3>
-                        <p className="text-sm text-gray-300 mt-1 sm:mt-2 line-clamp-3">
+                        {/* TITLE */}
+                        <h3 className="text-lg sm:text-xl font-semibold text-white leading-snug">
+                          {item.title}
+                        </h3>
+
+                        {/* EXCERPT */}
+                        <p className="text-sm text-gray-300 line-clamp-3">
                           {item.excerpt}
                         </p>
                       </div>
 
                       {/* CTA */}
-                      <div className="mt-auto flex items-center justify-start gap-1 sm:gap-2 text-neonPink text-sm font-semibold opacity-70 group-hover:opacity-100 transition-all duration-300">
-                        <span className="tracking-wide">Přečíst více</span>
+                      <div
+                        className="
+                          mt-auto pt-4
+                          flex items-center gap-2
+                          text-neonPink text-sm font-medium
+                          opacity-60 group-hover:opacity-100
+                          transition-all duration-300
+                        "
+                      >
+                        <span>Přečíst více</span>
                         <ArrowRight
                           size={18}
-                          className="transition-transform duration-300 group-hover:translate-x-1.5"
+                          className="transition-transform duration-300 ease-out group-hover:translate-x-1.5"
                         />
                       </div>
                     </div>
@@ -506,7 +535,7 @@ export default function NewsPage() {
       
                     {/* CONTENT section */}
                     <div className="bg-neutral-800 p-6 max-h-[270px] overflow-y-auto space-y-4">
-                      <span className="inline-block border-neonPink border-2 text-white px-2 py-0.5 rounded-full text-xs font-semibold">
+                      <span className="inline-block border-neonPink border-2 text-white px-2 py-0.5 rounded-full text-xs font-medium">
                         {active.category}
                       </span>
                       <p className="text-sm text-gray-400">{active.date}</p>

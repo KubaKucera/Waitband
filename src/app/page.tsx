@@ -163,27 +163,42 @@ export default function Home() {
                         src={item.image}
                         alt={item.title}
                         fill
-                        className="object-cover monitor:object-top transition-transform duration-300 ease-out group-hover:scale-105 will-change-transform transform-gpu"
+                        className="object-cover object-top
+                        transition-transform duration-300 ease-out
+                        group-hover:-translate-y-2 will-change-transform transform-gpu"
                       />
                     </div>
 
                     {/* TEXT */}
                     <div className="p-4 sm:p-5 monitor:p-6 text-white flex flex-col flex-[2]">
                       <div className="space-y-1.5 monitor:space-y-2">
-                        <span className="inline-block border-neonPink border-2 px-2 py-0.5 rounded-full text-xs font-semibold mb-1">
+                        <span className="inline-block border-neonPink border-2 px-2 py-0.5 rounded-full text-xs font-medium mb-1">
                           {item.category}
                         </span>
 
                         <p className="text-xs text-gray-400">{item.date}</p>
-                        <h3 className="text-lg sm:text-xl font-semibold mt-1">{item.title}</h3>
-                        <p className="text-sm text-gray-300 mt-1 sm:mt-2 line-clamp-3">
+                        {/* TITLE */}
+                        <h3 className="text-lg sm:text-xl font-semibold text-white leading-snug">
+                          {item.title}
+                        </h3>
+
+                        {/* EXCERPT */}
+                        <p className="text-sm text-gray-300 line-clamp-3">
                           {item.excerpt}
                         </p>
                       </div>
 
                       {/* CTA */}
-                      <div className="mt-auto flex items-center justify-start gap-1 sm:gap-2 text-neonPink text-sm font-semibold opacity-70 group-hover:opacity-100 transition-all duration-300">
-                        <span className="tracking-wide">Přečíst více</span>
+                      <div
+                        className="
+                          mt-auto pt-4
+                          flex items-center gap-2
+                          text-neonPink text-sm font-medium
+                          opacity-60 group-hover:opacity-100
+                          transition-all duration-300
+                        "
+                      >
+                        <span>Přečíst více</span>
                         <ArrowRight
                           size={18}
                           className="transition-transform duration-300 ease-out group-hover:translate-x-1.5"
@@ -313,7 +328,7 @@ export default function Home() {
 
               {/* CONTENT section */}
               <div className="bg-neutral-800 p-6 max-h-[270px] overflow-y-auto space-y-4">
-                <span className="inline-block border-neonPink border-2 text-white px-2 py-0.5 rounded-full text-xs font-semibold">
+                <span className="inline-block border-neonPink border-2 text-white px-2 py-0.5 rounded-full text-xs font-medium">
                   {active.category}
                 </span>
                 <p className="text-sm text-gray-400">{active.date}</p>

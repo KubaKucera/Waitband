@@ -12,7 +12,7 @@ import daydream from "../../../public/assets/images/music/daydream.jpg";
 import follow from "../../../public/assets/images/music/followMeToHell.jpg";
 import horoscop from "../../../public/assets/images/music/horoscop.jpg";
 import hate from "../../../public/assets/images/music/hateYou.jpg";
-import achiever from "../../../public/assets/images/music/achieverGold.jpg";
+import achiever from "../../../public/assets/images/music/achiever.jpg";
 import texture from "../../../public/assets/textures/texture.jpg";
 import appleMusic from "../../../public/assets/icons/appleMusic.svg";
 import spotify from "../../../public/assets/icons/spotify.svg";
