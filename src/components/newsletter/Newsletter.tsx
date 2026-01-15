@@ -3,6 +3,7 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import texture from "../../../public/assets/textures/texture.jpg";
+import { MdEmail } from "react-icons/md";
 
 export default function Newsletter() {
   const [email, setEmail] = useState("");
@@ -56,10 +57,10 @@ export default function Newsletter() {
       <div className="w-full px-6 sm:px-6 md:px-10 mx-auto flex flex-col items-center text-white pb-20 pt-20 sm:pt-20 md:pt-24 overflow-hidden z-20">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-montserrat text-[36px] sm:text-[44px] font-semibold mb-2">
-            Zaregistrujte se
+            Zůstaňme ve spojení
           </h2>
           <p className="text-gray-300 text-base sm:text-lg mb-5">
-            Přihlášení k odběru novinek
+            Novinky a aktuality přímo do vašeho e-mailu
           </p>
 
           <form
@@ -67,15 +68,20 @@ export default function Newsletter() {
             className="w-full max-w-md mx-auto flex flex-col justify-center items-center space-y-4"
             noValidate
           >
-            <input
-              type="email"
-              aria-label="Zadejte svůj email"
-              placeholder="Zadejte svůj e-mail"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="w-full max-w-[450px] px-4 py-3 rounded-md border border-gray-300 text-gray-900 focus:ring-1 focus:ring-blue-400 transition"
-            />
+            <div className="relative w-full max-w-[450px]">
+              <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+                <MdEmail size={20} />
+              </span>
+              <input
+                type="email"
+                aria-label="Zadejte svůj email"
+                placeholder="Zadejte svůj e-mail"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="w-full px-10 py-3 rounded-md border border-gray-300 text-gray-900 focus:ring-1 focus:ring-blue-400 transition"
+              />
+            </div>
 
             {/* Honeypot: Neviditelný select */}
             <select
@@ -129,6 +135,10 @@ export default function Newsletter() {
                 Odebírat
               </button>
             </div>
+
+            <p className="text-xs text-gray-400 mt-2">
+              Žádný spam. Odhlášení kdykoliv.
+            </p>
           </form>
         </div>
       </div>

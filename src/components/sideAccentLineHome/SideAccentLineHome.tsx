@@ -15,7 +15,7 @@ export default function SideAccentLine({ targetId }: SideAccentLineProps) {
     const targetEl = document.getElementById(targetId);
     if (!targetEl) return;
 
-    const NAVBAR_HEIGHT = 340; // výška navbaru
+    const NAVBAR_HEIGHT = 370; // výška navbaru
 
     const updateHeight = () => {
       const height = targetEl.offsetHeight + NAVBAR_HEIGHT;
