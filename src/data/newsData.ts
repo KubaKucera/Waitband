@@ -11,6 +11,20 @@ export interface NewsItem {
 
 export const newsData: NewsItem[] = [
   {
+    id: 12,
+    title: "Krásné Vánoce 🎄🧑‍🎄 a nový rok!",
+    date: "24. prosince 2025",
+    image: "/assets/images/news/prani2.jpg",
+    excerpt: "Díky, že v tom jedete všichni s námi. Váš WAIT 🎸 (Ivan, Marek, Martina, Paolo …)",
+    content:
+      "Díky, že v tom jedete všichni s námi. \n" +
+      "Krásné Vánoce 🎄🧑‍🎄 a nový rok - klidně s volume doprava, až na 11. \n\n" +
+      "Váš WAIT 🎸 (Ivan Kučera Marek Kopecký Martina Panchártková Paolo Anachronic a čestný " +
+      "frontman Miloš Novotný, zvuk 🔊🎛️ Franta Novak a pyro 🧨& management Tomáš Marks.",     
+    link: "https://www.facebook.com/waitbandcz",
+    category: "Info",
+  },
+  {
     id: 11,
     title: "Autokemp Sečská přehrada",
     date: "18. července 2025",
@@ -18,7 +32,7 @@ export const newsData: NewsItem[] = [
     excerpt: "Přesně to, co máme rádi. Malý letní stage, výhled na vodu, pivko na dosah, lidi, co přišli za hudbou...",
     content:
       "Přesně to, co máme rádi. Malý letní stage, výhled na vodu, pivko na dosah, lidi, co přišli za hudbou. A atmosféra, která se nedá naplánovat – jen zažít.\n\n" +
-      "DASI bar v autokempu Seč se včera proměnil v rockovej klub. Martina naplno, Ivan jak motorová pila, a my ostatní jsme si to dali, jak nejlíp umíme. Díky @všichni, kdo přišli, zpívali, stáli vepředu i vzadu.",      
+      "DASI bar v autokempu Seč se včera proměnil v rockovej klub. Martina naplno, Ivan jak motorová pila, a my ostatní jsme si to dali, jak nejlíp umíme. Díky všem, kdo přišli, zpívali, stáli vepředu i vzadu.",      
     link: "https://www.facebook.com/waitbandcz",
     category: "Koncert",
   },
@@ -107,7 +121,7 @@ export const newsData: NewsItem[] = [
       "Mnoho sil rodině a blízkým. 😢 \n\n"+
       "Jedna z věcí, kterou pro nás Djamina udělal je zde:",
     link: "https://www.youtube.com/watch?v=8Tupra8tJiY",
-    category: "Info",
+    category: "Oznámení",
   },
   {
     id: 5,

@@ -191,7 +191,7 @@ export default function PhotosPage() {
                   disabled={loading}
                   onClick={handleShowMore}
                   
-                  className={`"group relative w-[75vw] sm:w-[75vw] md:w-[40vw] h-[55px]
+                  className={`"group relative w-[340px] sm:w-[75vw] md:w-[40vw] h-[55px]
                     text-[15px] font-semibold tracking-[0.12em]
                     rounded-full text-white                    
                     transition-transform duration-300 ease-out will-change-transform transform-gpu

@@ -66,17 +66,13 @@ function AsideContent({
         <div className="flex items-center gap-3">
           <button
             onClick={() => setShowFilter(!showFilter)}
-            className={`text-gray-300 hover:text-white transition flex items-center ${
-              showFilter ? "text-white" : ""
-            }`}
+            className="px-4 py-2 font-medium text-sm transition border border-white/20 rounded-md bg-white/10 text-white hover:bg-white/20 flex items-center gap-2"
           >
             Filtrovat
-            <Filter
-              className={`w-5 h-5 ml-1 ${showFilter ? "fill-current" : ""}`}
-            />
-          </button>          
+            <Filter className={`w-4 h-4 transition ${showFilter ? "fill-current text-white" : "text-white"}`} />
+          </button>
         </div>
-      </div>      
+      </div>   
 
       {/* Mobilní search: POD headerem (viditelné pouze na mobilu) */}
       <div className="block lg:hidden w-full mt-4 mb-6">
@@ -335,7 +331,7 @@ export default function NewsPage() {
                   </div>
 
                   {/* Gradient overlay pro čitelnost */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 sm:from-black/90 sm:via-black/50 md:from-black/80 md:via-black/40 to-transparent" />
 
                   {/* Text panel – spodní overlay */}
                   <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 text-white space-y-1 sm:space-y-2">
