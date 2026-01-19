@@ -74,13 +74,13 @@ export default function ConsertsPage() {
                     {/* Místo */}
                     <div className="flex items-center justify-center gap-3 text-lg sm:text-xl md:text-2xl text-white/80">
                       <FaMapMarkerAlt className="text-orange-400" />
-                      <span className="text-orange-400">
+                      <span className="text-white font-semibold">
                         {place ? `${city}, ${place}` : city}
                       </span>
                     </div>
 
                     {/* Dekorativní linka */}
-                    <div className="mt-6 h-1 w-20 mx-auto rounded-full bg-white transition-all duration-300"></div>
+                    <div className="mt-6 h-1 w-20 mx-auto rounded-full bg-orange-400 transition-all duration-300"></div>
                   </div>
                 );
               })}
