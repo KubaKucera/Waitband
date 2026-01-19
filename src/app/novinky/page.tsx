@@ -66,7 +66,7 @@ function AsideContent({
         <div className="flex items-center gap-3">
           <button
             onClick={() => setShowFilter(!showFilter)}
-            className="px-4 py-2 font-medium text-sm transition border border-white/20 rounded-md bg-white/10 text-white hover:bg-white/20 flex items-center gap-2"
+            className="px-4 py-2 font-medium text-sm transition border border-white/20 rounded-md bg-white/10 text-white md:hover:bg-white/20 flex items-center gap-2"
           >
             Filtrovat
             <Filter className={`w-4 h-4 transition ${showFilter ? "fill-current text-white" : "text-white"}`} />

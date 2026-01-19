@@ -136,25 +136,17 @@ export default function AnnouncementModal() {
               <button
                 onClick={() => setOpen(false)}
                 className="
-                  group inline-flex items-center justify-center
+                  inline-flex items-center justify-center
                   rounded-full bg-rose-600
                   px-8 py-3
                   text-sm font-semibold uppercase tracking-wide
                   text-white shadow-lg
-                  transition-shadow duration-300
-                  hover:shadow-xl
+                  transition-colors transition-shadow
+                  duration-300 ease-out
+                  hover:shadow-xl hover:bg-rose-700
                 "
               >
-                <span
-                  className="
-                    block
-                    transition-transform duration-300 ease-out
-                    will-change-transform
-                    group-hover:scale-105 active:scale-95
-                  "
-                >
-                  Těšíme se! 🚀
-                </span>
+                Těšíme se! 🚀
               </button>
             </div>
           </motion.div>
