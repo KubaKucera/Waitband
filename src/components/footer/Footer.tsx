@@ -93,7 +93,7 @@ export default function FooterWithNewsletter() {
         {/* LOGO */}
         <div className="flex flex-col items-center md:items-start space-y-2">
           <Image src={logo} alt="WAIT logo" width={120} height={50} className="mb-2" />
-          <p className="text-sm sm:text-sm md:text-base lg:text-lg font-medium tracking-wide text-cnxBlack monitor:text-black">
+          <p className="text-base sm:text-base md:text-base lg:text-lg font-medium tracking-wide text-cnxBlack monitor:text-black">
             WAIT – česká kapela s duší a energií. Sleduj nás online!
           </p>
         </div>
