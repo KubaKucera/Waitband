@@ -17,13 +17,12 @@ const config: Config = {
           '50%': { transform: 'translateY(-12px)' },
         },
       },
-      fontFamily: {
-        sans: ['Poppins', 'sans-serif'],
-        nav: ['"Poppins"', 'sans-serif'],
+      fontFamily: {        
         montserrat: ['Montserrat', 'sans-serif'], 
         inter: ['Inter', 'sans-serif'],
         nunito: ['Nunito', 'sans-serif'],          
-        geist: ['Geist', 'sans-serif'],        
+        geist: ['Geist', 'sans-serif'],
+        poppins: ['Poppins', 'sans-serif'],      
       },
       dropShadow: {
         'custom': '23px 3px 6px rgba(0, 0, 0, 0.33)',        
@@ -56,6 +55,7 @@ const config: Config = {
         lightGray: "#D3D3D3",
         neonPink: "#FF2478",
         neonPinkDark: "#D42062",
+        neonPinkDarker: "#B81C54",
         coralRed: "#dd3333",
         textGray: "#666666",
         buttonBlue: "#2a52be",
@@ -76,7 +76,9 @@ const config: Config = {
         brewersBlue: "#00040efc",
         navbarWhite: "#fafcfe",
         warningRed: "#f90000",
-        textOrange: "#ffaa00"
+        textOrange: "#ffaa00",
+        navbarText: "#1F1F1F",
+        cnxBlack: "#1b1c1d"
       },
       zIndex: {
         100: '100',

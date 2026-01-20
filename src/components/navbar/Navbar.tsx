@@ -101,25 +101,21 @@ export default function Navbar() {
         className={`
           fixed top-0 left-0 right-0 z-50
           h-[85px]
-          box-border
-          font-geist
           backdrop-blur-md
-          transition-all duration-500
+          transition-colors duration-500
           ${
             !scrolled && !menuOpen
-              ? "bg-black/70 text-navbarWhite"
+              ? "bg-black/70"
               : scrolled && !menuOpen
-                ? "bg-white/80 text-black"
-                : "bg-black/85 text-white"
+              ? "bg-white/80"
+              : "bg-black/85"
           }
         `}
       >
-        {/* GLASS BORDER */}
+        {/* glass border */}
         <div
           className={`
-            pointer-events-none
-            absolute bottom-0 left-0 right-0
-            h-px
+            absolute bottom-0 left-0 right-0 h-px
             transition-opacity duration-300
             ${!scrolled && !menuOpen ? "bg-white/20 opacity-100" : "opacity-0"}
           `}
@@ -136,7 +132,7 @@ export default function Navbar() {
           </Link>
 
           {/* DESKTOP MENU */}
-          <div className="hidden lg:flex gap-6 items-center text-[17px] relative">
+          <div className="hidden lg:flex gap-[23px] items-center text-[17px] relative font-poppins">
             {navLinks.map(({ name, href, key }, i) => {
               const active = isActive(href);
 
@@ -144,19 +140,28 @@ export default function Navbar() {
                 <div
                   key={key}
                   ref={setItemRef(i)}
-                  className="relative"
+                  className="relative font-semibold uppercase"
                 >
-                  <Link href={href} className="uppercase font-bold group">
+                  <Link href={href} className="group block">
                     <span
-                      className={`transition-colors duration-300 ${
-                        active
-                          ? scrolled
-                            ? "text-neonPinkDark"
-                            : "text-neonPink"
-                          : scrolled
-                            ? "text-gray-900 group-hover:text-neonPinkDark"
-                            : "text-lightGray group-hover:text-neonPink"
-                      }`}
+                      className={`
+                        transition-colors duration-300
+                        font-poppins uppercase
+                        ${
+                          active
+                            ? "font-semibold"
+                            : "font-medium text-shadow-nav"
+                        }
+                        ${
+                          active
+                            ? scrolled
+                              ? "text-neonPinkDarker"
+                              : "text-neonPink"
+                            : scrolled
+                            ? "text-navbarText group-hover:text-neonPinkDark"
+                            : "text-navbarWhite group-hover:text-neonPink"
+                        }
+                      `}
                     >
                       {name}
                     </span>
@@ -165,16 +170,12 @@ export default function Navbar() {
               );
             })}
 
-            {/* UNDERLINE – pixel perfect */}
+            {/* UNDERLINE */}
             {underlineReady && activeIndex !== -1 && (
               <motion.div
                 className={`
-                  absolute bottom-0
-                  h-[2px]
-                  rounded-full
-                  will-change-transform
-                  transform-gpu
-                  ${scrolled ? "bg-neonPinkDark" : "bg-neonPink"}
+                  absolute bottom-0 h-[2.2px] rounded-full
+                  ${scrolled ? "bg-neonPinkDarker" : "bg-neonPink"}
                 `}
                 style={{ translateY: "0.5px" }}
                 initial={false}
@@ -194,10 +195,12 @@ export default function Navbar() {
           {/* MOBILE TOGGLE */}
           <button
             onClick={() => setMenuOpen((p) => !p)}
-            aria-expanded={menuOpen}
-            aria-label="Menu"
-            className={`lg:hidden z-50 transition-colors ${
-              menuOpen ? "text-white" : scrolled ? "text-black" : "text-navbarWhite"
+            className={`lg:hidden z-50 ${
+              menuOpen
+                ? "text-white"
+                : scrolled
+                ? "text-black"
+                : "text-navbarWhite"
             }`}
           >
             <AnimatePresence mode="wait" initial={false}>
@@ -207,7 +210,6 @@ export default function Navbar() {
                 animate={{ opacity: 1, rotate: 0, scale: 1 }}
                 exit={{ opacity: 0, rotate: 10, scale: 0.9 }}
                 transition={{ duration: 0.25 }}
-                whileTap={{ scale: 0.95 }}
               >
                 {menuOpen ? <X size={31} weight="bold" /> : <List size={31} weight="bold" />}
               </motion.div>
@@ -224,19 +226,22 @@ export default function Navbar() {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="fixed inset-0 z-[49] flex flex-col items-center justify-center space-y-6"
-            style={{ backgroundColor: "rgba(0,0,0,0.96)" }}
+            className="fixed inset-0 z-[49] flex flex-col items-center justify-center space-y-6 bg-black/95"
           >
             {navLinks.map(({ name, href, key }) => (
               <motion.div key={key} variants={itemVariants}>
                 <Link
                   href={href}
                   onClick={() => setMenuOpen(false)}
-                  className={`uppercase text-3xl font-semibold transition-colors ${
-                    isActive(href)
-                      ? "text-neonPink"
-                      : "text-lightGray hover:text-neonPink"
-                  }`}
+                  className={`
+                    uppercase text-3xl font-poppins font-semibold
+                    transition-colors
+                    ${
+                      isActive(href)
+                        ? "text-neonPink"
+                        : "text-navbarWhite hover:text-neonPinkDark"
+                    }
+                  `}
                 >
                   {name}
                 </Link>

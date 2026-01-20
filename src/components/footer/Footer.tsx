@@ -88,11 +88,11 @@ export default function FooterWithNewsletter() {
   return (
     <footer className="bg-white text-gray-800 relative z-40 select-none px-6 py-12 md:px-16 overflow-hidden">
       {/* Footer content */}
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 items-center text-center md:text-left">
+      <div className="max-w-6xl monitor:max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 items-center text-center md:text-left">
         {/* Logo & text */}
         <div className="flex flex-col items-center md:items-start space-y-2">
           <Image src={logo} alt="WAIT logo" width={120} height={50} />
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-cnxBlack monitor:text-base text-nowrap">
             WAIT – česká kapela s duší a energií. Sleduj nás online!
           </p>
         </div>
@@ -103,7 +103,7 @@ export default function FooterWithNewsletter() {
         </div>
 
         {/* Odkazy & copyright */}
-        <div className="flex flex-col items-center md:items-end space-y-2 text-sm text-gray-600">
+        <div className="flex flex-col items-center md:items-end space-y-2 text-sm monitor:text-base text-cnxBlack">
           <Link
             href="/osobni-udaje"
             target="_blank"

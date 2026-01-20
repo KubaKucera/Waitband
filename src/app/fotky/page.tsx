@@ -195,10 +195,12 @@ export default function PhotosPage() {
                     text-[15px] font-semibold tracking-[0.12em]
                     rounded-full text-white                    
                     transition-transform duration-300 ease-out will-change-transform transform-gpu
-                    bg-transparent border-gray-300 border-[2px]
-                    hover:scale-105 hover:shadow-white hover:border-white                    
-                    focus-visible:outline-none
-                    focus-visible:shadow-[0_0_0_3px_rgba(238,9,121,0.35)]" ${
+                    bg-transparent border-[2px] border-gray-300                    
+                    hover:scale-105
+                    hover:[background:linear-gradient(#121212,#121212)_padding-box,linear-gradient(90deg,#ff6a00,#ee0979)_border-box]
+                    focus-visible:outline-none                    
+                    focus-visible:shadow-[0_0_0_3px_rgba(238,9,121,0.35)]"
+                    active:scale-[0.98] ${
                     loading ? "opacity-50 cursor-not-allowed" : ""
                   }`}                  
                 >
