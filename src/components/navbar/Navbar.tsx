@@ -234,12 +234,12 @@ export default function Navbar() {
                   href={href}
                   onClick={() => setMenuOpen(false)}
                   className={`
-                    uppercase text-3xl font-poppins font-semibold
-                    transition-colors
+                    uppercase text-3xl font-poppins
+                    transition-colors duration-300
                     ${
                       isActive(href)
-                        ? "text-neonPink"
-                        : "text-navbarWhite hover:text-neonPinkDark"
+                        ? "font-semibold text-neonPink"
+                        : "font-normal text-navbarWhite hover:text-neonPinkDark"
                     }
                   `}
                 >

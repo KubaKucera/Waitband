@@ -24,43 +24,13 @@ export default function FooterWithNewsletter() {
   const renderSocialLinks = () => (
     <div className="flex justify-center flex-wrap lg:flex-nowrap gap-4 sm:gap-4 md:gap-6 w-full max-w-2xl mx-auto">
       {[
-        {
-          icon: <FaInstagram />,
-          href: "https://www.instagram.com/wait_band_official/",
-          label: "Instagram",
-          bg: "bg-instagramPink",
-        },
-        {
-          icon: <FaFacebookF />,
-          href: "https://www.facebook.com/waitbandcz/?locale=cs_CZ",
-          label: "Facebook",
-          bg: "bg-facebookBlue",
-        },
-        {
-          icon: <FaYoutube />,
-          href: "https://www.youtube.com/@waitbandofficial",
-          label: "YouTube",
-          bg: "bg-youtubeRed",
-        },
-        {
-          icon: <FaSpotify />,
-          href: "https://open.spotify.com/artist/37DvIv1TkBrTOz16Kk75YI",
-          label: "Spotify",
-          bg: "bg-spotifyGreen",
-        },
-        {
-          icon: <FaApple />,
-          href: "https://music.apple.com/gh/artist/wait/1479576915",
-          label: "Apple Music",
-          bg: "bg-appleMusicSalmon",
-        },
-        {
-          icon: <FaSoundcloud />,
-          href: "https://soundcloud.com/wait-band-official",
-          label: "SoundCloud",
-          bg: "bg-soundcloudOrange",
-        },
-      ].map(({ icon, href, label, bg }, i) => (
+        { icon: <FaInstagram />, href: "https://www.instagram.com/wait_band_official/", label: "Instagram", hoverBg: "hover:bg-instagramPink" },
+        { icon: <FaFacebookF />, href: "https://www.facebook.com/waitbandcz/?locale=cs_CZ", label: "Facebook", hoverBg: "hover:bg-facebookBlue" },
+        { icon: <FaYoutube />, href: "https://www.youtube.com/@waitbandofficial", label: "YouTube", hoverBg: "hover:bg-youtubeRed" },
+        { icon: <FaSpotify />, href: "https://open.spotify.com/artist/37DvIv1TkBrTOz16Kk75YI", label: "Spotify", hoverBg: "hover:bg-spotifyGreen" },
+        { icon: <FaApple />, href: "https://music.apple.com/gh/artist/wait/1479576915", label: "Apple Music", hoverBg: "hover:bg-appleMusicSalmon" },
+        { icon: <FaSoundcloud />, href: "https://soundcloud.com/wait-band-official", label: "SoundCloud", hoverBg: "hover:bg-soundcloudOrange" },
+      ].map(({ icon, href, label, hoverBg }, i) => (
         <Link
           key={i}
           href={href}
@@ -68,13 +38,15 @@ export default function FooterWithNewsletter() {
           rel="noopener noreferrer"
           aria-label={label}
           className={`
-            ${bg}
             aspect-square flex items-center justify-center
-            text-white text-[20px] md:text-[26px]
-            p-3
-            rounded-full
-            shadow-md            
-            hover:-translate-y-1 hover:scale-110 transition-transform duration-300 ease-out will-change-transform transform-gpu
+            rounded-full            
+            text-white
+            bg-gray-700 backdrop-blur-sm
+            text-[20px] md:text-[26px] p-3 shadow-md 
+            transition-all duration-300 ease-out
+            ${hoverBg} hover:text-white
+            hover:-translate-y-1 hover:scale-110
+            will-change-transform transform-gpu
             focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black/20
             max-w-[60px] max-h-[60px] sm:max-w-[70px] sm:max-h-[70px] md:max-w-[80px] md:max-h-[80px]
           `}
