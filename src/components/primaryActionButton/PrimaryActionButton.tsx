@@ -43,9 +43,11 @@ export const PrimaryActionButton = ({
           size={22}
           className="
             absolute right-5 top-1/2 -translate-y-1/2
-            opacity-0 group-hover:opacity-100
-            group-hover:translate-x-1
-            transition-all duration-300 ease-out
+            opacity-0
+            -translate-x-4
+            group-hover:translate-x-0
+            group-hover:opacity-100
+            transition-all duration-500 ease-out
           "
         />
       )}

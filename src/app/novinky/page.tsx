@@ -330,8 +330,20 @@ export default function NewsPage() {
                     />
                   </div>
 
-                  {/* Gradient overlay pro čitelnost */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/80 sm:from-black/90 sm:via-black/80 md:from-black/90 md:via-black/50 to-transparent" />
+                  <div
+                    className="
+                      absolute inset-0
+                      bg-gradient-to-t
+                      from-black/90
+                      via-black/75
+                      via-black/50
+                      via-black/25
+                      to-transparent
+                      sm:from-black/90
+                      sm:via-black/60
+                      sm:to-transparent
+                    "
+                  />
 
                   {/* Text panel – spodní overlay */}
                   <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 text-white space-y-1 sm:space-y-2">
@@ -513,8 +525,7 @@ export default function NewsPage() {
                     text-white
                     max-w-2xl w-full
                     rounded-2xl
-                    shadow-2xl
-                    border border-white/10
+                    shadow-2xl                                       
                     backdrop-blur-xl
                     overflow-hidden
                     "

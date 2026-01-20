@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import React, { useState } from "react";
 import {
   FaFacebookF,
   FaInstagram,
@@ -11,12 +10,11 @@ import {
   FaApple,
   FaSpotify,
 } from "react-icons/fa";
-
-import logo from "../../../public/assets/images/navbar/logo.jpg";
 import { FaArrowUp } from "react-icons/fa6";
 
-export default function FooterWithNewsletter() { 
+import logo from "../../../public/assets/images/navbar/logo.jpg";
 
+export default function FooterWithNewsletter() {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -24,12 +22,42 @@ export default function FooterWithNewsletter() {
   const renderSocialLinks = () => (
     <div className="flex justify-center flex-wrap lg:flex-nowrap gap-4 sm:gap-4 md:gap-6 w-full max-w-2xl mx-auto">
       {[
-        { icon: <FaInstagram />, href: "https://www.instagram.com/wait_band_official/", label: "Instagram", hoverBg: "hover:bg-instagramPink" },
-        { icon: <FaFacebookF />, href: "https://www.facebook.com/waitbandcz/?locale=cs_CZ", label: "Facebook", hoverBg: "hover:bg-facebookBlue" },
-        { icon: <FaYoutube />, href: "https://www.youtube.com/@waitbandofficial", label: "YouTube", hoverBg: "hover:bg-youtubeRed" },
-        { icon: <FaSpotify />, href: "https://open.spotify.com/artist/37DvIv1TkBrTOz16Kk75YI", label: "Spotify", hoverBg: "hover:bg-spotifyGreen" },
-        { icon: <FaApple />, href: "https://music.apple.com/gh/artist/wait/1479576915", label: "Apple Music", hoverBg: "hover:bg-appleMusicSalmon" },
-        { icon: <FaSoundcloud />, href: "https://soundcloud.com/wait-band-official", label: "SoundCloud", hoverBg: "hover:bg-soundcloudOrange" },
+        {
+          icon: <FaInstagram />,
+          href: "https://www.instagram.com/wait_band_official/",
+          label: "Instagram",
+          hoverBg: "hover:bg-instagramPink",
+        },
+        {
+          icon: <FaFacebookF />,
+          href: "https://www.facebook.com/waitbandcz/?locale=cs_CZ",
+          label: "Facebook",
+          hoverBg: "hover:bg-facebookBlue",
+        },
+        {
+          icon: <FaYoutube />,
+          href: "https://www.youtube.com/@waitbandofficial",
+          label: "YouTube",
+          hoverBg: "hover:bg-youtubeRed",
+        },
+        {
+          icon: <FaSpotify />,
+          href: "https://open.spotify.com/artist/37DvIv1TkBrTOz16Kk75YI",
+          label: "Spotify",
+          hoverBg: "hover:bg-spotifyGreen",
+        },
+        {
+          icon: <FaApple />,
+          href: "https://music.apple.com/gh/artist/wait/1479576915",
+          label: "Apple Music",
+          hoverBg: "hover:bg-appleMusicSalmon",
+        },
+        {
+          icon: <FaSoundcloud />,
+          href: "https://soundcloud.com/wait-band-official",
+          label: "SoundCloud",
+          hoverBg: "hover:bg-soundcloudOrange",
+        },
       ].map(({ icon, href, label, hoverBg }, i) => (
         <Link
           key={i}
@@ -39,16 +67,18 @@ export default function FooterWithNewsletter() {
           aria-label={label}
           className={`
             aspect-square flex items-center justify-center
-            rounded-full            
-            text-white
-            bg-gray-700 backdrop-blur-sm
-            text-[20px] md:text-[26px] p-3 shadow-md 
+            rounded-full
+            bg-gray-900 backdrop-blur-sm
+            text-white text-[20px] md:text-[26px] p-3
+            shadow-md
             transition-all duration-300 ease-out
-            ${hoverBg} hover:text-white
-            hover:-translate-y-1 hover:scale-110
+            ${hoverBg}
+            hover:-translate-y-1 hover:scale-105
             will-change-transform transform-gpu
             focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black/20
-            max-w-[60px] max-h-[60px] sm:max-w-[70px] sm:max-h-[70px] md:max-w-[80px] md:max-h-[80px]
+            max-w-[60px] max-h-[60px]
+            sm:max-w-[70px] sm:max-h-[70px]
+            md:max-w-[80px] md:max-h-[80px]
           `}
         >
           {icon}
@@ -58,52 +88,56 @@ export default function FooterWithNewsletter() {
   );
 
   return (
-    <footer className="bg-white text-gray-800 relative z-40 select-none px-6 py-12 md:px-16 overflow-hidden">
-      {/* Footer content */}
-      <div className="max-w-6xl monitor:max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 items-center text-center md:text-left">
-        {/* Logo & text */}
+    <footer className="bg-white text-gray-900 relative z-40 select-none px-6 py-16 md:px-16 overflow-hidden">
+      <div className="max-w-6xl monitor:max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 items-start text-center md:text-left">
+        {/* LOGO */}
         <div className="flex flex-col items-center md:items-start space-y-2">
-          <Image src={logo} alt="WAIT logo" width={120} height={50} />
-          <p className="text-sm text-cnxBlack monitor:text-base text-nowrap">
+          <Image src={logo} alt="WAIT logo" width={120} height={50} className="mb-2" />
+          <p className="text-lg font-medium tracking-wide text-cnxBlack monitor:text-black">
             WAIT – česká kapela s duší a energií. Sleduj nás online!
           </p>
         </div>
 
-        {/* Sociální ikony – centrované */}
-        <div className="h-full flex items-center justify-center lg:translate-y-[-20px]">
+        {/* SOCIÁLNÍ SÍTĚ */}
+        <div className="flex flex-col items-center">
+          <span className="text-gray-900 font-semibold text-[20px] mb-4 tracking-wide">
+            Sociální sítě
+          </span>
           {renderSocialLinks()}
         </div>
 
-        {/* Odkazy & copyright */}
-        <div className="flex flex-col items-center md:items-end space-y-2 text-sm monitor:text-base text-cnxBlack">
-          <Link
-            href="/osobni-udaje"
-            target="_blank"
-            className="footer-link text-nowrap"
-          >
-            Soukromí & Používání Cookies
-          </Link>
-          <Link
-            href="/podminky-a-pravidla"
-            target="_blank"
-            className="footer-link"
-          >
-            Podmínky a pravidla
-          </Link>
-          <Link
-            href="/assets/files/waitRider.pdf"
-            target="_blank"
-            className="footer-link"
-          >
-            Technický rider
-          </Link>
-          <p className="mt-4 text-center md:text-right">
-            &copy; 2025 WAIT – Všechna práva vyhrazena.
+        {/* POVINNÉ ÚDAJE */}
+        <div className="flex flex-col items-center md:items-end text-base text-cnxBlack">
+          <div className="flex flex-col items-center md:items-end gap-1">
+            <span className="text-gray-900 font-semibold text-[20px] tracking-wide mb-1">
+              Povinné údaje
+            </span>
+            <Link href="/osobni-udaje" target="_blank" className="footer-link text-nowrap">
+              Soukromí & Používání Cookies
+            </Link>
+            <Link href="/podminky-a-pravidla" target="_blank" className="footer-link">
+              Podmínky a pravidla
+            </Link>
+          </div>
+
+          {/* SEKCE 2: Pro pořadatele */}
+          <div className="flex flex-col items-center md:items-end mt-12 sm:mt-12 md:mt-6 gap-1">
+            <span className="text-gray-900 font-semibold text-[20px] tracking-wide mb-1">
+              Pro pořadatele
+            </span>
+            <Link href="/assets/files/waitRider.pdf" target="_blank" className="footer-link">
+              Technický rider
+            </Link>
+          </div>
+
+          {/* SEKCE 3: Copyright */}
+          <p className="mt-12 sm:mt-12 md:mt-6 text-center md:text-right">
+            &copy; 2026 WAIT – Všechna práva vyhrazena.
           </p>
         </div>
 
-        {/* Tlačítko nahoru - viditelné jen na sm a menších */}
-        <div className="mt-0 flex justify-center sm:hidden">
+        {/* SCROLL TO TOP (mobile only) */}
+        <div className="flex justify-center sm:hidden">
           <button
             onClick={scrollToTop}
             aria-label="Scroll to top"
