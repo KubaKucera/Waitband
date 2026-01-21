@@ -57,7 +57,7 @@ export default function Newsletter() {
       <div className="w-full px-6 sm:px-6 md:px-10 mx-auto flex flex-col items-center text-white pb-20 pt-20 sm:pt-20 md:pt-20 overflow-hidden z-20">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-montserrat text-[36px] sm:text-[44px] font-semibold mb-2">
-            Zůstaňme ve spojení
+            Zůstaňme v kontaktu
           </h2>
           <p className="text-gray-300 text-base sm:text-lg mb-5">
             Novinky a aktuality přímo do vašeho e-mailu
@@ -68,8 +68,13 @@ export default function Newsletter() {
             className="w-full max-w-md mx-auto flex flex-col justify-center items-center space-y-4"
             noValidate
           >
-            <div className="relative w-full max-w-[450px]">
-              <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+            <div className="relative w-full max-w-[450px] group">
+              <span className="
+                absolute left-3 top-1/2 -translate-y-1/2
+                text-gray-500
+                transition-colors duration-100
+                group-focus-within:text-gray-400
+              ">
                 <MdEmail size={20} />
               </span>
               <input
@@ -79,7 +84,15 @@ export default function Newsletter() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full px-10 py-3 rounded-md border border-gray-300 text-gray-900 focus:ring-1 focus:ring-blue-400 transition"
+                className="
+                  w-full px-10 py-3 rounded-md
+                  border border-gray-300
+                  text-gray-900
+                  placeholder-gray-500
+                  focus:placeholder-gray-400
+                  focus:ring-1 focus:ring-blue-400
+                  transition
+                "
               />
             </div>
 

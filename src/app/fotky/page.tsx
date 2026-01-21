@@ -225,7 +225,7 @@ export default function PhotosPage() {
                   exit={{ opacity: 0 }}
                 >
                   {/* Controls */}
-                  <div className="absolute top-4 right-4 flex gap-3 z-50">                    
+                  <div className="absolute top-5 right-[20px] flex gap-3 z-50">                    
                     <button
                       onClick={() => setZoom((z) => (z === 1 ? 2 : 1))}
                       className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition"

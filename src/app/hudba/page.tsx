@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 import february from "../../../public/assets/images/music/february29th.jpg";
 import losing from "../../../public/assets/images/music/losingSleep.jpg";
@@ -14,13 +15,14 @@ import horoscop from "../../../public/assets/images/music/horoscop.jpg";
 import hate from "../../../public/assets/images/music/hateYou.jpg";
 import achiever from "../../../public/assets/images/music/achiever.jpg";
 import texture from "../../../public/assets/textures/texture.jpg";
+
 import appleMusic from "../../../public/assets/icons/appleMusic.svg";
 import spotify from "../../../public/assets/icons/spotify.svg";
 import soundcloud from "../../../public/assets/icons/soundcloud.svg";
+
 import TitleWithLines from "@/components/titleWithLines/TitleWithLines";
-import { motion } from "framer-motion";
 import SideAccentLine from "@/components/sideAccentLine/SideAccentLine";
-import { ArrowRight } from "lucide-react";
+import { X } from "lucide-react";
 import { PrimaryActionButton } from "@/components/primaryActionButton/PrimaryActionButton";
 
 const images = [february, losing, careless, subway, daydream, follow, horoscop, hate, achiever];
@@ -66,7 +68,27 @@ export default function MusicPage() {
     document.title = "Hudba | Wait";
   }, []);
 
-  const [modalData, setModalData] = useState<{ image: any; title: string; index: number } | null>(null);
+  const [modalData, setModalData] = useState<{
+    image: any;
+    title: string;
+    index: number;
+  } | null>(null);
+
+  // Zakázání scrollu při otevřeném modalu
+  useEffect(() => {
+    if (modalData) {
+      document.documentElement.style.overflow = "hidden";
+      document.body.style.overflow = "hidden";
+    } else {
+      document.documentElement.style.overflow = "auto";
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.documentElement.style.overflow = "auto";
+      document.body.style.overflow = "auto";
+    };
+  }, [modalData]);
 
   const openModal = (index: number) => {
     setModalData({
@@ -74,27 +96,27 @@ export default function MusicPage() {
       title: soundcloudSongs[index].title,
       index,
     });
-    document.body.style.overflow = "hidden";
   };
 
   const closeModal = () => {
     setModalData(null);
-    document.body.style.overflow = "";
   };
 
   return (
-    <>   
-      <SideAccentLine targetId="music-section"/>
+    <>
+      <SideAccentLine targetId="music-section" />
 
       <div
         className="relative w-full min-h-screen bg-fixed bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(20, 20, 20, 0.85)), url(${texture.src})`,
+          backgroundImage: `linear-gradient(to bottom right, rgba(0,0,0,0.8), rgba(20,20,20,0.85)), url(${texture.src})`,
         }}
-      >        
-        <section id="music-section" className="relative min-h-screen flex flex-col items-center px-6 sm:px-6 md:px-6 lg:px-0 gap-8 pt-[118px]">
-          
-          <TitleWithLines title="Hudba" delay={0.3} />  
+      >
+        <section
+          id="music-section"
+          className="relative min-h-screen flex flex-col items-center px-6 sm:px-6 md:px-6 lg:px-0 gap-8 pt-[118px]"
+        >
+          <TitleWithLines title="Hudba" delay={0.3} />
 
           <motion.div
             initial={{ opacity: 0, y: 30, scale: 0.98 }}
@@ -117,7 +139,6 @@ export default function MusicPage() {
                     className="object-cover transition-transform duration-300 ease-out will-change-transform transform-gpu group-hover:scale-105"
                   />
 
-                  {/* Motion overlay */}
                   <motion.div
                     initial={{ opacity: 0 }}
                     whileHover={{ opacity: 1 }}
@@ -139,96 +160,147 @@ export default function MusicPage() {
 
             {/* Tlačítko alba */}
             <div className="flex justify-center mt-4 mb-3">
-              <PrimaryActionButton href="/alba">
-                Přejít na Alba
-              </PrimaryActionButton>
+              <PrimaryActionButton href="/alba">Přejít na Alba</PrimaryActionButton>
             </div>
-          </motion.div>          
+          </motion.div>
         </section>
       </div>
 
       {/* MODAL */}
-      {modalData && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.25 }}
-          className="fixed inset-0 z-50 flex items-center justify-center px-6 sm:px-6 md:px-6 lg:px-0 sm:p-10 bg-black/50 backdrop-blur-sm monitor:scale-115"
-          onClick={closeModal}
-        >
+      <AnimatePresence>
+        {modalData && (
           <motion.div
-            initial={{ y: 30, scale: 0.95, opacity: 0 }}
-            animate={{ y: 0, scale: 1, opacity: 1 }}
-            exit={{ y: 30, scale: 0.95, opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-            onClick={(e) => e.stopPropagation()}
-            className="relative bg-white rounded-xl shadow-2xl max-w-md w-full p-6 flex flex-col items-center"
+            key="modal"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-50 flex items-center justify-center px-6 sm:px-6 md:px-6 lg:px-0 sm:p-10 bg-black/60 sm:bg-black/80 backdrop-blur-md monitor:scale-115"
+            onClick={closeModal} // klik na fade zavře modal
           >
-            {/* Zavřít */}
-            <button
-              aria-label="Zavřít"
-              onClick={closeModal}
-              className="absolute top-4 right-4 p-1 rounded-full hover:bg-gray-200 transition-colors"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="w-6 h-6 text-gray-700 hover:text-black"
-              >
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-              </svg>
-            </button>
-
-            {/* Obrázek */}
-            <div className="relative w-[80%] max-w-[250px] sm:max-w-[300px] aspect-square rounded-lg overflow-hidden mb-4 shadow-lg">
-              <Image src={modalData.image} alt={modalData.title} fill className="object-cover" />
-            </div>
-
-            {/* Titulek */}
             <motion.div
-              initial={{ y: 10, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.1, duration: 0.3 }}
-              className="text-center mb-6"
+              initial={{ y: 30, scale: 0.95, opacity: 0 }}
+              animate={{ y: 0, scale: 1, opacity: 1 }}
+              exit={{ y: 30, scale: 0.95, opacity: 0 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              onClick={(e) => e.stopPropagation()}
+              className="
+                relative
+                bg-white/25
+                text-white
+                max-w-md
+                w-full
+                max-h-[100vh]
+                rounded-2xl
+                overflow-hidden
+                shadow-2xl
+                flex
+                flex-col
+                items-center
+                p-6                
+              "
             >
-              <h2 className="text-black text-2xl font-bold">{modalData.title}</h2>
-              <p className="text-gray-500">Vyber hudební službu</p>
-            </motion.div>
+              {/* Close button */}
+              <button
+                onClick={closeModal}
+                aria-label="Zavřít modal"
+                className="
+                  absolute
+                  top-4
+                  right-4
+                  z-30
+                  flex
+                  items-center
+                  justify-center
+                  w-9
+                  h-9
+                  rounded-full
+                  bg-black/60
+                  backdrop-blur
+                  text-white
+                  transition
+                  hover:bg-black/80
+                "
+              >
+                <X className="w-5 h-5" />
+              </button>
 
-            {/* Ovládací tlačítka */}
-            <div className="w-full space-y-3">
-              {[
-                { icon: appleMusic, label: "Apple Music", url: appleMusicSongs[modalData.index].url },
-                { icon: spotify, label: "Spotify", url: spotifyMusicSongs[modalData.index].url },
-                { icon: soundcloud, label: "Soundcloud", url: soundcloudSongs[modalData.index].url },
-              ].map(({ icon, label, url }, i) =>
-                url ? (
-                  <motion.a
-                    key={i}
-                    href={url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    initial={{ y: 10, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.15 + i * 0.05, duration: 0.25 }}
-                    className="flex items-center justify-between bg-gray-100 px-4 h-[55px] rounded-lg shadow hover:bg-gray-200 transition-all"
-                  >
-                    <Image src={icon} alt={label} width={100} />
-                    <span className="text-black font-medium">Přehrát</span>
-                  </motion.a>
-                ) : null
-              )}
-            </div>
+              {/* HERO – čtvercový obrázek vycentrovaný */}
+              <div className="relative w-full flex justify-center items-center">
+                <div className="relative w-[255px] sm:w-[300px] aspect-square rounded-xl overflow-hidden shadow-lg">
+                  <Image
+                    src={modalData.image}
+                    alt={modalData.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              </div>
+
+              {/* CONTENT – NESMÍ se zmenšit */}
+              <div className="flex-shrink-0 w-full">
+                <div className="w-full p-4 space-y-2">
+                  <h2 className="text-2xl font-bold text-center">{modalData.title}</h2>
+                  <p className="text-gray-300 whitespace-pre-wrap text-center">
+                    Vyber hudební službu pro přehrání skladby.
+                  </p>
+                </div>                
+
+                <div className="w-full space-y-3">
+                  {[
+                    {
+                      icon: appleMusic,
+                      label: "Apple Music",
+                      url: appleMusicSongs[modalData.index].url,
+                    },
+                    {
+                      icon: spotify,
+                      label: "Spotify",
+                      url: spotifyMusicSongs[modalData.index].url,
+                    },
+                    {
+                      icon: soundcloud,
+                      label: "Soundcloud",
+                      url: soundcloudSongs[modalData.index].url,
+                    },
+                  ].map(({ icon, label, url }, i) => {
+                    const isDisabled = !url;
+
+                    return (
+                      <motion.a
+                        key={i}
+                        href={isDisabled ? undefined : url}
+                        target={isDisabled ? undefined : "_blank"}
+                        rel={isDisabled ? undefined : "noopener noreferrer"}
+                        initial={{ y: 10, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ delay: 0.15 + i * 0.05, duration: 0.25 }}
+                        className={`
+                          flex items-center justify-between
+                          px-4 h-[55px] rounded-lg shadow
+                          transition-all
+                          ${isDisabled
+                            ? "bg-gray-300 opacity-50 cursor-not-allowed"
+                            : "bg-gray-100 hover:bg-gray-200 cursor-pointer"}
+                        `}
+                        onClick={(e) => {
+                          if (isDisabled) e.preventDefault();
+                        }}
+                        aria-disabled={isDisabled}
+                      >
+                        <Image src={icon} alt={label} width={100} />
+                        <span className="text-black font-medium">
+                          {isDisabled ? "Nedostupné" : "Přehrát"}
+                        </span>
+                      </motion.a>
+                    );
+                  })}
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
-        </motion.div>
-      )}
+        )}
+      </AnimatePresence>
     </>
   );
 }

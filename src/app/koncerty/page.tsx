@@ -54,7 +54,17 @@ export default function ConsertsPage() {
                 return (
                   <div
                     key={index}
-                    className="flex flex-col items-center w-full mx-auto bg-gradient-to-r from-white/5 via-white/10 to-white/5 backdrop-blur-lg border border-white/20 rounded-2xl px-8 py-10 shadow-xl hover:shadow-2xl hover:scale-[1.03] transition-transform duration-300 ease-out will-change-transform transform-gpu"
+                    className="relative
+                      w-full
+                      mx-auto
+                      bg-white/10
+                      border border-white/35
+                      rounded-2xl
+                      shadow-lg shadow-black/20
+                      px-8 py-10
+                      hover:shadow-2xl hover:scale-[1.03]
+                      transition-transform duration-300 ease-out will-change-transform transform-gpu
+                    "
                   >
                     {/* Datum + čas */}
                     <div className="flex flex-row items-center justify-center gap-4 mb-4 text-white whitespace-nowrap">

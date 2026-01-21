@@ -56,25 +56,58 @@ function AsideContent({
     setSearch("");
   };
 
-  const hasActiveFilters = filterYear !== "" || filterMonth !== "" || filterCategory !== "";
+  // defaultní (prázdné) hodnoty filtrů
+  const defaultFilters = { year: "", month: "", category: "" };
+
+  // True pokud alespoň jeden select se liší od defaultu
+  const filtersChanged =
+    filterYear !== defaultFilters.year ||
+    filterMonth !== defaultFilters.month ||
+    filterCategory !== defaultFilters.category;
+
+  const handleCloseFilter = () => setShowFilter(false);
 
   return (
     <aside className={`${wrapperClassName} rounded-xl flex flex-col`}>
-      {/* Header: název + filtr v jedné linii */}
-      <div className="flex items-center justify-between mb-0 sm:mb-0 md:mb-4">
+      {/* Header: název + filtr */}
+      <div className="flex items-center justify-between mb-0 sm:mb-0 md:mb-4 relative">
         <h3 className="text-white text-lg font-semibold">Všechny příspěvky</h3>
-        <div className="flex items-center gap-3">
+        <div className="group flex items-center gap-3 relative">
           <button
             onClick={() => setShowFilter(!showFilter)}
-            className="px-4 py-2 font-medium text-sm transition border border-white/20 rounded-md bg-white/10 text-white flex items-center gap-2"
+            aria-expanded={showFilter}
+            aria-controls="filter-panel-id"
+            title={filtersChanged ? "Filtry jsou aktivní" : undefined}
+            className={`
+              px-4 py-2 font-medium text-sm
+              border border-white/20 rounded-md
+              flex items-center gap-2
+              transition-all duration-200
+              ${showFilter ? "bg-white/15 border-white/30" : "bg-white/10"}
+              text-white
+              ${filtersChanged ? "ring-2 ring-neonPink" : ""}
+              hover:shadow-md hover:shadow-black/30
+            `}
           >
-            Filtrovat
-            <Filter className={`w-4 h-4 transition ${showFilter ? "fill-current text-white" : "text-white"}`} />
+            <span className="flex items-center gap-2">
+              {showFilter ? "Skrýt filtr" : "Filtrovat"}
+              {/* Filtr ikonka fillnuta neonpink jen pokud uživatel něco změnil */}
+              {filtersChanged && (
+                <Filter className="w-4 h-4 fill-current text-neonPink transition" />
+              )}
+            </span>
           </button>
-        </div>
-      </div>   
 
-      {/* Mobilní search: POD headerem (viditelné pouze na mobilu) */}
+          {/* Badge s počtem aktivních filtrů */}
+          {filtersChanged && (
+            <span className="absolute -top-1 -right-1 w-4 h-4 bg-neonPink text-black text-xs font-bold rounded-full flex items-center justify-center">
+              {+!!filterYear + +!!filterMonth + +!!filterCategory}
+            </span>
+          )}
+        </div>
+      </div>
+
+      {/* Mobilní search */}
       <div className="block lg:hidden w-full mt-4 mb-6">
         <label htmlFor="mobile-search" className="sr-only">Vyhledat příspěvek</label>
         <div className="relative">
@@ -100,13 +133,13 @@ function AsideContent({
         </div>
       </div>
 
-      {/* Filtr */}
+      {/* Filtr panel */}
       {showFilter && (
         <div className="mb-4 p-3 bg-white/5 rounded-lg text-sm text-white space-y-3">
           <div className="flex items-center justify-between">
             <p className="text-xs text-gray-300 m-0">Nastavení filtru</p>
             <div className="flex gap-2">
-              {hasActiveFilters && (   // 👈 Podmínka
+              {filtersChanged && (
                 <button
                   onClick={resetFilters}
                   className="flex items-center gap-2 text-sm px-3 py-1 bg-white/10 rounded hover:bg-white/20 transition"
@@ -116,13 +149,14 @@ function AsideContent({
                 </button>
               )}
               <button
-                onClick={() => setShowFilter(false)}
+                onClick={handleCloseFilter}
                 className="text-sm px-3 py-1 bg-transparent border border-white/10 rounded hover:bg-white/5 transition"
               >
                 Zavřít
               </button>
             </div>
           </div>
+
           {/* Rok */}
           <div>
             <label className="block mb-1">Rok:</label>
@@ -136,6 +170,7 @@ function AsideContent({
               <option value="2024">2024</option>
             </select>
           </div>
+
           {/* Měsíc */}
           <div>
             <label className="block mb-1">Měsíc:</label>
@@ -146,12 +181,11 @@ function AsideContent({
             >
               <option value="">Všechny</option>
               {months.map((m) => (
-                <option key={m} value={m}>
-                  {m}
-                </option>
+                <option key={m} value={m}>{m}</option>
               ))}
             </select>
           </div>
+
           {/* Kategorie */}
           <div>
             <label className="block mb-1">Kategorie:</label>
@@ -162,9 +196,7 @@ function AsideContent({
             >
               <option value="">Všechny</option>
               {categories.map((c) => (
-                <option key={c} value={c}>
-                  {c}
-                </option>
+                <option key={c} value={c}>{c}</option>
               ))}
             </select>
           </div>
@@ -283,7 +315,7 @@ export default function NewsPage() {
             className="flex flex-col items-center gap-8 mt-6 w-full"
           >
             {/* Search - DESKTOP only (skryté na mobilu) */}
-            <div className="relative w-full max-w-3xl monitor:max-w-4xl mb-6 hidden lg:block">
+            <div className="relative w-full max-w-[700px] monitor:max-w-3xl mb-6 hidden lg:block">
               <input
                 type="text"
                 placeholder="Vyhledat příspěvek..."
@@ -418,7 +450,7 @@ export default function NewsPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, ease: "easeOut" }}
-                    className="relative group cursor-pointer rounded-xl bg-white/5 hover:bg-white/10 overflow-hidden shadow-lg transition flex flex-col aspect-[4/5]"
+                    className="relative group cursor-pointer rounded-xl bg-white/5 hover:bg-white/10 overflow-hidden shadow-md transition-all duration-300 flex flex-col aspect-[4/5]"
                   >
                     {/* IMAGE */}
                     <div className="relative w-full flex-[3] overflow-hidden">
@@ -495,81 +527,81 @@ export default function NewsPage() {
         </section>
       </div>
 
-      {/* Modal */}
       <AnimatePresence>
-              {active && (
-                <motion.div
-                  key="modal"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center px-6 sm:px-6 md:px-6 lg:px-0"
+        {active && (
+          <motion.div
+            key="modal"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/60 sm:bg-black/80 backdrop-blur-md sm:backdrop-blur-sm z-50 flex items-center justify-center px-6"
+            onClick={() => setActive(null)}
+          >
+            {/* Close button pro desktop */}
+            <button
+              className="absolute hidden md:flex right-[20px] top-[26px] text-white hover:text-gray-300 transition z-20"
+              onClick={() => setActive(null)}
+            >
+              <X className="w-8 h-8" />
+            </button>
+
+            {/* Modal kontejner */}
+            <motion.div
+              initial={{ scale: isLargeScreen ? 1.15 : 1, opacity: 0 }}
+              animate={{ scale: isLargeScreen ? 1.15 : 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              /* PŘIDÁNO: bg-neutral-800 a rounded-2xl, aby pozadí ladilo s obsahem a netvořilo artefakty */
+              className="relative bg-neutral-800 text-white max-w-2xl w-full shadow-2xl rounded-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >              
+              {/* --- MOBILNÍ CLOSE BUTTON --- */}
+              <div className="absolute -top-10 right-0 md:hidden">
+                <button
                   onClick={() => setActive(null)}
+                  className="flex items-center justify-center bg-neutral-800 px-6 py-2 rounded-t-2xl shadow-md transition hover:bg-neutral-700"
                 >
-                  {/* --- Close button (desktop) --- */}
-                  <button
-                    className="absolute hidden lg:flex right-5 top-5 text-white hover:text-gray-300 transition z-20"
-                    onClick={() => setActive(null)}
-                  >
-                    <X className="w-8 h-8" />
-                  </button>
-      
-                  {/* --- Modal content --- */}
-                  <motion.div
-                    initial={{ scale: 0.9, opacity: 0 }}
-                    animate={{ scale: isLargeScreen ? 1.15 : 1, opacity: 1 }}
-                    exit={{ scale: 0.9, opacity: 0 }}
-                    transition={{ duration: 0.4, ease: "easeOut" }}
-                    className="
-                    relative bg-neutral-900
-                    text-white
-                    max-w-2xl w-full
-                    rounded-2xl
-                    shadow-2xl                                       
-                    backdrop-blur-xl
-                    overflow-hidden
-                    "
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    {/* HERO image section */}
-                    <div className="relative h-[300px] sm:h-[300px] md:h-80 monitor:h-96 w-full">
-                      <Image
-                        src={active.image}
-                        alt={active.title}
-                        fill
-                        className="object-cover object-top"
-                      />
-                      {/* Mobile close button */}
-                      <button
-                        onClick={() => setActive(null)}
-                        className="absolute top-2 right-2 lg:hidden flex items-center justify-center px-2 py-2 rounded-full bg-black/70 text-white hover:text-gray-300 transition shadow-md z-20"
-                        aria-label="Zavřít článek"
-                      >
-                        <X className="w-6 h-6" />
-                      </button>
-                    </div>
-      
-                    {/* CONTENT section */}
-                    <div className="bg-neutral-800 p-6 max-h-[270px] overflow-y-auto space-y-4">
-                      <span className="inline-block border-neonPink border-2 text-white px-2 py-0.5 rounded-full text-xs font-medium">
-                        {active.category}
-                      </span>
-                      <p className="text-sm text-gray-400">{active.date}</p>
-                      <h2 className="text-2xl font-bold">{active.title}</h2>
-                      <p className="text-gray-200 whitespace-pre-wrap">{active.content}</p>
-                      {active.link && (
-                        <a
-                          href={active.link}
-                          target="_blank"
-                          className="inline-flex items-center gap-2 text-sm mt-3 text-neonPink hover:underline"
-                        >
-                          Více zde <ExternalLink className="w-4 h-4" />
-                        </a>
-                      )}
-                    </div>
-                  </motion.div>
-                </motion.div>
-              )}
+                  <X className="w-6 h-6 text-white" />
+                </button>
+              </div>
+
+              {/* --- HERO SEKCE --- */}
+              {/* overflow-hidden + rounded-t-2xl zajistí, že obrázek i gradient budou mít čisté rohy */}
+              <div className="relative h-[300px] sm:h-[300px] md:h-[335px] monitor:h-96 w-full overflow-hidden rounded-tl-2xl md:rounded-t-2xl">
+                <Image
+                  src={active.image}
+                  alt={active.title}
+                  fill
+                  className="object-cover object-top"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+              </div>
+
+              {/* --- CONTENT SEKCE --- */}
+              {/* TENTO DIV funguje jako ořezávací maska pro scrollbar (Wrapper) */}
+              <div className="rounded-b-2xl overflow-hidden bg-neutral-800">
+                <div className="p-6 max-h-[270px] md:max-h-[295px] overflow-y-auto space-y-4 custom-scrollbar">
+                  <span className="inline-block border-neonPink border-2 text-white px-2 py-0.5 rounded-full text-xs font-medium">
+                    {active.category}
+                  </span>
+                  <p className="text-sm text-gray-400">{active.date}</p>
+                  <h2 className="text-2xl font-bold">{active.title}</h2>
+                  <p className="text-gray-200 whitespace-pre-wrap">{active.content}</p>
+                  
+                  {active.link && (
+                    <a
+                      href={active.link}
+                      target="_blank"
+                      className="inline-flex items-center gap-2 text-sm mt-3 text-neonPink hover:underline"
+                    >
+                      Více zde <ExternalLink className="w-4 h-4" />
+                    </a>
+                  )}
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
       </AnimatePresence>
     </>
   );

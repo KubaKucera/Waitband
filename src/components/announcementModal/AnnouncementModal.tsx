@@ -9,6 +9,7 @@ import Image from "next/image";
 export default function AnnouncementModal() {
   const [open, setOpen] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
   const scrollYRef = useRef<number>(0);
 
   // Zobrazit jen jednou za session
@@ -46,24 +47,25 @@ export default function AnnouncementModal() {
     }
   }, [open]);
 
+  // Monitor breakpoint detection
+  useEffect(() => {
+    const checkScreen = () => setIsLargeScreen(window.innerWidth >= 1600);
+    checkScreen();
+    window.addEventListener("resize", checkScreen);
+    return () => window.removeEventListener("resize", checkScreen);
+  }, []);
+
   return (
     <AnimatePresence>
       {open && (
         <motion.div
-          className="
-            fixed inset-0 z-[9999]
-            flex items-center justify-center
-            bg-black/70
-            backdrop-blur-sm
-            px-6
-            monitor:scale-115
-          "
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70 backdrop-blur-sm px-6"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={() => setOpen(false)}
         >
-          {/* Close */}
+          {/* Close button */}
           <button
             onClick={() => setOpen(false)}
             className="fixed top-[26px] right-5 sm:top-[26px] sm:right-5 md:top-6 md:right-6 z-[10000] text-gray-300 hover:text-white transition"
@@ -73,15 +75,10 @@ export default function AnnouncementModal() {
 
           {/* Modal */}
           <motion.div
-            className="
-              relative w-full max-w-lg sm:max-w-xl lg:max-w-2xl
-              rounded-2xl
-              bg-gradient-to-b from-gray-50 via-gray-100 to-gray-200
-              shadow-2xl overflow-hidden text-center
-            "
-            initial={{ y: 40, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: 20, opacity: 0 }}
+            className="relative w-full max-w-lg sm:max-w-xl lg:max-w-2xl rounded-2xl bg-gradient-to-b from-gray-50 via-gray-100 to-gray-200 shadow-2xl overflow-hidden text-center"
+            initial={{ y: 40, opacity: 0, scale: 1 }}
+            animate={{ y: 0, opacity: 1, scale: isLargeScreen ? 1.15 : 1 }}
+            exit={{ y: 20, opacity: 0, scale: 1 }}
             transition={{ type: "spring", stiffness: 120, damping: 20 }}
             onClick={(e) => e.stopPropagation()}
           >
@@ -92,15 +89,11 @@ export default function AnnouncementModal() {
                 alt="Announcement"
                 fill
                 priority
-                className={`
-                  object-cover
-                  transition-opacity duration-700 ease-out
-                  ${imageLoaded ? "opacity-100" : "opacity-0"}
-                `}
+                className={`object-cover transition-opacity duration-700 ease-out ${
+                  imageLoaded ? "opacity-100" : "opacity-0"
+                }`}
                 onLoadingComplete={() => setImageLoaded(true)}
               />
-
-              {/* Skeleton while loading */}
               {!imageLoaded && (
                 <div className="absolute inset-0 bg-gray-300 animate-pulse" />
               )}
@@ -135,16 +128,7 @@ export default function AnnouncementModal() {
 
               <button
                 onClick={() => setOpen(false)}
-                className="
-                  inline-flex items-center justify-center
-                  rounded-full bg-rose-600
-                  px-8 py-3
-                  text-sm font-semibold uppercase tracking-wide
-                  text-white shadow-lg
-                  transition-colors transition-shadow
-                  duration-300 ease-out
-                  hover:shadow-xl hover:bg-rose-700
-                "
+                className="inline-flex items-center justify-center rounded-full bg-rose-600 px-8 py-3 text-sm font-semibold uppercase tracking-wide text-white shadow-lg transition-colors transition-shadow duration-300 ease-out hover:shadow-xl hover:bg-rose-700"
               >
                 Těšíme se! 🚀
               </button>

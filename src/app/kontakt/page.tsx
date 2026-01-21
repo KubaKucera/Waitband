@@ -171,7 +171,7 @@ export default function ContactPage() {
           className="w-full"
         >
           <div className="w-full flex justify-center items-center pt-10 px-6 sm:px-6 md:px-6 lg:px-0">
-            <div className="w-full sm:w-11/12 md:w-[70%] lg:w-[50%] xl:w-[50%] monitor:w-[40%] max-w-4xl flex flex-col items-center justify-center gap-3 bg-white/10 backdrop-blur-md border border-white/30 px-6 py-4 rounded-xl shadow-lg text-white">
+            <div className="w-full sm:w-11/12 md:w-[70%] lg:w-[50%] xl:w-[50%] monitor:w-[40%] max-w-4xl flex flex-col items-center justify-center gap-3 bg-white/10 border border-white/35 rounded-2xl shadow-lg shadow-black/20 px-6 py-4 text-white">
               
               <FileDown className="w-10 h-10" />
 
