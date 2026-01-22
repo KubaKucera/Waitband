@@ -471,9 +471,7 @@ export default function Home() {
                     </motion.button>
       
                     {/* HERO IMAGE */}
-                    <motion.div
-                      initial={{ y: 8 }}
-                      animate={{ y: 0 }}
+                    <motion.div                      
                       transition={{ delay: 0.1, type: "spring", stiffness: 140 }}
                       className="relative w-full flex justify-center"
                     >
@@ -493,7 +491,7 @@ export default function Home() {
                         <h2 className="text-2xl font-bold text-center">
                           {modalData.title}
                         </h2>
-                        <p className="text-gray-300 text-sm md:text-base text-center text-nowrap">
+                        <p className="text-gray-200 text-sm md:text-base text-center text-nowrap">
                           Vyber hudební službu pro přehrání skladby.
                         </p>
                       </div>
