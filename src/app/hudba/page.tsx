@@ -230,8 +230,8 @@ export default function MusicPage() {
 
               {/* HERO IMAGE */}
               <motion.div
-                initial={{ scale: 0.95 }}
-                animate={{ scale: 1 }}
+                initial={{ y: 8 }}
+                animate={{ y: 0 }}
                 transition={{ delay: 0.1, type: "spring", stiffness: 140 }}
                 className="relative w-full flex justify-center"
               >
@@ -301,14 +301,9 @@ export default function MusicPage() {
                         target={isDisabled ? undefined : "_blank"}
                         rel={isDisabled ? undefined : "noopener noreferrer"}
                         variants={{
-                          hidden: { opacity: 0, y: 8 },
+                          hidden: { opacity: 1, y: 8 },
                           show: { opacity: 1, y: 0 },
-                        }}
-                        transition={{
-                          type: "spring",
-                          stiffness: 180,
-                          damping: 22,
-                        }}
+                        }}                        
                         onClick={(e) => {
                           if (isDisabled) e.preventDefault();
                         }}

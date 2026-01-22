@@ -408,6 +408,7 @@ export default function Home() {
               )}
             </AnimatePresence>
 
+      {/* MODAL */}
       <AnimatePresence>
               {modalData && (
                 <motion.div
@@ -471,8 +472,8 @@ export default function Home() {
       
                     {/* HERO IMAGE */}
                     <motion.div
-                      initial={{ scale: 0.95 }}
-                      animate={{ scale: 1 }}
+                      initial={{ y: 8 }}
+                      animate={{ y: 0 }}
                       transition={{ delay: 0.1, type: "spring", stiffness: 140 }}
                       className="relative w-full flex justify-center"
                     >
@@ -517,18 +518,22 @@ export default function Home() {
                             icon: appleMusic,
                             label: "Apple Music",
                             url: appleMusicSongs[modalData.index].url,
+                            color: "#fc3c44",
+      
                           },
                           {
                             icon: spotify,
                             label: "Spotify",
                             url: spotifyMusicSongs[modalData.index].url,
+                            color: "#1DB954",
                           },
                           {
                             icon: soundcloud,
                             label: "Soundcloud",
                             url: soundcloudSongs[modalData.index].url,
+                            color: "#ff5500",
                           },
-                        ].map(({ icon, label, url }, i) => {
+                        ].map(({ icon, label, url, color }, i) => {
                           const isDisabled = !url;
       
                           return (
@@ -538,36 +543,46 @@ export default function Home() {
                               target={isDisabled ? undefined : "_blank"}
                               rel={isDisabled ? undefined : "noopener noreferrer"}
                               variants={{
-                                hidden: { opacity: 0, y: 8 },
+                                hidden: { opacity: 1, y: 8 },
                                 show: { opacity: 1, y: 0 },
+                              }}                        
+                              onClick={(e) => {
+                                if (isDisabled) e.preventDefault();
                               }}
-                              transition={{
-                                type: "spring",
-                                stiffness: 180,
-                                damping: 22,
-                              }}
+                              aria-disabled={isDisabled}
                               className={`
                                 flex items-center justify-between
                                 px-4 h-[55px]
                                 rounded-xl
                                 shadow-md
-      
-                                transition-colors transition-shadow
-                                duration-200 ease-out
-      
-                                ${isDisabled
-                                  ? "bg-gray-300 opacity-40 cursor-not-allowed"
-                                  : "bg-gray-100 hover:bg-white hover:shadow-lg cursor-pointer"}
+                                transition-all duration-200 ease-out
+                                cursor-pointer
                               `}
-                              onClick={(e) => {
-                                if (isDisabled) e.preventDefault();
+                              style={{
+                                backgroundColor: isDisabled ? "#3a3b3d" : "#2a2b2d",
+                                borderBottom: "3px solid transparent",
                               }}
-                              aria-disabled={isDisabled}
+                              onMouseEnter={(e) => {
+                                if (!isDisabled) {
+                                  const btn = e.currentTarget as HTMLElement;
+                                  btn.style.backgroundColor = "#1b1c1d";
+                                  btn.style.borderBottom = `3px solid ${color}`;
+                                }
+                              }}
+                              onMouseLeave={(e) => {
+                                if (!isDisabled) {
+                                  const btn = e.currentTarget as HTMLElement;
+                                  btn.style.backgroundColor = "#2a2b2d";
+                                  btn.style.borderBottom = "3px solid transparent";
+                                }
+                              }}
                             >
-                              <Image src={icon} alt={label} width={100} />
-                              <span className="text-black font-medium">
-                                {isDisabled ? "Nedostupné" : "Přehrát"}
-                              </span>
+                              <Image
+                                src={icon}
+                                alt={label}
+                                width={100}                          
+                              />
+                              <span className="font-medium text-white">{isDisabled ? "Nedostupné" : "Přehrát"}</span>
                             </motion.a>
                           );
                         })}
