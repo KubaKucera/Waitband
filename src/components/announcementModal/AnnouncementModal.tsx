@@ -77,7 +77,7 @@ export default function AnnouncementModal() {
           <motion.div
             className="relative w-full max-w-lg sm:max-w-xl lg:max-w-2xl rounded-2xl bg-gradient-to-b from-gray-50 via-gray-100 to-gray-200 shadow-2xl overflow-hidden text-center"
             initial={{ y: 40, opacity: 0, scale: 1 }}
-            animate={{ y: 0, opacity: 1, scale: isLargeScreen ? 1.15 : 1 }}
+            animate={{ y: 0, opacity: 1, scale: isLargeScreen ? 1.2 : 1 }}
             exit={{ y: 20, opacity: 0, scale: 1 }}
             transition={{ type: "spring", stiffness: 120, damping: 20 }}
             onClick={(e) => e.stopPropagation()}

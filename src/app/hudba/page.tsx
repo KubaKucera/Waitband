@@ -125,7 +125,7 @@ export default function MusicPage() {
             className="flex flex-col items-center gap-8 mt-6 w-full"
           >
             {/* Grid skladeb */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-7 monitor:gap-9 w-full max-w-6xl monitor:max-w-7xl">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 monitor:gap-10 w-full max-w-6xl monitor:max-w-7xl">
               {images.map((image, index) => (
                 <div
                   key={index}
@@ -142,14 +142,14 @@ export default function MusicPage() {
                   <motion.div
                     initial={{ opacity: 0 }}
                     whileHover={{ opacity: 1 }}
-                    transition={{ duration: 0.3 }}
-                    className="absolute h-full inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center"
+                    transition={{ duration: 0.25 }}
+                    className="absolute inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center rounded-xl"
                   >
                     <motion.span
                       initial={{ y: 10, opacity: 0 }}
                       whileHover={{ y: 0, opacity: 1 }}
                       transition={{ duration: 0.3 }}
-                      className="text-white h-[100%] w-[100%] flex items-center justify-center font-semibold uppercase tracking-widest text-md"
+                      className="text-white h-[100%] w-[100%] flex items-center justify-center font-semibold uppercase tracking-widest text-base"
                     >
                       Poslechnout
                     </motion.span>
@@ -170,64 +170,72 @@ export default function MusicPage() {
       <AnimatePresence>
         {modalData && (
           <motion.div
-            key="modal"
+            key="modal-overlay"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-50 flex items-center justify-center px-6 sm:px-6 md:px-6 lg:px-0 sm:p-10 bg-black/60 sm:bg-black/80 backdrop-blur-md monitor:scale-115"
-            onClick={closeModal} // klik na fade zavře modal
+            transition={{ duration: 0.35, ease: "easeOut" }}
+            className="
+              fixed inset-0 z-50 flex items-center justify-center
+              px-6 sm:p-10
+              bg-black/50 sm:bg-black/70
+              backdrop-blur-lg
+              monitor:scale-115
+            "
+            onClick={closeModal}
           >
             <motion.div
-              initial={{ y: 30, scale: 0.95, opacity: 0 }}
-              animate={{ y: 0, scale: 1, opacity: 1 }}
-              exit={{ y: 30, scale: 0.95, opacity: 0 }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
+              key="modal-card"
+              initial={{ y: 40, scale: 0.92, opacity: 0, filter: "blur(6px)" }}
+              animate={{ y: 0, scale: 1, opacity: 1, filter: "blur(0px)" }}
+              exit={{ y: 30, scale: 0.95, opacity: 0, filter: "blur(4px)" }}
+              transition={{
+                type: "spring",
+                stiffness: 120,
+                damping: 18,
+                mass: 0.8,
+              }}
               onClick={(e) => e.stopPropagation()}
               className="
                 relative
-                bg-white/25
-                text-white
-                max-w-md
-                w-full
-                max-h-[100vh]
+                w-full max-w-md
                 rounded-2xl
-                overflow-hidden
-                shadow-2xl
-                flex
-                flex-col
-                items-center
-                p-6                
+                bg-white/25
+                backdrop-blur-xl
+                text-white
+                shadow-[0_20px_60px_rgba(0,0,0,0.35)]
+                p-6
+                flex flex-col items-center
               "
             >
               {/* Close button */}
-              <button
+              <motion.button
                 onClick={closeModal}
-                aria-label="Zavřít modal"
+                aria-label="Zavřít modal"                
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 className="
-                  absolute
-                  top-4
-                  right-4
+                  absolute top-3 right-3 sm:top-4 sm:right-4
                   z-30
-                  flex
-                  items-center
-                  justify-center
-                  w-9
-                  h-9
+                  flex items-center justify-center
+                  w-9 h-9
                   rounded-full
                   bg-black/60
                   backdrop-blur
                   text-white
-                  transition
-                  hover:bg-black/80
+                  hover:bg-black/80                  
                 "
               >
                 <X className="w-5 h-5" />
-              </button>
+              </motion.button>
 
-              {/* HERO – čtvercový obrázek vycentrovaný */}
-              <div className="relative w-full flex justify-center items-center">
-                <div className="relative w-[255px] sm:w-[300px] aspect-square rounded-xl overflow-hidden shadow-lg">
+              {/* HERO IMAGE */}
+              <motion.div
+                initial={{ scale: 0.95 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 0.1, type: "spring", stiffness: 140 }}
+                className="relative w-full flex justify-center"
+              >
+                <div className="relative w-[220px] sm:w-[300px] aspect-square rounded-xl overflow-hidden shadow-lg">
                   <Image
                     src={modalData.image}
                     alt={modalData.title}
@@ -235,18 +243,34 @@ export default function MusicPage() {
                     className="object-cover"
                   />
                 </div>
-              </div>
+              </motion.div>
 
-              {/* CONTENT – NESMÍ se zmenšit */}
+              {/* CONTENT */}
               <div className="flex-shrink-0 w-full">
                 <div className="w-full p-4 space-y-2">
-                  <h2 className="text-2xl font-bold text-center">{modalData.title}</h2>
-                  <p className="text-gray-300 whitespace-pre-wrap text-center">
+                  <h2 className="text-2xl font-bold text-center">
+                    {modalData.title}
+                  </h2>
+                  <p className="text-gray-300 text-sm md:text-base text-center text-nowrap">
                     Vyber hudební službu pro přehrání skladby.
                   </p>
-                </div>                
+                </div>
 
-                <div className="w-full space-y-3">
+                {/* BUTTONS */}
+                <motion.div
+                  className="w-full space-y-3"
+                  initial="hidden"
+                  animate="show"
+                  variants={{
+                    hidden: {},
+                    show: {
+                      transition: {
+                        staggerChildren: 0.08,
+                        delayChildren: 0.2,
+                      },
+                    },
+                  }}
+                >
                   {[
                     {
                       icon: appleMusic,
@@ -272,16 +296,27 @@ export default function MusicPage() {
                         href={isDisabled ? undefined : url}
                         target={isDisabled ? undefined : "_blank"}
                         rel={isDisabled ? undefined : "noopener noreferrer"}
-                        initial={{ y: 10, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 0.15 + i * 0.05, duration: 0.25 }}
+                        variants={{
+                          hidden: { opacity: 0, y: 8 },
+                          show: { opacity: 1, y: 0 },
+                        }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 180,
+                          damping: 22,
+                        }}
                         className={`
                           flex items-center justify-between
-                          px-4 h-[55px] rounded-lg shadow
-                          transition-all
+                          px-4 h-[55px]
+                          rounded-xl
+                          shadow-md
+
+                          transition-colors transition-shadow
+                          duration-200 ease-out
+
                           ${isDisabled
-                            ? "bg-gray-300 opacity-50 cursor-not-allowed"
-                            : "bg-gray-100 hover:bg-gray-200 cursor-pointer"}
+                            ? "bg-gray-300 opacity-40 cursor-not-allowed"
+                            : "bg-gray-100 hover:bg-white hover:shadow-lg cursor-pointer"}
                         `}
                         onClick={(e) => {
                           if (isDisabled) e.preventDefault();
@@ -295,7 +330,7 @@ export default function MusicPage() {
                       </motion.a>
                     );
                   })}
-                </div>
+                </motion.div>
               </div>
             </motion.div>
           </motion.div>

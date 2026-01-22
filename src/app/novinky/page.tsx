@@ -100,7 +100,7 @@ function AsideContent({
 
           {/* Badge s počtem aktivních filtrů */}
           {filtersChanged && (
-            <span className="absolute -top-1 -right-1 w-4 h-4 bg-neonPink text-black text-xs font-bold rounded-full flex items-center justify-center">
+            <span className="absolute -top-[7px] -right-[8px] w-4 h-4 bg-neonPink text-black text-xs font-bold rounded-full flex items-center justify-center">
               {+!!filterYear + +!!filterMonth + +!!filterCategory}
             </span>
           )}
@@ -530,76 +530,114 @@ export default function NewsPage() {
       <AnimatePresence>
         {active && (
           <motion.div
-            key="modal"
+            key="overlay"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/60 sm:bg-black/80 backdrop-blur-md sm:backdrop-blur-sm z-50 flex items-center justify-center px-6"
+            transition={{ duration: 0.35, ease: "easeOut" }}
+            className="fixed inset-0 z-50 flex items-center justify-center px-6
+                      bg-black/60 sm:bg-black/80 backdrop-blur-md sm:backdrop-blur-sm"
             onClick={() => setActive(null)}
           >
-            {/* Close button pro desktop */}
+            {/* Close button – desktop */}
             <button
-              className="absolute hidden md:flex right-[20px] top-[26px] text-white hover:text-gray-300 transition z-20"
+              className="absolute hidden md:flex right-[20px] top-[24px]
+                        text-white hover:text-gray-300 transition z-20"
               onClick={() => setActive(null)}
             >
               <X className="w-8 h-8" />
             </button>
 
-            {/* Modal kontejner */}
-            <motion.div
-              initial={{ scale: isLargeScreen ? 1.15 : 1, opacity: 0 }}
-              animate={{ scale: isLargeScreen ? 1.15 : 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
-              /* PŘIDÁNO: bg-neutral-800 a rounded-2xl, aby pozadí ladilo s obsahem a netvořilo artefakty */
-              className="relative bg-neutral-800 text-white max-w-2xl w-full shadow-2xl rounded-2xl"
-              onClick={(e) => e.stopPropagation()}
-            >              
-              {/* --- MOBILNÍ CLOSE BUTTON --- */}
-              <div className="absolute -top-10 right-0 md:hidden">
-                <button
-                  onClick={() => setActive(null)}
-                  className="flex items-center justify-center bg-neutral-800 px-6 py-2 rounded-t-2xl shadow-md transition hover:bg-neutral-700"
+            {/* Wrapper pro scale */}
+            <div className="transform monitor:scale-[1.15] transition-transform duration-300">
+              {/* MODAL CARD */}
+              <motion.div
+                key="modal"
+                initial={{ y: 40, scale: 0.96, opacity: 0 }}
+                animate={{ y: 0, scale: 1, opacity: 1 }}
+                exit={{ y: 30, scale: 0.97, opacity: 0 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 120,
+                  damping: 20,
+                  mass: 0.9,
+                }}
+                className="relative bg-neutral-800 text-white
+                          max-w-2xl w-full
+                          rounded-2xl
+                          shadow-[0_30px_80px_rgba(0,0,0,0.45)]"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {/* --- MOBILNÍ CLOSE BUTTON --- */}
+                <motion.div
+                  initial={{ y: -10, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.15 }}
+                  className="absolute -top-10 right-0 md:hidden"
                 >
-                  <X className="w-6 h-6 text-white" />
-                </button>
-              </div>
+                  <button
+                    onClick={() => setActive(null)}
+                    className="flex items-center justify-center
+                              bg-neutral-800 px-6 py-2
+                              rounded-t-2xl shadow-md
+                              hover:bg-neutral-700 transition"
+                  >
+                    <X className="w-6 h-6 text-white" />
+                  </button>
+                </motion.div>
 
-              {/* --- HERO SEKCE --- */}
-              {/* overflow-hidden + rounded-t-2xl zajistí, že obrázek i gradient budou mít čisté rohy */}
-              <div className="relative h-[300px] sm:h-[300px] md:h-[335px] monitor:h-96 w-full overflow-hidden rounded-tl-2xl md:rounded-t-2xl">
-                <Image
-                  src={active.image}
-                  alt={active.title}
-                  fill
-                  className="object-cover object-top"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-              </div>
+                {/* HERO */}
+                <motion.div
+                  initial={{ scale: 1.03 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 0.1, duration: 0.6, ease: "easeOut" }}
+                  className="relative h-[260px] sm:h-[300px] md:h-[335px] monitor:h-96
+                            w-full overflow-hidden
+                            rounded-tl-2xl md:rounded-t-2xl"
+                >
+                  <Image
+                    src={active.image}
+                    alt={active.title}
+                    fill
+                    className="object-cover object-top"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                </motion.div>
 
-              {/* --- CONTENT SEKCE --- */}
-              {/* TENTO DIV funguje jako ořezávací maska pro scrollbar (Wrapper) */}
-              <div className="rounded-b-2xl overflow-hidden bg-neutral-800">
-                <div className="p-6 max-h-[270px] md:max-h-[295px] overflow-y-auto space-y-4 custom-scrollbar">
-                  <span className="inline-block border-neonPink border-2 text-white px-2 py-0.5 rounded-full text-xs font-medium">
-                    {active.category}
-                  </span>
-                  <p className="text-sm text-gray-400">{active.date}</p>
-                  <h2 className="text-2xl font-bold">{active.title}</h2>
-                  <p className="text-gray-200 whitespace-pre-wrap">{active.content}</p>
-                  
-                  {active.link && (
-                    <a
-                      href={active.link}
-                      target="_blank"
-                      className="inline-flex items-center gap-2 text-sm mt-3 text-neonPink hover:underline"
-                    >
-                      Více zde <ExternalLink className="w-4 h-4" />
-                    </a>
-                  )}
+                {/* CONTENT */}
+                <div className="rounded-b-2xl overflow-hidden bg-neutral-800">
+                  <motion.div
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="p-6 max-h-[270px] md:max-h-[295px]
+                              overflow-y-auto space-y-4 custom-scrollbar"
+                  >
+                    <span className="inline-block border-neonPink border-2
+                                    text-white px-2 py-0.5 rounded-full text-xs font-medium">
+                      {active.category}
+                    </span>
+
+                    <p className="text-sm text-gray-400">{active.date}</p>
+                    <h2 className="text-2xl font-bold">{active.title}</h2>
+                    <p className="text-gray-200 whitespace-pre-wrap">
+                      {active.content}
+                    </p>
+
+                    {active.link && (
+                      <a
+                        href={active.link}
+                        target="_blank"
+                        className="inline-flex items-center gap-2
+                                  text-sm mt-3 text-neonPink hover:underline"
+                      >
+                        Více zde <ExternalLink className="w-4 h-4" />
+                      </a>
+                    )}
+                  </motion.div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

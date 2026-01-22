@@ -94,7 +94,7 @@ export default function FooterWithNewsletter() {
         {/* LOGO */}
         <div className="flex flex-col items-center md:items-start space-y-2">
           <Image src={logo} alt="WAIT logo" width={120} height={50} className="mb-2" />
-          <p className="text-base sm:text-base md:text-base lg:text-lg font-medium tracking-wide text-cnxBlack monitor:text-black">
+          <p className="text-base sm:text-base md:text-base lg:text-lg font-medium tracking-wide text-cnxBlack monitor:text-black font-inter">
             WAIT – česká kapela s duší a energií. Sleduj nás online!
           </p>
         </div>
@@ -110,29 +110,29 @@ export default function FooterWithNewsletter() {
         {/* POVINNÉ ÚDAJE */}
         <div className="flex flex-col items-center md:items-end text-base text-cnxBlack">
           <div className="flex flex-col items-center md:items-end gap-1">
-            <span className="text-gray-900 font-semibold text-[20px] tracking-wide mb-1">
+            <span className="text-gray-900 font-semibold text-[20px] tracking-wide mb-2">
               Povinné údaje
             </span>
-            <Link href="/osobni-udaje" target="_blank" className="footer-link text-nowrap">
+            <Link href="/osobni-udaje" target="_blank" className="footer-link text-nowrap font-inter">
               Soukromí & Používání Cookies
             </Link>
-            <Link href="/podminky-a-pravidla" target="_blank" className="footer-link">
+            <Link href="/podminky-a-pravidla" target="_blank" className="footer-link font-inter">
               Podmínky a pravidla
             </Link>
           </div>
 
           {/* SEKCE 2: Pro pořadatele */}
           <div className="flex flex-col items-center md:items-end mt-10 sm:mt-12 md:mt-6 gap-1">
-            <span className="text-gray-900 font-semibold text-[20px] tracking-wide mb-1">
+            <span className="text-gray-900 font-semibold text-[20px] tracking-wide mb-2">
               Pro pořadatele
             </span>
-            <Link href="/assets/files/waitRider.pdf" target="_blank" className="footer-link">
+            <Link href="/assets/files/waitRider.pdf" target="_blank" className="footer-link font-inter">
               Technický rider
             </Link>
           </div>
 
           {/* SEKCE 3: Copyright */}
-          <p className="mt-10 sm:mt-12 md:mt-6 text-center md:text-right">
+          <p className="mt-10 sm:mt-12 md:mt-6 text-center md:text-right font-inter">
             &copy; 2026 WAIT – Všechna práva vyhrazena.
           </p>
         </div>
