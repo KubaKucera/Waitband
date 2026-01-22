@@ -81,6 +81,16 @@ const config: Config = {
         navbarText: "#1F1F1F",
         cnxBlack: "#1b1c1d"
       },
+      backgroundColor: {
+        apple: "#fc3c44",
+        spotify: "#1DB954",
+        soundcloud: "#ff5500",
+      },
+      borderColor: {
+        apple: "#fc3c44",
+        spotify: "#1DB954",
+        soundcloud: "#ff5500",
+      },
       zIndex: {
         100: '100',
       },
