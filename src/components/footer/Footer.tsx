@@ -89,7 +89,7 @@ export default function FooterWithNewsletter() {
   );
 
   return (
-    <footer className="bg-white text-gray-900 relative z-40 select-none px-6 py-16 md:px-16 overflow-hidden">
+    <footer className="bg-white text-gray-900 font-roboto relative z-40 select-none px-6 py-16 md:px-16 overflow-hidden">
       <div className="max-w-6xl monitor:max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 sm:gap-12 items-start text-center md:text-left">
         {/* LOGO */}
         <div className="flex flex-col items-center md:items-start space-y-2">
@@ -101,7 +101,7 @@ export default function FooterWithNewsletter() {
 
         {/* SOCIÁLNÍ SÍTĚ */}
         <div className="flex flex-col items-center">
-          <span className="text-gray-900 font-semibold text-[20px] mb-4 tracking-wide">
+          <span className="text-black font-bold text-[20px] mb-4 tracking-wide">
             Sociální sítě
           </span>
           {renderSocialLinks()}
@@ -110,7 +110,7 @@ export default function FooterWithNewsletter() {
         {/* POVINNÉ ÚDAJE */}
         <div className="flex flex-col items-center md:items-end text-base text-cnxBlack">
           <div className="flex flex-col items-center md:items-end gap-1">
-            <span className="text-gray-900 font-semibold text-[20px] tracking-wide mb-2">
+            <span className="text-black font-semibold text-[20px] tracking-wide mb-2">
               Povinné údaje
             </span>
             <Link href="/osobni-udaje" target="_blank" className="footer-link text-nowrap font-inter">
@@ -123,7 +123,7 @@ export default function FooterWithNewsletter() {
 
           {/* SEKCE 2: Pro pořadatele */}
           <div className="flex flex-col items-center md:items-end mt-10 sm:mt-12 md:mt-6 gap-1">
-            <span className="text-gray-900 font-semibold text-[20px] tracking-wide mb-2">
+            <span className="text-black font-semibold text-[20px] tracking-wide mb-2">
               Pro pořadatele
             </span>
             <Link href="/assets/files/waitRider.pdf" target="_blank" className="footer-link font-inter">

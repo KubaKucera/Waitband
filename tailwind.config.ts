@@ -22,7 +22,8 @@ const config: Config = {
         inter: ['Inter', 'sans-serif'],
         nunito: ['Nunito', 'sans-serif'],          
         geist: ['Geist', 'sans-serif'],
-        poppins: ['Poppins', 'sans-serif'],      
+        poppins: ['Poppins', 'sans-serif'],    
+        roboto: ['Roboto', 'sans-serif'],  
       },
       dropShadow: {
         'custom': '23px 3px 6px rgba(0, 0, 0, 0.33)',        
