@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import ImageSlider from "@/components/slider/ImageSlider";
 import texture from "../../public/assets/textures/texture.jpg";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import AnnouncementModal from "@/components/announcementModal/AnnouncementModal";
 import SideAccentLineHome from "@/components/sideAccentLineHome/SideAccentLineHome";
 import TitleWithLines from "@/components/titleWithLines/TitleWithLines";
@@ -62,6 +62,7 @@ const spotifyMusicSongs = [
 export default function Home() {
   const [active, setActive] = useState<NewsItem | null>(null);  
   const [isLargeScreen, setIsLargeScreen] = useState(false);
+  const reduceMotion = useReducedMotion();
 
   const [modalData, setModalData] = useState<{
     image: any;
@@ -155,7 +156,7 @@ export default function Home() {
             {/* Novinky */}
             <section
               id="novinky-section"
-              className="relative flex flex-col items-center w-full max-w-6xl monitor:max-w-7xl mt-16"
+              className="relative flex flex-col items-center w-full max-w-6xl monitor:max-w-7xl mt-14 sm:mt-14 md:mt-16"
             >
               <SectionTitle title="Novinky" />
 
@@ -230,7 +231,7 @@ export default function Home() {
             </section>
 
             {/* Hudba */}
-            <section id="hudba-section" className="relative flex flex-col items-center w-full max-w-6xl monitor:max-w-7xl mt-16">
+            <section id="hudba-section" className="relative flex flex-col items-center w-full max-w-6xl monitor:max-w-7xl mt-14 sm:mt-14 md:mt-16">
               <SectionTitle title="Hudba" />
 
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 monitor:gap-10 mt-11 w-full">
@@ -273,7 +274,7 @@ export default function Home() {
             </section>
 
             {/* Videa */}
-            <section id="videa-section" className="relative flex flex-col items-center w-full max-w-6xl monitor:max-w-7xl mt-16">
+            <section id="videa-section" className="relative flex flex-col items-center w-full max-w-6xl monitor:max-w-7xl mt-14 sm:mt-14 md:mt-16">
               <SectionTitle title="Videa" />
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 monitor:gap-10 mt-11 w-full">
@@ -409,34 +410,47 @@ export default function Home() {
             </AnimatePresence>
 
       {/* MODAL */}
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
               {modalData && (
                 <motion.div
                   key="modal-overlay"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 0.35, ease: "easeOut" }}
+                  transition={{ duration: 0.25, ease: "easeOut" }}
                   className="
-                    fixed inset-0 z-50 flex items-center justify-center
+                    fixed inset-0 z-50
+                    flex items-center justify-center
                     px-6 sm:p-10
-                    bg-black/50 sm:bg-black/70
+                    bg-black/60 sm:bg-black/70
                     backdrop-blur-lg
-                    monitor:scale-115
                   "
                   onClick={closeModal}
                 >
                   <motion.div
                     key="modal-card"
-                    initial={{ y: 40, scale: 0.92, opacity: 0, filter: "blur(6px)" }}
-                    animate={{ y: 0, scale: 1, opacity: 1, filter: "blur(0px)" }}
-                    exit={{ y: 30, scale: 0.95, opacity: 0, filter: "blur(4px)" }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 120,
-                      damping: 18,
-                      mass: 0.8,
+                    initial={{
+                      opacity: 0,
+                      y: reduceMotion ? 20 : 40,
                     }}
+                    animate={{
+                      opacity: 1,
+                      y: 0,
+                    }}
+                    exit={{
+                      opacity: 0,
+                      y: 20,
+                    }}
+                    transition={
+                      reduceMotion
+                        ? { duration: 0.25, ease: "easeOut" }
+                        : {
+                            type: "spring",
+                            stiffness: 120,
+                            damping: 18,
+                            mass: 0.8,
+                          }
+                    }
                     onClick={(e) => e.stopPropagation()}
                     className="
                       relative
@@ -450,11 +464,10 @@ export default function Home() {
                       flex flex-col items-center
                     "
                   >
-                    {/* Close button */}
-                    <motion.button
+                    {/* CLOSE BUTTON */}
+                    <button
                       onClick={closeModal}
-                      aria-label="Zavřít modal"                
-                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                      aria-label="Zavřít modal"
                       className="
                         absolute top-3 right-3 sm:top-4 sm:right-4
                         z-30
@@ -462,19 +475,16 @@ export default function Home() {
                         w-9 h-9
                         rounded-full
                         bg-black/60
-                        backdrop-blur
                         text-white
-                        hover:bg-black/80                  
+                        hover:bg-black/80
+                        transition
                       "
                     >
                       <X className="w-5 h-5" />
-                    </motion.button>
+                    </button>
       
                     {/* HERO IMAGE */}
-                    <motion.div                      
-                      transition={{ delay: 0.1, type: "spring", stiffness: 140 }}
-                      className="relative w-full flex justify-center"
-                    >
+                    <div className="relative w-full flex justify-center mb-4">
                       <div className="relative w-[220px] sm:w-[300px] aspect-square rounded-xl overflow-hidden shadow-lg">
                         <Image
                           src={modalData.image}
@@ -483,109 +493,105 @@ export default function Home() {
                           className="object-cover"
                         />
                       </div>
-                    </motion.div>
+                    </div>
       
                     {/* CONTENT */}
-                    <div className="flex-shrink-0 w-full">
-                      <div className="w-full p-4 space-y-2">
-                        <h2 className="text-2xl font-bold text-center">
-                          {modalData.title}
-                        </h2>
-                        <p className="text-gray-200 text-sm md:text-base text-center text-nowrap">
-                          Vyber hudební službu pro přehrání skladby.
-                        </p>
-                      </div>
-      
-                      {/* BUTTONS */}
-                      <motion.div
-                        className="w-full space-y-3"
-                        initial="hidden"
-                        animate="show"
-                        variants={{
-                          hidden: {},
-                          show: {
-                            transition: {
-                              staggerChildren: 0.08,
-                              delayChildren: 0.2,
-                            },
-                          },
-                        }}
-                      >
-                        {[
-                          {
-                            icon: appleMusic,
-                            label: "Apple Music",
-                            url: appleMusicSongs[modalData.index].url,
-                            color: "#fc3c44",
-      
-                          },
-                          {
-                            icon: spotify,
-                            label: "Spotify",
-                            url: spotifyMusicSongs[modalData.index].url,
-                            color: "#1DB954",
-                          },
-                          {
-                            icon: soundcloud,
-                            label: "Soundcloud",
-                            url: soundcloudSongs[modalData.index].url,
-                            color: "#ff5500",
-                          },
-                        ].map(({ icon, label, url, color }, i) => {
-                          const isDisabled = !url;
-      
-                          return (
-                            <motion.a
-                              key={i}
-                              href={isDisabled ? undefined : url}
-                              target={isDisabled ? undefined : "_blank"}
-                              rel={isDisabled ? undefined : "noopener noreferrer"}
-                              variants={{
-                                hidden: { opacity: 1, y: 8 },
-                                show: { opacity: 1, y: 0 },
-                              }}                        
-                              onClick={(e) => {
-                                if (isDisabled) e.preventDefault();
-                              }}
-                              aria-disabled={isDisabled}
-                              className={`
-                                flex items-center justify-between
-                                px-4 h-[55px]
-                                rounded-xl
-                                shadow-md
-                                transition-all duration-200 ease-out
-                                cursor-pointer
-                              `}
-                              style={{
-                                backgroundColor: isDisabled ? "#3a3b3d" : "#2a2b2d",
-                                borderBottom: "3px solid transparent",
-                              }}
-                              onMouseEnter={(e) => {
-                                if (!isDisabled) {
-                                  const btn = e.currentTarget as HTMLElement;
-                                  btn.style.backgroundColor = "#1b1c1d";
-                                  btn.style.borderBottom = `3px solid ${color}`;
-                                }
-                              }}
-                              onMouseLeave={(e) => {
-                                if (!isDisabled) {
-                                  const btn = e.currentTarget as HTMLElement;
-                                  btn.style.backgroundColor = "#2a2b2d";
-                                  btn.style.borderBottom = "3px solid transparent";
-                                }
-                              }}
-                            >
-                              <Image
-                                src={icon}
-                                alt={label}
-                                width={100}                          
-                              />
-                              <span className="font-medium text-white">{isDisabled ? "Nedostupné" : "Přehrát"}</span>
-                            </motion.a>
-                          );
-                        })}
-                      </motion.div>
+                    <div className="w-full text-center space-y-2 mb-4">
+                      <h2 className="text-2xl font-bold">
+                        {modalData.title}
+                      </h2>
+                      <p className="text-gray-200 text-sm md:text-base">
+                        Vyber hudební službu pro přehrání skladby.
+                      </p>
                     </div>
+      
+                    {/* BUTTONS */}
+                    <motion.div
+                      className="w-full space-y-3"
+                      initial="hidden"
+                      animate="show"
+                      variants={{
+                        hidden: {},
+                        show: {
+                          transition: {
+                            staggerChildren: 0.08,
+                            delayChildren: 0.15,
+                          },
+                        },
+                      }}
+                    >
+                      {[
+                        {
+                          icon: appleMusic,
+                          label: "Apple Music",
+                          url: appleMusicSongs[modalData.index].url,
+                          color: "#fc3c44",
+                        },
+                        {
+                          icon: spotify,
+                          label: "Spotify",
+                          url: spotifyMusicSongs[modalData.index].url,
+                          color: "#1DB954",
+                        },
+                        {
+                          icon: soundcloud,
+                          label: "Soundcloud",
+                          url: soundcloudSongs[modalData.index].url,
+                          color: "#ff5500",
+                        },
+                      ].map(({ icon, label, url, color }, i) => {
+                        const isDisabled = !url;
+      
+                        return (
+                          <motion.a
+                            key={i}
+                            href={isDisabled ? undefined : url}
+                            target={isDisabled ? undefined : "_blank"}
+                            rel={isDisabled ? undefined : "noopener noreferrer"}
+                            aria-disabled={isDisabled}
+                            onClick={(e) => {
+                              if (isDisabled) e.preventDefault();
+                            }}
+                            variants={{
+                              hidden: { opacity: 1, y: 8 },
+                              show: { opacity: 1, y: 0 },
+                            }}
+                            transition={{ duration: 0.25, ease: "easeOut" }}
+                            className={`
+                              flex items-center justify-between
+                              px-4 h-[55px]
+                              rounded-xl
+                              shadow-md
+                              transition-all duration-200 ease-out
+                              ${isDisabled ? "cursor-not-allowed opacity-60" : "cursor-pointer"}
+                            `}
+                            style={{
+                              backgroundColor: isDisabled ? "#3a3b3d" : "#2a2b2d",
+                              borderBottom: "3px solid transparent",
+                            }}
+                            onMouseEnter={(e) => {
+                              if (!isDisabled) {
+                                const btn = e.currentTarget as HTMLElement;
+                                btn.style.backgroundColor = "#1b1c1d";
+                                btn.style.borderBottom = `3px solid ${color}`;
+                              }
+                            }}
+                            onMouseLeave={(e) => {
+                              if (!isDisabled) {
+                                const btn = e.currentTarget as HTMLElement; 
+                                btn.style.backgroundColor = "#2a2b2d";
+                                btn.style.borderBottom = "3px solid transparent";
+                              }
+                            }}
+                          >
+                            <Image src={icon} alt={label} width={100} />
+                            <span className="font-medium">
+                              {isDisabled ? "Nedostupné" : "Přehrát"}
+                            </span>
+                          </motion.a>
+                        );
+                      })}
+                    </motion.div>
                   </motion.div>
                 </motion.div>
               )}

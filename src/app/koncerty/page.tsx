@@ -96,7 +96,7 @@ export default function ConsertsPage() {
               })}
 
               {/* Spodní image sekce */}
-              <div className="relative w-full flex justify-center mt-4">
+              <div className="relative w-full flex justify-center mt-4 mb-3">
                 <div className="relative flex h-[195px] md:h-[235px] w-full max-w-3xl flex-col items-center justify-center rounded-2xl overflow-hidden">
                   <Image
                     src={consertsImage}

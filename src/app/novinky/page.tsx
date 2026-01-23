@@ -438,7 +438,7 @@ export default function NewsPage() {
             </div>
 
             {/* Grid dalších článků */}
-            <div className="w-full max-w-6xl monitor:max-w-7xl mt-0 sm:mt-0 md:mt-4">
+            <div className="w-full max-w-6xl monitor:max-w-7xl mt-0 sm:mt-0 md:mt-4 mb-3">
               <h3 className="text-white text-lg font-semibold mb-6">
                 Další příspěvky
               </h3>
