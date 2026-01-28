@@ -71,10 +71,10 @@ export default function ContactPage() {
         className="relative w-full h-auto bg-fixed bg-cover bg-center bg-no-repeat"
         id="contact-section"
         style={{
-          backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(20, 20, 20, 0.85)), url(${texture.src})`,
+          backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.60), rgba(20, 20, 20, 0.65)), url(${texture.src})`,
         }}
       > 
-        <div className="h-auto flex justify-center items-center pt-[128px] px-6 sm:px-6 md:px-0 bg-fixed bg-cover bg-center bg-no-repeat">
+        <div className="h-auto flex justify-center items-center pt-[128px] pb-20 md:pb-24 px-6 sm:px-6 md:px-0 bg-fixed bg-cover bg-center bg-no-repeat">
           <motion.div
             initial={{ opacity: 0, y: 30, scale: 0.98 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -151,7 +151,7 @@ export default function ContactPage() {
                 </label>
               </div>
 
-              <div className="space-y-2 text-sm text-gray-300 pt-4">
+              <div className="space-y-2 text-sm text-gray-300 pt-4 pb-4">
                 <p><span className="font-bold">Technické dotazy:</span> Ivan Kučera, tel. 724 644 082, e-mail: <Link href="mailto:iv.kucera@email.cz" className="text-blue-400 hover:underline">iv.kucera@email.cz</Link></p>
                 <p><span className="font-bold">Rezervace:</span> Pavel Herynk, tel. 737 272 833, e-mail: <Link href="mailto:p.herynk@me.com" className="text-blue-400 hover:underline">p.herynk@me.com</Link></p>
                 <p><span className="font-bold">Zvuk:</span> František Novák, e-mail: <Link href="mailto:novak.frantisek@atlas.cz" className="text-blue-400 hover:underline">novak.frantisek@atlas.cz</Link></p>

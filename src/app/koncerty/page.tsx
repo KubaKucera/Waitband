@@ -28,12 +28,12 @@ export default function ConsertsPage() {
       <div
         className="relative w-full bg-fixed bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `linear-gradient(to bottom right, rgba(0,0,0,0.8), rgba(20,20,20,0.85)), url(${texture.src})`,
+          backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.60), rgba(20, 20, 20, 0.65)), url(${texture.src})`,
         }}
       >
         <section
           id="concert-section"
-          className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6 lg:px-0 gap-8 pt-[118px]"
+          className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6 lg:px-0 gap-8 pt-[120px] pb-20 md:pb-24"
         >
           {/* Titulek */}
           <TitleWithLines title="Koncerty" delay={0.3} />
@@ -96,7 +96,7 @@ export default function ConsertsPage() {
               })}
 
               {/* Spodní image sekce */}
-              <div className="relative w-full flex justify-center mt-4 mb-3">
+              <div className="relative w-full flex justify-center mt-4">
                 <div className="relative flex h-[195px] md:h-[235px] w-full max-w-3xl flex-col items-center justify-center rounded-2xl overflow-hidden">
                   <Image
                     src={consertsImage}

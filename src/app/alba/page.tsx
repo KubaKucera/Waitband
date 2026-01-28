@@ -40,7 +40,7 @@ const AlbumCard = ({
       src={url}
       width="100%"
       height="400"
-      className="rounded-md shadow-lg w-full h-[400px] sm:h-[400px] md:h-[415px] monitor:h-[500px]"
+      className="rounded-md shadow-lg w-full h-[400px] sm:h-[400px] md:h-[415px] monitor:h-[480px]"
       frameBorder="0"
       allow="encrypted-media"
       allowFullScreen
@@ -100,10 +100,10 @@ export default function AlbumsPage() {
       <div
         className="relative w-full bg-fixed bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(20, 20, 20, 0.85)), url(${texture.src})`,
+          backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.60), rgba(20, 20, 20, 0.65)), url(${texture.src})`,
         }}
       >  
-        <section id="alb-section" className="relative h-auto flex flex-col items-center gap-8 px-6 sm:px-6 md:px-6 lg:px-0 pt-[118px]">          
+        <section id="alb-section" className="relative h-auto flex flex-col items-center gap-8 px-6 sm:px-6 md:px-6 lg:px-0 pt-[120px] pb-20 md:pb-24">          
 
           {/* Titulek */}
           <TitleWithLines title="Alba" delay={0.3} />
@@ -129,7 +129,7 @@ export default function AlbumsPage() {
               ))}
             </div>
 
-            <div className="flex justify-center h-[50px] mb-3">  
+            <div className="flex justify-center">  
               <PrimaryActionButton href="https://open.spotify.com/artist/37DvIv1TkBrTOz16Kk75YI" target="_blank">
                 Přejít na Spotify
               </PrimaryActionButton>

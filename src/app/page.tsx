@@ -20,6 +20,7 @@ import LiteYouTubeEmbed from "@/components/liteYtEmbed/LiteYouTubeEmbed";
 import SectionTitle from "@/components/sectionTitle/SectionTitle";
 import { ArrowRight } from "lucide-react";
 import { PrimaryActionButton } from "@/components/primaryActionButton/PrimaryActionButton";
+import Link from "next/link";
 
 const images = [image1, image2, image3];
 
@@ -137,12 +138,12 @@ export default function Home() {
       <div
         className="relative w-full min-h-screen bg-fixed bg-cover bg-center bg-no-repeat text-white"
         style={{
-          backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(20, 20, 20, 0.85)), url(${texture.src})`,
+          backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.60), rgba(20, 20, 20, 0.65)), url(${texture.src})`,
         }}
       >
         <SideAccentLineHome targetId="uvod-section" />
 
-        <section id="uvod-section" className="relative flex flex-col items-center px-6 sm:px-6 md:px-6 pt-0 sm:pt-[30px] md:pt-[50px]">
+        <section id="uvod-section" className="relative flex flex-col items-center px-6 sm:px-6 md:px-6 pt-0 sm:pt-[30px] md:pt-[50px] pb-20 md:pb-24">
           <div className="relative w-full justify-center items-center mt-9 sm:mt-9 md:mt-0">
             <TitleWithLines title="Kapela WAIT" />
           </div>          
@@ -162,63 +163,66 @@ export default function Home() {
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 monitor:gap-10 mt-11 w-full">
                 {newsData.slice(0, 3).map((item) => (
-                  <motion.div
+                  <Link
+                    href={`/novinky/${item.slug}`}
                     key={item.id}
-                    onClick={() => setActive(item)}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                    className="relative group cursor-pointer rounded-xl bg-white/5 hover:bg-white/10 overflow-hidden shadow-md transition-all duration-300 flex flex-col aspect-[4/5]"
+                    className="group"
                   >
-                    {/* IMAGE – větší část */}
-                    <div className="relative w-full flex-[3] overflow-hidden">
-                      <Image
-                        src={item.image}
-                        alt={item.title}
-                        fill
-                        className="object-cover object-top
-                        transition-transform duration-300 ease-out
-                        group-hover:-translate-y-2 will-change-transform transform-gpu"
-                      />
-                    </div>
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                      className="relative cursor-pointer rounded-xl bg-white/5 hover:bg-white/10 overflow-hidden shadow-md transition-all duration-300 flex flex-col aspect-[4/5]"
+                    >
+                      {/* IMAGE */}
+                      <div className="relative w-full flex-[3] overflow-hidden">
+                        <Image
+                          src={item.image}
+                          alt={item.title}
+                          fill
+                          className="
+                            object-cover monitor:object-top
+                            transition-transform duration-300 ease-out
+                            group-hover:-translate-y-2
+                            will-change-transform transform-gpu
+                          "
+                        />
+                      
+                        <div
+                          className="
+                            pointer-events-none
+                            absolute inset-0
+                            bg-black/5
+                            transition-opacity duration-300 ease-out
+                            group-hover:opacity-0
+                          "
+                        />
+                      </div>
 
-                    {/* TEXT */}
-                    <div className="p-4 sm:p-5 monitor:p-6 text-white flex flex-col flex-[2]">
-                      <div className="space-y-1.5 monitor:space-y-2">
-                        <span className="inline-block border-neonPink border-2 px-2 py-0.5 rounded-full text-xs font-medium mb-1">
+                      {/* TEXT */}
+                      <div className="p-4 sm:p-5 monitor:p-6 text-white flex flex-col flex-[2]">
+                        <span className="inline-block leading-none border-neonPink border-2 px-2 py-[5.5px] rounded-full text-[10px] w-fit mb-3">
                           {item.category}
                         </span>
 
-                        <p className="text-xs text-gray-400">{item.date}</p>
-                        {/* TITLE */}
-                        <h3 className="text-lg sm:text-xl font-semibold text-white leading-snug">
-                          {item.title}
-                        </h3>
+                        <p className="text-xs text-gray-400 mb-2">
+                          {item.date}
+                        </p>
 
-                        {/* EXCERPT */}
-                        <p className="text-sm text-gray-300 line-clamp-3">
+                        <h4 className="text-xl font-bold mb-3 group-hover:text-neonPink transition-colors">
+                          {item.title}
+                        </h4>
+
+                        <p className="text-gray-300 text-sm line-clamp-3 mb-4">
                           {item.excerpt}
                         </p>
-                      </div>
 
-                      {/* CTA */}
-                      <div
-                        className="
-                          mt-auto pt-4
-                          flex items-center gap-2
-                          text-neonPink text-sm font-medium
-                          opacity-60 group-hover:opacity-100
-                          transition-all duration-300
-                        "
-                      >
-                        <span>Přečíst více</span>
-                        <ArrowRight
-                          size={18}
-                          className="transition-transform duration-300 ease-out group-hover:translate-x-1.5"
-                        />
+                        <div className="mt-auto flex items-center gap-2 text-neonPink text-sm font-medium transition-opacity ease-out opacity-60 group-hover:opacity-100 duration-300 will-change-transform transform-gpu">
+                          Přečíst článek <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                        </div>
                       </div>
-                    </div>
-                  </motion.div>
+                    </motion.div>
+                  </Link>
                 ))}
               </div>
 
@@ -283,7 +287,7 @@ export default function Home() {
                 <LiteYouTubeEmbed videoId="8Tupra8tJiY" title="WAIT - Modelka (Official Music Video)" />
               </div>
 
-              <div className="flex justify-center mt-11 mb-3">
+              <div className="flex justify-center mt-11">
                 <PrimaryActionButton href="/videa">
                   Další videa
                 </PrimaryActionButton>
@@ -424,6 +428,7 @@ export default function Home() {
                     px-6 sm:p-10
                     bg-black/60 sm:bg-black/70
                     backdrop-blur-lg
+                    monitor:scale-115
                   "
                   onClick={closeModal}
                 >

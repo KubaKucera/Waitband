@@ -109,12 +109,12 @@ export default function MusicPage() {
       <div
         className="relative w-full min-h-screen bg-fixed bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `linear-gradient(to bottom right, rgba(0,0,0,0.8), rgba(20,20,20,0.85)), url(${texture.src})`,
+          backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.60), rgba(20, 20, 20, 0.65)), url(${texture.src})`,
         }}
       >
         <section
           id="music-section"
-          className="relative min-h-screen flex flex-col items-center px-6 sm:px-6 md:px-6 lg:px-0 gap-8 pt-[118px]"
+          className="relative min-h-screen flex flex-col items-center px-6 sm:px-6 md:px-6 lg:px-0 gap-8 pt-[120px] pb-20 md:pb-24"
         >
           <TitleWithLines title="Hudba" delay={0.3} />
 
@@ -159,7 +159,7 @@ export default function MusicPage() {
             </div>
 
             {/* Tlačítko alba */}
-            <div className="flex justify-center mt-4 mb-3">
+            <div className="flex justify-center mt-4">
               <PrimaryActionButton href="/alba">Přejít na Alba</PrimaryActionButton>
             </div>
           </motion.div>
@@ -180,7 +180,8 @@ export default function MusicPage() {
               flex items-center justify-center
               px-6 sm:p-10
               bg-black/60 sm:bg-black/70
-              backdrop-blur-lg
+              backdrop-blur-lg    
+              monitor:scale-115     
             "
             onClick={closeModal}
           >

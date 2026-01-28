@@ -72,12 +72,12 @@ export default function VideosPage() {
       <div
         className="relative w-full min-h-screen bg-fixed bg-cover bg-center"
         style={{
-          backgroundImage: `linear-gradient(to bottom right, rgba(0,0,0,0.8), rgba(20,20,20,0.85)), url(${texture.src})`,
+          backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.60), rgba(20, 20, 20, 0.65)), url(${texture.src})`,
         }}
       >
         <section
           id="video-section"
-          className="min-h-screen flex flex-col items-center gap-8 pt-[118px]"
+          className="min-h-screen flex flex-col items-center gap-8 pt-[120px] pb-20 md:pb-24"
         >
           <TitleWithLines title="Videa YT" delay={0.3} />
 
@@ -148,7 +148,7 @@ export default function VideosPage() {
             </div>
 
             {/* BUTTON */}
-            <div className="mt-4 mb-3 flex justify-center">
+            <div className="mt-4 flex justify-center">
               <PrimaryActionButton
                 href="https://www.youtube.com/@waitbandofficial/videos"
                 target="_blank"

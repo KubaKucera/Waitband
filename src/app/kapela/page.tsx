@@ -81,10 +81,10 @@ export default function BandPage() {
       <div
         className="relative w-full min-h-screen bg-fixed bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(20, 20, 20, 0.85)), url(${texture.src})`,
+          backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.60), rgba(20, 20, 20, 0.65)), url(${texture.src})`,
         }}
       >
-        <section id="band-section" className="relative min-h-screen flex flex-col items-center gap-8 pt-[118px] px-6 sm:px-6 md:px-6 lg:px-0">
+        <section id="band-section" className="relative min-h-screen flex flex-col items-center gap-8 pt-[120px] pb-20 md:pb-24 px-6 sm:px-6 md:px-6 lg:px-0">
           {/* Titulek */}
           <TitleWithLines title="Členové kapely" delay={0.3} />
 
@@ -162,7 +162,7 @@ export default function BandPage() {
                   style={{ backgroundImage: `url('${band2.src}')` }} />
             </div>
 
-            <div className="flex justify-center mt-4 mb-3">
+            <div className="flex justify-center mt-4">
               <PrimaryActionButton href="/">
                 Zpět na úvod
               </PrimaryActionButton>

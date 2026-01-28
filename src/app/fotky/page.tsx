@@ -128,10 +128,10 @@ export default function PhotosPage() {
       <div
         className="relative w-full min-h-screen bg-fixed bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `linear-gradient(to bottom right, rgba(0,0,0,0.8), rgba(20,20,20,0.85)), url(${texture.src})`,
+          backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.60), rgba(20, 20, 20, 0.65)), url(${texture.src})`,
         }}
       >
-        <section id="photo-section" className="relative min-h-screen flex flex-col items-center px-6 sm:px-6 md:px-6 lg:px-0 gap-8 pt-[118px]">
+        <section id="photo-section" className="relative min-h-screen flex flex-col items-center px-6 sm:px-6 md:px-6 lg:px-0 gap-8 pt-[120px] pb-20 md:pb-24">
           {/* Titulek */}
           <TitleWithLines title="Fotogalerie" delay={0.3} />      
           
@@ -198,9 +198,9 @@ export default function PhotosPage() {
                 className={`group relative w-[340px] sm:w-[75vw] md:w-[40vw] h-[55px]
                   text-[15px] font-semibold tracking-[0.12em]
                   rounded-full text-white                    
-                  transition-transform duration-300 ease-out will-change-transform transform-gpu
+                  transition-transform duration-300 ease-out will-change-transform transform-gpu                  
                   bg-transparent border-[2px] border-gray-300                    
-                  hover:[background:linear-gradient(#121212,#121212)_padding-box,linear-gradient(90deg,#ff6a00,#ee0979)_border-box]
+                  hover:bg-white/[0.025]
                   focus-visible:outline-none                    
                   focus-visible:shadow-[0_0_0_3px_rgba(238,9,121,0.35)]
                   active:scale-[0.98]
@@ -211,7 +211,7 @@ export default function PhotosPage() {
             </div>
           )}
 
-          <div className={`flex justify-center h-[50px] mb-3 ${showMore ? "mt-[15px]" : "mt-0"}`}>              
+          <div className={`flex justify-center ${showMore ? "mt-[15px]" : "mt-0"}`}>              
             <PrimaryActionButton href="https://www.instagram.com/wait_band_official/" target="_blank">
               Přejít na Instagram
             </PrimaryActionButton>

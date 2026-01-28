@@ -55,12 +55,15 @@ export default function Navbar() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-
-  const activeIndex = navLinks.findIndex((l) => l.href === pathname);
+  
   const itemRefs = useRef<Array<HTMLDivElement | null>>([]);
   const [underlineReady, setUnderlineReady] = useState(false);
 
-  const isActive = (href: string) => pathname === href;
+  const isActive = (href: string) => {    
+    return pathname === href || (href !== "/" && pathname.startsWith(href));
+  };
+
+  const activeIndex = navLinks.findIndex((l) => isActive(l.href));
 
   const setItemRef = useCallback(
     (index: number) => (el: HTMLDivElement | null) => {

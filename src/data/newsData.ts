@@ -1,6 +1,7 @@
 export interface NewsItem {
   id: number;
   title: string;
+  slug: string;
   date: string;
   image: string;
   excerpt: string;
@@ -9,24 +10,31 @@ export interface NewsItem {
   category: string;
 }
 
+export function titleToSlug(title: string) {
+  return title
+    .toLowerCase()
+    .normalize("NFD")              
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")  
+    .replace(/^-+|-+$/g, "");
+}
+
 export const newsData: NewsItem[] = [
   {
     id: 12,
     title: "Krásné Vánoce 🎄🧑‍🎄 a nový rok!",
+    slug: titleToSlug("Krásné Vánoce 🎄🧑‍🎄 a nový rok!"),
     date: "24. prosince 2025",
     image: "/assets/images/news/prani2.jpg",
     excerpt: "Díky, že v tom jedete všichni s námi. Váš WAIT 🎸 (Ivan, Marek, Martina, Paolo …)",
-    content:
-      "Díky, že v tom jedete všichni s námi. \n" +
-      "Krásné Vánoce 🎄🧑‍🎄 a nový rok - klidně s volume doprava, až na 11. \n\n" +
-      "Váš WAIT 🎸 (Ivan Kučera Marek Kopecký Martina Panchártková Paolo Anachronic a čestný " +
-      "frontman Miloš Novotný, zvuk 🔊🎛️ Franta Novak a pyro 🧨& management Tomáš Marks.",     
+    content: "Díky, že v tom jedete všichni s námi. \n" + "Krásné Vánoce 🎄🧑‍🎄 a nový rok - klidně s volume doprava, až na 11. \n\n" + "Váš WAIT 🎸 (Ivan Kučera Marek Kopecký Martina Panchártková Paolo Anachronic a čestný " + "frontman Miloš Novotný, zvuk 🔊🎛️ Franta Novak a pyro 🧨& management Tomáš Marks.",
     link: "https://www.facebook.com/waitbandcz",
     category: "Info",
   },
   {
     id: 11,
     title: "Autokemp Sečská přehrada",
+    slug: titleToSlug("Autokemp Sečská přehrada"),
     date: "18. července 2025",
     image: "/assets/images/news/sec.jpg",
     excerpt: "Přesně to, co máme rádi. Malý letní stage, výhled na vodu, pivko na dosah, lidi, co přišli za hudbou...",
@@ -39,6 +47,7 @@ export const newsData: NewsItem[] = [
   {
     id: 10,
     title: "Merch WAIT je na cestě",
+    slug: titleToSlug("Merch WAIT je na cestě"),
     date: "16. června 2025",
     image: "/assets/images/news/merch.jpg",
     excerpt: "Máme připravené 3 varianty triček a zajímá nás, která se vám líbí nejvíc? 👕👩‍🎤👨‍🎤",
@@ -60,6 +69,7 @@ export const newsData: NewsItem[] = [
   {
     id: 9,
     title: "Východočeské divadlo Pardubice",
+    slug: titleToSlug("Východočeské divadlo Pardubice"),
     date: "26. března 2025",
     image: "/assets/images/news/divadlo.jpg",
     excerpt: "V sobotu – jako “midnight special” jednu krásnou akci ve Východočeském Divadle Pardubice",
@@ -74,6 +84,7 @@ export const newsData: NewsItem[] = [
   {
     id: 8,
     title: "Hard Rock Cafe Praha",
+    slug: titleToSlug("Hard Rock Cafe Praha"),
     date: "18. ledna 2025",
     image: "/assets/images/news/cafePraha.jpg",
     excerpt: "Včerejší Hard Rock Cafe Praha naprostá pecka...",
@@ -91,6 +102,7 @@ export const newsData: NewsItem[] = [
   {
     id: 7,
     title: "Krásné vánoční svátky 🎄🎅 všem, a hlavně pohodu & klídek. 😎",
+    slug: "vanoce-2024",
     date: "23. prosince 2024",
     image: "/assets/images/news/prani.jpg",
     excerpt: "Krásné vánoční svátky 🎄🎅 všem, a hlavně pohodu & klídek. 😎",
@@ -110,6 +122,7 @@ export const newsData: NewsItem[] = [
   {
     id: 6,
     title: "Zastihla nás před Vánoci velmi smutná zpráva",
+    slug: "vanoce-2024-smutna-zprava",
     date: "22. prosince 2024",
     image: "/assets/images/news/rozlouceni.jpg",
     excerpt: "Zastihla nás před Vánoci velmi smutná zpráva",
@@ -119,13 +132,14 @@ export const newsData: NewsItem[] = [
       "Pro WAIT natočil videoklipy Modelka, Hate You a Horoskop. \n\n"+
       "Byl to moc fajn kluk, profík a nikdy nezkazil žádnou legraci. Měli jsme Djamina moc rádi a bude nám chybět. \n\n"+
       "Mnoho sil rodině a blízkým. 😢 \n\n"+
-      "Jedna z věcí, kterou pro nás Djamina udělal je zde:",
+      "Jedna z věcí, kterou pro nás Djamina udělal je zde: https://www.youtube.com/watch?v=8Tupra8tJiY",
     link: "https://www.youtube.com/watch?v=8Tupra8tJiY",
     category: "Oznámení",
   },
   {
     id: 5,
     title: "Pamatujete skvělý 📺 pořad “Noc s Andělem”?",
+    slug: titleToSlug("Pamatujete skvělý 📺 pořad “Noc s Andělem”?"),
     date: "30. listopadu 2024",
     image: "/assets/images/news/andel.jpeg",
     excerpt: "Pamatujete skvělý 📺 pořad “Noc s Andělem”?",
@@ -138,6 +152,7 @@ export const newsData: NewsItem[] = [
   {
     id: 4,
     title: "My u Miloš Knor, to bylo prostě fajn",
+    slug: titleToSlug("My u Miloš Knor, to bylo prostě fajn"),
     date: "28. listopadu 2024",
     image: "/assets/images/news/knor.jpg",
     excerpt: "My u Miloše Knora, to bylo prostě fajn",
@@ -148,6 +163,7 @@ export const newsData: NewsItem[] = [
   {
     id: 3,
     title: "WAIT v ateliéru Klose",
+    slug: titleToSlug("WAIT v ateliéru Klose"),
     date: "23. listopadu 2024",
     image: "/assets/images/news/klose.jpg",
     excerpt: "WAIT v ateliéru Klose",
@@ -167,6 +183,7 @@ export const newsData: NewsItem[] = [
   {
     id: 2,
     title: "Už se to blíží 😻",
+    slug: titleToSlug("Už se to blíží 😻"),
     date: "17. listopadu 2024",
     image: "/assets/images/news/blizi.jpg",
     excerpt: "Už se to blíží 😻",
@@ -184,6 +201,7 @@ export const newsData: NewsItem[] = [
   {
     id: 1,
     title: "Areál Černá Voda",
+    slug: titleToSlug("Areál Černá Voda"),
     date: "10. srpna 2024",
     image: "/assets/images/news/areal.jpg",
     excerpt: "Areál Černá Voda",

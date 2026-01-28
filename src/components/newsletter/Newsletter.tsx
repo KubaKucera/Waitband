@@ -51,12 +51,12 @@ export default function Newsletter() {
     <div
       className="relative w-full bg-fixed bg-cover bg-center bg-no-repeat"
       style={{
-        backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(20, 20, 20, 0.85)), url(${texture.src})`,
+        backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.60), rgba(20, 20, 20, 0.65)), url(${texture.src})`,
       }}
     >
-      <div className="w-full px-6 sm:px-6 md:px-10 mx-auto flex flex-col items-center text-white pb-20 pt-20 sm:pt-20 md:pt-20 overflow-hidden z-20">
+      <div className="w-full px-6 sm:px-6 md:px-10 mx-auto flex flex-col items-center text-white pb-20 overflow-hidden z-20">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="font-montserrat text-[36px] sm:text-[44px] font-semibold mb-2">
+          <h2 className="font-montserrat text-[36px] sm:text-[44px] font-semibold mb-2 text-nowrap">
             Zůstaňme v kontaktu
           </h2>
           <p className="text-gray-300 text-base sm:text-lg mb-5">
