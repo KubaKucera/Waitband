@@ -233,34 +233,104 @@ export default function NewsPage() {
               {/* Hlavní článek - nyní jako Link */}
               {mainArticle && (
                 <Link href={`/novinky/${mainArticle.slug}`} className="flex-1 group">
-                  <motion.div className="relative rounded-3xl overflow-hidden shadow-xl h-[450px] md:h-[550px]">
-                    <Image
-                      src={mainArticle.image}
-                      alt={mainArticle.title}
-                      fill
-                      className="object-cover object-top transition-transform duration-500 group-hover:scale-105 will-change-transform transform-gpu"
-                    />                    
+                  <motion.div 
+                    className="
+                      relative overflow-hidden transition-all duration-300 shadow-xl
+                      /* Mobilní verze (shodná s gridem) */
+                      flex flex-col aspect-[4/5] rounded-xl bg-white/5 hover:bg-white/10
+                      /* Desktop verze (Hero design) */
+                      sm:block sm:aspect-auto sm:h-[450px] md:h-[550px] sm:rounded-3xl sm:bg-transparent
+                    "
+                  >
+                    {/* Container pro obrázek */}
+                    <div className="
+                      relative w-full overflow-hidden
+                      /* Mobil */
+                      flex-[3]
+                      /* Desktop */
+                      sm:absolute sm:inset-0 sm:h-full
+                    ">
+                      <Image
+                        src={mainArticle.image}
+                        alt={mainArticle.title}
+                        fill
+                        className="
+                          object-cover object-top transition-transform duration-500 will-change-transform transform-gpu
+                          /* Mobil hover - posun nahoru */
+                          group-hover:-translate-y-2 
+                          /* Desktop hover - jemný zoom */
+                          sm:group-hover:scale-105 sm:group-hover:translate-y-0
+                        "
+                      />
 
-                    <div
-                      className="
-                        absolute inset-0
-                        bg-gradient-to-t
-                        from-black/90     
-                        via-black/80                  
-                        to-transparent
-                        sm:from-black/90
-                        sm:via-black/70
-                        sm:to-transparent
-                      "
-                    />
+                      {/* Overlay vrstvy */}
+                      {/* Mobilní jemný overlay */}
+                      <div className="sm:hidden pointer-events-none absolute inset-0 bg-black/5 transition-opacity duration-300 ease-out group-hover:opacity-0" />
+                      
+                      {/* Desktop Gradient (skrytý na mobilu) */}
+                      <div className="hidden sm:block absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-transparent" />
+                    </div>
 
-                    <div className="group absolute bottom-6 left-6 right-6 md:bottom-8 md:left-8 md:right-8 text-white">
-                      <span className="inline-block border-neonPink border-2 px-3 py-1 rounded-full text-xs font-medium mb-3">{mainArticle.category}</span>
-                      <p className="text-xs sm:text-sm text-gray-300 mb-3">{mainArticle.date}</p>
-                      <h2 className="text-xl sm:text-3xl md:text-4xl font-bold leading-snug mb-3 group-hover:text-neonPink transition-colors">{mainArticle.title}</h2>
-                      <p className="text-gray-200 line-clamp-2 mb-4">{mainArticle.excerpt}</p>
-                      <div className="flex items-center gap-2 text-neonPink font-medium transition-opacity opacity-60 group-hover:opacity-100 duration-300 ease-out will-change-transform transform-gpu">
-                        Přečíst článek <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
+                    {/* Obsah článku */}
+                    <div className="
+                      flex flex-col text-white
+                      /* Mobil */
+                      p-4 flex-[2]
+                      /* Desktop */
+                      sm:absolute sm:p-0 sm:bottom-6 sm:left-6 sm:right-6 md:bottom-8 md:left-8 md:right-8
+                    ">
+                      <span className="
+                        inline-block leading-none border-neonPink border-2 rounded-full font-medium mb-3 w-fit
+                        /* Mobil */
+                        px-2 py-[5.5px] text-[10px]
+                        /* Desktop */
+                        sm:px-3 sm:py-1 sm:text-xs
+                      ">
+                        {mainArticle.category}
+                      </span>
+                      
+                      <p className="
+                        text-gray-400 mb-2
+                        /* Mobil */
+                        text-xs
+                        /* Desktop */
+                        sm:text-sm sm:text-gray-300 sm:mb-3
+                      ">
+                        {mainArticle.date}
+                      </p>
+                      
+                      <h2 className="
+                        font-bold leading-snug mb-3 group-hover:text-neonPink transition-colors
+                        /* Mobil */
+                        text-xl
+                        /* Desktop */
+                        sm:text-3xl md:text-4xl
+                      ">
+                        {mainArticle.title}
+                      </h2>
+                      
+                      <p className="
+                        text-gray-300 line-clamp-3 mb-4
+                        /* Mobil */
+                        text-sm
+                        /* Desktop */
+                        sm:text-gray-200 sm:text-base sm:line-clamp-2
+                      ">
+                        {mainArticle.excerpt}
+                      </p>
+                      
+                      <div className="
+                        mt-auto flex items-center gap-2 text-neonPink font-medium transition-opacity ease-out opacity-60 group-hover:opacity-100 duration-300 will-change-transform transform-gpu
+                        /* Mobil */
+                        text-sm
+                        /* Desktop */
+                        sm:text-base
+                      ">
+                        Přečíst článek 
+                        <ArrowRight 
+                          size={18} 
+                          className="transition-transform group-hover:translate-x-2" 
+                        />
                       </div>
                     </div>
                   </motion.div>

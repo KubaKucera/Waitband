@@ -46,7 +46,7 @@ export default async function NewsDetail({ params }: Props) {
           </Link>
 
           <article>
-            <div className="relative h-[300px] md:h-[500px] w-full mb-8 rounded-3xl overflow-hidden shadow-2xl">
+            <div className="relative h-[265px] sm:[300px] md:h-[500px] w-full mb-8 rounded-3xl overflow-hidden shadow-2xl">
               <Image
                 src={article.image}
                 alt={article.title}
