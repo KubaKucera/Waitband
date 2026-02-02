@@ -28,7 +28,7 @@ export const newsData: NewsItem[] = [
     image: "/assets/images/news/prani2.jpg",
     excerpt: "Díky, že v tom jedete všichni s námi. Váš WAIT 🎸 (Ivan, Marek, Martina, Paolo …)",
     content: "Díky, že v tom jedete všichni s námi. \n" + "Krásné Vánoce 🎄🧑‍🎄 a nový rok - klidně s volume doprava, až na 11. \n\n" + "Váš WAIT 🎸 (Ivan Kučera Marek Kopecký Martina Panchártková Paolo Anachronic a čestný " + "frontman Miloš Novotný, zvuk 🔊🎛️ Franta Novak a pyro 🧨& management Tomáš Marks.",
-    link: "https://www.facebook.com/waitbandcz",
+    link: "https://www.facebook.com/waitbandcz/posts/pfbid0SM2JPv8ahnNg8ywbHBMKf1rfCm6zTcmo5pF61m8cR4m7KSxxopp89c4QQm9ApaSql?locale=cs_CZ",
     category: "Info",
   },
   {
@@ -41,7 +41,7 @@ export const newsData: NewsItem[] = [
     content:
       "Přesně to, co máme rádi. Malý letní stage, výhled na vodu, pivko na dosah, lidi, co přišli za hudbou. A atmosféra, která se nedá naplánovat – jen zažít.\n\n" +
       "DASI bar v autokempu Seč se včera proměnil v rockovej klub. Martina naplno, Ivan jak motorová pila, a my ostatní jsme si to dali, jak nejlíp umíme. Díky všem, kdo přišli, zpívali, stáli vepředu i vzadu.",      
-    link: "https://www.facebook.com/waitbandcz",
+    link: "https://www.facebook.com/waitbandcz/posts/pfbid02kcuX3awB6cU1VQEzawrvtQTbU31MFjV5U3ZZ6dCY3K8MX9cixKtDJG3NuEXLy2Xnl?locale=cs_CZ",
     category: "Koncert",
   },
   {
@@ -63,7 +63,7 @@ export const newsData: NewsItem[] = [
       "Born to Rock. Forced to Work. \n"+
       "Ale tričko si vyberte sami. 😎 \n"+
       "Díky, že jste s náma! 🖤",
-    link: "https://www.facebook.com/waitbandcz",
+    link: "https://www.facebook.com/waitbandcz/posts/pfbid02wAvJHLUBgPBx2hS1PygnPFP8S8YZC1zRrSuZkwBV6kxZZeDyUtyuoFhkGrXPA6bWl?locale=cs_CZ",
     category: "Merch",
   },
   {
@@ -78,7 +78,7 @@ export const newsData: NewsItem[] = [
       "Video k němu natočil / režíroval skvělý kytarista a “rejža” Djamin Kandoussi, kterému posíláme poděkování a velkou zdravici do nebeských výšin. \n\n"+
       "To natáčení bylo strašně fajn, nejde zapomenout.\n\n"+
       "Ivan Tejkl / Ondřej Littera / Martina Panchártková jako krásná Hilda/ Paolo Anachronic v roli slizkého Ricca Coccicione/ Ivan Kučera / Jaroslav Samek / Marek Kopecký / a další…..Východočeské divadlo Pardubice",
-    link: "https://www.facebook.com/waitbandcz",
+    link: "https://www.facebook.com/waitbandcz/posts/pfbid0DsBKAdkMUEEfqQwjsTcsnrFhRhJRmLeLnNcJPbitP8AtgKgxMcRxMVbjoUiVhz3Wl?locale=cs_CZ",
     category: "Koncert",
   },
   {
@@ -96,7 +96,7 @@ export const newsData: NewsItem[] = [
       "Ivan Kučera \n"+
       "Paolo Anachronic \n"+
       "& Franta Novak",
-    link: "https://www.facebook.com/waitbandcz",
+    link: "https://www.facebook.com/waitbandcz/posts/pfbid0tR9U9HqAkG14qP6ABoPLfG5ANXctC84RpVLdCc4zYM4c934nLT9uNNPCPeS2N5GBl?locale=cs_CZ",
     category: "Koncert",
   },
   {
@@ -116,7 +116,7 @@ export const newsData: NewsItem[] = [
       "Tomáš Marks (🔥fire/🌁fog) \n"+
       "Andrea Anďas (photo 📸) \n"+
       "& mnozí další…. 💪🏻",
-    link: "https://www.facebook.com/waitbandcz",
+    link: "https://www.facebook.com/waitbandcz/posts/pfbid02g2sTy83HRmeyRKZaCb1vNviqUuqjtPnVqF4DNoUGDAAcGdpqdmQB7ge6zZkVV2XBl?locale=cs_CZ",
     category: "Info",
   },
   {
@@ -133,7 +133,7 @@ export const newsData: NewsItem[] = [
       "Byl to moc fajn kluk, profík a nikdy nezkazil žádnou legraci. Měli jsme Djamina moc rádi a bude nám chybět. \n\n"+
       "Mnoho sil rodině a blízkým. 😢 \n\n"+
       "Jedna z věcí, kterou pro nás Djamina udělal je zde: https://www.youtube.com/watch?v=8Tupra8tJiY",
-    link: "https://www.youtube.com/watch?v=8Tupra8tJiY",
+    link: "https://www.facebook.com/waitbandcz/posts/pfbid02tnLDW9iBaXv3fR9bbyLXfEHgQ6FwAEQzoC5nJySQYZPhTD6J6eLdjBSRvyADuAzQl?locale=cs_CZ",
     category: "Oznámení",
   },
   {
@@ -146,7 +146,7 @@ export const newsData: NewsItem[] = [
     content:
       "Dnes se to jmenuje “Andělská Noc”. \n\n"+
       "Pavel Anděl to dělá parádně, ale jistá televize aktuálně přišla o vysílací licenci, tak to asi jen tak neuvidíte - takže alespoň “repráky hýýýýr” 😜🤷🏻‍♂️😉😛 na YT kanále WAIT.",
-    link: "https://www.youtube.com/watch?v=x_XWIT7Hd0Q",
+    link: "https://www.facebook.com/reel/1327551591562305?locale=cs_CZ",
     category: "Info",
   },
   {
@@ -157,7 +157,7 @@ export const newsData: NewsItem[] = [
     image: "/assets/images/news/knor.jpg",
     excerpt: "My u Miloše Knora, to bylo prostě fajn",
     content: "💪🏻🍀🙏😎",
-    link: "https://www.youtube.com/watch?v=w4Xn_DzsC6o",
+    link: "https://www.facebook.com/waitbandcz/posts/pfbid0kpV16HqSwFKqjb96H1rJVuMX6yDywbeX13S2GYuJp7HGhmVMxsVhDgGZfsASsAAEl?locale=cs_CZ",
     category: "Koncert",
   },
   {
@@ -177,7 +177,7 @@ export const newsData: NewsItem[] = [
       "Paolo Anachronic \n\n"+
       "Mistr zvuku Franta Novak \n"+
       "Foto 📸 Andrea Anďas",
-    link: "https://www.facebook.com/waitbandcz",
+    link: "https://www.facebook.com/waitbandcz/posts/pfbid02CAEWK2hUmvHVk3r1C79SyWwwCjSdBUPwSZZSXWApzeoM4VUiqn2arfdtkjhacfcol?locale=cs_CZ",
     category: "Koncert",
   },
   {
@@ -195,21 +195,21 @@ export const newsData: NewsItem[] = [
       "Vstupenky na místě (200 Kč) pro dobré místo přijď brzy, klub je malý. \n\n"+
       "Úžasní majitelé těchto krásných prostor Aleš Klose a Alice Klose pro vás mají na baru připravená luxusní vína 🍷, skvělé panáčky 🥃 a možná i nějakou lahvovou plzénku. \n\n"+
       "My moc děkujeme za možnost v jejich ateliéru tenhle speciální 🎵 koncert udělat. ❤️‍🔥",
-    link: "https://www.facebook.com/waitbandcz",
+    link: "https://www.facebook.com/waitbandcz/posts/pfbid02KibvtYCqFPm5uPw2AJcUAiPTZ3reJgfQsDtKFVnhMVyCb2DTYGS4XVsaZsPUEXGol?locale=cs_CZ",
     category: "Info",
   },
   {
     id: 1,
     title: "Areál Černá Voda",
     slug: titleToSlug("Areál Černá Voda"),
-    date: "10. srpna 2024",
+    date: "4. srpna 2024",
     image: "/assets/images/news/areal.jpg",
     excerpt: "Areál Černá Voda",
     content:
       "Kaplička Fest 2024, děkujeméééé. \n"+
       "Byli jste úžasni a byla radost pro vás hrát. \n"+
       "Pardubáci - přijďte na 🍷🥂 Slavnosti Vína 2024 🍾 pátek 30/8 v 17:00, Zámek Pardubice 🔥🔝🤘🏻",
-    link: "https://www.facebook.com/waitbandcz",
+    link: "https://www.facebook.com/waitbandcz/posts/pfbid02BLQ8eG8C9d2nTKtfYd3YaC9359QB5MT5aQsQks4wPcNkbkwMydk6dp2o2dZXzdtEl?locale=cs_CZ",
     category: "Koncert",
   },
 ];

@@ -83,13 +83,13 @@ export default function AnnouncementModal() {
             onClick={(e) => e.stopPropagation()}
           >
             {/* Image (smooth fade-in) */}
-            <div className="relative h-48 sm:h-56 lg:h-72 bg-gray-200 overflow-hidden">
+            <div className="relative h-56 sm:h-56 lg:h-72 bg-gray-200 overflow-hidden">
               <Image
                 src="/assets/images/home/announcement.jpg"
                 alt="Announcement"
                 fill
                 priority
-                className={`object-cover transition-opacity duration-700 ease-out ${
+                className={`object-cover object-left transition-opacity duration-700 ease-out ${
                   imageLoaded ? "opacity-100" : "opacity-0"
                 }`}
                 onLoadingComplete={() => setImageLoaded(true)}
