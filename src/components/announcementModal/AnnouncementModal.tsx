@@ -89,7 +89,7 @@ export default function AnnouncementModal() {
                 alt="Announcement"
                 fill
                 priority
-                className={`object-cover object-left transition-opacity duration-700 ease-out ${
+                className={`object-cover object-center transition-opacity duration-700 ease-out ${
                   imageLoaded ? "opacity-100" : "opacity-0"
                 }`}
                 onLoadingComplete={() => setImageLoaded(true)}

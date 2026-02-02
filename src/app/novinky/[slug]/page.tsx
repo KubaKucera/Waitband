@@ -51,7 +51,12 @@ export default async function NewsDetail({ params }: Props) {
                 src={article.image}
                 alt={article.title}
                 fill
-                className="object-cover object-top" />
+                className="object-cover object-top" 
+              />
+
+              <div className="hidden sm:block absolute bottom-0 left-0 right-0 h-1/3
+                bg-gradient-to-t from-black/60 via-black/30 to-transparent" 
+              />
             </div>
 
             <span className="inline-block border-neonPink border-2 px-3 py-1 rounded-full text-xs font-medium mb-4">
