@@ -74,7 +74,7 @@ export default function ContactPage() {
           backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.60), rgba(20, 20, 20, 0.65)), url(${texture.src})`,
         }}
       > 
-        <div className="h-auto flex justify-center items-center pt-[128px] pb-20 md:pb-24 px-6 sm:px-6 md:px-0 bg-fixed bg-cover bg-center bg-no-repeat">
+        <div className="h-auto flex justify-center items-center pt-[128px] px-6 sm:px-6 md:px-0 bg-fixed bg-cover bg-center bg-no-repeat">
           <motion.div
             initial={{ opacity: 0, y: 30, scale: 0.98 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -168,9 +168,9 @@ export default function ContactPage() {
           initial={{ opacity: 0, y: 30, scale: 0.98 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ delay: 0.6, duration: 1, ease: "easeOut" }}
-          className="w-full"
+          className="w-full pb-20 md:pb-24"
         >
-          <div className="w-full flex justify-center items-center pt-10 px-6 sm:px-6 md:px-6 lg:px-0">
+          <div className="w-full flex justify-center items-center pt-12 px-6 sm:px-6 md:px-6 lg:px-0">
             <div className="w-full sm:w-11/12 md:w-[70%] lg:w-[50%] xl:w-[50%] monitor:w-[40%] max-w-4xl flex flex-col items-center justify-center gap-3 bg-white/10 border border-white/35 rounded-2xl shadow-lg shadow-black/20 px-6 py-4 text-white">
               
               <FileDown className="w-10 h-10" />
