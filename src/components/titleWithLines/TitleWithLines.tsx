@@ -70,7 +70,7 @@ const TitleWithLines: FC<TitleWithLinesProps> = ({
 
         {/* Nadpis */}
         <motion.h2
-          className="text-5xl uppercase font-montserrat font-extrabold text-transparent bg-clip-text text-center animate-gradient-liquid"
+          className="text-5xl uppercase font-montserrat font-extrabold text-nowrap text-transparent bg-clip-text text-center animate-gradient-liquid"
           initial={{ opacity: 0 }}          // odstraněno y posunutí
           animate={{ opacity: 1 }}          // jen fade
           transition={{ delay: delay + 0.3, duration: 0.8, ease: "easeOut" }}

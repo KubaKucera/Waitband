@@ -124,18 +124,20 @@ export default function Navbar() {
           `}
         />
 
-        <div className="relative flex h-full items-center justify-between px-5 lg:px-44 monitor:px-80">
+        <div className="relative flex h-full items-center justify-between px-5 sm:px-5 md:px-5 lg:px-5 xl:px-44 monitor:px-80">
           {/* LOGO */}
-          <Link href="/" onClick={() => setMenuOpen(false)} className="z-50">
-            <Image
-              src={menuOpen || !scrolled ? title : blackTitle}
-              alt="WAIT"
-              className="w-[80px] md:w-[95px] h-auto transition-opacity duration-300"
-            />
-          </Link>
+          <div className="z-50">
+            <Link href="/" onClick={() => setMenuOpen(false)}>
+              <Image
+                src={menuOpen || !scrolled ? title : blackTitle}
+                alt="WAIT"
+                className="w-[80px] md:w-[95px] h-auto transition-opacity duration-300"
+              />
+            </Link>
+          </div>
 
           {/* DESKTOP MENU */}
-          <div className="hidden lg:flex gap-[23px] items-center text-[17px] relative font-poppins">
+          <div className="hidden xl:flex gap-[23px] items-center text-[17px] relative font-poppins">
             {navLinks.map(({ name, href, key }, i) => {
               const active = isActive(href);
 
@@ -198,7 +200,7 @@ export default function Navbar() {
           {/* MOBILE TOGGLE */}
           <button
             onClick={() => setMenuOpen((p) => !p)}
-            className={`lg:hidden z-50 ${
+            className={`xl:hidden z-50 ${
               menuOpen
                 ? "text-white"
                 : scrolled

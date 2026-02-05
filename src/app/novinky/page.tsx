@@ -57,7 +57,7 @@ function AsideContent({
   const filtersChanged = filterYear !== "" || filterMonth !== "" || filterCategory !== "";
 
   return (
-    <aside className={`${wrapperClassName} rounded-xl flex flex-col`}>
+    <aside className={`${wrapperClassName} rounded-xl flex flex-col mt-4 sm:mt-4 md:mt-4 lg:mt-0`}>
       <div className="flex items-center justify-between mb-4 relative">
         <h3 className="text-white text-lg font-semibold">Všechny příspěvky</h3>
         <div className="relative">
@@ -353,7 +353,7 @@ export default function NewsPage() {
             {/* Grid dalších článků */}
             <div className="w-full max-w-6xl monitor:max-w-7xl mt-0 sm:mt-0 md:mt-4 pt-2 sm:pt-0">
               <h3 className="text-white text-lg font-semibold mb-6">Další příspěvky</h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 monitor:gap-10">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8 monitor:gap-10">
                 {otherArticles.map((item) => (
                   <Link href={`/novinky/${item.slug}`} key={item.id} className="group">
                     <motion.div className="relative group cursor-pointer rounded-xl bg-white/5 hover:bg-white/10 overflow-hidden shadow-md transition-all duration-300 flex flex-col aspect-[4/5]">
@@ -390,7 +390,7 @@ export default function NewsPage() {
             </div>
 
             {/* Sidebar Mobile (zobrazí se na konci) */}
-            <div className="block lg:hidden w-full mb-10">
+            <div className="block lg:hidden w-full">
               <AsideContent
                 showFilter={showFilter} setShowFilter={setShowFilter}
                 filterYear={filterYear} setFilterYear={setFilterYear}
