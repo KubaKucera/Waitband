@@ -125,8 +125,15 @@ export default function BandPage() {
               ))}
             </div>
 
+            {/* Nadpis */}
+            <div className="px-2 mt-5 mb-5 md:mt-7 md:mb-7">
+              <h2 className="text-3xl sm:text-4xl lg:text-[44px] uppercase font-montserrat font-semibold text-center text-white">
+                Jsme Wait
+              </h2>
+            </div> 
+
             {/* Hlavní obrázek s textem přes něj (responzivní výška) */}
-            <div className="relative w-full sm:w-[90%] md:w-[88%] lg:w-[72%] monitor:w-[66%] mx-auto mt-3 mb-3 sm:mt-3 sm:mb-3 md:mt-7 md:mb-7">
+            <div className="relative w-full sm:w-[90%] md:w-[88%] lg:w-[72%] monitor:w-[66%] mx-auto">
               <div className="relative rounded-xl overflow-hidden shadow-lg">
                 {/* Use <Image> fill for best responsiveness */}
                 <div className="relative w-full h-[70vh] sm:h-[56vh] md:h-[64vh] lg:h-[70vh] monitor:h-[55vh]">
@@ -147,21 +154,15 @@ export default function BandPage() {
                   </div>
                 </div>
               </div>
-            </div>
-
-            {/* Nadpis */}
-            <div className="px-2">
-              <h2 className="text-3xl sm:text-4xl lg:text-[44px] uppercase font-montserrat font-semibold text-center text-white">
-                Jsme Wait
-              </h2>
-            </div>            
-
-            {/* Druhý obrázek - dekor, responsivní velikost */}
-            <div className="relative w-full sm:w-[90%] md:w-[88%] lg:w-[72%] monitor:w-[66%] mx-auto mt-3 sm:mt-3 md:mt-7 rounded-xl overflow-hidden shadow-lg">
-              <div className="w-full h-[36vh] sm:h-[50vh] md:h-[60vh] lg:h-[75vh] monitor:h-[63vh] band2-bg"
-                  style={{ backgroundImage: `url('${band2.src}')` }} />
-            </div>
-
+            </div>        
+            
+            {/* Druhý obrázek - dekor, responsivní velikost
+              <div className="relative w-full sm:w-[90%] md:w-[88%] lg:w-[72%] monitor:w-[66%] mx-auto mt-3 sm:mt-3 md:mt-7 rounded-xl overflow-hidden shadow-lg">
+                <div className="w-full h-[36vh] sm:h-[50vh] md:h-[60vh] lg:h-[75vh] monitor:h-[63vh] band2-bg"
+                    style={{ backgroundImage: `url('${band2.src}')` }} />
+              </div>
+            */}
+            
             <div className="flex justify-center mt-4">
               <PrimaryActionButton href="/">
                 Zpět na úvod

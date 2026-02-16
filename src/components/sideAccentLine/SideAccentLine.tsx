@@ -15,7 +15,7 @@ export default function SideAccentLine({ targetId }: SideAccentLineProps) {
     const targetEl = document.getElementById(targetId);
     if (!targetEl) return;
 
-    const NAVBAR_HEIGHT = 230; // výška navbaru
+    const NAVBAR_HEIGHT = 220; // výška navbaru
 
     const updateHeight = () => {
       const height = targetEl.offsetHeight + NAVBAR_HEIGHT;
@@ -31,7 +31,7 @@ export default function SideAccentLine({ targetId }: SideAccentLineProps) {
   }, [targetId]);
 
   return (
-    <div className="absolute xl:left-6 monitor:left-7 top-28 flex-col items-center hidden xl:flex z-30">
+    <div className="absolute xl:left-6 monitor:left-7 top-[120px] flex-col items-center hidden xl:flex z-30">
       {/* Šipka – nejdříve se objeví */}
       <motion.div
         initial={{ opacity: 0, y: -10 }}

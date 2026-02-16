@@ -207,7 +207,7 @@ export default function NewsPage() {
             className="flex flex-col items-center gap-8 mt-6 w-full max-w-6xl monitor:max-w-7xl"
           >
             {/* Desktop Search */}
-            <div className="relative w-full max-w-[700px] monitor:max-w-3xl mb-6 hidden lg:block">
+            <div className="relative w-full max-w-[675px] monitor:max-w-3xl mb-6 hidden lg:block">
               <input
                 type="text"
                 placeholder="Vyhledat příspěvek..."
@@ -268,7 +268,7 @@ export default function NewsPage() {
                       <div className="sm:hidden pointer-events-none absolute inset-0 bg-black/5 transition-opacity duration-300 ease-out group-hover:opacity-0" />
                       
                       {/* Desktop Gradient (skrytý na mobilu) */}
-                      <div className="hidden sm:block absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-transparent" />
+                      <div className="hidden sm:block absolute inset-0 bg-gradient-to-t from-black/100 via-black/50 monitor:from-black/90 monitor:via-black/70 to-transparent" />
                     </div>
 
                     {/* Obsah článku */}

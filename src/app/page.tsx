@@ -143,7 +143,7 @@ export default function Home() {
       >
         <SideAccentLineHome targetId="uvod-section" />
 
-        <section id="uvod-section" className="relative flex flex-col items-center px-6 sm:px-6 md:px-6 pt-0 sm:pt-[30px] md:pt-[50px] pb-20 md:pb-24">
+        <section id="uvod-section" className="relative flex flex-col items-center px-6 sm:px-6 md:px-6 pt-0 sm:pt-[30px] md:pt-[60px] pb-20 md:pb-24">
           <div className="relative w-full justify-center items-center mt-9 sm:mt-9 md:mt-0">
             <TitleWithLines title="Kapela WAIT" />
           </div>          
