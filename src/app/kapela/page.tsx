@@ -126,7 +126,7 @@ export default function BandPage() {
             </div>
 
             {/* Nadpis */}
-            <div className="px-2 mt-5 mb-5 md:mt-7 md:mb-7">
+            <div className="px-2 mt-5 mb-5 md:mt-8 md:mb-8">
               <h2 className="text-3xl sm:text-4xl lg:text-[44px] uppercase font-montserrat font-semibold text-center text-white">
                 Jsme Wait
               </h2>

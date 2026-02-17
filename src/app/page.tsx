@@ -157,7 +157,7 @@ export default function Home() {
             {/* Novinky */}
             <section
               id="novinky-section"
-              className="relative flex flex-col items-center w-full max-w-6xl monitor:max-w-7xl mt-14 sm:mt-14 md:mt-16"
+              className="relative flex flex-col items-center w-full max-w-6xl monitor:max-w-7xl mt-16 sm:mt-16 md:mt-[75px]"
             >
               <SectionTitle title="Novinky" />
 
@@ -235,7 +235,7 @@ export default function Home() {
             </section>
 
             {/* Hudba */}
-            <section id="hudba-section" className="relative flex flex-col items-center w-full max-w-6xl monitor:max-w-7xl mt-14 sm:mt-14 md:mt-16">
+            <section id="hudba-section" className="relative flex flex-col items-center w-full max-w-6xl monitor:max-w-7xl mt-16 sm:mt-16 md:mt-[75px]">
               <SectionTitle title="Hudba" />
 
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 monitor:gap-10 mt-11 w-full">
@@ -278,7 +278,7 @@ export default function Home() {
             </section>
 
             {/* Videa */}
-            <section id="videa-section" className="relative flex flex-col items-center w-full max-w-6xl monitor:max-w-7xl mt-14 sm:mt-14 md:mt-16">
+            <section id="videa-section" className="relative flex flex-col items-center w-full max-w-6xl monitor:max-w-7xl mt-16 sm:mt-16 md:mt-[75px]">
               <SectionTitle title="Videa" />
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 monitor:gap-10 mt-11 w-full">
