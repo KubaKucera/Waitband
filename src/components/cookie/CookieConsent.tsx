@@ -2,49 +2,86 @@
 
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
+import { loadGoogleAnalytics, disableGoogleAnalytics } from "@/lib/analytics";
+
+type ConsentSettings = {
+  analytics: boolean;
+  marketing: boolean;
+};
 
 export default function CookieConsent() {
   const [showBanner, setShowBanner] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
-  // nastavení kategorií
   const [analytics, setAnalytics] = useState(false);
   const [marketing, setMarketing] = useState(false);
 
+  // Listener pro tlačítko v patičce
+  useEffect(() => {
+    const openModal = () => setShowModal(true);
+
+    window.addEventListener("open-cookie-settings", openModal);
+
+    return () => {
+      window.removeEventListener("open-cookie-settings", openModal);
+    };
+  }, []);
+
+  // Načtení cookie při startu
   useEffect(() => {
     const consent = Cookies.get("cookieConsent");
+
     if (!consent) {
+      setShowBanner(true);
+      return;
+    }
+
+    try {
+      const parsed: ConsentSettings = JSON.parse(consent);
+      setAnalytics(!!parsed.analytics);
+      setMarketing(!!parsed.marketing);
+
+      // Aktivace GA, pokud uživatel souhlasil
+      if (parsed.analytics) {
+        loadGoogleAnalytics();
+      }
+    } catch {
       setShowBanner(true);
     }
   }, []);
 
-  const saveConsent = (settings: { analytics: boolean; marketing: boolean }) => {
+  const saveConsent = (settings: ConsentSettings) => {
     Cookies.set("cookieConsent", JSON.stringify(settings), { expires: 365 });
+
+    setAnalytics(settings.analytics);
+    setMarketing(settings.marketing);
+
     setShowBanner(false);
     setShowModal(false);
+
+    if (settings.analytics) {
+      loadGoogleAnalytics();
+    } else {
+      disableGoogleAnalytics();
+    }
   };
 
-  const handleAcceptAll = () => {
+  const handleAcceptAll = () =>
     saveConsent({ analytics: true, marketing: true });
-  };
 
-  const handleDeclineAll = () => {
+  const handleDeclineAll = () =>
     saveConsent({ analytics: false, marketing: false });
-  };
 
-  const handleSaveSettings = () => {
+  const handleSaveSettings = () =>
     saveConsent({ analytics, marketing });
-  };
 
   return (
     <>
-      {/* --- Banner dole --- */}
+      {/* BANNER */}
       {showBanner && !showModal && (
-        <div className="fixed bottom-0 inset-x-0 bg-gray-900 text-white p-4 md:p-5 z-[9999] shadow-lg">
-          <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
-            <p>
-              Tento web používá cookies, aby vám zajistil nejlepší zážitek 🍪.
-            </p>
+        <div className="fixed bottom-0 inset-x-0 bg-gray-900 text-white p-6 z-[9999] shadow-lg">
+          <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
+            <p>Tento web používá cookies 🍪</p>
             <div className="flex gap-3">
               <button
                 onClick={handleDeclineAll}
@@ -54,7 +91,7 @@ export default function CookieConsent() {
               </button>
               <button
                 onClick={() => setShowModal(true)}
-                className="px-4 py-2 rounded-lg border border-gray-400 text-gray-200 hover:bg-gray-700 transition"
+                className="px-4 py-2 rounded-lg border border-gray-400 text-gray-200 hover:bg-gray-800 transition"
               >
                 Nastavení
               </button>
@@ -69,43 +106,35 @@ export default function CookieConsent() {
         </div>
       )}
 
-      {/* --- Modal s nastavením --- */}
+      {/* MODAL */}
       {showModal && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[99999]">
-          <div className="bg-white/95 backdrop-blur-lg rounded-2xl shadow-2xl max-w-lg w-full mx-4 p-6 text-gray-900">
-            <h2 className="text-xl font-semibold mb-3">🍪 Nastavení cookies</h2>
-            <p className="text-sm text-gray-600 mb-4">
-              Některé cookies jsou nezbytné pro správné fungování webu, jiné
-              nám pomáhají zlepšovat služby.
-            </p>
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[99999] xl:scale-115 monitor:scale-125 px-6">
+          <div className="bg-white rounded-2xl max-w-lg w-full p-8">
+            <h2 className="text-xl font-semibold mb-4">Nastavení cookies</h2>
 
-            <div className="space-y-3">
-              <div className="flex items-center justify-between">
+            <div className="space-y-4 text-sm">
+              <div className="flex justify-between">
                 <span>Nezbytné cookies</span>
-                <span className="text-xs text-gray-500">Vždy povoleno</span>
+                <span className="text-gray-500">Vždy povoleno</span>
               </div>
-              <div className="flex items-center justify-between">
-                <label className="flex items-center gap-2 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={analytics}
-                    onChange={() => setAnalytics(!analytics)}
-                    className="h-4 w-4 accent-blue-500"
-                  />
-                  <span>Analytické cookies</span>
-                </label>
-              </div>
-              <div className="flex items-center justify-between">
-                <label className="flex items-center gap-2 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={marketing}
-                    onChange={() => setMarketing(!marketing)}
-                    className="h-4 w-4 accent-blue-500"
-                  />
-                  <span>Marketingové cookies</span>
-                </label>
-              </div>
+
+              <label className="flex justify-between items-center">
+                <span>Analytické cookies</span>
+                <input
+                  type="checkbox"
+                  checked={analytics}
+                  onChange={() => setAnalytics(!analytics)}
+                />
+              </label>
+
+              <label className="flex justify-between items-center">
+                <span>Marketingové cookies</span>
+                <input
+                  type="checkbox"
+                  checked={marketing}
+                  onChange={() => setMarketing(!marketing)}
+                />
+              </label>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3 mt-6">

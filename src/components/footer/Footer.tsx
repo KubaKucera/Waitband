@@ -93,7 +93,7 @@ export default function FooterWithNewsletter() {
       <div className="max-w-6xl monitor:max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 sm:gap-12 items-start text-center md:text-left">
         {/* LOGO */}
         <div className="flex flex-col items-center md:items-start space-y-2">
-          <Image src={logo} alt="WAIT logo" width={120} height={50} className="mb-2" />
+          <Image src={logo} alt="WAIT logo" width={120} height={50} className="mb-2 sm:mb-2 md:mb-4" />
           <p className="text-base sm:text-base md:text-base lg:text-lg font-medium tracking-wide text-cnxBlack monitor:text-black font-inter">
             WAIT – česká kapela s duší a energií. Sleduj nás online!
           </p>
@@ -113,12 +113,30 @@ export default function FooterWithNewsletter() {
             <span className="text-gray-900 font-semibold text-[20px] tracking-wide mb-2">
               Povinné údaje
             </span>
-            <Link href="/osobni-udaje" target="_blank" className="footer-link text-nowrap font-inter">
+            <Link
+              href="/osobni-udaje"
+              target="_blank"
+              className="footer-link text-nowrap font-inter"
+            >
               Soukromí & Používání Cookies
             </Link>
-            <Link href="/podminky-a-pravidla" target="_blank" className="footer-link font-inter">
+            <Link
+              href="/podminky-a-pravidla"
+              target="_blank"
+              className="footer-link font-inter"
+            >
               Podmínky a pravidla
             </Link>
+
+            {/* 🔹 Tlačítko pro otevření cookie nastavení */}
+            <button
+              onClick={() =>
+                window.dispatchEvent(new Event("open-cookie-settings"))
+              }
+              className="mt-2 text-sm text-gray-600 underline hover:text-gray-800"
+            >
+              Nastavení cookies
+            </button>
           </div>
 
           {/* SEKCE 2: Pro pořadatele */}
@@ -126,7 +144,11 @@ export default function FooterWithNewsletter() {
             <span className="text-gray-900 font-semibold text-[20px] tracking-wide mb-2">
               Pro pořadatele
             </span>
-            <Link href="/assets/files/waitRider.pdf" target="_blank" className="footer-link font-inter">
+            <Link
+              href="/assets/files/waitRider.pdf"
+              target="_blank"
+              className="footer-link font-inter"
+            >
               Technický rider
             </Link>
           </div>
