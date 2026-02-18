@@ -81,23 +81,25 @@ export default function CookieConsent() {
       {showBanner && !showModal && (
         <div className="fixed bottom-0 inset-x-0 bg-gray-900 text-white p-6 z-[9999] shadow-lg">
           <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
-            <p>Tento web používá cookies 🍪</p>
-            <div className="flex gap-3">
+            <p>Tento web používá cookies, aby vám zajistil co nejlepší zážitek. 🍪</p>
+            <div className="flex flex-col w-full sm:w-auto sm:flex-row gap-3">
               <button
                 onClick={handleDeclineAll}
-                className="px-4 py-2 rounded-lg border border-red-500 text-red-400 hover:bg-red-600/20 transition"
+                className="w-full sm:w-auto px-4 py-2 rounded-lg border border-red-500 text-red-400 hover:bg-red-600/20 transition"
               >
                 Odmítnout vše
               </button>
+
               <button
                 onClick={() => setShowModal(true)}
-                className="px-4 py-2 rounded-lg border border-gray-400 text-gray-200 hover:bg-gray-800 transition"
+                className="w-full sm:w-auto px-4 py-2 rounded-lg border border-gray-400 text-gray-200 hover:bg-gray-800 transition"
               >
                 Nastavení
               </button>
+
               <button
                 onClick={handleAcceptAll}
-                className="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition"
+                className="w-full sm:w-auto px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition"
               >
                 Přijmout vše
               </button>
