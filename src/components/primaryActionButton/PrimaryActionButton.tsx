@@ -27,9 +27,9 @@ export const PrimaryActionButton = ({
         rounded-full text-white
         transition-transform duration-300 ease-out will-change-transform transform-gpu
         bg-transparent border-[2px] border-transparent
-        [background:linear-gradient(180deg,#161616,#141414)_padding-box,linear-gradient(90deg,#ff6a00,#ee0979)_border-box]
-        hover:scale-105 hover:shadow-[0_0_18px_rgba(238,9,121,0.4)]
-        hover:[background:linear-gradient(180deg,#1c1c1c,#1a1a1a)_padding-box,linear-gradient(90deg,#ff6a00,#ee0979)_border-box]
+        [background:linear-gradient(180deg,#0f0f0f,#0a0a0a)_padding-box,linear-gradient(90deg,#ff6a00,#ee0979)_border-box]
+        hover:scale-105 hover:shadow-[0_0_22px_rgba(238,9,121,0.45)]
+        hover:[background:linear-gradient(180deg,#141414,#101010)_padding-box,linear-gradient(90deg,#ff6a00,#ee0979)_border-box]
         focus-visible:outline-none
         focus-visible:shadow-[0_0_0_3px_rgba(238,9,121,0.35)]
         active:scale-[0.98]

@@ -268,7 +268,7 @@ export default function NewsPage() {
                       <div className="sm:hidden pointer-events-none absolute inset-0 bg-black/5 transition-opacity duration-300 ease-out group-hover:opacity-0" />
                       
                       {/* Desktop Gradient (skrytý na mobilu) */}
-                      <div className="hidden sm:block absolute inset-0 bg-gradient-to-t from-black/100 via-black/50 monitor:from-black/95 monitor:via-black/70 to-transparent" />
+                      <div className="hidden sm:block absolute inset-0 bg-gradient-to-t from-black/100 via-black/50 monitor:from-black/100 monitor:via-black/70 to-transparent" />
                     </div>
 
                     {/* Obsah článku */}
