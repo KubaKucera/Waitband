@@ -63,7 +63,7 @@ function AsideContent({
         <div className="relative">
           <button
             onClick={() => setShowFilter(!showFilter)}
-            className={`px-5 py-2 font-medium text-sm border border-white/20 rounded-md flex items-center gap-2 hover:bg-neutral-800 transition-all duration-200 ${
+            className={`px-5 py-2 font-medium text-sm border border-white/20 rounded-md flex items-center gap-2 sm:hover:bg-neutral-800 transition-all duration-200 ${
               showFilter ? "bg-white/15 border-white/30" : "bg-white/10"
             } text-white ${filtersChanged ? "ring-2 ring-neonPink" : ""} hover:shadow-md hover:shadow-black/30`}
           >
