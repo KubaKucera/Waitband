@@ -77,7 +77,7 @@ export default function VideosPage() {
       >
         <section
           id="video-section"
-          className="min-h-screen flex flex-col items-center gap-8 pt-[120px] pb-20 md:pb-24"
+          className="min-h-screen flex flex-col items-center gap-8 pt-[125px] pb-20 md:pb-24"
         >
           <TitleWithLines title="Videa YT" delay={0.3} />
 

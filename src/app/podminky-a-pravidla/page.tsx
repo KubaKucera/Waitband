@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import texture from "../../../public/assets/textures/texture.jpg";
 
 export const metadata: Metadata = {
     title: "Podmínky a pravidla | Wait",
@@ -8,9 +9,14 @@ export const metadata: Metadata = {
 export default function TermsAndConditionsPage(){
     return (
         <>
-            <section className="h-auto w-full relative pt-[120px] pb-20 md:pb-24 px-6 sm:px-6 md:px-6 lg:px-6 text-white">
+            <section 
+                className="h-auto w-full relative pt-[125px] pb-20 md:pb-24 px-6 sm:px-6 md:px-6 lg:px-6 text-white"
+                style={{
+                    backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.60), rgba(20, 20, 20, 0.65)), url(${texture.src})`,
+                }} 
+            >
                 <h1 className="text-2xl font-bold">Podmínky a pravidla</h1>
-                <p>Datum účinnosti: 23. listopadu 2024</p>
+                <p>Datum účinnosti: 23. ledna 2026</p>
 
                 <p>Vítejte na našich webových stránkách. Předtím, než začnete používat naši službu, prosím pečlivě si přečtěte tyto Podmínky užívání. Používáním našich stránek souhlasíte s těmito podmínkami. Pokud s nimi nesouhlasíte, prosím naše stránky nepoužívejte.</p>
 

@@ -114,7 +114,7 @@ export default function MusicPage() {
       >
         <section
           id="music-section"
-          className="relative min-h-screen flex flex-col items-center px-6 sm:px-6 md:px-6 lg:px-0 gap-8 pt-[120px] pb-20 md:pb-24"
+          className="relative min-h-screen flex flex-col items-center px-6 sm:px-6 md:px-6 lg:px-0 gap-8 pt-[125px] pb-20 md:pb-24"
         >
           <TitleWithLines title="Hudba" delay={0.3} />
 

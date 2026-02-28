@@ -33,7 +33,7 @@ export default function ConsertsPage() {
       >
         <section
           id="concert-section"
-          className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6 lg:px-0 gap-8 pt-[120px] pb-20 md:pb-24"
+          className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6 lg:px-0 gap-8 pt-[125px] pb-20 md:pb-24"
         >
           {/* Titulek */}
           <TitleWithLines title="Koncerty" delay={0.3} />

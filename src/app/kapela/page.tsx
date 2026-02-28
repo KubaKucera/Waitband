@@ -84,7 +84,7 @@ export default function BandPage() {
           backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.60), rgba(20, 20, 20, 0.65)), url(${texture.src})`,
         }}
       >
-        <section id="band-section" className="relative min-h-screen flex flex-col items-center gap-8 pt-[120px] pb-20 md:pb-24 px-6 sm:px-6 md:px-6 lg:px-0">
+        <section id="band-section" className="relative min-h-screen flex flex-col items-center gap-8 pt-[125px] pb-20 md:pb-24 px-6 sm:px-6 md:px-6 lg:px-0">
           {/* Titulek */}
           <TitleWithLines title="Členové kapely" delay={0.3} />
 
@@ -126,7 +126,7 @@ export default function BandPage() {
             </div>
 
             {/* Nadpis */}
-            <div className="px-2 mt-5 mb-5 md:mt-8 md:mb-8">
+            <div className="px-2 mt-5 mb-5 md:mt-9 md:mb-9">
               <h2 className="text-3xl sm:text-4xl lg:text-[44px] uppercase font-montserrat font-semibold text-center text-white">
                 Jsme Wait
               </h2>

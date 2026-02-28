@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import texture from "../../../public/assets/textures/texture.jpg";
 
 export const metadata: Metadata = {
     title: "Osobní údaje | Wait",
@@ -8,9 +9,14 @@ export const metadata: Metadata = {
 export default function PrivacyPolicyPage(){
     return (
         <> 
-            <section className="relative min-h-screen w-full pt-[120px] pb-20 md:pb-24 px-6 sm:px-6 md:px-6 lg:px-6 text-white">
+            <section 
+                className="relative min-h-screen w-full pt-[125px] pb-20 md:pb-24 px-6 sm:px-6 md:px-6 lg:px-6 text-white"
+                style={{
+                    backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.60), rgba(20, 20, 20, 0.65)), url(${texture.src})`,
+                }}
+            >
                 <h1 className="text-2xl font-bold">Zásady ochrany osobních údajů</h1>
-                <p>Poslední aktualizace: 23. listopadu 2024</p>
+                <p>Poslední aktualizace: 23. ledna 2026</p>
                 <p>Tato Zásada ochrany osobních údajů popisuje naše zásady a postupy při shromažďování, používání a zpřístupňování Vašich údajů, když používáte Službu, a informuje Vás o Vašich právech na ochranu soukromí a o tom, jak Vás zákon chrání.</p>
                 <p>Vaše Osobní údaje používáme k poskytování a zlepšování Služby. Používáním Služby souhlasíte se shromažďováním a používáním informací v souladu s těmito Zásadami ochrany osobních údajů. Tyto Zásady byly vytvořeny s pomocí <a href="https://www.termsfeed.com/privacy-policy-generator/" target="_blank">Generátoru zásad ochrany osobních údajů</a>.</p>
                 <h2>Významy a definice</h2>

@@ -131,7 +131,7 @@ export default function PhotosPage() {
           backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.60), rgba(20, 20, 20, 0.65)), url(${texture.src})`,
         }}
       >
-        <section id="photo-section" className="relative min-h-screen flex flex-col items-center px-6 sm:px-6 md:px-6 lg:px-0 gap-8 pt-[120px] pb-20 md:pb-24">
+        <section id="photo-section" className="relative min-h-screen flex flex-col items-center px-6 sm:px-6 md:px-6 lg:px-0 gap-8 pt-[125px] pb-20 md:pb-24">
           {/* Titulek */}
           <TitleWithLines title="Fotogalerie" delay={0.3} />      
           

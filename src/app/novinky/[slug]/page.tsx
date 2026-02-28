@@ -39,7 +39,7 @@ export default async function NewsDetail({ params }: Props) {
         className="relative w-full min-h-screen bg-fixed bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.60), rgba(20, 20, 20, 0.65)), url(${texture.src})`, }}
       >
-        <section id="news-detail" className="relative max-w-4xl mx-auto px-6 sm:px-6 md:px-6 lg:px-0 gap-8 pt-[120px] pb-20 md:pb-24 text-white">
+        <section id="news-detail" className="relative max-w-4xl mx-auto px-6 sm:px-6 md:px-6 lg:px-0 gap-8 pt-[125px] pb-20 md:pb-24 text-white">
           {/* Tlačítko zpět */}
           <Link href="/novinky" className="inline-flex items-center gap-2 text-neonPink mb-8 hover:underline">
             <ArrowLeft size={20} /> Zpět na všechny novinky

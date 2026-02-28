@@ -31,7 +31,7 @@ export default function SideAccentLine({ targetId }: SideAccentLineProps) {
   }, [targetId]);
 
   return (
-    <div className="absolute xl:left-6 monitor:left-7 top-[120px] flex-col items-center hidden xl:flex z-30">
+    <div className="absolute xl:left-6 monitor:left-7 top-[125px] flex-col items-center hidden xl:flex z-30">
       {/* Šipka – nejdříve se objeví */}
       <motion.div
         initial={{ opacity: 0, y: -10 }}

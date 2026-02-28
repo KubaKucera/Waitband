@@ -197,7 +197,7 @@ export default function NewsPage() {
         className="relative w-full min-h-screen bg-fixed bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `linear-gradient(to bottom right, rgba(0, 0, 0, 0.60), rgba(20, 20, 20, 0.65)), url(${texture.src})`, }}
       >
-        <section id="news-section" className="relative min-h-screen flex flex-col items-center gap-8 pt-[120px] pb-20 md:pb-24 px-6">
+        <section id="news-section" className="relative min-h-screen flex flex-col items-center gap-8 pt-[125px] pb-20 md:pb-24 px-6">
           <TitleWithLines title="Novinky" delay={0.3} />
 
           <motion.div
